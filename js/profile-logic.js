@@ -162,6 +162,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <div class="product-image-container">
                     <div class="product-meta-overlay">
                         <span class="product-category"><i class="fa-solid fa-layer-group"></i> ${product.categories?.name || 'N/A'}</span>
+                        <span class="product-serial">SN: ${product.code || 'N/A'}</span>
                     </div>
                     <div class="product-image">
                         <img src="${primaryUrl}" alt="${product.name}">
@@ -169,6 +170,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </div>
                 <div class="product-info">
                     <h3 class="product-title">${product.name}</h3>
+                    <div class="product-meta-overlay2">
+                        <span class="product-category2">${product.categories?.name || 'N/A'}</span>
+                        <span class="product-serial2">SN: ${product.code || 'N/A'}</span>
+                    </div>
                     <p class="product-description">${product.description || ''}</p>
                     <div class="product-prices">
                         <div class="price-item">

@@ -1,35 +1,18 @@
-// Chat Service
+// Chat Service - localStorage based (Team Chat only)
+// Direct messages still use Supabase via direct-chat-service.js
 class ChatService {
     constructor() {
         this.currentMessages = []
         this.isConnected = false
-        this.reconnectAttempts = 0
-        this.maxReconnectAttempts = 5
+        this.storageKey = 'team_chat_messages'
+        this.setupStorageListener()
     }
 
-    // Initialize chat connection
+    // Initialize chat connection (loads from localStorage)
     async initializeChat() {
         try {
-            // Subscribe to messages table changes
-            const { data, error } = await supabaseClient
-                .from('messages')
-                .select(`
-                    *,
-                    users!messages_user_id_fkey(username, full_name)
-                `)
-                .order('created_at', { ascending: true })
-
-            if (error) {
-                console.error('Error initializing chat:', error)
-                return { success: false, error: error.message }
-            }
-
-            this.currentMessages = data || []
+            this.currentMessages = this.loadMessagesFromStorage()
             this.isConnected = true
-
-            // Set up real-time subscription
-            this.setupRealtimeSubscription()
-
             return { success: true, messages: this.currentMessages }
         } catch (error) {
             console.error('Error in initializeChat:', error)
@@ -37,33 +20,49 @@ class ChatService {
         }
     }
 
-    // Set up real-time subscription for new messages
-    setupRealtimeSubscription() {
+    // Load messages from localStorage
+    loadMessagesFromStorage() {
         try {
-            supabaseClient
-                .channel('messages')
-                .on('postgres_changes', 
-                    { 
-                        event: 'INSERT', 
-                        schema: 'public', 
-                        table: 'messages' 
-                    }, 
-                    (payload) => {
-                        this.handleNewMessage(payload.new)
-                    }
-                )
-                .subscribe()
+            const raw = localStorage.getItem(this.storageKey)
+            if (!raw) return []
+            const messages = JSON.parse(raw)
+            return Array.isArray(messages) ? messages : []
         } catch (error) {
-            console.error('Error setting up real-time subscription:', error)
+            console.error('Error loading messages from storage:', error)
+            return []
         }
     }
 
-    // Handle new message from real-time subscription
+    // Save messages to localStorage
+    saveMessagesToStorage(messages) {
+        try {
+            localStorage.setItem(this.storageKey, JSON.stringify(messages))
+        } catch (error) {
+            console.error('Error saving messages to storage:', error)
+        }
+    }
+
+    // Setup storage event listener for cross-tab sync
+    setupStorageListener() {
+        window.addEventListener('storage', (e) => {
+            if (e.key === this.storageKey && e.newValue) {
+                try {
+                    const newMessages = JSON.parse(e.newValue)
+                    if (Array.isArray(newMessages) && newMessages.length > this.currentMessages.length) {
+                        const lastMessage = newMessages[newMessages.length - 1]
+                        this.currentMessages = newMessages
+                        this.handleNewMessage(lastMessage)
+                    }
+                } catch (error) {
+                    console.error('Error handling storage event:', error)
+                }
+            }
+        })
+    }
+
+    // Handle new message (from storage event or local send)
     handleNewMessage(message) {
         try {
-            // Add message to current messages
-            this.currentMessages.push(message)
-            
             // Play notification sound
             this.playNotificationSound()
             
@@ -77,11 +76,11 @@ class ChatService {
         }
     }
 
-    // Send new message
+    // Send new message (localStorage)
     async sendMessage(messageText) {
         try {
-            const userId = window.authService.getCurrentUserId()
-            if (!userId) {
+            const currentUser = window.authService?.getCurrentUser()
+            if (!currentUser) {
                 return { success: false, error: 'المستخدم غير مسجل الدخول' }
             }
 
@@ -90,47 +89,42 @@ class ChatService {
             }
 
             const message = {
+                id: this.generateMessageId(),
                 content: messageText.trim(),
-                user_id: userId,
-                created_at: new Date().toISOString()
+                user_id: currentUser.id,
+                created_at: new Date().toISOString(),
+                users: {
+                    username: currentUser.username,
+                    full_name: currentUser.full_name || currentUser.username
+                }
             }
 
-            const { data, error } = await supabaseClient
-                .from('messages')
-                .insert([message])
-                .select(`
-                    *,
-                    users!messages_user_id_fkey(username, full_name)
-                `)
-                .single()
+            // Add to current messages
+            this.currentMessages.push(message)
+            
+            // Save to localStorage
+            this.saveMessagesToStorage(this.currentMessages)
+            
+            // Trigger storage event manually for same tab
+            this.handleNewMessage(message)
 
-            if (error) {
-                return { success: false, error: error.message }
-            }
-
-            return { success: true, message: data }
+            return { success: true, message: message }
         } catch (error) {
             return { success: false, error: error.message }
         }
     }
 
-    // Get messages with pagination
+    // Generate unique message ID
+    generateMessageId() {
+        return `msg_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+    }
+
+    // Get messages with pagination (from localStorage)
     async getMessages(limit = 50, offset = 0) {
         try {
-            const { data, error } = await supabaseClient
-                .from('messages')
-                .select(`
-                    *,
-                    users!messages_user_id_fkey(username, full_name)
-                `)
-                .order('created_at', { ascending: false })
-                .range(offset, offset + limit - 1)
-
-            if (error) {
-                return { success: false, error: error.message }
-            }
-
-            return { success: true, messages: data.reverse() }
+            const allMessages = this.loadMessagesFromStorage()
+            const sliced = allMessages.slice(Math.max(0, allMessages.length - limit - offset), allMessages.length - offset)
+            return { success: true, messages: sliced }
         } catch (error) {
             return { success: false, error: error.message }
         }
@@ -277,13 +271,24 @@ class ChatService {
         }
     }
 
-    // Disconnect chat
+    // Disconnect chat (no-op for localStorage)
     disconnect() {
         try {
             this.isConnected = false
-            supabaseClient.removeAllChannels()
         } catch (error) {
             console.error('Error disconnecting chat:', error)
+        }
+    }
+
+    // Clear all team chat messages (admin only)
+    clearAllMessages() {
+        try {
+            this.currentMessages = []
+            this.saveMessagesToStorage([])
+            return { success: true }
+        } catch (error) {
+            console.error('Error clearing messages:', error)
+            return { success: false, error: error.message }
         }
     }
 }

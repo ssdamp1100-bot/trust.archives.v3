@@ -18,6 +18,28 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // State
     let allProducts = [];
+    const MOCK_KEY = 'mock_products_v1';
+
+    function seedMockProductsIfNeeded() {
+        if (!localStorage.getItem(MOCK_KEY)) {
+            const mock = [
+                { id: 'm1', name: 'ساعة ذكية متطورة', description: 'ساعة ذكية بميزات متقدمة...', code: '001', selling_price: 199, created_at: new Date().toISOString(),
+                  categories: { name: 'إلكترونيات' }, product_suppliers: [{ supplier_name: 'شركة التقنية الحديثة' }], users: { username: 'admin' },
+                  product_images: [{ image_url: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400', is_primary: true }] },
+                { id: 'm2', name: 'هاتف ذكي عالي الجودة', description: 'هاتف ذكي بكاميرا عالية...', code: '002', selling_price: 599, created_at: new Date().toISOString(),
+                  categories: { name: 'إلكترونيات' }, product_suppliers: [{ supplier_name: 'مجموعة الهواتف الذكية' }], users: { username: 'ahmed' },
+                  product_images: [{ image_url: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400', is_primary: true }] }
+            ];
+            try { localStorage.setItem(MOCK_KEY, JSON.stringify(mock)); } catch(e) {}
+        }
+    }
+
+    function getMockProducts() {
+        try {
+            const raw = localStorage.getItem(MOCK_KEY);
+            return raw ? JSON.parse(raw) : [];
+        } catch { return []; }
+    }
 
     /**
      * Creates an HTML card for a given product.
@@ -86,6 +108,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     </div>
 					<div class="price-item"> 
                             <span class="price-amount">¥${product.selling_price || 0}</span>
+							 <span class="price-currency">سعر البيع</span>
                         </div>
                       
                 </div>
@@ -276,12 +299,20 @@ document.addEventListener('DOMContentLoaded', async () => {
      * Fetches all products from the service and initializes the view.
      */
     async function initialize() {
-        const { success, products, error } = await window.productsService.getProducts();
+        let loadError = null;
+        try {
+            const { success, products, error } = await window.productsService.getProducts();
+            if (success && Array.isArray(products) && products.length > 0) {
+                allProducts = products;
+            } else {
+                loadError = error || 'No products from DB';
+            }
+        } catch (e) {
+            loadError = e?.message || String(e);
+        }
 
-        if (success && Array.isArray(products)) {
-            allProducts = products;
-        } else {
-            console.error('Failed to load products:', error);
+        if (!allProducts || allProducts.length === 0) {
+            console.warn('No products loaded from database:', loadError);
             allProducts = [];
         }
 

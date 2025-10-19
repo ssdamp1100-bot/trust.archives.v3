@@ -61,28 +61,58 @@ document.addEventListener('DOMContentLoaded', async () => {
         populateImages(product);
         populatePrices(product);
         populateTabs(product);
+        populateDetailedInfo(product);
+        populateFilesAndLinks(product);
         setupActionButtons(product);
 
-        // Wire catalog download button
+        // Wire catalog download button (reads from product_catalogs table, fallback to product_files)
         try {
             const btn = document.getElementById('catalogBtn');
             if (btn) {
                 btn.addEventListener('click', (ev) => {
                     ev.preventDefault();
-                    const files = Array.isArray(window.currentProduct?.product_files) ? window.currentProduct.product_files : [];
-                    const catalog = files.find(f => (f.file_type === 'catalog_pdf'));
-                    if (!catalog || !catalog.file_url) {
+                    
+                    // Try product_catalogs first (new dedicated table)
+                    let catalogUrl = null;
+                    let catalogName = 'catalog.pdf';
+                    
+                    const catalogs = Array.isArray(window.currentProduct?.product_catalogs) ? window.currentProduct.product_catalogs : [];
+                    if (catalogs.length > 0 && catalogs[0].catalog_url) {
+                        catalogUrl = catalogs[0].catalog_url;
+                        catalogName = catalogs[0].catalog_name || 'catalog.pdf';
+                    } else {
+                        // Fallback to product_files for backward compatibility
+                        const files = Array.isArray(window.currentProduct?.product_files) ? window.currentProduct.product_files : [];
+                        const catalogFile = files.find(f => f.file_type === 'catalog_pdf');
+                        if (catalogFile?.file_url) {
+                            catalogUrl = catalogFile.file_url;
+                        }
+                    }
+                    
+                    if (!catalogUrl) {
                         alert('لا يوجد كاتلوج لهذا المنتج.');
                         return;
                     }
+                    
+                    // If catalog is cross-origin, prefer opening in new tab to avoid download restrictions
+                    try {
+                        const urlObj = new URL(catalogUrl, window.location.href);
+                        const sameOrigin = (urlObj.origin === window.location.origin);
+                        if (!sameOrigin) {
+                            window.open(catalogUrl, '_blank');
+                            return;
+                        }
+                    } catch {}
+
+                    // Same-origin or URL parsing failed: attempt programmatic download
                     try {
                         const a = document.createElement('a');
-                        a.href = catalog.file_url;
-                        a.download = '';
+                        a.href = catalogUrl;
+                        a.download = catalogName;
                         a.target = '_blank';
                         document.body.appendChild(a); a.click(); a.remove();
                     } catch (e) {
-                        window.open(catalog.file_url, '_blank');
+                        window.open(catalogUrl, '_blank');
                     }
                 });
             }
@@ -208,38 +238,225 @@ function populateTabs(product) {
     // Description & Features
     document.getElementById('productLongDescription').innerHTML = product.long_description || product.description || 'لا يوجد وصف تفصيلي.';
     const featuresContainer = document.getElementById('featuresListContainer');
-    if (product.features && product.features.length > 0) {
+    let featuresArr = [];
+    if (Array.isArray(product.features)) {
+        featuresArr = product.features.filter(Boolean);
+    } else if (typeof product.features === 'string' && product.features.trim()) {
+        // Split by new lines or commas
+        featuresArr = product.features
+            .split(/\n|,/)
+            .map(s => s.trim())
+            .filter(Boolean);
+    }
+    if (featuresArr.length > 0) {
         featuresContainer.innerHTML = `
-            <h4 class="mt-20">المميزات الرئيسية:</h4>
-            <ul style="padding-right: 20px; margin: 15px 0;">
-                ${product.features.map(f => `<li>${f}</li>`).join('')}
+            <h4 class="mt-20">استخدامات المنتج:</h4>
+            <ul style="padding-right: 20px; margin: 15px 0; list-style: disc;">
+                ${featuresArr.map(f => `<li>${f}</li>`).join('')}
             </ul>
         `;
     }
 
-    // Specifications
+    // Specifications (basic/quick view)
     const specsGrid = document.getElementById('specsGrid');
-    specsGrid.innerHTML = ''; // Clear placeholders
-    if (product.specifications && typeof product.specifications === 'object') {
-        for (const [key, value] of Object.entries(product.specifications)) {
-            if (value) {
-                specsGrid.innerHTML += `<div class="spec-item"><div class="spec-name">${key}</div><div class="spec-value">${value}</div></div>`;
-            }
+    specsGrid.innerHTML = '';
+    const quickSpecs = [
+        { name: 'الماركة', value: product.brand },
+        { name: 'الموديل', value: product.model },
+        { name: 'الوزن', value: product.weight ? `${product.weight} كجم` : null },
+        { name: 'الأبعاد', value: product.dimensions },
+        { name: 'اللون', value: product.color },
+        { name: 'المادة', value: product.material },
+        { name: 'الضمان', value: product.warranty },
+        { name: 'بلد المنشأ', value: product.origin_country }
+    ];
+    quickSpecs.forEach(spec => {
+        if (spec.value) {
+            specsGrid.innerHTML += `<div class="spec-item"><div class="spec-name">${spec.name}</div><div class="spec-value">${spec.value}</div></div>`;
         }
+    });
+    if (specsGrid.innerHTML === '') {
+        specsGrid.innerHTML = '<div class="empty-state"><i class="fas fa-info-circle"></i><p>لا توجد مواصفات متاحة</p></div>';
     }
+}
 
-    // Links
+function populateDetailedInfo(product) {
+    const detailsGrid = document.getElementById('detailsGrid');
+    detailsGrid.innerHTML = '';
+    
+    const details = [
+        { name: 'الماركة', value: product.brand, icon: 'fa-tag' },
+        { name: 'الموديل', value: product.model, icon: 'fa-cube' },
+        { name: 'الوزن', value: product.weight ? `${product.weight} كجم` : null, icon: 'fa-weight' },
+        { name: 'الأبعاد', value: product.dimensions, icon: 'fa-ruler-combined' },
+        { name: 'اللون', value: product.color, icon: 'fa-palette' },
+        { name: 'مادة التصنيع', value: product.material, icon: 'fa-hammer' },
+        { name: 'الضمان', value: product.warranty, icon: 'fa-shield-alt' },
+        { name: 'بلد المنشأ', value: product.origin_country, icon: 'fa-globe' },
+        { name: 'حالة المنتج', value: product.status, icon: 'fa-check-circle' },
+        { name: 'الرؤية', value: product.visibility, icon: 'fa-eye' }
+    ];
+    
+    details.forEach(detail => {
+        if (detail.value) {
+            detailsGrid.innerHTML += `
+                <div class="spec-item">
+                    <div class="spec-name"><i class="fas ${detail.icon}"></i> ${detail.name}</div>
+                    <div class="spec-value">${detail.value}</div>
+                </div>
+            `;
+        }
+    });
+    
+    // Keywords
+    if (product.keywords && product.keywords.length > 0) {
+        detailsGrid.innerHTML += `
+            <div class="spec-item" style="grid-column: 1/-1;">
+                <div class="spec-name"><i class="fas fa-tags"></i> الكلمات المفتاحية</div>
+                <div class="spec-value">${product.keywords.join(', ')}</div>
+            </div>
+        `;
+    }
+    
+    // Notes
+    if (product.notes) {
+        detailsGrid.innerHTML += `
+            <div class="spec-item" style="grid-column: 1/-1;">
+                <div class="spec-name"><i class="fas fa-sticky-note"></i> ملاحظات إضافية</div>
+                <div class="spec-value">${product.notes}</div>
+            </div>
+        `;
+    }
+    
+    if (detailsGrid.innerHTML === '') {
+        detailsGrid.innerHTML = '<div class="empty-state"><i class="fas fa-info-circle"></i><p>لا توجد تفاصيل إضافية</p></div>';
+    }
+}
+
+function populateFilesAndLinks(product) {
+    // Files Section
+    const filesContainer = document.getElementById('productFilesContainer');
+    filesContainer.innerHTML = '';
+    
+    // Collect all files (catalog from product_catalogs + other files from product_files)
+    const allFiles = [];
+    
+    // Add catalog from product_catalogs if exists
+    const catalogs = Array.isArray(product.product_catalogs) ? product.product_catalogs : [];
+    if (catalogs.length > 0 && catalogs[0].catalog_url) {
+        allFiles.push({
+            file_url: catalogs[0].catalog_url,
+            file_type: 'catalog_pdf',
+            file_name: catalogs[0].catalog_name || 'catalog.pdf'
+        });
+    }
+    
+    // Add other files from product_files
+    const files = Array.isArray(product.product_files) ? product.product_files : [];
+    allFiles.push(...files);
+    
+    if (allFiles.length > 0) {
+        allFiles.forEach((file, index) => {
+            const fileType = file.file_type || 'document';
+            const fileName = file.file_name || getFileNameFromUrl(file.file_url) || `ملف ${index + 1}`;
+            const icon = getFileIcon(fileType);
+            const label = getFileLabel(fileType);
+            
+            filesContainer.innerHTML += `
+                <div class="file-item">
+                    <div class="file-icon"><i class="${icon}"></i></div>
+                    <div class="file-name">${label}</div>
+                    <button class="file-btn" onclick="downloadFile('${file.file_url}', '${fileName}')">
+                        <i class="fas fa-download"></i> تحميل
+                    </button>
+                </div>
+            `;
+        });
+    } else {
+        filesContainer.innerHTML = '<div class="empty-state"><i class="fas fa-folder-open"></i><p>لا توجد ملفات مرفقة</p></div>';
+    }
+    
+    // Links Section
     const linksContainer = document.getElementById('productLinksContainer');
-    linksContainer.innerHTML = ''; // Clear placeholders
-    if (product.product_links && product.product_links.length > 0) {
-        product.product_links.forEach(link => {
+    linksContainer.innerHTML = '';
+    
+    // Extract links from product_suppliers notes
+    const supplierLinks = [];
+    if (product.product_suppliers && product.product_suppliers.length > 0) {
+        product.product_suppliers.forEach(supplier => {
+            try {
+                const notes = typeof supplier.notes === 'string' ? JSON.parse(supplier.notes) : supplier.notes;
+                if (notes && notes.link) {
+                    // Get supplier name: custom name first, then from suppliers table, then fallback
+                    const supplierName = supplier.supplier_name || supplier.suppliers?.name || 'مورد';
+                    supplierLinks.push({
+                        name: supplierName,
+                        url: notes.link
+                    });
+                }
+            } catch(e) {}
+        });
+    }
+    
+    if (supplierLinks.length > 0) {
+        supplierLinks.forEach(link => {
             linksContainer.innerHTML += `
                 <div class="link-item">
-                    <div class="site-name"><i class="fas fa-link"></i> ${link.site_name || 'رابط'}</div>
+                    <div class="site-name"><i class="fas fa-store"></i> ${link.name}</div>
                     <a href="${link.url}" target="_blank" class="product-link2">${link.url}</a>
                 </div>
             `;
         });
+    } else {
+        linksContainer.innerHTML = '<div class="empty-state"><i class="fas fa-link"></i><p>لا توجد روابط متاحة</p></div>';
+    }
+}
+
+function getFileIcon(fileType) {
+    const icons = {
+        'catalog_pdf': 'fas fa-book',
+        'supplier_pdf': 'fas fa-file-invoice',
+        'document': 'fas fa-file-alt',
+        'pdf': 'fas fa-file-pdf',
+        'image': 'fas fa-image'
+    };
+    return icons[fileType] || 'fas fa-file';
+}
+
+function getFileLabel(fileType) {
+    const labels = {
+        'catalog_pdf': 'كاتلوج المنتج',
+        'supplier_pdf': 'وثيقة المورد',
+        'document': 'مستند',
+        'pdf': 'ملف PDF',
+        'image': 'صورة'
+    };
+    return labels[fileType] || 'ملف';
+}
+
+function getFileNameFromUrl(url) {
+    if (!url) return null;
+    try {
+        const parts = url.split('/');
+        return parts[parts.length - 1];
+    } catch {
+        return null;
+    }
+}
+
+// Global function for file download
+window.downloadFile = function(fileUrl, fileName) {
+    try {
+        const a = document.createElement('a');
+        a.href = fileUrl;
+        a.download = fileName || '';
+        a.target = '_blank';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    } catch (e) {
+        console.error('Download error:', e);
+        window.open(fileUrl, '_blank');
     }
 }
 
@@ -268,6 +485,30 @@ function setupActionButtons(product) {
     } else if(contactBtn) {
         contactBtn.disabled = true;
         contactBtn.style.opacity = 0.5;
+    }
+
+    // Download currently displayed main image
+    const downloadImageBtn = document.getElementById('downloadImageBtn');
+    if (downloadImageBtn) {
+        downloadImageBtn.addEventListener('click', () => {
+            const mainImg = document.getElementById('mainImage');
+            const src = mainImg?.src;
+            if (!src || src.includes('placeholder.com')) {
+                alert('لا توجد صورة متاحة للتنزيل.');
+                return;
+            }
+            try {
+                const a = document.createElement('a');
+                a.href = src;
+                a.download = getFileNameFromUrl(src) || (product.name ? `${product.name}.jpg` : 'product.jpg');
+                a.target = '_blank';
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+            } catch (e) {
+                window.open(src, '_blank');
+            }
+        });
     }
 }
 

@@ -155,6 +155,30 @@
      */
     async deleteSupplier(supplierId) {
       try {
+        // 1) حذف العلاقات مع المنتجات لتجنب قيود FK (product_suppliers)
+        try {
+          const { error: psErr } = await supabaseClient
+            .from('product_suppliers')
+            .delete()
+            .eq('supplier_id', supplierId);
+          if (psErr) throw psErr;
+        } catch (e) {
+          // نُظهر تحذيراً فقط ولا نوقف التنفيذ في حال عدم توفر الجدول
+          console.warn('product_suppliers cleanup warning:', e?.message || e);
+        }
+
+        // 2) حذف صور المورد إن كانت هناك طاولة supplier_images (اختياري)
+        try {
+          const { error: siErr } = await supabaseClient
+            .from('supplier_images')
+            .delete()
+            .eq('supplier_id', supplierId);
+          if (siErr) throw siErr;
+        } catch (e) {
+          console.warn('supplier_images cleanup warning:', e?.message || e);
+        }
+
+        // 3) حذف المورد بعد تنظيف العلاقات
         const { error } = await supabaseClient
           .from('suppliers')
           .delete()

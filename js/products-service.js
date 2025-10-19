@@ -16,9 +16,10 @@ class ProductsService {
                     description,
                     selling_price,
                     created_at,
-                    users ( username ),
+                    users ( id, username, full_name, role, whatsapp, phone_numbers ),
                     categories ( name ),
                     product_images ( image_url, is_primary ),
+                    product_catalogs ( id, catalog_url, catalog_name, file_size, uploaded_at ),
                     cost_price,
                     product_suppliers ( * )
                 `)
@@ -47,7 +48,8 @@ class ProductsService {
                     subcategories:categories!products_subcategory_id_fkey(name),
                     product_images(image_url, is_primary),
                     product_files(file_url, file_type),
-                    product_suppliers(*),
+                    product_catalogs(id, catalog_url, catalog_name, file_size, uploaded_at),
+                    product_suppliers(*, suppliers(name, country)),
                     users!products_user_id_fkey(username, full_name, whatsapp, phone_numbers)
                 `)
                 .eq('id', productId)
@@ -149,7 +151,7 @@ class ProductsService {
 
     async createProductWithDetails(details) {
         try {
-            const { productData, images, files, supplier } = details;
+            const { productData, images, files, catalog, supplier } = details;
 
             // 1. Create the main product record
             const createResult = await this.createProduct(productData);
@@ -171,6 +173,15 @@ class ProductsService {
                 file_type: file.type,
             }));
 
+            // Catalog goes to separate table (product_catalogs)
+            const catalogToInsert = catalog ? {
+                product_id: product.id,
+                catalog_url: catalog.url,
+                catalog_name: this.getFileNameFromUrl(catalog.url),
+                uploaded_by: window.authService?.getCurrentUser()?.id || null,
+                notes: 'Product catalog PDF'
+            } : null;
+
             const supplierNotes = JSON.stringify({ 
                 link: supplier.link, 
                 prices: { USD: supplier.priceUSD, CNY: supplier.priceCNY, YER: supplier.priceYER }
@@ -191,6 +202,10 @@ class ProductsService {
                 const { error } = await supabaseClient.from('product_files').insert(filesToInsert);
                 if (error) throw new Error(`Failed to save files: ${error.message}`);
             }
+            if (catalogToInsert) {
+                const { error } = await supabaseClient.from('product_catalogs').insert([catalogToInsert]);
+                if (error) throw new Error(`Failed to save catalog: ${error.message}`);
+            }
             if (supplier.id || supplier.customName) {
                 const { error } = await supabaseClient.from('product_suppliers').insert([supplierToInsert]);
                 if (error) throw new Error(`Failed to save supplier: ${error.message}`);
@@ -203,6 +218,17 @@ class ProductsService {
             // For full safety, this logic should be moved to a Supabase Edge Function.
             console.error('createProductWithDetails failed:', error);
             return { success: false, error: error.message };
+        }
+    }
+
+    // Helper: Extract filename from URL
+    getFileNameFromUrl(url) {
+        if (!url) return null;
+        try {
+            const parts = url.split('/');
+            return parts[parts.length - 1];
+        } catch {
+            return 'catalog.pdf';
         }
     }
 

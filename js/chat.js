@@ -1,4 +1,6 @@
-// Chat System - Team Chat + AI Chat
+// Chat System - Team Chat (localStorage) + AI Chat
+// Note: Team chat messages are stored locally, not in database
+// Direct messages still use Supabase (see direct-chat-service.js)
 document.addEventListener('DOMContentLoaded', async function() {
     // ===== العناصر الأساسية =====
     const chatToggle = document.getElementById('chatToggle');
@@ -54,49 +56,43 @@ document.addEventListener('DOMContentLoaded', async function() {
         if (chatToggle) chatToggle.style.display = 'none';
     }
 
-    // ===== تهيئة دردشة الفريق =====
+    // ===== تهيئة دردشة الفريق (localStorage) =====
     async function initializeTeamChat() {
         if (!window.chatService) {
             console.error('Chat service not loaded');
             return;
         }
 
-        // جلب الرسائل الأولية
+        // جلب الرسائل الأولية من localStorage
         const initialData = await window.chatService.getMessages();
         if (initialData.success && initialData.messages) {
             renderTeamMessages(initialData.messages);
         }
 
-        // الاشتراك في الرسائل الجديدة
-        subscribeToNewMessages();
+        // الاشتراك في تغييرات localStorage (للمزامنة بين التبويبات)
+        subscribeToStorageChanges();
     }
 
-    function subscribeToNewMessages() {
-        supabaseClient
-            .channel('team-messages')
-            .on('postgres_changes', 
-                { event: 'INSERT', schema: 'public', table: 'messages' }, 
-                async (payload) => {
-                    // جلب بيانات المستخدم للرسالة الجديدة
-                    const { data: userData } = await supabaseClient
-                        .from('users')
-                        .select('username, full_name')
-                        .eq('id', payload.new.user_id)
-                        .single();
-                    
-                    const newMessage = {
-                        ...payload.new,
-                        users: userData
-                    };
-                    
-                    renderTeamMessages([newMessage], false);
-                    
-                    if (!isChatOpen || isChatMinimized) {
-                        showNotification(newMessage);
+    // Subscribe to localStorage changes for cross-tab sync
+    function subscribeToStorageChanges() {
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'team_chat_messages' && e.newValue) {
+                try {
+                    const messages = JSON.parse(e.newValue);
+                    if (Array.isArray(messages) && messages.length > 0) {
+                        const lastMessage = messages[messages.length - 1];
+                        // Render only the new message
+                        renderTeamMessages([lastMessage], false);
+                        
+                        if (!isChatOpen || isChatMinimized) {
+                            showNotification(lastMessage);
+                        }
                     }
+                } catch (error) {
+                    console.error('Error handling storage change:', error);
                 }
-            )
-            .subscribe();
+            }
+        });
     }
 
     function renderTeamMessages(messages, clear = true) {
