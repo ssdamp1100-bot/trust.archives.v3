@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل المنتج</title>
+    
+	 <!-- Google fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&family=Noto+Naskh+Arabic:wght@400..700&family=Noto+Sans+Arabic:wght@100..900&family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400..700&display=swap" rel="stylesheet">
+    
+	
+	
+	 <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	
+	<!-- مكتبات -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+	
+	<!-- css Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/product.css">
+	<link rel="stylesheet" href="css/responsive-product.css">
+    <style>
+
+    </style>
+</head>
+ <body class="theme1">  
+ <!-- زر تغيير الثيم -->
+  <script>
+    (function(){
+      try{
+        var savedTheme = localStorage.getItem('selectedTheme');
+        if(savedTheme){ document.body.className = savedTheme; }
+      }catch(e){}
+    })();
+  </script>
+    <button class="change-theme" id="theme-toggle">
+     <i class="fa-solid fa-palette"></i>
+    </button>
+
+
+   <!-- Header -->   
+    <header class="header" id="header">
+    <a href="dashboard.html" class="logo-container">
+        <div class="logo"> </div>
+        <div class="logo-text">أرشيف الثقة التجارية</div>
+    </a>
+    <button class="nav-toggle"><i class="fas fa-align-left"></i></button>
+    <nav class="main-menu">
+        <a href="dashboard.html" class="menu-item"><i class="fas fa-home"></i> الرئيسية</a>
+		 <a href="products-board.html" class="menu-item"><i class="fa-solid fa-cart-plus"></i> المنتجات</a>
+        <a href="suppliers.html" class="menu-item "><i class="fas fa-truck"></i> الموردين</a>
+        <a href="profile.html" class="menu-item"><i class="fas fa-user"></i> ملفي الشخصي</a>
+        <a href="add-product.html" class="menu-item "><i class="fas fa-plus-circle"></i> إضافة منتج</a>
+        <a href="add-supplier.html" class="menu-item "><i class="fas fa-truck-loading "></i> اضافة مورد</a>
+    </nav>
+</header>
+    
+
+  <!-- Main Content -->
+<div class="container">
+    <div class="product-container">
+        <div id="product-details">
+        <!-- Upper Section: Product Layout -->
+        <div class="product-layout">
+                <!-- Right Column: Product Info and Main Image -->
+            <div class="right-column" id="product-details" >
+                <div class="product-gallery">
+                    <div class="product-info">
+					    <div class="product-meta">
+                            <div class="meta-item" id="productCategory">
+                                <i class="fas fa-box"></i>
+                                <span></span>
+                            </div>
+                            <div class="meta-item" id="productUser">
+                                <i class="fas fa-user"></i>
+                                <span></span>
+                            </div>
+                            <div class="meta-item" id="productDate">
+                                <i class="fas fa-calendar"></i>
+                                <span></span>
+                            </div>
+                            <div class="meta-item" id="productCode">
+                                <i class="fas fa-barcode"></i>
+                                <span></span>
+                            </div>
+						</div>
+                        <h1 class="product-title" id="productTitle"></h1>
+						<p class="product-description" id="productDescription"></p>
+                        </div>
+                     
+                    
+                    <div class="main-image">
+                        <img id="mainImage" src="" alt="صورة المنتج" onerror="this.src='https://via.placeholder.com/800x450/1a1a2e/ffffff?text=صورة+المنتج'">
+                    </div>
+                    
+                    <div class="image-thumbnails">
+                        <div class="thumbnail active" data-image="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400">
+                            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=100" alt="Thumbnail 1">
+                        </div>
+                        <div class="thumbnail" data-image="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&crop=entropy&fit=crop">
+                            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=100&crop=entropy&fit=crop" alt="Thumbnail 2">
+                        </div>
+                        <div class="thumbnail" data-image="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400">
+                            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100" alt="Thumbnail 5">
+                        </div>
+                    </div>
+                </div>
+            </div>
+       
+        
+            <!-- Left Column: Price, Shipping, Sidebar -->
+            <div class="left-column">
+                
+                <!-- Product Price -->
+                <div class="price-container">
+                    <div class="price-title">
+                        <i class="fa-solid fa-money-check-dollar"></i>
+                        الاسعار
+                    </div>
+                     
+                    <div class="suppliers-grid" id="suppliersGrid">
+                        <div class="supplier-container">
+                            <p class="selling-price" id="selling-price" > <i class="fa-solid fa-users-line"></i> سعر البيع <span>(السعر للجمهور)</span></p>
+                            <div class="price-grid">
+                                <div class="price-item">
+                                    <span class="price-amount">$199</span>
+                                    <div class="price-currency">USD</div>
+                                </div>
+                                <div class="price-item">
+                                    <span class="price-amount">¥1430</span>
+                                    <div class="price-currency">CNY</div>
+                                </div>
+                                <div class="price-item">
+                                    <span class="price-amount">49,750</span>
+                                    <div class="price-currency">YER</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="supplier-container">
+                            <p class="supplier-name">شركة التقنية الحديثة</p>
+                            <div class="price-grid">
+                                <div class="price-item">
+                                    <span class="price-amount">$199</span>
+                                    <div class="price-currency">USD</div>
+                                </div>
+                                <div class="price-item">
+                                    <span class="price-amount">¥1430</span>
+                                    <div class="price-currency">CNY</div>
+                                </div>
+                                <div class="price-item">
+                                    <span class="price-amount">49,750</span>
+                                    <div class="price-currency">YER</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="supplier-container">
+                            <p class="supplier-name">شركة التقنية الحديثة</p>
+                            <div class="price-grid">
+                                <div class="price-item">
+                                    <span class="price-amount">$199</span>
+                                    <div class="price-currency">USD</div>
+                                </div>
+                                <div class="price-item">
+                                    <span class="price-amount">¥1430</span>
+                                    <div class="price-currency">CNY</div>
+                                </div>
+                                <div class="price-item">
+                                    <span class="price-amount">49,750</span>
+                                    <div class="price-currency">YER</div>
+                                </div>
+                            </div>
+							  <!-- <p class="product-link">https://www.facebook.com/</p>-->
+                        </div>
+                        
+                        <div class="supplier-container">
+                            <p class="supplier-name">شركة التقنية الحديثة</p>
+                            <div class="price-grid">
+                                <div class="price-item">
+                                    <span class="price-amount">$199</span>
+                                    <div class="price-currency">USD</div>
+                                </div>
+                                <div class="price-item">
+                                    <span class="price-amount">¥1430</span>
+                                    <div class="price-currency">CNY</div>
+                                </div>
+                                <div class="price-item">
+                                    <span class="price-amount">49,750</span>
+                                    <div class="price-currency">YER</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Shipping Info -->
+                <div class="shipping-info">
+                    <div class="shipping-item">
+                        <i class="fas fa-shipping-fast"></i>
+                        <span>شحن سريع خلال 2-5 أيام عمل</span>
+                    </div>
+                    <div class="shipping-item">
+                        <i class="fas fa-undo"></i>
+                        <span>إرجاع مجاني خلال 30 يوم</span>
+                    </div>
+                    <div class="shipping-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>ضمان لمدة عامين</span>
+                    </div>
+                </div>
+                  <!-- Product Actions -->
+                <div class="product-actions">				
+                    <button class="product-btn Favorite-btn" id="quoteBtn">
+                       <i class="fas fa-file-pdf"></i>
+                       انشاء عرض سعر
+                    </button> 
+                     <button class="product-btn share-btn" style="background:var(--extra2-color);" id="catalogBtn">
+                        <i class="fa-solid fa-file-pdf"></i>
+                       تحميل الكاتلوج
+                    </button>
+                    <button class="product-btn share-btn" id="shareBtn">
+                        <i class="fas fa-share-alt"></i>
+                        مشاركة
+                    </button>
+                </div>
+               
+                
+                <!-- Product Details Sidebar 
+                <div class="product-details-sidebar">
+                    <div class="supplier-info">
+                        <h3 class="supplier-title">
+                            <i class="fas fa-store"></i>
+                            معلومات المورد
+                        </h3>
+                        
+                        <div class="supplier-details">
+                            <div class="supplier-detail">
+                                <i class="fas fa-building"></i>
+                                <span>شركة التقنية الحديثة</span>
+                            </div>
+                            <div class="supplier-detail">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>شنزن، الصين</span>
+                            </div>
+                            <div class="supplier-detail">
+                                <i class="fas fa-user-check"></i>
+                                <span>عضوية الذهبية <span class="verification-badge">موثوق</span></span>
+                            </div>
+                            <div class="supplier-detail">
+                                <i class="fas fa-star"></i>
+                                <span>4.8/5 (تقيم 2,450 عميل)</span>
+                            </div>
+                            <div class="supplier-detail">
+                                <i class="fas fa-box-open"></i>
+                                <span>2,340 طلب منفذ</span>
+                            </div>
+                            <div class="supplier-detail">
+                                <i class="fas fa-clock"></i>
+                                <span>مستجيب عالي (يستجيب في غضون 4 ساعات)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="supplier-actions">
+                        <button class="btn btn-primary" style="width: 100%; margin-bottom: 10px;">
+                            <i class="fas fa-store"></i>
+                            زيارة متجر المورد
+                        </button>
+                        <button class="btn btn-secondary" style="width: 100%;">
+                            <i class="fas fa-eye"></i>
+                            مشاهدة منتجات أخرى
+                        </button>
+                    </div>
+                </div>-->		
+            </div>  	
+          </div>
+        
+        <!-- Lower Section: Product Tabs -->
+        <div class="lower-section">
+            <div class="product-tabs">
+                <div class="tabs-header">
+                    <div class="tab-btn active" data-tab="description">استخدامات المنتج</div>
+                    <div class="tab-btn" data-tab="specifications">المواصفات</div>
+                    <div class="tab-btn" data-tab="links">روابط المنتج</div>
+                    <div class="tab-btn" data-tab="shipping">الشحن والتوصيل</div>
+                </div>
+                
+                <div class="tab-content active" id="description">
+                    <p id="productLongDescription"></p>
+                    <div id="featuresListContainer"></div>
+                </div>
+                
+                <div class="tab-content" id="specifications">
+                    <div class="specs-grid" id="specsGrid">
+                        <div class="spec-item">
+                            <div class="spec-name">النوع</div>
+                            <div class="spec-value">ساعة ذكية</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-name">الموديل</div>
+                            <div class="spec-value">SW-2024-Pro</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-name">حجم الشاشة</div>
+                            <div class="spec-value">1.5 بوصة</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-name">نوع الشاشة</div>
+                            <div class="spec-value">AMOLED</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-name">مقاومة الماء</div>
+                            <div class="spec-value">5 ATM (50 متر)</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-name">سعة البطارية</div>
+                            <div class="spec-value">300 mAh</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-name">مدة عمل البطارية</div>
+                            <div class="spec-value">7 أيام</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-name">التوافق</div>
+                            <div class="spec-value">iOS 10.0+ / Android 6.0+</div>
+                        </div>
+                    </div>
+                </div>
+                
+              <div class="tab-content" id="links">
+    <div class="product-links-container" id="productLinksContainer">
+        <div class="link-item">
+            <div class="site-name">
+                <i class="fab fa-amazon"></i> Amazon
+            </div>
+            <a href="[Your Amazon Link Here]" target="_blank" class="product-link2">
+                https://www.amazon.com/product-example
+            </a>
+        </div>
+        
+        <div class="link-item">
+            <div class="site-name">
+                <i class="fab fa-ebay"></i> eBay
+            </div>
+            <a href="[Your eBay Link Here]" target="_blank" class="product-link2">
+                https://www.ebay.com/itm/product-example
+            </a>
+        </div>
+
+        <div class="link-item">
+            <div class="site-name">
+                <i class="fas fa-store"></i> المتجر الرسمي
+            </div>
+            <a href="[Your Official Store Link Here]" target="_blank" class="product-link2">
+                https://www.official-store.com/product-page
+            </a>
+        </div>
+    </div>
+</div>
+                
+                <div class="tab-content" id="shipping">
+                    <h4>خيارات الشحن:</h4>
+                    <ul style="padding-right: 20px; margin: 15px 0;">
+                        <li>الشحن السريع: 2-5 أيام عمل - $15</li>
+                        <li>الشحن العادي: 7-14 يوم عمل - $8</li>
+                        <li>الشحن الاقتصادي: 15-30 يوم عمل - مجاني للطلبات فوق $100</li>
+                    </ul>
+                    
+                    <h4>سياسة الإرجاع:</h4>
+                    <p>يمكنك إرجاع المنتج خلال 30 يوم من الاستلام مع الحفاظ على الغلاف الأصلي وملحقاته. سيتم استرداد المبلغ بعد فحص المنتج.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+         <!-- Footer -->
+    <footer class="footer">
+               <div class="copyright-content">
+                <div class="designer-info">
+                    <span class="designer-text">مصمم الموقع / صدام أحمد</span>
+                </div>          
+                <div class="icon-group4">
+                    <a href="https://www.facebook.com/s777967272" class="icon-btn4 icon-facebook" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://wa.me/967777967272" class="icon-btn4 icon-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="tel:+967777967272" class="icon-btn4 icon-phone">
+                        <i class="fa fa-phone"></i>
+                    </a>
+                    <a href="https://tecnotasxcatalog.netlify.app/" class="icon-btn4 icon-website" target="_blank">
+                        <i class="fas fa-globe"></i>
+                    </a>
+                </div>
+            </div>
+    </footer>
+     
+    <script>
+        // Tab functionality
+        document.querySelectorAll('.tab-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and content
+                document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked button and corresponding content
+                button.classList.add('active');
+                document.getElementById(button.dataset.tab).classList.add('active');
+            });
+        });
+        
+        // Image thumbnail functionality
+        document.querySelectorAll('.thumbnail').forEach(thumb => {
+            thumb.addEventListener('click', () => {
+                document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+                thumb.classList.add('active');
+                document.getElementById('mainImage').src = thumb.dataset.image;
+            });
+        });
+        
+        // Disable Quote feature (under development)
+        (function(){
+            const qb = document.getElementById('quoteBtn');
+            if (qb) {
+                qb.addEventListener('click', function(e){
+                    e.preventDefault();
+                    e.stopPropagation();
+                    alert('هذه الخاصية قيد التطوير');
+                });
+            }
+        })();
+
+        // Share functionality
+        document.getElementById('shareBtn').addEventListener('click', () => {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'ساعة ذكية متطورة - أرشيف الثقة التجارية',
+                    text: 'اكتشف هذه الساعة الذكية المتطورة بميزات رائعة',
+                    url: window.location.href
+                })
+                .then(() => console.log('تم المشاركة بنجاح'))
+                .catch(error => console.log('Error sharing:', error));
+            } else {
+                alert('ميزة المشاركة غير مدعومة في متصفحك. يمكنك نسخ الرابط من شريط العنوان.');
+            }
+        });
+    </script>
+	<!--  Javascript -->
+    <script>window.PB_DISABLE_EXTERNAL_RENDER = true;</script>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+    <script src="js/auth-service.js"></script>
+    <script src="js/products-service.js"></script>
+    <script src="js/product-logic.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/product-pdf.js"></script>
+    <script src="js/theme.js"></script>

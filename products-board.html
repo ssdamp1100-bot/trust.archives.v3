@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة المنتجات - أرشيف الثقة التجارية</title>
+	
+	  <!-- Google fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&family=Noto+Naskh+Arabic:wght@400..700&family=Noto+Sans+Arabic:wght@100..900&family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400..700&display=swap" rel="stylesheet">
+    
+	
+	
+	 <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<!-- css Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/products-board.css">
+</head>
+
+<body class="theme1">  
+  <script>
+    // Early theme bootstrap to prevent flash
+    (function(){
+      try{
+        var savedTheme = localStorage.getItem('selectedTheme');
+        if(savedTheme){ document.body.className = savedTheme; }
+      }catch(e){}
+    })();
+  </script>
+  <style>
+    
+  </style>
+   <!-- زر تغيير الثيم -->
+    <button class="change-theme" id="theme-toggle">
+     <i class="fa-solid fa-palette"></i>
+    </button>
+
+ 
+               
+    <!-- Header -->  
+    <header class="header" id="header">
+    <a href="dashboard.html" class="logo-container">
+        <div class="logo"> </div>
+        <div class="logo-text">أرشيف الثقة التجارية</div>
+    </a>
+    <button class="nav-toggle"><i class="fas fa-align-left"></i></button>
+    <nav class="main-menu">
+        <a href="dashboard.html" class="menu-item"><i class="fas fa-home"></i> الرئيسية</a>
+		 <a href="products-board.html" class="menu-item active"><i class="fa-solid fa-cart-plus"></i> المنتجات</a>
+        <a href="suppliers.html" class="menu-item "><i class="fas fa-truck"></i> الموردين</a>
+        <a href="profile.html" class="menu-item"><i class="fas fa-user"></i> ملفي الشخصي</a>
+        <a href="add-product.html" class="menu-item "><i class="fas fa-plus-circle"></i> إضافة منتج</a>
+        <a href="add-supplier.html" class="menu-item "><i class="fas fa-truck-loading "></i> اضافة مورد</a>
+    </nav>
+</header>
+
+
+
+
+<!-- products-board Section -->
+<section id="products-board" class="section">
+    <div class="container">
+        <!-- filters -->
+        <div class="filters-container">
+            <div class="filters-grid">
+                <div class="filter-group">
+                    <input class="sreach" type="text" id="searchInput" placeholder="&#128269;   ابحث عن منتج " >
+                </div>
+                <div class="filter-group">
+                    <select id="categoryFilter">
+                        <option value="">جميع الفئات</option>
+                        
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <select id="supplierFilter">
+                        <option value="">جميع الموردين</option>
+                         
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <select id="userFilter">
+                        <option value="">جميع المستخدمين</option>
+                       
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <select id="sortFilter">
+                        <option value="date">الأحدث أولاً</option>
+                        <option value="price-high">السعر: عالي إلى منخفض</option>
+                        <option value="price-low">السعر: منخفض إلى عالي</option>                            
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <button class="clear-filters-btn" onclick="clearFilters()">مسح الفلاتر</button>
+                </div>
+            </div>
+        </div>
+		
+          <!-- View Mode Selector -->
+     <div class="view-mode-container">
+         <label for="viewMode"><i class="fa-solid fa-bars"></i> اسلوب العرض   </label>
+          <select id="viewMode" onchange="changeViewMode(this.value)">
+              <option value="compact-grid">شبكة</option>
+			  <option value="grid">اكثر اتساعاً</option>
+              <option value="list">قائمة</option>
+              <!-- <option value="small-list">قائمة اصغر</option> -->
+         </select>
+      </div>
+		
+        <!-- Products Grid -->
+        <div class="products-grid compact-grid" id="productsGrid">
+            
+    </div>
+</section>
+		
+           <!-- Footer -->
+    <footer class="footer">
+               <div class="copyright-content">
+                <div class="designer-info">
+                    <span class="designer-text">مصمم الموقع / صدام أحمد</span>
+                </div>          
+                <div class="icon-group4">
+                    <a href="https://www.facebook.com/s777967272" class="icon-btn4 icon-facebook" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://wa.me/967777967272" class="icon-btn4 icon-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="tel:+967777967272" class="icon-btn4 icon-phone">
+                        <i class="fa fa-phone"></i>
+                    </a>
+                    <a href="https://tecnotasxcatalog.netlify.app/" class="icon-btn4 icon-website" target="_blank">
+                        <i class="fas fa-globe"></i>
+                    </a>
+                </div>
+            </div>
+    </footer>
+	
+	
+            <!-- No Results Message -->
+            <div id="noResults" class="no-results  hidden">
+                  <div class="no-results-icon">🔍</div>
+                     <h3 class="no-results-title">لا توجد منتجات</h3>
+                        <p class="no-results-text">لم يتم العثور على منتجات تطابق معايير البحث الحالية</p>
+                     </div>
+                   </div>    
+            </section>
+	
+	
+<!-- أزرار الدردشة والذكاء الاصطناعي -->
+    <div class="chat-buttons-container">
+        <button class="ai-toggle-btn" id="aiToggle">
+            <span>اسأل الذكاء الصناعي</span>
+            <i class="fas fa-robot"></i>
+        </button>
+        
+        <button class="chat-toggle-btn" id="chatToggle">
+            <span>دردشة الفريق</span>
+            <i class="fas fa-comments"></i>
+            <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
+        </button>
+        <button class="chat-toggle-btn" id="dmQuickBtn" style="transform:scale(0.9);opacity:0.9; display:none;">
+            <span>رسالة خاصة</span>
+            <i class="fas fa-paper-plane"></i>
+        </button>
+    </div>
+    
+    <!-- نافذة الدردشة -->
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header" id="chatHeader">
+            <div class="chat-title">
+                <span>دردشة ارشيف الثقة</span>
+                <span class="online-indicator"></span>
+            </div>
+            <div class="chat-controls">
+                <button class="mute-btn" id="muteBtn" title="تكتيم/إلغاء تكتيم الإشعارات">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+                <button id="minimizeBtn"><i class="fas fa-minus"></i></button>
+				<button><i class="fa-solid fa-window-restore"></i></button>
+                <button id="closeBtn"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        
+        <div class="chat-area" id="chatArea">
+            <!-- الرسائل ستضاف هنا via JavaScript -->
+            <div class="typing-indicator" id="typingIndicator">
+                <span></span>
+                <div class="typing-dots">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chat-input-area">
+            <input type="text" class="chat-input" id="chatInput" placeholder="اكتب رسالتك هنا...">
+            <button class="send-btn" id="sendBtn"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+        </div>
+    </div>
+
+    <!-- نافذة الذكاء الاصطناعي -->
+    <div class="ai-window" id="aiWindow">
+        <div class="ai-header" id="aiHeader">
+            <div class="ai-title">
+                <span>Trust.Ai</span>
+                <span class="online-indicator"></span>
+            </div>
+
+            <div class="ai-controls">
+                <button class="mute-btn" id="aiMuteBtn" title="تكتيم/إلغاء تكتيم الإشعارات">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+                <button id="aiMinimizeBtn"><i class="fas fa-minus"></i></button>
+				<button><i class="fa-solid fa-window-restore"></i></button>
+                <button id="aiCloseBtn"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        
+        <div class="ai-area" id="aiArea">
+            <!-- رسائل الذكاء الاصطناعي ستضاف هنا -->
+            <div class="ai-message message-incoming">
+                <div class="ai-avatar">G</div>
+                <div class="message-content">
+                    <div class="message-sender">Trust.Ai</div>
+                    <div class="message-text">يا حيا بالحبيب .. تفضل ، ما بنفسك تسأل ، و كيف اقدر اساعدك 😁</div>
+                    <div class="message-time">10:30 صباحاً</div>
+                </div>
+            </div>
+            
+            <div class="ai-typing-indicator" id="aiTypingIndicator">
+                <span>Trust.Ai يكتب</span>
+                <div class="typing-dots">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ai-input-area">
+            <input type="text" class="ai-input" id="aiInput" placeholder="اسأل الذكاء الاصطناعي...">
+            <button class="ai-send-btn" id="aiSendBtn"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+        </div>
+    </div>
+
+    <!-- إشعار الرسالة -->
+    <div class="message-notification" id="messageNotification">
+        <div class="notification-avatar" id="notificationAvatar"> </div>
+        <div class="notification-content">
+            <span class="notification-sender" id="notificationSender"> </span>
+            <span id="notificationText"> </span>
+        </div>
+    </div>
+
+    <!-- عنصر الصوت -->
+    <div class="audio-container">
+        <audio id="notificationSound" preload="auto">
+            <source src="files/notification.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+    <script>
+        // Static filtering functionality
+        function clearFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('categoryFilter').value = '';
+            document.getElementById('supplierFilter').value = '';
+            document.getElementById('userFilter').value = '';
+            document.getElementById('sortFilter').value = 'date';
+            
+            showAllProducts();
+        }
+
+        function showAllProducts() {
+            const products = document.querySelectorAll('.product-card');
+            products.forEach(product => product.style.display = 'block');
+            document.getElementById('filteredCount').textContent = products.length;
+            document.getElementById('noResults').classList.add('hidden');
+        }
+
+        function shareProduct(productId, platform) {
+            const productUrl = `${window.location.origin}/product.html?id=${productId}`;
+            const productCard = document.querySelector(`[data-id="${productId}"]`);
+            const productName = productCard.querySelector('.product-title').textContent;
+            const productDesc = productCard.querySelector('.product-description').textContent;
+            const message = `${productName} - ${productDesc.substring(0, 100)}...`;
+            
+            let shareUrl = '';
+            
+            switch(platform) {
+                case 'whatsapp':
+                    shareUrl = `https://wa.me/?text=${encodeURIComponent(message + '\n' + productUrl)}`;
+                    break;
+                case 'telegram':
+                    shareUrl = `https://t.me/share/url?url=${encodeURIComponent(productUrl)}&text=${encodeURIComponent(message)}`;
+                    break;
+                case 'twitter':
+                    shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}&url=${encodeURIComponent(productUrl)}`;
+                    break;
+            }
+            
+            if (shareUrl) {
+                window.open(shareUrl, '_blank');
+            }
+        }
+
+        function copyProductLink(productId) {
+            const productUrl = `${window.location.origin}/product.html?id=${productId}`;
+            navigator.clipboard.writeText(productUrl).then(() => {
+                alert('تم نسخ رابط المنتج!');
+            }).catch(() => {
+                alert('فشل في نسخ الرابط');
+            });
+        }
+
+        // Enhanced filtering functionality with Supabase + mock fallback
+        let currentProducts = [];
+        let filteredProducts = [];
+        const MOCK_KEY = 'mock_products_v1';
+
+        function seedMockProductsIfNeeded() {
+            if (!localStorage.getItem(MOCK_KEY)) {
+                const mock = [
+                    { id: 'm1', name: 'ساعة ذكية متطورة', description: 'ساعة ذكية بميزات متقدمة...', code: '001', selling_price: 199, created_at: new Date().toISOString(),
+                      categories: { name: 'إلكترونيات' }, product_suppliers: [{ supplier_name: 'شركة التقنية الحديثة' }], users: { username: 'admin' },
+                      product_images: [{ image_url: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400', is_primary: true }] },
+                    { id: 'm2', name: 'هاتف ذكي عالي الجودة', description: 'هاتف ذكي بكاميرا عالية...', code: '002', selling_price: 599, created_at: new Date().toISOString(),
+                      categories: { name: 'إلكترونيات' }, product_suppliers: [{ supplier_name: 'مجموعة الهواتف الذكية' }], users: { username: 'ahmed' },
+                      product_images: [{ image_url: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400', is_primary: true }] },
+                    { id: 'm3', name: 'سماعات لاسلكية', description: 'سماعات بلوتوث عالية الجودة...', code: '003', selling_price: 149, created_at: new Date().toISOString(),
+                      categories: { name: 'إلكترونيات' }, product_suppliers: [{ supplier_name: 'شركة الصوتيات المتقدمة' }], users: { username: 'sadeq' },
+                      product_images: [{ image_url: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400', is_primary: true }] }
+                ];
+                localStorage.setItem(MOCK_KEY, JSON.stringify(mock));
+            }
+        }
+
+        function getMockProducts() {
+            try {
+                const raw = localStorage.getItem(MOCK_KEY);
+                return raw ? JSON.parse(raw) : [];
+            } catch { return []; }
+        }
+
+        function clearMockProducts() {
+            localStorage.removeItem(MOCK_KEY);
+        }
+
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Check authentication
+            if (!window.authService.isLoggedIn()) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            // Admin mock controls
+            try {
+                const user = window.authService.getCurrentUser();
+                if (user?.role === 'admin') {
+                    document.getElementById('adminMockControls').style.display = 'grid';
+                    document.getElementById('deleteMockBtn').addEventListener('click', () => {
+                        if (confirm('سيتم حذف جميع المنتجات التجريبية نهائياً. هل أنت متأكد؟')) {
+                            clearMockProducts();
+                            // إذا كان لا توجد منتجات من القاعدة، أعد التحميل لإخفاء التجريبية
+                            if (!currentProducts || currentProducts.length === 0) {
+                                renderProducts([]);
+                                document.getElementById('noResults').classList.remove('hidden');
+                            }
+                        }
+                    });
+                }
+            } catch {}
+
+            // Load products from database
+            await loadProductsFromDatabase();
+
+            // Setup event listeners
+            const searchInput = document.getElementById('searchInput');
+            const categoryFilter = document.getElementById('categoryFilter');
+            const supplierFilter = document.getElementById('supplierFilter');
+            const userFilter = document.getElementById('userFilter');
+            const sortFilter = document.getElementById('sortFilter');
+
+            [searchInput, categoryFilter, supplierFilter, userFilter, sortFilter].forEach(element => {
+                element.addEventListener('input', filterProducts);
+                element.addEventListener('change', filterProducts);
+            });
+        });
+
+        async function loadProductsFromDatabase() {
+            try {
+                const result = await window.productsService.getProducts();
+                if (result.success) {
+                    const products = Array.isArray(result.products) ? result.products : [];
+                    if (products.length > 0) {
+                        currentProducts = products;
+                        filteredProducts = [...currentProducts];
+                        renderProducts(currentProducts);
+                    } else {
+                        console.warn('لا توجد منتجات في القاعدة حالياً. سيتم استخدام منتجات المحاكاة.');
+                        seedMockProductsIfNeeded();
+                        const mock = getMockProducts();
+                        currentProducts = mock;
+                        filteredProducts = [...currentProducts];
+                        renderProducts(currentProducts);
+                    }
+                } else {
+                    console.error('Error loading products:', result.error);
+                    // Fallback to mock products
+                    seedMockProductsIfNeeded();
+                    const mock = getMockProducts();
+                    currentProducts = mock;
+                    filteredProducts = [...currentProducts];
+                    renderProducts(currentProducts);
+                }
+            } catch (error) {
+                console.error('Error loading products:', error);
+                // Fallback to mock products
+                seedMockProductsIfNeeded();
+                const mock = getMockProducts();
+                currentProducts = mock;
+                filteredProducts = [...currentProducts];
+                renderProducts(currentProducts);
+            }
+        }
+
+        function renderProducts(products) {
+            const productsGrid = document.getElementById('productsGrid');
+            productsGrid.innerHTML = '';
+
+            products.forEach(product => {
+                const productCard = createProductCard(product);
+                productsGrid.appendChild(productCard);
+            });
+
+            // Toggle no-results
+            const noResults = document.getElementById('noResults');
+            if (!products || products.length === 0) noResults.classList.remove('hidden');
+            else noResults.classList.add('hidden');
+        }
+
+        function createProductCard(product) {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.setAttribute('data-id', product.id);
+            card.setAttribute('data-category', product.categories?.name || '');
+            card.setAttribute('data-supplier', product.product_suppliers?.[0]?.supplier_name || '');
+            card.setAttribute('data-user', product.users?.username || '');
+
+            const primaryImage = product.product_images?.find(img => img.is_primary)?.image_url || 
+                                product.product_images?.[0]?.image_url || 
+                                'https://via.placeholder.com/400x200/1a1a2e/ffffff?text=صورة+المنتج';
+
+            card.innerHTML = `
+                <div class="product-image-container">
+                    <div class="product-meta-overlay">
+                        <span class="product-category"><i class="fa-solid fa-layer-group"></i> ${product.categories?.name || 'غير محدد'}</span>
+                        <span class="product-supplier">${product.product_suppliers?.[0]?.supplier_name || 'غير محدد'}</span>
+                        <span class="product-serial">SN: ${product.code}</span>
+                    </div>
+                    <div class="product-image">
+                        <img src="${primaryImage}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/400x200/1a1a2e/ffffff?text=صورة+المنتج'">
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">${product.name}<span><i class="fa fa-address-book-o" aria-hidden="true"></i> ${product.users?.username || 'غير محدد'}</span></h3>
+                    <div class="product-meta-overlay2">
+                        <span class="product-category2">${product.categories?.name || 'غير محدد'}</span>
+                        <span class="product-supplier2">${product.product_suppliers?.[0]?.supplier_name || 'غير محدد'}</span>
+                        <span class="product-serial2">SN: ${product.code}</span>
+                        <span class="product-price2">$${product.selling_price}</span>
+                    </div>
+                    <p class="product-description">${product.description || 'لا يوجد وصف'}</p>
+                    <div class="product-prices">
+                        <div class="price-item">
+                            <span class="price-label">البيع:</span>
+                            <span class="price-amount">$${product.selling_price || 0}</span>
+                            <span class="price-currency">USD</span>
+                        </div>
+                        <div class="price-item cost-price">
+                            <span class="price-label">التكلفة:</span>
+                            <span class="price-amount">$${product.cost_price || 0}</span>
+                            <span class="price-currency">USD</span>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <a href="product.html?id=${product.id}" class="product-button"><i class="fa-solid fa-info"></i> عرض التفاصيل</a>
+                        <a href="product.html?id=${product.id}" class="product-button"><i class="fab fa-whatsapp"></i>تواصل بالمسجل</a>
+                    </div>
+                </div>
+            `;
+
+            return card;
+        }
+
+        function renderStaticProducts() {
+            // Deprecated: replaced by mock/localStorage approach
+            seedMockProductsIfNeeded();
+            const mock = getMockProducts();
+            currentProducts = mock;
+            filteredProducts = [...currentProducts];
+            renderProducts(currentProducts);
+        }
+
+        async function filterProducts() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const category = document.getElementById('categoryFilter').value;
+            const supplier = document.getElementById('supplierFilter').value;
+            const user = document.getElementById('userFilter').value;
+            const sort = document.getElementById('sortFilter').value;
+
+            // Filter products based on criteria
+            filteredProducts = currentProducts.filter(product => {
+                const matchesSearch = !searchTerm || 
+                    product.name.toLowerCase().includes(searchTerm) || 
+                    product.description?.toLowerCase().includes(searchTerm);
+                
+                const matchesCategory = !category || product.categories?.name === category;
+                const matchesSupplier = !supplier || product.product_suppliers?.[0]?.supplier_name === supplier;
+                const matchesUser = !user || product.users?.username === user;
+
+                return matchesSearch && matchesCategory && matchesSupplier && matchesUser;
+            });
+
+            // Sorting
+            if (sort === 'price-high') {
+                filteredProducts.sort((a,b) => (b.selling_price||0) - (a.selling_price||0));
+            } else if (sort === 'price-low') {
+                filteredProducts.sort((a,b) => (a.selling_price||0) - (b.selling_price||0));
+            } else {
+                // date: newest first
+                filteredProducts.sort((a,b) => new Date(b.created_at) - new Date(a.created_at));
+            }
+
+            // Render filtered products
+            renderProducts(filteredProducts);
+
+            // Show/hide no results message
+            const noResults = document.getElementById('noResults');
+            if (filteredProducts.length === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+            }
+        }
+    </script>
+	<!-- Include Supabase and services -->
+    <script>window.PB_DISABLE_EXTERNAL_RENDER = true;</script>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+    <script src="js/auth-service.js"></script>
+    <script src="js/products-service.js"></script>
+    <script src="js/chat-service.js"></script>
+    
+	<!--  Javascript -->
+	<script src="js/nav.js"></script>
+    <script src="js/ai-config.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="js/theme.js"></script>
+	<script src="js/products-board-mune.js"></script>
+    <script src="js/products-board-logic.js"></script>
+    <script>
+      // Quick DM button: prompt for username and open DM (only if FEATURE_DM_ENABLED)
+      document.addEventListener('DOMContentLoaded', function(){
+        const btn = document.getElementById('dmQuickBtn');
+        if (!btn) return;
+        if (window.FEATURE_DM_ENABLED === true) {
+          btn.style.display = '';
+          btn.addEventListener('click', async function(){
+            try{
+              const uname = prompt('ادخل اسم المستخدم لفتح رسالة خاصة:');
+              if(!uname) return;
+              const { data, error } = await supabaseClient
+                .from('users')
+                .select('id, username, full_name, role')
+                .ilike('username', uname)
+                .limit(1)
+                .single();
+              if(error || !data){ alert('لم يتم العثور على المستخدم'); return; }
+              if(window.openDirectChatByUser){ openDirectChatByUser(data.id, data.full_name || data.username, data.role || 'member'); }
+            }catch(e){ alert('تعذر فتح الرسالة الخاصة'); }
+          });
+        } else {
+          btn.style.display = 'none';
+        }
+      });
+    </script>
+    <style>
+      #dmQuickBtn {
+        display: inline-block;
+        margin-left: 10px;
+        font-size: 0.8em;
+        padding: 5px 10px;
+        border-radius: 5px;
+        background-color: #4CAF50;
+        color: white;
+      }
+    </style>
+</body>
+</html>

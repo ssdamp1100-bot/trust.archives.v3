@@ -1,0 +1,1822 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ملفي الشخصي</title>
+	
+	  <!-- Google fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&family=Noto+Naskh+Arabic:wght@400..700&family=Noto+Sans+Arabic:wght@100..900&family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400..700&display=swap" rel="stylesheet">
+    
+	
+	
+	 <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	
+	<!-- css Stylesheet -->
+   <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/profile.css">
+	<link rel="stylesheet" href="css/profile-res.css">
+	 
+</head>
+<style>
+
+</style>
+ <body class="theme1"> 
+  <script>
+    (function(){
+      try{
+        var savedTheme = localStorage.getItem('selectedTheme');
+        if(savedTheme){ document.body.className = savedTheme; }
+      }catch(e){}
+    })();
+  </script>
+  <!-- زر تغيير الثيم -->
+    <button class="change-theme" id="theme-toggle">
+     <i class="fa-solid fa-palette"></i>
+    </button>
+    
+	
+	  <!-- Header -->  
+    <header class="header" id="header">
+    <a href="dashboard.html" class="logo-container">
+        <div class="logo"> </div>
+        <div class="logo-text">أرشيف الثقة التجارية</div>
+    </a>
+    <button class="nav-toggle"><i class="fas fa-align-left"></i></button>
+    <nav class="main-menu">
+        <a href="dashboard.html" class="menu-item"><i class="fas fa-home"></i> الرئيسية</a>
+		 <a href="products-board.html" class="menu-item"><i class="fa-solid fa-cart-plus"></i> المنتجات</a>
+        <a href="suppliers.html" class="menu-item "><i class="fas fa-truck"></i> الموردين</a>
+        <a href="profile.html" class="menu-item active"><i class="fas fa-user"></i> ملفي الشخصي</a>
+        <a href="add-product.html" class="menu-item "><i class="fas fa-plus-circle"></i> إضافة منتج</a>
+        <a href="add-supplier.html" class="menu-item "><i class="fas fa-truck-loading "></i> اضافة مورد</a>
+    </nav>
+</header>
+
+    <!-- Profile Container -->
+    <Section class="profile-container">
+        <!-- Profile Header Card -->
+        <div class="profile-container-card">
+            <div class="profile-info-main">    
+            <div class="profile-stats-grid">
+			<div class="stat-item1">				            
+                    <img src="img/ " alt="الصورة الشخصية" class="profile-avatar">                   
+                <div class="profile-user-details">
+                    <h2><i class="fa-solid fa-user"></i> ..</h2>
+					</div>                                   
+                </div>
+                <div class="stat-item">
+				<span class="stat-label"><i class="fa-solid fa-cart-plus"></i> منتجاتي</span>
+                    <span class="stat-value">..</span>
+                </div>
+                <div class="stat-item">
+				  <span class="stat-label"><i class="fas fa-tasks"></i> مهامي</span>
+                    <span class="stat-value">..</span>
+                    
+                </div>
+                <div class="stat-item">
+				 <span class="stat-label1"><i class="fa-solid fa-star"></i> نقاطي</span>
+                    <span class="stat-value">..</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row Navigation -->
+        <div class="row-nav">
+            <button class="nav-btn active" onclick="showSection('products')">
+                <i class="fas fa-box"></i>
+                منتجاتي
+            </button>
+			<button class="nav-btn" onclick="showSection('suppliers')">
+                <i class="fas fa-truck"></i>
+                الموردين
+            </button>
+            <button class="nav-btn" onclick="showSection('tasks')">
+                <i class="fas fa-tasks"></i>
+                مهامي
+            </button>
+            <button class="nav-btn" onclick="showSection('notes')">
+                <i class="fa-solid fa-book"></i>
+                ملاحظاتي
+            </button>
+            <button class="nav-btn" onclick="showSection('account')">
+                <i class="fas fa-user-cog"></i>
+                 حسابي
+            </button>
+        </div>
+
+        <!-- Section Container -->
+        <div class="section-container">
+            <!-- Products Section -->
+            <div id="products-section" class="section active">
+               
+                
+                <!-- Filters and Search -->
+                <div class="filters-container">
+                    <div class="filters-grid">
+                        <div class="filter-group">
+                            <input type="text" id="searchProducts" placeholder="ابحث عن منتج...">
+                        </div>
+                        <div class="filter-group">                           
+                            <select id="categoryFilter">
+                                <option value="">جميع الفئات</option>
+                               
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <select id="sortFilter">
+                                <option value="date">الأحدث أولاً</option>
+                                <option value="name">الاسم أ-ي</option>
+                               
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <button class="add-product-btn" onclick="window.location.href='add-product.html'">
+                                <i class="fas fa-plus"></i>
+                                إضافة منتج
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+               <!-- View Mode Selector -->
+     <div class="view-mode-container">
+         <label for="viewMode"><i class="fa-solid fa-bars"></i> اسلوب العرض   </label>
+          <select id="viewMode" onchange="changeViewMode(this.value)">
+              <option value="compact-grid">شبكة</option>
+			  <option value="grid">اكثر اتساعاً</option>
+              <option value="list">قائمة</option>
+              <option value="small-list">قائمة اصغر</option>
+         </select>
+      </div>
+		
+        <!-- Products Grid -->
+        <div class="products-grid compact-grid" id="productsGrid">
+            <!-- Product 1 -->
+            <div class="product-card" data-id="1">
+                <div class="product-image-container">
+                    <div class="product-meta-overlay">
+                        <span class="product-category"><i class="fa-solid fa-layer-group"></i> إلكترونيات</span>
+                        <span class="product-supplier">شركة التقنية الحديثة</span>
+                        <span class="product-serial">SN: 001</span>
+                    </div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400" alt="ساعة ذكية متطورة" onerror="this.src='https://via.placeholder.com/400x200/1a1a2e/ffffff?text=صورة+المنتج'">
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">ساعة ذكية متطورة<span><i class="fa fa-address-book-o" aria-hidden="true"></i> admin</span></h3>
+				<div class="product-meta-overlay2">
+                    <span class="product-category2">إلكترونيات</span>
+                    <span class="product-supplier2">شركة التقنية الحديثة</span>
+                    <span class="product-serial2">SN: 001</span>
+					<span class="product-price2">$199</span>
+					</div>
+                    <p class="product-description">ساعة ذكية بميزات متقدمة لتتبع اللياقة البدنية واتصالات ذكية مع هاتفك الذكي</p>
+                    <div class="product-prices">
+                        <div class="price-item">
+                            <span class="price-amount">$199</span>
+                            <span class="price-currency">USD</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-amount">¥1430</span>
+                            <span class="price-currency">CNY</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-amount">49750</span>
+                            <span class="price-currency">YER</span>
+                        </div>
+                    </div>
+                   <div class="product-actions">
+                                <button class="product-button" onclick="viewProduct(1)">عرض التفاصيل</button>
+                                <button class="product-button secondary" onclick="editProduct(1)">تعديل</button>
+                                <button class="product-button thirdlly" onclick="deleteProduct(1)">حذف</button>
+                            </div>
+                      </div>
+                </div>
+
+
+            <!-- Product 2 -->
+            <div class="product-card" data-id="2">
+                <div class="product-image-container">
+                    <div class="product-meta-overlay">
+                        <span class="product-category">إلكترونيات</span>
+                        <span class="product-supplier">مجموعة الهواتف الذكية</span>
+                        <span class="product-serial">SN: 002</span>
+                    </div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400" alt="هاتف ذكي عالي الجودة" onerror="this.src='https://via.placeholder.com/400x200/1a1a2e/ffffff?text=صورة+المنتج'">
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">هاتف ذكي عالي الجودة<span><i class="fa fa-address-book-o" aria-hidden="true"></i> ahmed</span></h3>
+				<div class="product-meta-overlay2">
+                    <span class="product-category2">إلكترونيات</span>
+                    <span class="product-supplier2">مجموعة الهواتف الذكية</span>
+                    <span class="product-serial2">SN: 002</span>
+					<span class="product-price2">$599</span>
+				</div>
+                    <p class="product-description">هاتف ذكي بكاميرا عالية الدقة وبطارية طويلة المدى مع معالج قوي للألعاب والتطبيقات</p>
+                    <div class="product-prices">
+                        <div class="price-item">
+                            <span class="price-amount">$599</span>
+                            <span class="price-currency">USD</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-amount">¥4300</span>
+                            <span class="price-currency">CNY</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-amount">149750</span>
+                            <span class="price-currency">YER</span>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                                <button class="product-button" onclick="viewProduct(1)">عرض التفاصيل</button>
+                                <button class="product-button secondary" onclick="editProduct(1)">تعديل</button>
+                                <button class="product-button thirdlly" onclick="deleteProduct(1)">حذف</button>
+                            </div>                            
+                      </div>
+                </div>
+
+
+            <!-- Product 3 -->
+            <div class="product-card" data-id="3">
+                <div class="product-image-container">
+                    <div class="product-meta-overlay">
+                        <span class="product-category">إلكترونيات</span>
+                        <span class="product-supplier">شركة الصوتيات المتقدمة</span>
+                        <span class="product-serial">SN: 003</span>
+                    </div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400" alt="سماعات لاسلكية" onerror="this.src='https://via.placeholder.com/400x200/1a1a2e/ffffff?text=صورة+المنتج'">
+                    </div>
+                </div>
+                <div class="product-info"> 
+                    <h3 class="product-title">سماعات لاسلكية <span><i class="fa fa-address-book-o" aria-hidden="true"></i> sadeq</span></h3>
+				<div class="product-meta-overlay2">
+                    <span class="product-category2">إلكترونيات</span>
+                    <span class="product-supplier2">شركة الصوتيات المتقدمة</span>
+                    <span class="product-serial2">SN: 003</span>
+					<span class="product-price2">$149</span>
+				</div>
+                    <p class="product-description">سماعات بلوتوث عالية الجودة مع إلغاء الضوضاء وعمر بطارية يصل إلى 30 ساعة</p>
+                    <div class="product-prices">
+                        <div class="price-item">
+                            <span class="price-amount">$149</span>
+                            <span class="price-currency">USD</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-amount">¥1070</span>
+                            <span class="price-currency">CNY</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-amount">37250</span>
+                            <span class="price-currency">YER</span>
+                        </div>
+                    </div>
+                   <div class="product-actions">
+                                <button class="product-button" onclick="viewProduct(1)">عرض التفاصيل</button>
+                                <button class="product-button secondary" onclick="editProduct(1)">تعديل</button>
+                                <button class="product-button thirdlly" onclick="deleteProduct(1)">حذف</button>
+                            </div>                            
+                    </div>
+                </div>
+            </div>
+
+
+                <!-- No Results Message -->
+                <div id="noProductsFound" class="no-results hidden">
+                    <div class="no-results-icon">🔍</div>
+                    <h3 class="no-results-title">لا توجد منتجات مطابقة</h3>
+                    <p class="no-results-text">جرب تغيير معايير البحث أو الفلاتر</p>
+                    <button class="product-button" onclick="clearFilters()">مسح الفلاتر</button>
+                </div>
+            </div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			 <!-- suppliers Section -->
+			<div id="suppliers-section" class="section ">
+			   <div class="sup-filters-container">
+            <div class="sup-filters-grid">
+                <div class="sup-filter-group">
+                    <input class="sup-sreach" type="text" id="searchInput" placeholder="&#128269;   ابحث عن مورد " >
+                </div>
+                <div class="sup-filter-group">
+                    <select id="countryFilter" class="sup-filter-select">
+                        <option value="">جميع البلدان</option>
+                        <option value="الصين">الصين</option>
+                        <option value="تركيا">تركيا</option>
+                        <option value="الإمارات">الإمارات</option>
+                    </select>
+                </div>
+                <div class="sup-filter-group">
+                    <select id="industryFilter" class="sup-filter-select">
+                        <option value="">جميع المجالات</option>
+                        <option value="الإلكترونيات">الإلكترونيات</option>
+                        <option value="المنسوجات">المنسوجات</option>
+                        <option value="التجارة العامة">التجارة العامة</option>
+                    </select>
+                </div>
+                <div class="sup-filter-group">
+                    <button class="sup-clear-filters-btn" onclick="clearSupplierFilters()">مسح الفلاتر</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- إضافة أزرار التبديل بين العروض -->
+        <div class="view-toggle">
+            <button id="gridViewBtn" class="view-btn active">عرض شبكة</button>
+            <button id="listViewBtn" class="view-btn">عرض قائمة</button>
+        </div>
+
+        <div id="suppliersGrid" class="suppliers-grid">
+            <!-- سيتم ملء الموردين من قاعدة البيانات -->
+        </div>
+    </div>
+			
+
+
+
+
+
+
+            <!-- Tasks Section -->
+            <div id="tasks-section" class="section ">               
+                <div class="tasks-container">
+                    <!-- Admin Tasks -->
+                    <div class="task-widget">
+					<div class="widget-header">
+                        <h3 class="widget-title">
+                            <i class="fa-solid fa-list"></i>
+                            المهام الواردة من الإدارة
+                        </h3>
+						 </div>
+                        <div class="admin-tasks-list" id="adminTasksList">
+                            <div class="admin-task-item" data-priority="high">
+                                <div class="task-info">
+								
+                                    <h4 class="task-name"><i class="fa-solid fa-clipboard-list"></i> مراجعة المنتجات الجديدة</h4>
+                                    <div class="task-deadline"><i class="fa-regular fa-clock"></i>   موعد التسليم: 2024-01-15</div>
+                                    <div class="task-priority high"><i class="fa-solid fa-arrow-up-wide-short"></i> عالية</div>
+                                </div>
+                                <div class="task-actions">
+                                <button class="actions-task-btn start" onclick="StartTask(this)">تم البدء <i class="fa-solid fa-flag-checkered"></i></button>
+								<button class="actions-task-btn ask" onclick="AskAdminAboutTask(this)"> استفسر الادارة <i class="fa-solid fa-question"></i></button>
+								<button class="actions-task-btn done" onclick="TasxDone(this)"> تم التنفيذ <i class="fa-solid fa-check-double"></i></button>
+                             </div>
+                            </div>
+                            <div class="admin-task-item" data-priority="medium">
+                                <div class="task-info">
+								 
+                                    <h4 class="task-name"><i class="fa-solid fa-clipboard-list"></i> تحديث بيانات الموردين</h4>
+                                    <div class="task-deadline"><i class="fa-regular fa-clock"></i> موعد التسليم: 2024-01-20</div>
+									<div class="task-priority medium"><i class="fa-solid fa-arrow-up-wide-short"></i> متوسطة</div>
+                                </div>
+                                <div class="task-actions">
+                                <button class="actions-task-btn start" onclick="StartTask(this)">تم البدء <i class="fa-solid fa-flag-checkered"></i></button>
+								<button class="actions-task-btn ask" onclick="AskAdminAboutTask(this)"> استفسر الادارة <i class="fa-solid fa-question"></i></button>
+								<button class="actions-task-btn done" onclick="TasxDone(this)"> تم التنفيذ <i class="fa-solid fa-check-double"></i></button>
+                             </div>
+                            </div>
+                            <div class="admin-task-item" data-priority="low">
+                                <div class="task-info">
+								 
+                                    <h4 class="task-name" ><i class="fa-solid fa-clipboard-list"></i> إعداد تقرير المبيعات الشهري</h4>
+                                    <div class="task-deadline"><i class="fa-regular fa-clock"></i> موعد التسليم: 2024-01-25</div>
+									<div class="task-priority low"><i class="fa-solid fa-arrow-up-wide-short"></i> منخفضة</div>                                   
+                                </div>
+                                 <div class="task-actions">
+                               <button class="actions-task-btn start" onclick="StartTask(this)">تم البدء <i class="fa-solid fa-flag-checkered"></i></button>
+								<button class="actions-task-btn ask" onclick="AskAdminAboutTask(this)"> استفسر الادارة <i class="fa-solid fa-question"></i></button>
+								<button class="actions-task-btn done" onclick="TasxDone(this)"> تم التنفيذ <i class="fa-solid fa-check-double"></i></button>
+                             </div>
+                            </div>
+                            <div class="admin-task-item" data-priority="high">
+                                <div class="task-info">
+								 
+                                    <h4 class="task-name" ><i class="fa-solid fa-clipboard-list"></i> مراجعة شكاوى العملاء</h4>
+                                    <div class="task-deadline"><i class="fa-regular fa-clock"></i> موعد التسليم: 2024-01-18</div>                  <div class="task-priority high"><i class="fa-solid fa-arrow-up-wide-short"></i> عالية</div>                 
+                                </div>
+                            <div class="task-actions">
+                               <button class="actions-task-btn start" onclick="StartTask(this)">تم البدء <i class="fa-solid fa-flag-checkered"></i></button>
+								<button class="actions-task-btn ask" onclick="AskAdminAboutTask(this)"> استفسر الادارة <i class="fa-solid fa-question"></i></button>
+								<button class="actions-task-btn done" onclick="TasxDone(this)"> تم التنفيذ <i class="fa-solid fa-check-double"></i></button>
+                             </div>
+                            </div>
+                            <div class="admin-task-item" data-priority="medium">
+                                <div class="task-info">
+								 
+                                    <h4 class="task-name"><i class="fa-solid fa-clipboard-list"></i> تحديث أسعار المنتجات</h4>
+                                    <div class="task-deadline"><i class="fa-regular fa-clock"></i> موعد التسليم: 2024-01-22</div>
+									<div class="task-priority medium"><i class="fa-solid fa-arrow-up-wide-short"></i> متوسطة </div>
+									</div>                                   
+                              <div class="task-actions">
+                                <button class="actions-task-btn start" onclick="StartTask(this)">تم البدء <i class="fa-solid fa-flag-checkered"></i></button>
+								<button class="actions-task-btn ask" onclick="AskAdminAboutTask(this)"> استفسر الادارة <i class="fa-solid fa-question"></i></button>
+								<button class="actions-task-btn done" onclick="TasxDone(this)"> تم التنفيذ <i class="fa-solid fa-check-double"></i></button>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+
+
+                    <!-- Personal Todo List -->
+                    <div class="task-widget">
+					 <div class="widget-header">
+                        <h3 class="widget-title">
+                           <i class="fa-solid fa-list-check"></i>
+                            قائمة المهام الشخصية
+                        </h3>
+						</div>
+                        <div class="todo-input-group">
+                            <input type="text" class="todo-input" placeholder="إضافة مهمة جديدة...">
+                            <button class="add-todo-btn" onclick="addTodoItem()">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <ul class="todo-items" id="todoList">
+                            <li class="todo-item done" onclick="toggleTodo(this)">
+                                <span>مراجعة المنتجات الجديدة</span>
+                                <button class="remove-todo-btn" onclick="removeTodoItem(this)"><i class="fa-solid fa-check"></i></button>
+                            </li>
+                            <li class="todo-item" onclick="toggleTodo(this)">
+                                <span>تحديث بيانات الموردين</span>
+                                <button class="remove-todo-btn" onclick="removeTodoItem(this)"><i class="fa-solid fa-check"></i></button>
+                            </li>
+                            <li class="todo-item" onclick="toggleTodo(this)">
+                                <span>الرد على استفسارات العملاء</span>
+                                <button class="remove-todo-btn" onclick="removeTodoItem(this)"><i class="fa-solid fa-check"></i></button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+                        
+
+
+
+
+
+
+
+
+
+            <!-- Notes and Links Section -->
+            <div id="notes-section" class="section ">                
+                <div class="notes-links-container">
+                    <!-- Notes Widget -->
+                    <div class="notes-widget">
+					  <div class="notes-header">
+                        <h3 class="notes-widget-title"> 
+                            <i class="fa-solid fa-marker"></i>
+                            ملاحظاتي
+                        </h3>
+                        <button class="add-note-btn" onclick="addNewNote()">
+                            
+                            ملاحظة جديدة
+							<i class="fas fa-plus"></i>
+                        </button>
+						</div>
+                        <div class="notes-grid" id="notesGrid">
+                            <div class="note-card" onclick="editNote(1)" data-category="أعمال">
+                                <div class="note-header">
+                                    <div class="note-title">أفكار للمنتجات الجديدة</div>
+                                    <div class="note-category business">أعمال</div>
+                                </div>								
+                                <div class="note-content">ساعات ذكية بميزات صحية متقدمة، أجهزة منزلية ذكية، منتجات صديقة للبيئة...</div>								
+                                <div class="note-footer">                                    
+									<button class="note-btn read" onclick="OpenNote(1, event)">
+                                        <i class="fa-solid fa-eye"></i> قراءة
+                                    </button>
+									<button class="note-btn edit" onclick="EditNote(1, event)">
+                                        <i class="fa-solid fa-pen-to-square"></i> تعديل
+                                    </button>
+                                    <button class="note-btn delete" onclick="deleteNote(1, event)">
+                                        <i class="fas fa-trash"></i> حذف 
+                                    </button>
+                                </div>
+								 <!--<div class="note-date">2024-01-10</div>-->
+                            </div>
+                            <div class="note-card" onclick="editNote(2)" data-category="اجتماعات">
+                                <div class="note-header">
+                                    <div class="note-title">اجتماع مع الموردين</div>
+                                    <div class="note-category meeting">اجتماعات</div>
+                                </div>
+                                <div class="note-content">مناقشة الأسعار الجديدة وشروط التوريد للربع القادم، تحديد آليات الدفع والتسليم...</div>
+                                <div class="note-footer">
+                                    <button class="note-btn read" onclick="OpenNote(1, event)">
+                                        <i class="fa-solid fa-eye"></i> قراءة
+                                    </button>
+									<button class="note-btn edit" onclick="EditNote(1, event)">
+                                        <i class="fa-solid fa-pen-to-square"></i> تعديل
+                                    </button>
+                                    <button class="note-btn delete" onclick="deleteNote(1, event)">
+                                        <i class="fas fa-trash"></i> حذف 
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="note-card" onclick="editNote(3)" data-category="تسويق">
+                                <div class="note-header">
+                                    <div class="note-title">استراتيجية التسويق</div>
+                                    <div class="note-category marketing">تسويق</div>
+                                </div>
+                                <div class="note-content">التركيز على وسائل التواصل الاجتماعي وحملات إعلانية مستهدفة، تحسين محركات البحث...</div>
+                                <div class="note-footer">
+                                    <button class="note-btn read" onclick="OpenNote(1, event)">
+                                        <i class="fa-solid fa-eye"></i> قراءة
+                                    </button>
+									<button class="note-btn edit" onclick="EditNote(1, event)">
+                                        <i class="fa-solid fa-pen-to-square"></i> تعديل
+                                    </button>
+                                    <button class="note-btn delete" onclick="deleteNote(1, event)">
+                                        <i class="fas fa-trash"></i> حذف 
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="note-card" onclick="editNote(4)" data-category="شخصي">
+                                <div class="note-header">
+                                    <div class="note-title">قائمة المهام الأسبوعية</div>
+                                    <div class="note-category personal">شخصي</div>
+                                </div>
+                                <div class="note-content">مراجعة التقارير المالية، تحديث موقع الشركة، التواصل مع العملاء الجدد...</div>
+                                <div class="note-footer">
+                                    <button class="note-btn read" onclick="OpenNote(1, event)">
+                                        <i class="fa-solid fa-eye"></i> قراءة
+                                    </button>
+									<button class="note-btn edit" onclick="EditNote(1, event)">
+                                        <i class="fa-solid fa-pen-to-square"></i> تعديل
+                                    </button>
+                                    <button class="note-btn delete" onclick="deleteNote(1, event)">
+                                        <i class="fas fa-trash"></i> حذف 
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="note-card" onclick="editNote(5)" data-category="أفكار">
+                                <div class="note-header">
+                                    <div class="note-title">تحسينات على الخدمة</div>
+                                    <div class="note-category ideas">أفكار</div>
+                                </div>
+                                <div class="note-content">إضافة خدمة التوصيل السريع، تطوير تطبيق جوال، برنامج ولاء العملاء...</div>
+                                <div class="note-footer">
+                                    <button class="note-btn read" onclick="OpenNote(1, event)">
+                                        <i class="fa-solid fa-eye"></i> قراءة
+                                    </button>
+									<button class="note-btn edit" onclick="EditNote(1, event)">
+                                        <i class="fa-solid fa-pen-to-square"></i> تعديل
+                                    </button>
+                                    <button class="note-btn delete" onclick="deleteNote(1, event)">
+                                        <i class="fas fa-trash"></i> حذف 
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="note-card" onclick="editNote(6)" data-category="مالية">
+                                <div class="note-header">
+                                    <div class="note-title">ميزانية الربع الأول</div>
+                                    <div class="note-category finance">مالية</div>
+                                </div>
+                                <div class="note-content">تخصيص 30% للتسويق، 40% للمخزون، 20% للتشغيل، 10% للطوارئ...</div>
+                                <div class="note-footer">
+                                    <button class="note-btn read" onclick="OpenNote(1, event)">
+                                        <i class="fa-solid fa-eye"></i> قراءة
+                                    </button>
+									<button class="note-btn edit" onclick="EditNote(1, event)">
+                                        <i class="fa-solid fa-pen-to-square"></i> تعديل
+                                    </button>
+                                    <button class="note-btn delete" onclick="deleteNote(1, event)">
+                                        <i class="fas fa-trash"></i> حذف 
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+ 
+ 
+ 
+ 
+
+                    <!-- Links Widget -->
+                    <div class="notes-widget">
+                       <div class="notes-header">
+                         <h3 class="notes-widget-title"> 
+                            <i class="fas fa-link"></i>
+                            الروابط المؤرشفة
+                        </h3>
+                        <button class="add-link-btn" onclick="addNewLink()">
+                            
+                            إضافة رابط
+							<i class="fas fa-plus"></i>
+                        </button>
+						</div>
+                        <div class="links-list" id="linksList">
+                            <div class="link-item" data-category="تعليمي">
+                                <div class="link-info">
+                                    <div class="link-header">
+                                        <h4 class="link-title" >دليل التجارة الإلكترونية</h4>                                        
+                                    </div>
+                                    <a href="https://example.com/guide" class="link-url" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        https://example.com/guide
+                                    </a>
+                                    <div class="link-description">دليل شامل لبدء التجارة الإلكترونية وإدارة المتاجر الرقمية</div>
+                                </div>
+                                <div class="link-actions">
+                                    <button class="copy-link-btn" onclick="copyLink('https://example.com/guide')">
+                                        <i class="fas fa-copy"></i> نسخ 
+                                    </button>
+									<button class="send-link-btn" >
+                                        <i class="fab fa-whatsapp"></i> ارسال 
+                                    </button>
+                                    <button class="delete-link-btn" onclick="deleteLink(this)">
+                                       <i class="fas fa-trash"></i>  حذف 
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="link-item" data-category="مالي">
+                                <div class="link-info">
+                                    <div class="link-header">
+                                        <h4 class="link-title">أسعار العملات اليوم</h4>
+                                    </div>
+                                    <a href="https://example.com/currency" class="link-url" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        https://example.com/currency
+                                    </a>
+                                    <div class="link-description">متابعة أسعار العملات العالمية والمحلية بشكل يومي</div>
+                                </div>
+                                <div class="link-actions">
+                                    <button class="copy-link-btn" onclick="copyLink('https://example.com/guide')">
+                                        <i class="fas fa-copy"></i> نسخ 
+                                    </button>
+									<button class="send-link-btn" >
+                                        <i class="fab fa-whatsapp"></i> ارسال 
+                                    </button>
+                                    <button class="delete-link-btn" onclick="deleteLink(this)">
+                                       <i class="fas fa-trash"></i>  حذف 
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="link-item" data-category="أعمال">
+                                <div class="link-info">
+                                    <div class="link-header">
+                                        <h4 class="link-title">منصة الموردين الجديدة</h4>
+                                    </div>
+                                    <a href="https://example.com/suppliers" class="link-url" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        https://example.com/suppliers
+                                    </a>
+                                    <div class="link-description">منصة للتواصل مع الموردين وإدارة سلسلة التوريد</div>
+                                </div>
+                                <div class="link-actions">
+                                  <button class="copy-link-btn" onclick="copyLink('https://example.com/guide')">
+                                        <i class="fas fa-copy"></i> نسخ 
+                                    </button>
+									<button class="send-link-btn" >
+                                        <i class="fab fa-whatsapp"></i> ارسال 
+                                    </button>
+                                    <button class="delete-link-btn" onclick="deleteLink(this)">
+                                       <i class="fas fa-trash"></i>  حذف 
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="link-item" data-category="تقني">
+                                <div class="link-info">
+                                    <div class="link-header">
+                                        <h4 class="link-title" >أدوات تحليل المواقع</h4>
+                                    </div>
+                                    <a href="https://example.com/analytics" class="link-url" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        https://example.com/analytics
+                                    </a>
+                                    <div class="link-description">مجموعة أدوات لتحليل أداء المواقع والمتاجر الإلكترونية</div>
+                                </div>
+                                <div class="link-actions">
+                                   <button class="copy-link-btn" onclick="copyLink('https://example.com/guide')">
+                                        <i class="fas fa-copy"></i> نسخ 
+                                    </button>
+									<button class="send-link-btn" >
+                                        <i class="fab fa-whatsapp"></i> ارسال 
+                                    </button>
+                                    <button class="delete-link-btn" onclick="deleteLink(this)">
+                                       <i class="fas fa-trash"></i>  حذف 
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="link-item" data-category="تسويق">
+                                <div class="link-info">
+                                    <div class="link-header">
+                                        <h4 class="link-title">استراتيجيات التسويق الرقمي</h4>
+                                    </div>
+                                    <a href="https://example.com/marketing" class="link-url" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        https://example.com/marketing
+                                    </a>
+                                    <div class="link-description">دليل شامل لاستراتيجيات التسويق الرقمي الحديثة</div>
+                                </div>
+                                <div class="link-actions">
+                                   <button class="copy-link-btn" onclick="copyLink('https://example.com/guide')">
+                                        <i class="fas fa-copy"></i> نسخ 
+                                    </button>
+									<button class="send-link-btn" >
+                                        <i class="fab fa-whatsapp"></i> ارسال 
+                                    </button>
+                                    <button class="delete-link-btn" onclick="deleteLink(this)">
+                                       <i class="fas fa-trash"></i>  حذف 
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+            <!-- Account Info Section -->
+           <div id="account-section" class="section ">
+    <form class="account-form" onsubmit="saveAccountInfo(event)">
+        <div class="avatar-upload-section">
+            <img src="img/sadeq.jpg" alt="الصورة الحالية" class="current-avatar">
+            <br>
+            <button type="button" class="upload-avatar-btn" onclick="uploadAvatar()">
+                <i class="fas fa-camera"></i>
+                تغيير الصورة الشخصية
+            </button>
+        </div>
+
+        <h3 class="section-subtitle">
+            <i class="fas fa-user-circle"></i>
+            بيانات الحساب الأساسية
+        </h3>
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="username"><i class="fas fa-user"></i> اسم المستخدم</label>
+                <input type="text" id="username" value="اسم المستخدم" required>
+            </div>
+            <div class="form-group">
+                <label for="email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                <input type="email" id="email" value="user@example.com" required>
+            </div>
+            <div class="form-group">
+                <label for="firstName"><i class="fas fa-id-card"></i> الاسم الأول</label>
+                <input type="text" id="firstName" value="أحمد">
+            </div>
+            <div class="form-group">
+                <label for="lastName"><i class="fas fa-id-card"></i> اسم العائلة</label>
+                <input type="text" id="lastName" value="محمد">
+            </div>
+            <div class="form-group">
+                <label for="phone"><i class="fas fa-phone"></i> رقم الهاتف</label>
+                <input type="tel" id="phone" value="+967 123 456 789">
+            </div>
+            <div class="form-group">
+                <label for="whatsapp"><i class="fab fa-whatsapp"></i> رقم الواتساب</label>
+                <input type="tel" id="whatsapp" value="+967 123 456 789">
+            </div>            
+            <div class="form-group">
+                <label for="birthDate"><i class="fas fa-calendar-alt"></i> تاريخ الميلاد</label>
+                <input type="date" id="birthDate" value="1990-01-01">
+            </div>
+            <div class="form-group">
+                <label for="gender"><i class="fas fa-venus-mars"></i> الجنس</label>
+                <select id="gender">
+                    <option value="male">ذكر</option>
+                    <option value="female">أنثى</option>
+                    <option value="other">آخر</option>
+                </select>
+            </div>
+            <div class="form-group full-width">
+                <label for="address"><i class="fas fa-map-marker-alt"></i> العنوان الكامل</label>
+                <input type="text" id="address" value="شارع الستين، صنعاء، اليمن">
+            </div>
+            <div class="form-group full-width">
+                <label for="bio"><i class="fas fa-pencil-alt"></i> نبذة شخصية</label>
+                <textarea id="bio" rows="3" placeholder="اكتب نبذة مختصرة عن نفسك..."></textarea>
+            </div>
+        </div>
+
+        <div class="password-section">
+            <h3 class="section-subtitle">
+                <i class="fas fa-lock"></i>
+                تغيير كلمة المرور
+            </h3>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="currentPassword"><i class="fas fa-key"></i> كلمة المرور الحالية</label>
+                    <div class="password-input-group">
+                        <input type="password" id="currentPassword" placeholder="أدخل كلمة المرور الحالية">
+                        <button type="button" class="toggle-password" onclick="togglePassword('currentPassword')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="newPassword"><i class="fas fa-unlock-alt"></i> كلمة المرور الجديدة</label>
+                    <div class="password-input-group">
+                        <input type="password" id="newPassword" placeholder="أدخل كلمة المرور الجديدة">
+                        <button type="button" class="toggle-password" onclick="togglePassword('newPassword')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword"><i class="fas fa-check-circle"></i> تأكيد كلمة المرور</label>
+                    <div class="password-input-group">
+                        <input type="password" id="confirmPassword" placeholder="أعد إدخال كلمة المرور الجديدة">
+                        <button type="button" class="toggle-password" onclick="togglePassword('confirmPassword')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="password-strength" id="passwordStrength">
+                <div class="strength-bar">
+                    <div class="strength-fill"></div>
+                </div>
+                <div class="strength-text"><i class="fas fa-shield-alt"></i> قوة كلمة المرور: ضعيفة</div>
+            </div>
+        </div>
+
+        <!-- <div class="notification-section">
+            <h3 class="section-subtitle">
+                <i class="fas fa-bell"></i>
+                إعدادات الإشعارات
+            </h3>
+            <div class="notification-options">
+                <div class="notification-item">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="emailNotifications" checked>
+                        <span class="checkmark"></span>
+                        <i class="fas fa-envelope-open-text"></i> إشعارات البريد الإلكتروني
+                    </label>
+                    <p class="notification-desc">تلقي إشعارات حول المهام الجديدة والتحديثات</p>
+                </div>
+                <div class="notification-item">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="smsNotifications">
+                        <span class="checkmark"></span>
+                        <i class="fas fa-sms"></i> إشعارات الرسائل النصية
+                    </label>
+                    <p class="notification-desc">تلقي رسائل نصية للمهام العاجلة</p>
+                </div>
+                <div class="notification-item">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="pushNotifications" checked>
+                        <span class="checkmark"></span>
+                        <i class="fas fa-mobile-alt"></i> الإشعارات الفورية
+                    </label>
+                    <p class="notification-desc">إشعارات فورية في المتصفح</p>
+                </div>
+                <div class="notification-item">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="marketingEmails">
+                        <span class="checkmark"></span>
+                        <i class="fas fa-bullhorn"></i> رسائل تسويقية
+                    </label>
+                    <p class="notification-desc">تلقي عروض وأخبار المنتجات الجديدة</p>
+                </div>
+            </div>
+        </div>-->
+
+        <button type="submit" class="save-changes-btn">
+            <i class="fas fa-save"></i>
+            حفظ التغييرات
+        </button>
+    </form>
+</div>
+</div>
+</div>
+
+
+
+
+
+   <!-- Footer -->
+    <footer class="footer">
+               <div class="copyright-content">
+                <div class="designer-info">
+                    <span class="designer-text">مصمم الموقع / صدام أحمد</span>
+                </div>          
+                <div class="icon-group4">
+                    <a href="https://www.facebook.com/s777967272" class="icon-btn4 icon-facebook" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://wa.me/967777967272" class="icon-btn4 icon-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="tel:+967777967272" class="icon-btn4 icon-phone">
+                        <i class="fa fa-phone"></i>
+                    </a>
+                    <a href="https://tecnotasxcatalog.netlify.app/" class="icon-btn4 icon-website" target="_blank">
+                        <i class="fas fa-globe"></i>
+                    </a>
+                </div>
+            </div>
+    </footer>
+	
+	
+	
+	
+<!-- أزرار الدردشة والذكاء الاصطناعي -->
+    <div class="chat-buttons-container">
+        <button class="ai-toggle-btn" id="aiToggle">
+            <span>اسأل الذكاء الصناعي</span>
+            <i class="fas fa-robot"></i>
+        </button>
+        
+        <button class="chat-toggle-btn" id="chatToggle">
+            <span>دردشة الفريق</span>
+            <i class="fas fa-comments"></i>
+            <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
+        </button>
+    </div>
+    
+    <!-- نافذة الدردشة -->
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header" id="chatHeader">
+            <div class="chat-title">
+                <span>دردشة ارشيف الثقة</span>
+                <span class="online-indicator"></span>
+            </div>
+            <div class="chat-controls">
+                <button class="mute-btn" id="muteBtn" title="تكتيم/إلغاء تكتيم الإشعارات">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+                <button id="minimizeBtn"><i class="fas fa-minus"></i></button>
+				<button><i class="fa-solid fa-window-restore"></i></button>
+                <button id="closeBtn"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        
+        <div class="chat-area" id="chatArea">
+            <!-- الرسائل ستضاف هنا via JavaScript -->
+            <div class="typing-indicator" id="typingIndicator">
+                <span></span>
+                <div class="typing-dots">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chat-input-area">
+            <input type="text" class="chat-input" id="chatInput" placeholder="اكتب رسالتك هنا...">
+            <button class="send-btn" id="sendBtn"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+        </div>
+    </div>
+
+    <!-- نافذة الذكاء الاصطناعي -->
+    <div class="ai-window" id="aiWindow">
+        <div class="ai-header" id="aiHeader">
+            <div class="ai-title">
+                <span>Trust.Ai</span>
+                <span class="online-indicator"></span>
+            </div>
+
+            <div class="ai-controls">
+                <button class="mute-btn" id="aiMuteBtn" title="تكتيم/إلغاء تكتيم الإشعارات">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+                <button id="aiMinimizeBtn"><i class="fas fa-minus"></i></button>
+				<button><i class="fa-solid fa-window-restore"></i></button>
+                <button id="aiCloseBtn"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        
+        <div class="ai-area" id="aiArea">
+            <!-- رسائل الذكاء الاصطناعي ستضاف هنا -->
+            <div class="ai-message message-incoming">
+                <div class="ai-avatar">G</div>
+                <div class="message-content">
+                    <div class="message-sender">Trust.Ai</div>
+                    <div class="message-text">يا حيا بالحبيب .. تفضل ، ما بنفسك تسأل ، و كيف اقدر اساعدك 😁</div>
+                    <div class="message-time">10:30 صباحاً</div>
+                </div>
+            </div>
+            
+            <div class="ai-typing-indicator" id="aiTypingIndicator">
+                <span>Trust.Ai يكتب</span>
+                <div class="typing-dots">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ai-input-area">
+            <input type="text" class="ai-input" id="aiInput" placeholder="اسأل الذكاء الاصطناعي...">
+            <button class="ai-send-btn" id="aiSendBtn"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+        </div>
+    </div>
+
+    <!-- إشعار الرسالة -->
+    <div class="message-notification" id="messageNotification">
+        <div class="notification-avatar" id="notificationAvatar">ف</div>
+        <div class="notification-content">
+            <span class="notification-sender" id="notificationSender">فاطمة</span>
+            <span id="notificationText">أرسلت رسالة جديدة</span>
+        </div>
+    </div>
+
+    <!-- عنصر الصوت -->
+    <div class="audio-container">
+        <audio id="notificationSound" preload="auto">
+            <source src="files/notification.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <script>
+        // Navigation Functions
+        function toggleMenu() {
+            const menu = document.getElementById('mainMenu');
+            menu.classList.toggle('active');
+        }
+
+        function showSection(sectionName) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('active'));
+            
+            // Remove active class from all nav buttons
+            const navBtns = document.querySelectorAll('.nav-btn');
+            navBtns.forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected section
+            document.getElementById(sectionName + '-section').classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+
+        // Products Functions
+        function filterProducts() {
+            const searchTerm = document.getElementById('searchProducts').value.toLowerCase();
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const sortFilter = document.getElementById('sortFilter').value;
+            
+            const productCards = document.querySelectorAll('.product-card');
+            const noResultsMsg = document.getElementById('noProductsFound');
+            let visibleCount = 0;
+            
+            // Convert NodeList to Array for sorting
+            let productsArray = Array.from(productCards);
+            
+            // Filter products
+            productsArray.forEach(card => {
+                const title = card.querySelector('.product-title').textContent.toLowerCase();
+                const description = card.querySelector('.product-description').textContent.toLowerCase();
+                const category = card.getAttribute('data-category');
+                
+                const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
+                const matchesCategory = !categoryFilter || category === categoryFilter;
+                
+                if (matchesSearch && matchesCategory) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Sort visible products
+            if (sortFilter && visibleCount > 0) {
+                const visibleProducts = productsArray.filter(card => card.style.display !== 'none');
+                const container = document.getElementById('productsGrid');
+                
+                visibleProducts.sort((a, b) => {
+                    switch (sortFilter) {
+                        case 'name':
+                            return a.getAttribute('data-name').localeCompare(b.getAttribute('data-name'), 'ar');
+                        case 'date':
+                            return new Date(b.getAttribute('data-date')) - new Date(a.getAttribute('data-date'));
+                        default:
+                            return 0;
+                    }
+                });
+                
+                // Re-append sorted products
+                visibleProducts.forEach(product => container.appendChild(product));
+            }
+            
+            // Show/hide no results message
+            if (visibleCount === 0) {
+                noResultsMsg.classList.remove('hidden');
+            } else {
+                noResultsMsg.classList.add('hidden');
+            }
+        }
+        
+        function clearFilters() {
+            document.getElementById('searchProducts').value = '';
+            document.getElementById('categoryFilter').value = '';
+            document.getElementById('sortFilter').value = 'date';
+            filterProducts();
+        }
+        
+        function viewProduct(productId) {
+            alert(`عرض تفاصيل المنتج رقم ${productId} (محاكاة)`);
+        }
+        
+        function editProduct(productId) {
+            alert(`تعديل المنتج رقم ${productId} (محاكاة)`);
+        }
+        
+        function deleteProduct(productId) {
+            if (confirm('هل تريد حذف هذا المنتج؟')) {
+                const productCard = document.querySelector(`[onclick*="viewProduct(${productId})"]`).closest('.product-card');
+                productCard.remove();
+                alert('تم حذف المنتج بنجاح!');
+                filterProducts(); // Refresh the view
+            }
+        }
+        
+        function shareProduct(productId, platform) {
+            const productCard = document.querySelector(`[onclick*="viewProduct(${productId})"]`).closest('.product-card');
+            const productName = productCard.querySelector('.product-title').textContent;
+            const productDesc = productCard.querySelector('.product-description').textContent;
+            const productUrl = `${window.location.origin}/product.html?id=${productId}`;
+            const message = `${productName} - ${productDesc.substring(0, 100)}...`;
+            
+            let shareUrl = '';
+            
+            switch(platform) {
+                case 'whatsapp':
+                    shareUrl = `https://wa.me/?text=${encodeURIComponent(message + '\n' + productUrl)}`;
+                    break;
+                case 'telegram':
+                    shareUrl = `https://t.me/share/url?url=${encodeURIComponent(productUrl)}&text=${encodeURIComponent(message)}`;
+                    break;
+                case 'twitter':
+                    shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}&url=${encodeURIComponent(productUrl)}`;
+                    break;
+            }
+            
+            if (shareUrl) {
+                window.open(shareUrl, '_blank');
+            }
+        }
+        
+        function copyProductLink(productId) {
+            const productUrl = `${window.location.origin}/product.html?id=${productId}`;
+            navigator.clipboard.writeText(productUrl).then(() => {
+                alert('تم نسخ رابط المنتج!');
+            }).catch(() => {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = productUrl;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                alert('تم نسخ رابط المنتج!');
+            });
+        }
+
+        // Tasks Functions
+        function addTodoItem() {
+            const todoInput = document.querySelector('.todo-input');
+            const todoText = todoInput.value.trim();
+            
+            if (todoText) {
+                const todoList = document.getElementById('todoList');
+                const newTodo = document.createElement('li');
+                newTodo.className = 'todo-item';
+                newTodo.innerHTML = `
+                    <span>${todoText}</span>
+                    <button class="remove-todo-btn" onclick="removeTodoItem(this)"><i class="fa-solid fa-check"></i></button>
+                `;
+                newTodo.onclick = function() { toggleTodo(this); };
+                
+                todoList.appendChild(newTodo);
+                todoInput.value = '';
+            }
+        }
+
+        function toggleTodo(element) {
+            if (event.target.classList.contains('remove-todo-btn')) {
+                return; // Don't toggle if clicking remove button
+            }
+            element.classList.toggle('done');
+        }
+
+        function removeTodoItem(button) {
+            button.parentElement.remove();
+        }
+
+        function startAdminTask(button) {
+            button.textContent = 'تم البدء';
+            button.style.background = 'var(--extra2-color)';
+            button.disabled = true;
+            
+            // Simulate notifying admin
+            alert('تم إشعار الإدارة ببدء المهمة');
+        }
+
+        // Notes Functions
+        function addNewNote() {
+            const title = prompt('عنوان الملاحظة:');
+            const content = prompt('محتوى الملاحظة:');
+            const category = prompt('فئة الملاحظة (أعمال، اجتماعات، تسويق، شخصي، أفكار، مالية):', 'أعمال');
+            
+            if (title && content) {
+                const notesGrid = document.getElementById('notesGrid');
+                const newNote = document.createElement('div');
+                const noteId = Date.now();
+                const categoryClass = getCategoryClass(category);
+                
+                newNote.className = 'note-card';
+                newNote.setAttribute('data-category', category);
+                newNote.onclick = function() { editNote(noteId); };
+                newNote.innerHTML = `
+                    <div class="note-header">
+                        <div class="note-title">${title}</div>
+                        <div class="note-category ${categoryClass}">${category}</div>
+                    </div>
+                    <div class="note-content">${content}</div>
+                    <div class="note-footer">
+                        <div class="note-date">${new Date().toLocaleDateString('ar-SA')}</div>
+                        <button class="delete-note-btn" onclick="deleteNote(${noteId}, event)">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+                
+                notesGrid.appendChild(newNote);
+            }
+        }
+
+        function getCategoryClass(category) {
+            const categoryMap = {
+                'أعمال': 'business',
+                'اجتماعات': 'meeting',
+                'تسويق': 'marketing',
+                'شخصي': 'personal',
+                'أفكار': 'ideas',
+                'مالية': 'finance'
+            };
+            return categoryMap[category] || 'business';
+        }
+
+        function editNote(noteId) {
+            if (event.target.classList.contains('delete-note-btn') || event.target.closest('.delete-note-btn')) {
+                return; // Don't edit if clicking delete button
+            }
+            
+            const noteCard = event.target.closest('.note-card');
+            const title = noteCard.querySelector('.note-title').textContent;
+            const content = noteCard.querySelector('.note-content').textContent;
+            const currentCategory = noteCard.getAttribute('data-category');
+            
+            const newTitle = prompt('تعديل العنوان:', title);
+            const newContent = prompt('تعديل المحتوى:', content);
+            const newCategory = prompt('تعديل الفئة:', currentCategory);
+            
+            if (newTitle && newContent) {
+                noteCard.querySelector('.note-title').textContent = newTitle;
+                noteCard.querySelector('.note-content').textContent = newContent;
+                noteCard.querySelector('.note-date').textContent = new Date().toLocaleDateString('ar-SA');
+                
+                if (newCategory && newCategory !== currentCategory) {
+                    noteCard.setAttribute('data-category', newCategory);
+                    const categoryElement = noteCard.querySelector('.note-category');
+                    categoryElement.textContent = newCategory;
+                    categoryElement.className = `note-category ${getCategoryClass(newCategory)}`;
+                }
+            }
+        }
+
+        function deleteNote(noteId, event) {
+            event.stopPropagation(); // Prevent triggering edit
+            if (confirm('هل تريد حذف هذه الملاحظة؟')) {
+                event.target.closest('.note-card').remove();
+            }
+        }
+
+        // Links Functions
+        function addNewLink() {
+            const name = prompt('اسم الرابط:');
+            const url = prompt('عنوان الرابط (URL):');
+            const description = prompt('وصف الرابط (اختياري):');
+            const category = prompt('فئة الرابط (تعليمي، مالي، أعمال، تقني، تسويق):', 'أعمال');
+            
+            if (name && url) {
+                const linksList = document.getElementById('linksList');
+                const newLink = document.createElement('div');
+                const categoryClass = getLinkCategoryClass(category);
+                
+                newLink.className = 'link-item';
+                newLink.setAttribute('data-category', category);
+                newLink.innerHTML = `
+                    <div class="link-info">
+                        <div class="link-header">
+                            <h4>${name}</h4>
+                            <span class="link-category ${categoryClass}">${category}</span>
+                        </div>
+                        <a href="${url}" class="link-url" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                            ${url}
+                        </a>
+                        ${description ? `<div class="link-description">${description}</div>` : ''}
+                    </div>
+                    <div class="link-actions">
+                        <button class="copy-link-btn" onclick="copyLink('${url}')">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                        <button class="delete-link-btn" onclick="deleteLink(this)">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+                
+                linksList.appendChild(newLink);
+            }
+        }
+
+        function getLinkCategoryClass(category) {
+            const categoryMap = {
+                'تعليمي': 'educational',
+                'مالي': 'financial',
+                'أعمال': 'business',
+                'تقني': 'technical',
+                'تسويق': 'marketing'
+            };
+            return categoryMap[category] || 'business';
+        }
+
+        function copyLink(url) {
+            navigator.clipboard.writeText(url).then(() => {
+                alert('تم نسخ الرابط!');
+            }).catch(() => {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = url;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                alert('تم نسخ الرابط!');
+            });
+        }
+
+        function deleteLink(button) {
+            if (confirm('هل تريد حذف هذا الرابط؟')) {
+                button.closest('.link-item').remove();
+            }
+        }
+
+        // Account Functions
+        function uploadAvatar() {
+            // Simulate file upload
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        // Update avatar images
+                        document.querySelector('.current-avatar').src = e.target.result;
+                        document.querySelector('.profile-avatar').src = e.target.result;
+                        alert('تم تحديث الصورة الشخصية بنجاح!');
+                    };
+                    reader.readAsDataURL(file);
+                }
+            };
+            input.click();
+        }
+
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const button = input.nextElementSibling;
+            const icon = button.querySelector('i');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.className = 'fas fa-eye-slash';
+            } else {
+                input.type = 'password';
+                icon.className = 'fas fa-eye';
+            }
+        }
+
+        function checkPasswordStrength(password) {
+            const strengthBar = document.querySelector('.strength-fill');
+            const strengthText = document.querySelector('.strength-text');
+            
+            let strength = 0;
+            let strengthLabel = 'ضعيفة';
+            
+            // Check password criteria
+            if (password.length >= 8) strength++;
+            if (/[a-z]/.test(password)) strength++;
+            if (/[A-Z]/.test(password)) strength++;
+            if (/[0-9]/.test(password)) strength++;
+            if (/[^A-Za-z0-9]/.test(password)) strength++;
+            
+            // Update strength display
+            strengthBar.className = 'strength-fill';
+            
+            switch (strength) {
+                case 0:
+                case 1:
+                    strengthBar.classList.add('weak');
+                    strengthLabel = 'ضعيفة';
+                    break;
+                case 2:
+                    strengthBar.classList.add('medium');
+                    strengthLabel = 'متوسطة';
+                    break;
+                case 3:
+                case 4:
+                    strengthBar.classList.add('strong');
+                    strengthLabel = 'قوية';
+                    break;
+                case 5:
+                    strengthBar.classList.add('very-strong');
+                    strengthLabel = 'قوية جداً';
+                    break;
+            }
+            
+            strengthText.textContent = `قوة كلمة المرور: ${strengthLabel}`;
+        }
+
+        function validatePasswordMatch() {
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (newPassword && confirmPassword && newPassword !== confirmPassword) {
+                alert('كلمات المرور غير متطابقة');
+                return false;
+            }
+            return true;
+        }
+
+        function saveAccountInfo(event) {
+            event.preventDefault();
+            
+            // Validate required fields
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            
+            if (!username || !email) {
+                alert('يرجى ملء الحقول المطلوبة');
+                return;
+            }
+            
+            // Validate password if changing
+            const currentPassword = document.getElementById('currentPassword').value;
+            const newPassword = document.getElementById('newPassword').value;
+            
+            if (newPassword) {
+                if (!currentPassword) {
+                    alert('يرجى إدخال كلمة المرور الحالية');
+                    return;
+                }
+                
+                if (!validatePasswordMatch()) {
+                    return;
+                }
+            }
+            
+            // Simulate saving account info
+            setTimeout(() => {
+                alert('تم حفظ معلومات الحساب بنجاح!');
+                
+                // Clear password fields
+                document.getElementById('currentPassword').value = '';
+                document.getElementById('newPassword').value = '';
+                document.getElementById('confirmPassword').value = '';
+                
+                // Reset password strength indicator
+                const strengthBar = document.querySelector('.strength-fill');
+                const strengthText = document.querySelector('.strength-text');
+                strengthBar.className = 'strength-fill weak';
+                strengthText.textContent = 'قوة كلمة المرور: ضعيفة';
+            }, 500);
+        }
+
+        // Enhanced profile functionality with Supabase
+        let currentUser = null;
+        let userStats = null;
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Check authentication
+            if (!window.authService.isLoggedIn()) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            // Initialize profile
+            await initializeProfile();
+            
+            // Load user data
+            await loadUserData();
+            
+            // Load user products
+            await loadUserProducts();
+            
+            // Load user suppliers
+            await loadUserSuppliers();
+            
+            // Load user tasks
+            await loadUserTasks();
+            
+            // Load user notes
+            await loadUserNotes();
+            
+            // Add event listeners for filters
+            document.getElementById('searchProducts').addEventListener('input', filterProducts);
+            document.getElementById('categoryFilter').addEventListener('change', filterProducts);
+            document.getElementById('sortFilter').addEventListener('change', filterProducts);
+            
+            // Add event listener for todo input
+            document.querySelector('.todo-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    addTodoItem();
+                }
+            });
+            
+            // Add event listeners for admin task buttons
+            document.querySelectorAll('.start-task-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    startAdminTask(this);
+                });
+            });
+        });
+
+        async function initializeProfile() {
+            // Set active section
+            showSection('products');
+            
+            // Request notification permission for chat
+            await window.chatService.requestNotificationPermission();
+        }
+
+        async function loadUserData() {
+            try {
+                currentUser = window.authService.getCurrentUser();
+                
+                // Load user statistics
+                const statsResult = await window.tasksService.getUserStats();
+                if (statsResult.success) {
+                    userStats = statsResult.stats;
+                    updateProfileStats(userStats);
+                }
+                
+                // Update profile display
+                updateProfileDisplay(currentUser);
+            } catch (error) {
+                console.error('Error loading user data:', error);
+            }
+        }
+
+        function updateProfileStats(stats) {
+            // Update profile stats display
+            const statsElements = {
+                'total-products': stats.totalProducts,
+                'total-suppliers': stats.totalSuppliers,
+                'total-tasks': stats.totalTasks,
+                'completed-tasks': stats.completedTasks,
+                'total-notes': stats.totalNotes
+            };
+
+            Object.entries(statsElements).forEach(([id, value]) => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.textContent = value;
+                }
+            });
+        }
+
+        function updateProfileDisplay(userData) {
+            // Update profile info
+            const profileElements = {
+                'profile-username': userData.username,
+                'profile-full-name': userData.full_name,
+                'profile-email': userData.email,
+                'profile-country': userData.country,
+                'profile-age': userData.age,
+                'profile-residence': userData.residence,
+                'profile-whatsapp': userData.whatsapp
+            };
+
+            Object.entries(profileElements).forEach(([id, value]) => {
+                const element = document.getElementById(id);
+                if (element && value) {
+                    element.textContent = value;
+                }
+            });
+            
+            // Update phone numbers
+            if (userData.phone_numbers && userData.phone_numbers.length > 0) {
+                const phoneNumbersList = document.getElementById('phone-numbers-list');
+                if (phoneNumbersList) {
+                    phoneNumbersList.innerHTML = '';
+                    userData.phone_numbers.forEach(phone => {
+                        const li = document.createElement('li');
+                        li.textContent = phone;
+                        phoneNumbersList.appendChild(li);
+                    });
+                }
+            }
+        }
+
+        async function loadUserProducts() {
+            try {
+                const result = await window.productsService.getProducts({ user: currentUser.id });
+                if (result.success) {
+                    renderUserProducts(result.products);
+                } else {
+                    console.error('Error loading user products:', result.error);
+                }
+            } catch (error) {
+                console.error('Error loading user products:', error);
+            }
+        }
+
+        function renderUserProducts(products) {
+            const productsList = document.getElementById('user-products-list');
+            if (!productsList) return;
+            
+            productsList.innerHTML = '';
+            
+            products.forEach(product => {
+                const productItem = document.createElement('div');
+                productItem.className = 'product-item';
+                productItem.innerHTML = `
+                    <div class="product-info">
+                        <h4>${product.name}</h4>
+                        <p>الفئة: ${product.categories?.name || 'غير محدد'}</p>
+                        <span class="status ${product.status === 'active' ? 'active' : 'inactive'}">${product.status === 'active' ? 'نشط' : 'غير نشط'}</span>
+                    </div>
+                    <div class="product-actions">
+                        <button onclick="editProduct('${product.id}')">تعديل</button>
+                        <button onclick="deleteProduct('${product.id}')">حذف</button>
+                    </div>
+                `;
+                productsList.appendChild(productItem);
+            });
+        }
+
+        async function loadUserSuppliers() {
+            try {
+                const result = await window.suppliersService.getSuppliers({ user: currentUser.id });
+                if (result.success) {
+                    renderUserSuppliers(result.suppliers);
+                } else {
+                    console.error('Error loading user suppliers:', result.error);
+                }
+            } catch (error) {
+                console.error('Error loading user suppliers:', error);
+            }
+        }
+
+        function renderUserSuppliers(suppliers) {
+            const suppliersList = document.getElementById('user-suppliers-list');
+            if (!suppliersList) return;
+            
+            suppliersList.innerHTML = '';
+            
+            suppliers.forEach(supplier => {
+                const supplierItem = document.createElement('div');
+                supplierItem.className = 'supplier-item';
+                supplierItem.innerHTML = `
+                    <div class="supplier-info">
+                        <h4>${supplier.name}</h4>
+                        <p>البلد: ${supplier.country || 'غير محدد'}</p>
+                        <p>المجال: ${supplier.industry || 'غير محدد'}</p>
+                    </div>
+                    <div class="supplier-actions">
+                        <button onclick="editSupplier('${supplier.id}')">تعديل</button>
+                        <button onclick="deleteSupplier('${supplier.id}')">حذف</button>
+                    </div>
+                `;
+                suppliersList.appendChild(supplierItem);
+            });
+        }
+
+        async function loadUserTasks() {
+            try {
+                const result = await window.tasksService.getTasks();
+                if (result.success) {
+                    renderUserTasks(result.tasks);
+                } else {
+                    console.error('Error loading user tasks:', result.error);
+                }
+            } catch (error) {
+                console.error('Error loading user tasks:', error);
+            }
+        }
+
+        function renderUserTasks(tasks) {
+            const tasksList = document.getElementById('user-tasks-list');
+            if (!tasksList) return;
+            
+            tasksList.innerHTML = '';
+            
+            tasks.forEach(task => {
+                const taskItem = document.createElement('div');
+                taskItem.className = 'task-item';
+                taskItem.innerHTML = `
+                    <div class="task-info">
+                        <h4>${task.title}</h4>
+                        <p>${task.description || 'لا يوجد وصف'}</p>
+                        <div class="task-meta">
+                            <span class="status ${task.status === 'completed' ? 'completed' : 'pending'}">${task.status === 'completed' ? 'مكتملة' : 'قيد التنفيذ'}</span>
+                            <span class="priority ${task.priority === 'high' ? 'high' : task.priority === 'medium' ? 'medium' : 'low'}">${task.priority === 'high' ? 'عالية' : task.priority === 'medium' ? 'متوسطة' : 'منخفضة'}</span>
+                        </div>
+                    </div>
+                    <div class="task-actions">
+                        <button onclick="editTask('${task.id}')">تعديل</button>
+                        <button onclick="deleteTask('${task.id}')">حذف</button>
+                    </div>
+                `;
+                tasksList.appendChild(taskItem);
+            });
+        }
+
+        async function loadUserNotes() {
+            try {
+                const result = await window.tasksService.getNotes();
+                if (result.success) {
+                    renderUserNotes(result.notes);
+                } else {
+                    console.error('Error loading user notes:', result.error);
+                }
+            } catch (error) {
+                console.error('Error loading user notes:', error);
+            }
+        }
+
+        function renderUserNotes(notes) {
+            const notesList = document.getElementById('user-notes-list');
+            if (!notesList) return;
+            
+            notesList.innerHTML = '';
+            
+            notes.forEach(note => {
+                const noteItem = document.createElement('div');
+                noteItem.className = 'note-item';
+                noteItem.innerHTML = `
+                    <div class="note-info">
+                        <h4>${note.title}</h4>
+                        <p>${note.content}</p>
+                        <span class="category">${note.category || 'عام'}</span>
+                    </div>
+                    <div class="note-actions">
+                        <button onclick="editNote('${note.id}')">تعديل</button>
+                        <button onclick="deleteNote('${note.id}')">حذف</button>
+                    </div>
+                `;
+                notesList.appendChild(noteItem);
+            });
+        }
+    </script>
+	
+	<!-- Include Supabase and services -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+    <script src="js/auth-service.js"></script>
+    <script src="js/products-service.js"></script>
+    <script src="js/suppliers-service.js"></script>
+    <script src="js/tasks-service.js"></script>
+    <script src="js/chat-service.js"></script>
+    
+	<!--  Javascript -->
+	 <script src="js/nav.js"></script>
+    <script src="js/chat.js"></script>
+	<script src="js/theme.js"></script>
+</body>
+	<script src="js/sup-mune.js"></script>
+	<script src="js/products-board-mune.js"></script>
+	<script src="js/profile-logic.js"></script>
+</body>
+</html>

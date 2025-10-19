@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اضافة منتج جديد</title>
+	
+	  <!-- Google fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&family=Noto+Naskh+Arabic:wght@400..700&family=Noto+Sans+Arabic:wght@100..900&family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400..700&display=swap" rel="stylesheet">
+    
+	
+	
+	 <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	
+	<!-- css Stylesheet -->
+   <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/add-product.css">
+
+    <style>
+      
+    </style>
+</head>
+ <body class="theme1">  
+  <script>
+    // Early theme bootstrap to prevent theme flash on refresh
+    (function(){
+      try{
+        var savedTheme = localStorage.getItem('selectedTheme');
+        if(savedTheme){ document.body.className = savedTheme; }
+      }catch(e){}
+    })();
+  </script>
+  <!-- زر تغيير الثيم -->
+    <button class="change-theme" id="theme-toggle">
+     <i class="fa-solid fa-palette"></i>
+    </button>
+   
+   
+     <!-- Header -->  
+    <header class="header" id="header">
+    <a href="dashboard.html" class="logo-container">
+        <div class="logo"> </div>
+        <div class="logo-text">أرشيف الثقة التجارية</div>
+    </a>
+    <button class="nav-toggle"><i class="fas fa-align-left"></i></button>
+    <nav class="main-menu">
+        <a href="dashboard.html" class="menu-item"><i class="fas fa-home"></i> الرئيسية</a>
+		 <a href="products-board.html" class="menu-item"><i class="fa-solid fa-cart-plus"></i> المنتجات</a>
+        <a href="suppliers.html" class="menu-item "><i class="fas fa-truck"></i> الموردين</a>
+        <a href="profile.html" class="menu-item"><i class="fas fa-user"></i> ملفي الشخصي</a>
+        <a href="add-product.html" class="menu-item active"><i class="fas fa-plus-circle"></i> إضافة منتج</a>
+        <a href="add-supplier.html" class="menu-item "><i class="fas fa-truck-loading "></i> اضافة مورد</a>
+    </nav>
+</header>
+
+    <!-- Main Content -->
+    <div class="product-container">
+        <div class="product-card">
+            <div class="product-header">
+                <h1 class="product-title"><i class="fas fa-cube"></i> إضافة منتج جديد</h1>
+            </div>
+            
+            <div class="product-body">
+                <form id="productForm" class="product-form">
+                    <!-- Basic Information Section -->
+                    <div class="product-section">
+                        <h2 class="product-section-title"><i class="fas fa-info-circle"></i> المعلومات الأساسية</h2>
+                        
+                        <div class="product-form-grid">
+                            <div class="product-form-group">
+                                <label class="product-form-label" for="productName">
+                                    <i class="fas fa-tag"></i> اسم المنتج *
+                                </label>
+                                <input type="text" id="productName" class="product-form-input" placeholder="أدخل اسم المنتج">
+                            </div>
+                            
+                            <!-- تمت إزالة حقل كود المنتج؛ سيتم توليده آلياً عند الحفظ -->
+                            
+                            <div class="product-form-group">
+                                <label class="product-form-label" for="productCategory">
+                                    <i class="fas fa-folder"></i> الفئة الرئيسية
+                                </label>
+                                <input list="productCategoryList" id="productCategory" class="product-form-input" placeholder="اختر أو أدخل الفئة">
+                                <datalist id="productCategoryList">
+                                    <option value="إلكترونيات">
+                                    <option value="ملابس">
+                                    <option value="أثاث">
+                                    <option value="مواد غذائية">
+                                    <option value="رياضة">
+                                </datalist>
+                            </div>
+                            
+                            <div class="product-form-group">
+                                <label class="product-form-label" for="productSubCategory">
+                                    <i class="fas fa-folder-open"></i> الفئة الفرعية
+                                </label>
+                                <input list="productSubCategoryList" id="productSubCategory" class="product-form-input" placeholder="اختر أو أدخل الفئة الفرعية">
+                                <datalist id="productSubCategoryList">
+                                    <option value="هواتف ذكية">
+                                    <option value="أجهزة كمبيوتر">
+                                    <option value="إكسسوارات">
+                                </datalist>
+                            </div>
+                            
+                            <div class="product-form-group">
+                                <label class="product-form-label" for="productBrand">
+                                    <i class="fas fa-copyright"></i> العلامة التجارية
+                                </label>
+                                <input type="text" id="productBrand" class="product-form-input" placeholder="أدخل العلامة التجارية">
+                            </div>
+                            
+                            <div class="product-form-group">
+                                <label class="product-form-label" for="productModel">
+                                    <i class="fas fa-cube"></i> الموديل
+                                </label>
+                                <input type="text" id="productModel" class="product-form-input" placeholder="أدخل موديل المنتج">
+                            </div>
+                        </div>
+                        
+                        <div class="product-form-group full-width">
+                            <label class="product-form-label" for="productDescription">
+                                <i class="fas fa-align-left"></i> وصف المنتج *
+                            </label>
+                            <textarea id="productDescription" class="product-form-textarea" rows="4" placeholder="أدخل وصف مفصل للمنتج"></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- Details Section -->
+                    <div class="product-section">
+                        <h2 class="product-section-title"><i class="fas fa-list-alt"></i> المواصفات والتفاصيل</h2>
+                        
+                        <div class="product-form-group full-width">
+                            <label class="product-form-label">
+                                <i class="fas fa-tasks"></i> استخدامات المنتج
+                            </label>
+                            <div class="product-dynamic-container" id="usagesContainer">
+                                <div class="product-field-group">
+                                    <input type="text" id="usageInput" class="product-form-input product-field-input" placeholder="أضف استخدام جديد">
+                                    <button type="button" class="product-add-btn" onclick="addUsage()">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-details-grid">
+                            <div class="product-form-group">
+                                <label class="product-form-label" for="productWeight">
+                                    <i class="fas fa-weight-hanging"></i> الوزن (كجم)
+                                </label>
+                                <input type="text" id="productWeight" class="product-form-input" placeholder="مثال: 1.5، 2.0، 3.2">
+                            </div>
+                            
+                            <div class="product-form-group">
+                                <label class="product-form-label">
+                                    <i class="fas fa-ruler-combined"></i> الأبعاد (سم)
+                                </label>
+                                <div class="product-form-grid" style="grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                                    <input type="number" id="productLength" class="product-form-input" placeholder="الطول (سم)" step="0.01" min="0">
+                                    <input type="number" id="productWidth" class="product-form-input" placeholder="العرض (سم)" step="0.01" min="0">
+                                    <input type="number" id="productHeight" class="product-form-input" placeholder="الارتفاع (سم)" step="0.01" min="0">
+                                </div>
+                            </div>
+                            
+                            <div class="product-form-group">
+                                <label class="product-form-label" for="productColor">
+                                    <i class="fas fa-palette"></i> الألوان
+                                </label>
+                                <input type="text" id="productColor" class="product-form-input" placeholder="مثال: أحمر، أزرق، أخضر">
+                            </div>
+                            
+                            <div class="product-form-group">
+                                <label class="product-form-label" for="productMaterial">
+                                    <i class="fas fa-cube"></i> المواد
+                                </label>
+                                <input type="text" id="productMaterial" class="product-form-input" placeholder="مواد التصنيع">
+                            </div>
+                            
+                            <div class="product-form-group">
+                                <label class="product-form-label" for="productWarranty">
+                                    <i class="fas fa-shield-alt"></i> الضمان
+                                </label>
+                                <input type="text" id="productWarranty" class="product-form-input" placeholder="مدة الضمان">
+                            </div>
+                            
+                            <div class="product-form-group">
+                                <label class="product-form-label" for="productOrigin">
+                                    <i class="fas fa-globe"></i> بلد المنشأ
+                                </label>
+                                <input type="text" id="productOrigin" class="product-form-input" placeholder="بلد التصنيع">
+                            </div>
+                        </div>
+                        
+                        <div class="product-form-group full-width">
+                            <label class="product-form-label">
+                                <i class="fas fa-users"></i> العملاء المستهدفين للمنتج
+                            </label>
+                            <div class="product-checkbox-group">
+                                <label class="product-checkbox-label" for="audienceAll">
+                                    <input type="checkbox" id="audienceAll" name="targetAudience" class="product-checkbox-input" value="all">
+                                    الجميع
+                                </label>
+                                <label class="product-checkbox-label" for="audienceWomen">
+                                    <input type="checkbox" id="audienceWomen" name="targetAudience" class="product-checkbox-input" value="women">
+                                    نساء
+                                </label>
+                                <label class="product-checkbox-label" for="audienceMen">
+                                    <input type="checkbox" id="audienceMen" name="targetAudience" class="product-checkbox-input" value="men">
+                                    رجال
+                                </label>
+                                <label class="product-checkbox-label" for="audienceChildren">
+                                    <input type="checkbox" id="audienceChildren" name="targetAudience" class="product-checkbox-input" value="children">
+                                    أطفال
+                                </label>
+                                <label class="product-checkbox-label" for="audienceElderly">
+                                    <input type="checkbox" id="audienceElderly" name="targetAudience" class="product-checkbox-input" value="elderly">
+                                    مسنين
+                                </label>
+                            </div>
+                            <input type="text" id="customTargetAudience" class="product-form-input" placeholder="أو أدخل فئة أخرى" style="margin-top: 10px;">
+                        </div>
+                        
+                        <div class="product-form-group full-width">
+                            <label class="product-form-label">
+                                <i class="fas fa-list"></i> الميزات الإضافية
+                            </label>
+                            <div class="product-dynamic-container" id="featuresContainer">
+                                <div class="product-field-group">
+                                    <input type="text" id="featureInput" class="product-form-input product-field-input" placeholder="أضف ميزة جديدة">
+                                    <button type="button" class="product-add-btn" onclick="addFeature()">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-form-group full-width">
+                            <label class="product-form-label">
+                                <i class="fas fa-exclamation-triangle"></i> سلبيات المنتج
+                            </label>
+                            <div class="product-dynamic-container" id="negativePointsContainer">
+                                <div class="product-field-group">
+                                    <input type="text" id="negativeInput" class="product-form-input product-field-input" placeholder="أضف سلبية جديدة">
+                                    <button type="button" class="product-add-btn" onclick="addNegativePoint()">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Inventory Section -->
+                    <div class="product-section">
+                        <h2 class="product-section-title"><i class="fas fa-boxes"></i> إدارة المخزون</h2>
+                        
+                        <div class="product-form-grid">
+                            <div class="product-form-group">
+                                <label class="product-form-label" for="productOrderableQuantity">
+                                    <i class="fas fa-cubes"></i> الكمية الممكن طلبها
+                                </label>
+                                <input type="number" id="productOrderableQuantity" class="product-form-input" placeholder="0" min="0">
+                            </div>
+                        </div>
+                        
+                        <div class="product-form-group full-width">
+                            <label class="product-form-label">
+                                <i class="fas fa-box-open"></i> حالة المنتج
+                            </label>
+                            <div class="product-radio-group">
+                                <label class="product-radio-label">
+                                    <input type="radio" name="productStatus" class="product-radio-input" value="available" checked>
+                                    <i class="fas fa-check-circle"></i> متوفر
+                                </label>
+                                <label class="product-radio-label">
+                                    <input type="radio" name="productStatus" class="product-radio-input" value="outofstock">
+                                    <i class="fas fa-times-circle"></i> غير متوفر
+                                </label>
+                                <label class="product-radio-label">
+                                    <input type="radio" name="productStatus" class="product-radio-input" value="discontinued">
+                                    <i class="fas fa-ban"></i> متوقف
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Pricing Section -->
+                    <div class="product-section">
+                        <h2 class="product-section-title"><i class="fas fa-money-bill-wave"></i> التسعير</h2>
+                        
+                        <div class="product-form-grid">
+                            <div class="product-form-group">
+                                <label class="product-form-label" for="productCost">
+                                    <i class="fas fa-money-bill"></i> سعر التكلفة *
+                                </label>
+                                <div class="product-price-input">
+                                    <span class="product-currency">$</span>
+                                    <input type="number" id="productCost" class="product-form-input" placeholder="0.00" step="0.01" min="0">
+                                </div>
+                            </div>
+                            
+                            <div class="product-form-group">
+                                <label class="product-form-label" for="productPrice">
+                                    <i class="fas fa-dollar-sign" id="selling-price"></i> سعر البيع *
+                                </label>
+                                <div class="product-price-input">
+                                    <span class="product-currency">$</span>
+                                    <input type="number" id="productPrice" class="product-form-input" placeholder="0.00" step="0.01" min="0">
+                                </div>
+                            </div>
+                            
+                            <div class="product-form-group">
+                                <label class="product-form-label" for="productDiscount">
+                                    <i class="fas fa-percent"></i> الخصم
+                                </label>
+                                <div class="product-price-input">
+                                    <span class="product-currency">%</span>
+                                    <input type="number" id="productDiscount" class="product-form-input" placeholder="0" step="1" min="0" max="100">
+                                </div>
+                            </div>
+                            
+                            <div class="product-form-group">
+                                <label class="product-form-label" for="productTax">
+                                    <i class="fas fa-receipt"></i> الضريبة
+                                </label>
+                                <div class="product-price-input">
+                                    <span class="product-currency">%</span>
+                                    <input type="number" id="productTax" class="product-form-input" placeholder="0" step="1" min="0" max="100">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Images Section -->
+                    <div class="product-section">
+                        <h2 class="product-section-title"><i class="fas fa-images"></i> صور المنتج</h2>
+                        
+                        <div class="product-form-group full-width">
+                            <div class="product-file-container">
+                                <input type="file" id="productImages" class="product-file-input" multiple accept="image/*">
+                                <label for="productImages" class="product-file-label">
+                                    <i class="fas fa-cloud-upload-alt" style="font-size: 32px; margin-bottom: 10px;"></i>
+                                    <p>اضغط هنا لرفع الصور أو اسحبها إلى هنا</p>
+                                    <p style="font-size: 12px; color: #4c5457;">يدعم: JPG, PNG, WebP (حد أقصى 5MB لكل صورة)</p>
+                                </label>
+                            </div>
+                            <div class="file-info">
+                                <i class="fas fa-info-circle"></i> <span id="fileCount">0</span> ملف/ملفات محدد
+                            </div>
+                        </div>
+                        
+                        <div class="product-image-previews" id="imagePreviews">
+                            <!-- Image previews will be added here -->
+                        </div>
+                        
+                        <div class="product-form-group full-width" style="margin-top: 20px;">
+                            <label class="product-form-label" for="productVideo">
+                                <i class="fas fa-video"></i> رابط فيديو للمنتج (YouTube)
+                            </label>
+                            <input type="url" id="productVideo" class="product-form-input" placeholder="https://www.youtube.com/watch?v=...">
+                        </div>
+                        
+                        <!-- كاتلوج المنتج: ملف PDF واحد مع زر حذف -->
+                        <div class="product-form-group full-width" style="margin-top: 20px;">
+                            <label class="product-form-label" for="productCatalogPdf">
+                                <i class="fas fa-file-pdf"></i> كاتلوج المنتج (PDF واحد)
+                            </label>
+                            <div class="product-file-container" style="position: relative;">
+                                <input type="file" id="productCatalogPdf" class="product-file-input" accept=".pdf">
+                                <label for="productCatalogPdf" class="product-file-label" style="min-height: auto; padding: 10px;">
+                                    <i class="fas fa-upload" style="font-size: 24px; margin-bottom: 6px;"></i>
+                                    <span>اضغط هنا لرفع ملف الكاتلوج PDF</span>
+                                    <small style="margin-top:6px;color:#4c5457;">يسمح بملف PDF واحد فقط (حد أقصى 10MB)</small>
+                                </label>
+                                <button type="button" id="removeCatalogBtn" class="product-image-remove" style="display:none; position:absolute; top:8px; left:8px;">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            <div class="file-info" id="catalogInfo" style="display:none;">
+                                <i class="fas fa-info-circle"></i>
+                                <span id="catalogName"></span>
+                                <small id="catalogSize" style="margin-right:6px;color:#6b7280"></small>
+                            </div>
+                        </div>
+
+                        <!-- ملفات وفواتير المنتج: متعددة -->
+                        <div class="product-form-group full-width" style="margin-top: 20px;">
+                            <label class="product-form-label" for="productExtraFiles">
+                                <i class="fas fa-file"></i> ملفات و فواتير المنتج
+                            </label>
+                            <div class="product-file-container">
+                                <input type="file" id="productExtraFiles" class="product-file-input" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.zip,.rar,image/*">
+                                <label for="productExtraFiles" class="product-file-label" style="min-height: auto; padding: 10px;">
+                                    <i class="fas fa-upload" style="font-size: 24px; margin-bottom: 6px;"></i>
+                                    <span>اضغط هنا لرفع الملفات أو اسحبها إلى هنا</span>
+                                    <small style="margin-top:6px;color:#4c5457;">يدعم: PDF, صور, Word, Excel, Zip (حد أقصى 10MB لكل ملف)</small>
+                                </label>
+                            </div>
+                            <div class="file-info">
+                                <i class="fas fa-info-circle"></i> <span id="extraFilesCount">0</span> ملف/ملفات محددة
+                            </div>
+                            <ul id="extraFilesList" style="margin-top:10px; list-style: none; padding: 0; color: var(--text2-color);"></ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Suppliers Section -->
+                    <div class="product-section">
+                        <h2 class="product-section-title"><i class="fas fa-truck"></i> الموردين</h2>
+                        
+                        <div class="product-suppliers-container" id="suppliersContainer">
+                            <div class="product-supplier-card">
+                                <div class="product-supplier-header">
+                                    <h3 class="product-supplier-title"><i class="fas fa-star"></i> المورد الرئيسي</h3>
+                                </div>
+                                
+                                <div class="product-form-grid">
+                                    <div class="product-form-group">
+                                        <label class="product-form-label">
+                                            <i class="fas fa-store"></i> اسم المورد
+                                        </label>
+                                        <select class="product-form-select" id="mainSupplierSelect" onchange="toggleCustomSupplier('main')">
+                                            <option value="">اختر من الموردين</option>
+                                          
+                                            <option value="custom">آخر اكتبه</option>
+                                        </select>
+                                        <input type="text" id="mainSupplierCustom" class="product-form-input" placeholder="أدخل اسم المورد الجديد" style="display: none; margin-top: 10px;">
+                                    </div>
+                                    
+                                    <div class="product-form-group">
+                                        <label class="product-form-label">
+                                            <i class="fas fa-link"></i> رابط المنتج
+                                        </label>
+                                        <input type="url" id="mainSupplierLink" class="product-form-input" placeholder="https://example.com/product">
+                                    </div>
+                                    
+                                    <div class="product-form-group">
+                                        <label class="product-form-label">
+                                            <i class="fas fa-file-pdf"></i> كاتلوج المنتج
+                                        </label>
+                                        <div class="product-file-container">
+                                            <input type="file" id="mainSupplierPdf" class="product-file-input" accept=".pdf">
+                                            <label for="mainSupplierPdf" class="product-file-label" style="min-height: auto; padding: 10px;">
+                                                <i class="fas fa-file-upload"></i> رفع ملف PDF
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h4 class="product-form-label"><i class="fas fa-money-bill"></i> الأسعار</h4>
+                                <div class="product-price-grid">
+                                    <div class="product-price-group">
+                                        <span class="product-price-label">سعر USD</span>
+                                        <div class="product-price-input">
+                                            <span class="product-currency">$</span>
+                                            <input type="number" id="supplierPriceUSD" class="product-form-input" placeholder="0.00" step="0.01" min="0">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="product-price-group">
+                                        <span class="product-price-label">سعر CNY</span>
+                                        <div class="product-price-input">
+                                            <span class="product-currency">¥</span>
+                                            <input type="number" id="supplierPriceCNY" class="product-form-input" placeholder="0.00" step="0.01" min="0">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="product-price-group">
+                                        <span class="product-price-label">سعر YER</span>
+                                        <div class="product-price-input">
+                                            <span class="product-currency">ر.ي</span>
+                                            <input type="number" id="supplierPriceYER" class="product-form-input" placeholder="0.00" step="0.01" min="0">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button type="button" class="product-add-btn" style="width: auto; padding: 10px 15px;" onclick="addSupplier()">
+                            <i class="fas fa-plus"></i> إضافة مورد آخر
+                        </button>
+                    </div>
+                    
+                    <!-- Additional Information -->
+                    <div class="product-section">
+                        <h2 class="product-section-title"><i class="fas fa-plus-circle"></i> معلومات إضافية</h2>
+                        
+                        <div class="product-form-group full-width">
+                            <label class="product-form-label">
+                                <i class="fas fa-tags"></i> الكلمات المفتاحية
+                            </label>
+                            <div class="product-dynamic-container" id="keywordsContainer">
+                                <div class="product-field-group">
+                                    <input type="text" id="keywordInput" class="product-form-input product-field-input" placeholder="أضف كلمة مفتاحية">
+                                    <button type="button" class="product-add-btn" onclick="addKeyword()">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-form-group full-width">
+                            <label class="product-form-label">
+                                <i class="fas fa-eye"></i> إعدادات الرؤية
+                            </label>
+                            <div class="product-radio-group">
+                                <label class="product-radio-label">
+                                    <input type="radio" name="productVisibility" class="product-radio-input" value="public" checked>
+                                    <i class="fas fa-globe"></i> الجميع (يظهر لكل اعضاء القروب)
+									
+                                </label>
+                                <label class="product-radio-label">
+                                    <input type="radio" name="productVisibility" class="product-radio-input" value="private">
+                                    <i class="fas fa-lock"></i> خاص (يظهر لي فقط)
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="product-form-group full-width">
+                            <label class="product-form-label" for="productNotes">
+                                <i class="fas fa-sticky-note"></i> ملاحظات إضافية
+                            </label>
+                            <textarea id="productNotes" class="product-form-textarea" rows="3" placeholder="ملاحظات إضافية حول المنتج"></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- Form Actions -->
+                    <div class="product-form-actions">
+                        <button type="submit" class="product-submit-btn" id="save-product-btn">
+                            <i class="fas fa-save"></i> حفظ المنتج
+                        </button>
+                        <button type="reset" class="product-reset-btn">
+                            <i class="fas fa-redo"></i> مسح النموذج
+                        </button>
+                        <a href="dashboard.html" class="product-cancel-btn">
+                            <i class="fas fa-times"></i> إلغاء
+                        </a>
+						</div>
+                        <div id="form-message" class="form-message hidden" style="margin-top:10px;"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+	
+	
+	 <!-- Footer -->
+    <footer class="footer">
+               <div class="copyright-content">
+                <div class="designer-info">
+                    <span class="designer-text">مصمم الموقع / صدام أحمد</span>
+                </div>          
+                <div class="icon-group4">
+                    <a href="https://www.facebook.com/s777967272" class="icon-btn4 icon-facebook" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://wa.me/967777967272" class="icon-btn4 icon-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="tel:+967777967272" class="icon-btn4 icon-phone">
+                        <i class="fa fa-phone"></i>
+                    </a>
+                    <a href="https://tecnotasxcatalog.netlify.app/" class="icon-btn4 icon-website" target="_blank">
+                        <i class="fas fa-globe"></i>
+                    </a>
+                </div>
+            </div>
+    </footer>
+
+    <!-- أزرار الدردشة والذكاء الاصطناعي -->
+    <div class="chat-buttons-container">
+        <button class="ai-toggle-btn" id="aiToggle">
+            <span>اسأل الذكاء الصناعي</span>
+            <i class="fas fa-robot"></i>
+        </button>
+        
+        <button class="chat-toggle-btn" id="chatToggle">
+            <span>دردشة الفريق</span>
+            <i class="fas fa-comments"></i>
+            <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
+        </button>
+    </div>
+    
+    <!-- نافذة الدردشة -->
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header" id="chatHeader">
+            <div class="chat-title">
+                <span>دردشة ارشيف الثقة</span>
+                <span class="online-indicator"></span>
+            </div>
+            <div class="chat-controls">
+                <button class="mute-btn" id="muteBtn" title="تكتيم/إلغاء تكتيم الإشعارات">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+                <button id="minimizeBtn"><i class="fas fa-minus"></i></button>
+                <button><i class="fa-solid fa-window-restore"></i></button>
+                <button id="closeBtn"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        
+        <div class="chat-area" id="chatArea">
+            <!-- الرسائل ستضاف هنا via JavaScript -->
+            <div class="typing-indicator" id="typingIndicator">
+                <span></span>
+                <div class="typing-dots">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chat-input-area">
+            <input type="text" class="chat-input" id="chatInput" placeholder="اكتب رسالتك هنا...">
+            <button class="send-btn" id="sendBtn"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+        </div>
+    </div>
+
+    <!-- نافذة الذكاء الاصطناعي -->
+    <div class="ai-window" id="aiWindow">
+        <div class="ai-header" id="aiHeader">
+            <div class="ai-title">
+                <span>Trust.Ai</span>
+                <span class="online-indicator"></span>
+            </div>
+            
+            <div class="ai-controls">
+                <button class="mute-btn" id="aiMuteBtn" title="تكتيم/إلغاء تكتيم الإشعارات">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+                <button id="aiMinimizeBtn"><i class="fas fa-minus"></i></button>
+                <button><i class="fa-solid fa-window-restore"></i></button>
+                <button id="aiCloseBtn"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        
+        <div class="ai-area" id="aiArea">
+            <!-- رسائل الذكاء الاصطناعي ستضاف هنا -->
+            <div class="ai-message message-incoming">
+                <div class="ai-avatar">T</div>
+                <div class="message-content">
+                    <div class="message-sender">Trust.Ai</div>
+                    <div class="message-text">يا حيا بالحبيب .. تفضل ، ما بنفسك تسأل ، و كيف اقدر اساعدك 😁</div>
+                    <div class="message-time">10:30 صباحاً</div>
+                </div>
+            </div>
+            
+            <div class="ai-typing-indicator" id="aiTypingIndicator">
+                <span>Trust.Ai يكتب</span>
+                <div class="typing-dots">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ai-input-area">
+            <input type="text" class="ai-input" id="aiInput" placeholder="اسأل الذكاء الاصطناعي...">
+            <button class="ai-send-btn" id="aiSendBtn"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+        </div>
+    </div>
+
+    <!-- إشعار الرسالة -->
+    <div class="message-notification" id="messageNotification">
+        <div class="notification-avatar" id="notificationAvatar">ف</div>
+        <div class="notification-content">
+            <span class="notification-sender" id="notificationSender">فاطمة</span>
+            <span id="notificationText">أرسلت رسالة جديدة</span>
+        </div>
+    </div>
+
+    <!-- عنصر الصوت -->
+    <div class="audio-container">
+        <audio id="notificationSound" preload="auto">
+            <source src="files/notification.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <script>
+        // Image upload and preview functionality
+        const productImagesInput = document.getElementById('productImages');
+        const imagePreviews = document.getElementById('imagePreviews');
+        const fileCount = document.getElementById('fileCount');
+        
+        productImagesInput.addEventListener('change', function() {
+            imagePreviews.innerHTML = '';
+            const files = this.files;
+            fileCount.textContent = files.length;
+            
+            if (files.length > 0) {
+                for (let i = 0; i < files.length; i++) {
+                    const file = files[i];
+                    if (file.type.match('image.*')) {
+                        const reader = new FileReader();
+                        
+                        reader.onload = function(e) {
+                            const preview = document.createElement('div');
+                            preview.className = 'product-image-preview';
+                            preview.innerHTML = `
+                                <img src="${e.target.result}" alt="${file.name}">
+                                <button type="button" class="product-image-remove" onclick="removeImage(${i})">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            `;
+                            imagePreviews.appendChild(preview);
+                        }
+                        
+                        reader.readAsDataURL(file);
+                    }
+                }
+            }
+        });
+        
+        function removeImage(index) {
+            // Create a new DataTransfer object to manage files
+            const dt = new DataTransfer();
+            const files = productImagesInput.files;
+            
+            // Add all files except the one to remove
+            for (let i = 0; i < files.length; i++) {
+                if (i !== index) {
+                    dt.items.add(files[i]);
+                }
+            }
+            
+            // Update the file input
+            productImagesInput.files = dt.files;
+            
+            // Trigger the change event to update previews
+            const event = new Event('change');
+            productImagesInput.dispatchEvent(event);
+        }
+        
+        // Usage functionality
+        function addUsage() {
+            const usagesContainer = document.getElementById('usagesContainer');
+            const input = usagesContainer.querySelector('.product-field-input');
+            const usage = input.value.trim();
+            
+            if (usage) {
+                const usageElement = document.createElement('div');
+                usageElement.className = 'product-field-group';
+                usageElement.innerHTML = `
+                    <span style="flex: 1;">${usage}</span>
+                    <button type="button" class="product-remove-btn" onclick="removeUsage(this)">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                `;
+                
+                usagesContainer.insertBefore(usageElement, usagesContainer.firstChild);
+                input.value = '';
+            }
+        }
+        
+        function removeUsage(button) {
+            button.parentElement.remove();
+        }
+        
+        // Features functionality
+        function addFeature() {
+            const featuresContainer = document.getElementById('featuresContainer');
+            const input = featuresContainer.querySelector('.product-field-input');
+            const feature = input.value.trim();
+            
+            if (feature) {
+                const featureElement = document.createElement('div');
+                featureElement.className = 'product-field-group';
+                featureElement.innerHTML = `
+                    <span style="flex: 1;">${feature}</span>
+                    <button type="button" class="product-remove-btn" onclick="removeFeature(this)">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                `;
+                
+                featuresContainer.insertBefore(featureElement, featuresContainer.firstChild);
+                input.value = '';
+            }
+        }
+        
+        function removeFeature(button) {
+            button.parentElement.remove();
+        }
+        
+        // Negative points functionality
+        function addNegativePoint() {
+            const negativePointsContainer = document.getElementById('negativePointsContainer');
+            const input = negativePointsContainer.querySelector('.product-field-input');
+            const negativePoint = input.value.trim();
+            
+            if (negativePoint) {
+                const negativePointElement = document.createElement('div');
+                negativePointElement.className = 'product-field-group';
+                negativePointElement.innerHTML = `
+                    <span style="flex: 1;">${negativePoint}</span>
+                    <button type="button" class="product-remove-btn" onclick="removeNegativePoint(this)">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                `;
+                
+                negativePointsContainer.insertBefore(negativePointElement, negativePointsContainer.firstChild);
+                input.value = '';
+            }
+        }
+        
+        function removeNegativePoint(button) {
+            button.parentElement.remove();
+        }
+        
+        // Keywords functionality
+        function addKeyword() {
+            const keywordsContainer = document.getElementById('keywordsContainer');
+            const input = keywordsContainer.querySelector('.product-field-input');
+            const keyword = input.value.trim();
+            
+            if (keyword) {
+                const keywordElement = document.createElement('div');
+                keywordElement.className = 'product-field-group';
+                keywordElement.innerHTML = `
+                    <span style="flex: 1;">${keyword}</span>
+                    <button type="button" class="product-remove-btn" onclick="removeKeyword(this)">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                `;
+                
+                keywordsContainer.insertBefore(keywordElement, keywordsContainer.firstChild);
+                input.value = '';
+            }
+        }
+        
+        function removeKeyword(button) {
+            button.parentElement.remove();
+        }
+        
+        // Custom supplier functionality
+        function toggleCustomSupplier(type) {
+            const selectElement = document.getElementById(type + 'SupplierSelect');
+            const customInput = document.getElementById(type + 'SupplierCustom');
+            
+            if (selectElement.value === 'custom') {
+                customInput.style.display = 'block';
+            } else {
+                customInput.style.display = 'none';
+            }
+        }
+        
+        // Suppliers functionality
+        function addSupplier() {
+            const suppliersContainer = document.getElementById('suppliersContainer');
+            const supplierCount = suppliersContainer.children.length + 1;
+            
+            const supplierElement = document.createElement('div');
+            supplierElement.className = 'product-supplier-card';
+            supplierElement.innerHTML = `
+                <div class="product-supplier-header">
+                    <h3 class="product-supplier-title"><i class="fas fa-truck"></i> مورد إضافي #${supplierCount}</h3>
+                    <button type="button" class="product-remove-btn" onclick="removeSupplier(this)">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="product-form-grid">
+                    <div class="product-form-group">
+                        <label class="product-form-label">
+                            <i class="fas fa-store"></i> اسم المورد
+                        </label>
+                        <select class="product-form-select" onchange="toggleCustomSupplier('additional${supplierCount}')">
+                            <option value="">اختر من الموردين</option>
+                            <option value="1">شركة التقنية الحديثة</option>
+                            <option value="2">مجموعة الهواتف الذكية</option>
+                            <option value="3">شركة الصوتيات المتقدمة</option>
+                            <option value="custom">آخر اكتبه</option>
+                        </select>
+                        <input type="text" id="additional${supplierCount}SupplierCustom" class="product-form-input" placeholder="أدخل اسم المورد الجديد" style="display: none; margin-top: 10px;">
+                    </div>
+                    
+                    <div class="product-form-group">
+                        <label class="product-form-label">
+                            <i class="fas fa-link"></i> رابط المنتج
+                        </label>
+                        <input type="url" class="product-form-input" placeholder="https://example.com/product">
+                    </div>
+                    
+                    <div class="product-form-group">
+                        <label class="product-form-label">
+                            <i class="fas fa-file-pdf"></i> ملف PDF
+                        </label>
+                        <div class="product-file-container">
+                            <input type="file" id="additional${supplierCount}SupplierPdf" class="product-file-input" accept=".pdf">
+                            <label for="additional${supplierCount}SupplierPdf" class="product-file-label" style="min-height: auto; padding: 10px;">
+                                <i class="fas fa-file-upload"></i> رفع ملف PDF
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <h4 class="product-form-label"><i class="fas fa-money-bill"></i> الأسعار</h4>
+                <div class="product-price-grid">
+                    <div class="product-price-group">
+                        <span class="product-price-label">سعر USD</span>
+                        <div class="product-price-input">
+                            <span class="product-currency">$</span>
+                            <input type="number" class="product-form-input" placeholder="0.00" step="0.01" min="0">
+                        </div>
+                    </div>
+                    
+                    <div class="product-price-group">
+                        <span class="product-price-label">سعر CNY</span>
+                        <div class="product-price-input">
+                            <span class="product-currency">¥</span>
+                            <input type="number" class="product-form-input" placeholder="0.00" step="0.01" min="0">
+                        </div>
+                    </div>
+                    
+                    <div class="product-price-group">
+                        <span class="product-price-label">سعر YER</span>
+                        <div class="product-price-input">
+                            <span class="product-currency">ر.ي</span>
+                            <input type="number" class="product-form-input" placeholder="0.00" step="0.01" min="0">
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            suppliersContainer.appendChild(supplierElement);
+        }
+        
+        function removeSupplier(button) {
+            if (document.getElementById('suppliersContainer').children.length > 1) {
+                button.closest('.product-supplier-card').remove();
+            } else {
+                alert('يجب أن يكون هناك مورد واحد على الأقل');
+            }
+        }
+        
+        // Catalog PDF (single file) preview and remove
+        (function(){
+            const catalogInput = document.getElementById('productCatalogPdf');
+            const removeBtn = document.getElementById('removeCatalogBtn');
+            const infoBox = document.getElementById('catalogInfo');
+            const nameEl = document.getElementById('catalogName');
+            const sizeEl = document.getElementById('catalogSize');
+            if (catalogInput) {
+                catalogInput.addEventListener('change', function(){
+                    const f = this.files && this.files[0];
+                    if (f) {
+                        nameEl.textContent = f.name;
+                        sizeEl.textContent = `(${Math.ceil(f.size/1024)} KB)`;
+                        infoBox.style.display = '';
+                        removeBtn.style.display = '';
+                    } else {
+                        infoBox.style.display = 'none';
+                        removeBtn.style.display = 'none';
+                        nameEl.textContent = '';
+                        sizeEl.textContent = '';
+                    }
+                });
+            }
+            if (removeBtn) {
+                removeBtn.addEventListener('click', function(){
+                    if (!catalogInput) return;
+                    // Clear selected file
+                    catalogInput.value = '';
+                    infoBox.style.display = 'none';
+                    removeBtn.style.display = 'none';
+                    nameEl.textContent = '';
+                    sizeEl.textContent = '';
+                });
+            }
+        })();
+
+        // Extra files selection preview
+        (function(){
+            const extraInput = document.getElementById('productExtraFiles');
+            const countEl = document.getElementById('extraFilesCount');
+            const listEl = document.getElementById('extraFilesList');
+            if (extraInput) {
+                extraInput.addEventListener('change', function(){
+                    const files = Array.from(this.files || []);
+                    countEl.textContent = files.length;
+                    listEl.innerHTML = '';
+                    files.forEach(file => {
+                        const li = document.createElement('li');
+                        li.style.marginBottom = '6px';
+                        li.innerHTML = `<i class="fas fa-file" style="margin-left:6px; color: var(--primary-color);"></i>${file.name} <small style="color:#6b7280">(${Math.ceil(file.size/1024)} KB)</small>`;
+                        listEl.appendChild(li);
+                    });
+                });
+            }
+        })();
+
+        // Fallback: ensure clicking any label with 'for' triggers its hidden file input
+        document.querySelectorAll('.product-file-label[for]').forEach(lbl => {
+            lbl.addEventListener('click', function(ev){
+                const targetId = this.getAttribute('for');
+                const input = document.getElementById(targetId);
+                if (input && input.type === 'file') {
+                    ev.preventDefault();
+                    input.click();
+                }
+            });
+        });
+    </script>
+	<!-- Include Supabase and services -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+    <script src="js/auth-service.js"></script>
+    <script src="js/products-service.js"></script>
+    <script src="js/suppliers-service.js"></script>
+    <script src="js/chat-service.js"></script>
+    <script src="js/ai-config.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="js/form-autosave.js"></script>
+    
+	<!--  Javascript -->
+	 <script src="js/nav.js"></script>
+	<script src="js/theme.js"></script>
+	<script src="js/add-product-logic.js"></script>
+</body>
+</html>

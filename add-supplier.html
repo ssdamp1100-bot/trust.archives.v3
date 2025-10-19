@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اضافة مورد جديد</title>
+	
+	 <!-- Google fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&family=Noto+Naskh+Arabic:wght@400..700&family=Noto+Sans+Arabic:wght@100..900&family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400..700&display=swap" rel="stylesheet">
+    
+	
+	
+	 <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	
+	<!-- css Stylesheet -->
+   <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/add-supplier.css">
+</head>
+<style>
+
+ 
+ 
+ 
+ 
+</style>
+ <body class="theme1">  
+  <script>
+    (function(){
+      try{
+        var savedTheme = localStorage.getItem('selectedTheme');
+        if(savedTheme){ document.body.className = savedTheme; }
+      }catch(e){}
+    })();
+  </script>
+  <!-- زر تغيير الثيم -->
+    <button class="change-theme" id="theme-toggle">
+     <i class="fa-solid fa-palette"></i>
+    </button>
+    
+	
+	  <!-- Header -->  
+    <header class="header" id="header">
+    <a href="dashboard.html" class="logo-container">
+        <div class="logo"> </div>
+        <div class="logo-text">أرشيف الثقة التجارية</div>
+    </a>
+    <button class="nav-toggle"><i class="fas fa-align-left"></i></button>
+    <nav class="main-menu">
+        <a href="dashboard.html" class="menu-item"><i class="fas fa-home"></i> الرئيسية</a>
+		 <a href="products-board.html" class="menu-item"><i class="fa-solid fa-cart-plus"></i> المنتجات</a>
+        <a href="suppliers.html" class="menu-item "><i class="fas fa-truck"></i> الموردين</a>
+        <a href="profile.html" class="menu-item"><i class="fas fa-user"></i> ملفي الشخصي</a>
+        <a href="add-product.html" class="menu-item "><i class="fas fa-plus-circle"></i> إضافة منتج</a>
+        <a href="add-supplier.html" class="menu-item active"><i class="fas fa-truck-loading "></i> اضافة مورد</a>
+    </nav>
+</header>
+
+       <section id="add-supplier" class="add-supplier-section">
+        <div class="add-supplier-container" style="max-width: 800px;">
+            <div class="add-supplier-card">
+                <h2 class="add-supplier-title">
+                    <i class="fas fa-truck-loading icon-primary"></i> إضافة مورد جديد
+                </h2>
+                
+                <form id="supplierForm" class="add-supplier-form">
+                    <div class="add-supplier-grid">
+                        <div class="add-supplier-group">
+                            <label for="add-supplier-name">
+                                <i class="fas fa-signature icon-primary"></i> اسم المورد *
+                            </label>
+                            <input type="text" id="add-supplier-name" placeholder="اسم الشركة أو المورد">
+                        </div>
+                        
+                        <div class="add-supplier-group">
+                            <label for="add-supplier-country">
+                                <i class="fas fa-globe-asia icon-primary"></i> البلد *
+                            </label>
+                            <input type="text" id="add-supplier-country" placeholder="اسم البلد">
+                        </div>
+                    </div>
+                    
+                    <div class="add-supplier-grid">
+                        <div class="add-supplier-group">
+                            <label>
+                                <i class="fas fa-industry icon-primary"></i> المجال *
+                            </label>
+                            <div class="checkbox-list">
+                                <label><input type="checkbox" name="industry" value="electronics"> <i class="fas fa-microchip icon-secondary"></i> الإلكترونيات</label>
+                                <label><input type="checkbox" name="industry" value="textiles"> <i class="fas fa-tshirt icon-secondary"></i> المنسوجات</label>
+                                <label><input type="checkbox" name="industry" value="food"> <i class="fas fa-utensils icon-secondary"></i> الأغذية</label>
+                                <label><input type="checkbox" name="industry" value="construction"> <i class="fas fa-hard-hat icon-secondary"></i> مواد البناء</label>
+                                <label><input type="checkbox" id="other-industry-checkbox" name="industry" value="other"> <i class="fas fa-ellipsis-h icon-secondary"></i> مجال آخر</label>
+                            </div>
+                            <div id="other-industry-input" class="other-industry-input">
+                                <input type="text" placeholder="حدد المجال الآخر">
+                            </div>
+                        </div>
+                        
+                        <div class="add-supplier-group">
+                            <label for="add-supplier-logo">
+                                <i class="fas fa-image icon-primary"></i> شعار المورد
+                            </label>
+                            <div class="add-supplier-file-container">
+                                <input type="file" id="add-supplier-logo" accept="image/*" class="add-supplier-file-input">
+                                <label for="add-supplier-logo" class="add-supplier-file-label">
+                                    <i class="fas fa-upload"></i> رفع صورة الشعار
+                                </label>
+                            </div>
+                            <div id="file-info" class="file-info" style="display: none;">
+                                <i class="fas fa-check-circle"></i>
+                                <span id="file-name"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="add-supplier-group">
+                        <label for="add-supplier-description">
+                            <i class="fas fa-file-alt icon-primary"></i> وصف المورد
+                        </label>
+                        <textarea id="add-supplier-description" placeholder="وصف مختصر عن المورد وخدماته" rows="2"></textarea>
+                    </div>
+                    
+                    <!-- الحقول الجديدة المضافة -->
+                    <div class="add-supplier-grid">
+                        <div class="add-supplier-group">
+                            <label for="add-supplier-experience">
+                                <i class="fas fa-calendar-alt icon-primary"></i> سنوات العمل والخبرة
+                            </label>
+                            <input type="text" id="add-supplier-experience" placeholder="مثال: 5-10 سنوات">
+                        </div>
+                        
+                        <div class="add-supplier-group">
+                            <label>
+                                <i class="fas fa-credit-card icon-primary"></i> طرق الدفع المقبولة
+                            </label>
+                            <div class="checkbox-list">
+                                <label><input type="checkbox" name="payment" value="cash"> <i class="fas fa-money-bill-wave icon-secondary"></i> نقداً</label>
+                                <label><input type="checkbox" name="payment" value="transfer"> <i class="fas fa-exchange-alt icon-secondary"></i> حوالة بنكية</label>
+                                <label><input type="checkbox" name="payment" value="lc"> <i class="fas fa-file-invoice-dollar icon-secondary"></i> اعتماد بنكي</label>
+                                <label><input type="checkbox" name="payment" value="paypal"> <i class="fab fa-paypal icon-secondary"></i> PayPal</label>
+                                <label><input type="checkbox" name="payment" value="other"> <i class="fas fa-ellipsis-h icon-secondary"></i> أخرى</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="add-supplier-group">
+                        <label>
+                            <i class="fas fa-shipping-fast icon-primary"></i> طرق الشحن المتاحة
+                        </label>
+                        <div class="checkbox-list">
+                            <label><input type="checkbox" name="shipping" value="sea"> <i class="fas fa-ship icon-secondary"></i> شحن بحري</label>
+                            <label><input type="checkbox" name="shipping" value="air"> <i class="fas fa-plane icon-secondary"></i> شحن جوي</label>
+                            <label><input type="checkbox" name="shipping" value="land"> <i class="fas fa-truck icon-secondary"></i> شحن بري</label>
+                            <label><input type="checkbox" name="shipping" value="express"> <i class="fas fa-shipping-fast icon-secondary"></i> بريد سريع</label>
+                        </div>
+                    </div>
+                    
+                    <div class="add-supplier-group">
+                        <label for="add-supplier-products">
+                            <i class="fas fa-boxes icon-primary"></i> المنتجات الرئيسية
+                        </label>
+                        <div class="todo-list">
+                            <div class="todo-input-group">
+                                <input type="text" id="product-input" placeholder="أدخل منتجًا رئيسيًا">
+                                <button type="button" id="add-product-btn" class="add-supplier-add-field-btn">+</button>
+                            </div>
+                            <div id="products-list" class="todo-list-items"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="add-supplier-group">
+                        <label for="add-supplier-certificates">
+                            <i class="fas fa-award icon-primary"></i> الشهادات والجودة
+                        </label>
+                        <div class="add-supplier-checkbox-group">
+                            <label><input type="checkbox" name="certificates" value="iso9001"> <i class="fas fa-certificate icon-secondary"></i> ISO 9001</label>
+                            <label><input type="checkbox" name="certificates" value="iso14001"> <i class="fas fa-certificate icon-secondary"></i> ISO 14001</label>
+                            <label><input type="checkbox" name="certificates" value="ce"> <i class="fas fa-certificate icon-secondary"></i> CE</label>
+                            <label><input type="checkbox" name="certificates" value="rohs"> <i class="fas fa-certificate icon-secondary"></i> RoHS</label>
+                            <label><input type="checkbox" name="certificates" value="other"> <i class="fas fa-ellipsis-h icon-secondary"></i> أخرى</label>
+                        </div>
+                    </div>
+                    
+                    <div class="add-supplier-contact-section">
+                        <h4 class="add-supplier-section-title">
+                            <i class="fas fa-address-card icon-primary"></i> معلومات الاتصال
+                        </h4>
+                        
+                        <div class="add-supplier-dynamic-fields" id="phoneFields">
+                            <label>
+                                <i class="fas fa-phone icon-primary"></i> أرقام الهواتف
+                            </label>
+                            <div class="add-supplier-field-group">
+                                <input type="tel" placeholder="+86 138 0013 8000" class="phone-input">
+                                <button type="button" onclick="addPhoneField()" class="add-supplier-add-field-btn">+</button>
+                            </div>
+                        </div>
+                        
+                        <div class="add-supplier-dynamic-fields" id="emailFields">
+                            <label>
+                                <i class="fas fa-envelope icon-primary"></i> البريد الإلكتروني
+                            </label>
+                            <div class="add-supplier-field-group">
+                                <input type="email" placeholder="supplier@company.com" class="email-input">
+                                <button type="button" onclick="addEmailField()" class="add-supplier-add-field-btn">+</button>
+                            </div>
+                        </div>
+                        
+                        <div class="add-supplier-grid add-supplier-contact-grid">
+                            <div class="add-supplier-group">
+                                <label for="add-supplier-whatsapp">
+                                    <i class="fab fa-whatsapp icon-primary"></i> واتساب
+                                </label>
+                                <input type="tel" id="add-supplier-whatsapp" placeholder="+86 138 0013 8000">
+                            </div>
+                            <div class="add-supplier-group">
+                                <label for="add-supplier-wechat">
+                                    <i class="fab fa-weixin icon-primary"></i> ويتشات
+                                </label>
+                                <input type="text" id="add-supplier-wechat" placeholder="wechat_id">
+                            </div>
+ 
+                            
+                        </div>
+                        
+                        <div class="add-supplier-group">
+                            <label for="add-supplier-website">
+                                <i class="fas fa-globe icon-primary"></i> الموقع الإلكتروني
+                            </label>
+                            <input type="url" id="add-supplier-website" placeholder="https://www.supplier.com">
+                        </div>
+                        
+                        <div class="add-supplier-group">
+                            <label for="other-contact-methods">
+                                <i class="fas fa-comments icon-primary"></i> وسائل تواصل أخرى
+                            </label>
+                            <div class="todo-list">
+                                <div class="todo-input-group">
+                                    <input type="text" id="contact-method-input" placeholder="أدخل وسيلة تواصل">
+                                    <button type="button" id="add-contact-method-btn" class="add-supplier-add-field-btn">+</button>
+                                </div>
+                                <div id="contact-methods-list" class="todo-list-items"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="add-supplier-group">
+                            <label for="add-supplier-address">
+                                <i class="fas fa-map-marker-alt icon-primary"></i> العنوان
+                            </label>
+                            <textarea id="add-supplier-address" placeholder="العنوان التفصيلي للمورد" rows="2"></textarea>
+                        </div>
+                        
+                        <div class="add-supplier-group">
+                            <label for="add-supplier-map">
+                                <i class="fas fa-map-marked-alt icon-primary"></i> رابط الخريطة (Google Maps)
+                            </label>
+                            <input type="url" id="add-supplier-map" placeholder="https://goo.gl/maps/...">
+                        </div>
+                    </div>
+                    
+                    <div class="add-supplier-form-actions">
+                        <button type="submit" class="add-supplier-submit-btn">
+                            <i class="fas fa-save"></i> حفظ المورد
+                        </button>
+                        <a href="suppliers.html" class="add-supplier-cancel-btn">
+                            <i class="fas fa-times"></i> إلغاء
+                        </a>
+						 <a href="dashboard.html" class="back2-btn">
+                            <i class='fas fa-angle-double-right'></i> العودة الى الصفحة الرئيسية
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+	
+            <!-- Footer -->
+    <footer class="footer">
+               <div class="copyright-content">
+                <div class="designer-info">
+                    <span class="designer-text">مصمم الموقع / صدام أحمد</span>
+                </div>          
+                <div class="icon-group4">
+                    <a href="https://www.facebook.com/s777967272" class="icon-btn4 icon-facebook" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://wa.me/967777967272" class="icon-btn4 icon-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="tel:+967777967272" class="icon-btn4 icon-phone">
+                        <i class="fa fa-phone"></i>
+                    </a>
+                    <a href="https://tecnotasxcatalog.netlify.app/" class="icon-btn4 icon-website" target="_blank">
+                        <i class="fas fa-globe"></i>
+                    </a>
+                </div>
+            </div>
+    </footer>
+
+    <!-- أزرار الدردشة والذكاء الاصطناعي -->
+    <div class="chat-buttons-container">
+        <button class="ai-toggle-btn" id="aiToggle">
+            <span>اسأل الذكاء الصناعي</span>
+            <i class="fas fa-robot"></i>
+        </button>
+        
+        <button class="chat-toggle-btn" id="chatToggle">
+            <span>دردشة الفريق</span>
+            <i class="fas fa-comments"></i>
+            <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
+        </button>
+    </div>
+    
+    <!-- نافذة الدردشة -->
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header" id="chatHeader">
+            <div class="chat-title">
+                <span>دردشة ارشيف الثقة</span>
+                <span class="online-indicator"></span>
+            </div>
+            <div class="chat-controls">
+                <button class="mute-btn" id="muteBtn" title="تكتيم/إلغاء تكتيم الإشعارات">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+                <button id="minimizeBtn"><i class="fas fa-minus"></i></button>
+                <button><i class="fa-solid fa-window-restore"></i></button>
+                <button id="closeBtn"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        
+        <div class="chat-area" id="chatArea">
+            <!-- الرسائل ستضاف هنا via JavaScript -->
+            <div class="typing-indicator" id="typingIndicator">
+                <span></span>
+                <div class="typing-dots">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chat-input-area">
+            <input type="text" class="chat-input" id="chatInput" placeholder="اكتب رسالتك هنا...">
+            <button class="send-btn" id="sendBtn"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+        </div>
+    </div>
+
+    <!-- نافذة الذكاء الاصطناعي -->
+    <div class="ai-window" id="aiWindow">
+        <div class="ai-header" id="aiHeader">
+            <div class="ai-title">
+                <span>Trust.Ai</span>
+                <span class="online-indicator"></span>
+            </div>
+            
+            <div class="ai-controls">
+                <button class="mute-btn" id="aiMuteBtn" title="تكتيم/إلغاء تكتيم الإشعارات">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+                <button id="aiMinimizeBtn"><i class="fas fa-minus"></i></button>
+                <button><i class="fa-solid fa-window-restore"></i></button>
+                <button id="aiCloseBtn"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        
+        <div class="ai-area" id="aiArea">
+            <!-- رسائل الذكاء الاصطناعي ستضاف هنا -->
+            <div class="ai-message message-incoming">
+                <div class="ai-avatar">T</div>
+                <div class="message-content">
+                    <div class="message-sender">Trust.Ai</div>
+                    <div class="message-text">يا حيا بالحبيب .. تفضل ، ما بنفسك تسأل ، و كيف اقدر اساعدك 😁</div>
+                    <div class="message-time">10:30 صباحاً</div>
+                </div>
+            </div>
+            
+            <div class="ai-typing-indicator" id="aiTypingIndicator">
+                <span>Trust.Ai يكتب</span>
+                <div class="typing-dots">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ai-input-area">
+            <input type="text" class="ai-input" id="aiInput" placeholder="اسأل الذكاء الاصطناعي...">
+            <button class="ai-send-btn" id="aiSendBtn"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+        </div>
+    </div>
+
+    <!-- إشعار الرسالة -->
+    <div class="message-notification" id="messageNotification">
+        <div class="notification-avatar" id="notificationAvatar">ف</div>
+        <div class="notification-content">
+            <span class="notification-sender" id="notificationSender">فاطمة</span>
+            <span id="notificationText">أرسلت رسالة جديدة</span>
+        </div>
+    </div>
+
+    <!-- عنصر الصوت -->
+    <div class="audio-container">
+        <audio id="notificationSound" preload="auto">
+            <source src="files/notification.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+	
+    <!-- تم نقل جميع المنطق إلى js/add-supplier-logic.js -->
+	<!-- Include Supabase and services -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+    <script src="js/auth-service.js"></script>
+    <script src="js/suppliers-service.js"></script>
+    <script src="js/chat-service.js"></script>
+    <script src="js/ai-config.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="js/form-autosave.js"></script>
+    <script src="js/add-supplier-logic.js"></script>
+    
+	<!--  Javascript -->
+	 <script src="js/nav.js"></script>
+	<script src="js/theme.js"></script>
+</body>
+</html>

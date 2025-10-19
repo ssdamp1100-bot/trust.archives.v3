@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - ارشيف الثقة التجارية</title>
+    
+	 <!-- Google fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&family=Noto+Naskh+Arabic:wght@400..700&family=Noto+Sans+Arabic:wght@100..900&family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400..700&display=swap" rel="stylesheet">
+    
+	
+	
+	 <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	
+	<!-- css Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/login.css">
+    <style>
+        
+    </style>
+</head>
+ <body class="theme1"> 
+  <script>
+    (function(){
+      try{
+        var savedTheme = localStorage.getItem('selectedTheme');
+        if(savedTheme){ document.body.className = savedTheme; }
+      }catch(e){}
+    })();
+  </script>
+ <!-- زر تغيير الثيم -->
+    <button class="change-theme" id="theme-toggle">
+     <i class="fa-solid fa-palette"></i>
+    </button>
+    <div class="section" id="home">
+        <div class="login-container">
+            <div class="login-header">
+                  <img src="img/tg-logo.png" class="big-logo" alt="شعار"> 
+                <h1 class="site-title">أرشيف الثقة التجارية</h1>                
+                <p class="p1">
+                    منصة أرشيفية متخصصة للباعة لحفظ وإدارة بيانات المنتجات والعودة إليها بسهولة دون البحث في حساباتهم على مواقع التواصل الاجتماعي
+                </p>
+            </div>
+            <form class="login-form" id="loginForm">
+                <div class="form-group">
+                    <label for="username" class="form-title" ><i class="fa-solid fa-user-tie"></i> اسم المستخدم</label>
+                    <input type="text" id="username" name="username" placeholder="أدخل اسم المستخدم" required>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="form-title"><i class="fa-solid fa-unlock-keyhole"></i> كلمة المرور</label>
+                    <input type="password" id="password" name="password" placeholder="أدخل كلمة المرور" required>
+                </div>
+                <div class="remember-me-container">
+                    <input type="checkbox" id="rememberMe" name="rememberMe">
+                    <label for="rememberMe">
+                        <i class="fas fa-bookmark"></i>
+                        تذكرني المرة القادمة
+                    </label>
+                </div>
+                <button class="button1">
+                    <span class="btn-text"> دخول <i class="fa fa-angle-double-left" aria-hidden="true"></i></span>
+                    <span class="loading hidden"></span>
+                </button>
+            </form>
+            <button onclick="showRegisterModal()" class="button2">
+                    <i class="fa fa-user-o" aria-hidden="true"></i> تسجيل كعضو جديد
+                </button>
+				
+             
+      <!-- Copyright Start -->
+        <div class="copyright-content">
+            <!-- معلومات المصمم -->
+            <div class="designer-info">
+                <span class="designer-text">مصمم الموقع / صدام أحمد</span>
+            </div>            
+            <!-- مجموعة الأيقونات -->
+            <div class="icon-group4">
+                <a href="https://www.facebook.com/s777967272" class="icon-btn4 icon-facebook" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://wa.me/967777967272" class="icon-btn4 icon-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="tel:+967777967272" class="icon-btn4 icon-phone">
+                    <i class="fa fa-phone"></i>
+                </a>
+                <a href="https://tecnotasxcatalog.netlify.app/" class="icon-btn4 icon-website" target="_blank">
+                    <i class="fas fa-globe"></i>
+                </a>
+            </div>
+        </div>
+    <!-- Copyright End -->
+          
+ 
+<!-- Registration Modal -->
+<div id="registerModal" class="modal">
+    <div class="modal-content add-modal-content">
+        <button class="modal-close" onclick="closeRegisterModal()">&times;</button>
+        <h3 class="modal-title">📝 تسجيل عضوية جديدة</h3>
+        
+        <form id="registerForm" class="modal-add-form">
+            <div class="modal-form-grid">
+                <div class="modal-form-group">
+                    <label for="registerName">الاسم الكامل *</label>
+                    <input type="text" id="registerName" required placeholder="أدخل اسمك الكامل">
+                </div>
+                
+                <div class="modal-form-group">
+                    <label for="registerCountry">البلد *</label>
+                    <input type="text" id="registerCountry" required  >
+                </div>
+            </div>
+            
+            <div class="modal-form-grid">
+                <div class="modal-form-group">
+                    <label for="registerAge">العمر *</label>
+                    <input type="number" id="registerAge" required placeholder="25" min="16" max="100">
+                </div>
+                
+                <div class="modal-form-group">
+                    <label for="registerResidence">السكن *</label>
+                    <input type="text" id="registerResidence" required  >
+                </div>
+            </div>
+			
+             <div class="modal-form-grid">
+                <div class="modal-form-group">
+                    <label for="registerResidence">اسم المستخدم *</label>
+                    <input type="text" id="registerUsername" placeholder="بالاحرف الانجليزية , و يبدأ بـرمز @ " required  >
+                </div>
+				 <div class="modal-form-group">
+                    <label for="registerAge">كلمة السر *</label>
+                    <input type="password" id="registerPassword" required placeholder="ارقام انجليزية">
+                </div>
+            </div>
+			
+			
+            <div class="modal-image-group">
+                <label for="registerPhoto">الصورة الشخصية</label>
+                <input type="file" id="registerPhoto" accept="image/*">
+            </div>
+            
+            <div class="contact-section">
+                <h4 class="section-title">معلومات التواصل</h4>
+                
+                <div class="dynamic-fields" id="registerPhoneFields">
+                    <label>أرقام الهواتف *</label>
+                    <div class="field-group">
+                        <input type="tel" placeholder="+966 50 123 4567" class="phone-input" required>
+                        <button type="button" onclick="addRegisterPhoneField()" class="add-field-btn"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+                
+                <div class="dynamic-fields">
+                    <label for="registerWhatsapp">رقم الواتساب *</label>
+                    <input type="tel" id="registerWhatsapp" required placeholder="+966 50 123 4567">
+                </div>
+                
+                <div class="dynamic-fields">
+                    <label for="registerEmail">البريد الإلكتروني *</label>
+                    <input type="email" id="registerEmail" required placeholder="example@email.com">
+                </div>
+                
+                <div class="dynamic-fields">
+                    <label for="registerOtherContact">ملاحظات</label>
+                    <textarea id="registerOtherContact" placeholder="دون اذا كانت  لديك ملاحظات تتعلق بالعمل " rows="2"></textarea>
+                </div>
+            </div>
+            
+            <div class="modal-form-actions">
+                <button type="submit" class="login-btn">📤 إرسال طلب العضوية</button>
+                <button type="button" onclick="closeRegisterModal()" class="cancel-btn">إلغاء</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- JavaScript البسيط للـ Modal (يمكن وضعه في <script> tag في نهاية الصفحة) -->
+<script>
+function showRegisterModal() {
+    document.getElementById('registerModal').style.display = 'block';
+}
+
+function closeRegisterModal() {
+    document.getElementById('registerModal').style.display = 'none';
+}
+
+// دالة إضافية لإضافة حقول الهاتف (كما في الكود الأصلي، يمكن تخصيصها)
+function addRegisterPhoneField() {
+    const container = document.getElementById('registerPhoneFields');
+    const newField = document.createElement('div');
+    newField.className = 'field-group';
+    newField.innerHTML = `
+        <input type="tel" placeholder="+966 50 123 4567" class="phone-input" required>
+        <button type="button" onclick="this.parentElement.remove()" class="add-field-btn">-</button>
+    `;
+    container.appendChild(newField);
+}
+</script>
+
+    <!-- Include Supabase and services -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+    <script src="js/auth-service.js"></script>
+    <script src="js/login-logic.js"></script>
+    <script>
+// Close modal on backdrop click (UI helper only)
+document.getElementById('registerModal').addEventListener('click', function(e) {
+    if (e.target === this) closeRegisterModal();
+});
+    </script>
+	<script src="js/theme.js"></script>
+</body>
+</html>

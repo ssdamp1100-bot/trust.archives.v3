@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل المستخدم</title>
+    
+    <!-- ========== قسم خطوط جوجل ========== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&family=Noto+Naskh+Arabic:wght@400..700&family=Noto+Sans+Arabic:wght@100..900&family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400..700&display=swap" rel="stylesheet">
+    
+    <!-- ========== قسم أيقونات الخطوط ========== -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- ========== قسم أنماط CSS ========== -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/single-user.css">
+    
+    <style>
+     
+    </style>
+</head>
+
+<body class="theme1">
+ <script>
+    (function(){
+      try{
+        var savedTheme = localStorage.getItem('selectedTheme');
+        if(savedTheme){ document.body.className = savedTheme; }
+      }catch(e){}
+    })();
+  </script>
+    <!-- ========== زر تغيير الثيم ========== -->
+    <button class="change-theme" id="theme-toggle">
+        <i class="fa-solid fa-palette"></i>
+    </button>
+
+      <!-- Header -->  
+    <header class="header" id="header">
+    <a href="dashboard.html" class="logo-container">
+        <div class="logo"> </div>
+        <div class="logo-text">أرشيف الثقة التجارية</div>
+    </a>
+    <button class="nav-toggle"><i class="fas fa-align-left"></i></button>
+    <nav class="main-menu">
+        <a href="dashboard.html" class="menu-item"><i class="fas fa-home"></i> الرئيسية</a>
+		 <a href="products-board.html" class="menu-item"><i class="fa-solid fa-cart-plus"></i> المنتجات</a>
+        <a href="suppliers.html" class="menu-item "><i class="fas fa-truck"></i> الموردين</a>
+        <a href="profile.html" class="menu-item"><i class="fas fa-user"></i> ملفي الشخصي</a>
+        <a href="add-product.html" class="menu-item "><i class="fas fa-plus-circle"></i> إضافة منتج</a>
+        <a href="add-supplier.html" class="menu-item "><i class="fas fa-truck-loading "></i> اضافة مورد</a>
+    </nav>
+</header>
+
+    <!-- ========== المحتوى الرئيسي ========== -->
+    <main>
+        <div class="single-user-container">
+            
+            <!-- ========== قسم الملف الشخصي ========== -->
+            <div class="single-user-section" id="userHeaderSection">
+                <div class="user-profile-column">
+                    <img id="userAvatar" src="img/user.png" alt="صورة المستخدم" class="single-user-image">
+                    <h2 id="userDisplayName"><i class="fas fa-user"></i> ...</h2>
+                </div>
+
+                <div class="single-user-info">
+                    <!-- إحصائيات المستخدم -->
+                    <div class="single-user-stats">
+                        <div class="stat-item3">
+                            <div class="stat-label">
+                                <i class="fas fa-trophy" aria-hidden="true"></i> النقاط المحققة
+                            </div>
+                            <div class="stat-value" id="userPoints">0</div>
+                        </div>
+                        <div class="stat-item3">
+                            <div class="stat-label">
+                                <i class="fas fa-box" aria-hidden="true"></i> المنتجات المضافة
+                            </div>
+                            <div class="stat-value2" id="userProductsCount">0</div>
+                        </div>
+                        <div class="stat-item3">
+                            <div class="stat-label">
+                                <i class="fas fa-clock" aria-hidden="true"></i> آخـــــر تـــــواجــــد
+                            </div>
+                            <div class="stat-value3" id="userLastSeen">N/A</div>
+                        </div>
+                    </div>
+                    
+                    <!-- أزرار الإجراءات -->
+                    <div class="single-user-action-buttons">
+                        <button class="btn btn-primary" id="editUserBtn"><i class="fa-solid fa-id-card"></i> تعديل بيانات المستخدم</button>
+                        <button class="btn btn-secondary" id="freezeUserBtn"><i class="fas fa-lock"></i> تجميد العضوية</button>
+                        <button class="btn btn-danger" id="deleteUserBtn"><i class="fas fa-trash"></i> حذف المستخدم</button>
+                        <button class="btn btn-tasx" id="sendTaskBtn"><i class="fas fa-paper-plane"></i> إرسال مهمة</button>
+                        <button class="btn btn-hounr" id="honorUserBtn"><i class="fas fa-award"></i> تكريم المستخدم</button>
+                        <button class="btn btn-primary" id="givePointBtn"><i class="fas fa-plus-circle"></i> منح نقطة</button>
+                        <button class="btn btn-warning" id="managePointsBtn"><i class="fas fa-cog"></i> إدارة النقاط</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== قسم المعلومات الأساسية ========== -->
+            <div class="info-section-title" id="basicInfoHeader">
+                <h2><i class="fas fa-info-circle"></i> المعلومات الأساسية</h2>
+                <button class="edit-btn" id="basicInfoEditBtn"><i class="fas fa-edit"></i> تعديل</button>
+            </div>
+            
+            <div class="info-grid" id="basicInfoGrid">
+                <div class="info-item3">
+                    <div>
+                        <div class="info-label">الاسم كاملاً</div>
+                        <div class="info-value" id="fullName">...</div>
+                    </div>
+                </div>
+                <div class="info-item3">
+                    <div>
+                        <div class="info-label">البلد</div>
+                        <div class="info-value" id="country">...</div>
+                    </div>
+                </div>
+                <div class="info-item3">
+                    <div>
+                        <div class="info-label">العمر</div>
+                        <div class="info-value" id="age">...</div>
+                    </div>
+                </div>
+                <div class="info-item3">
+                    <div>
+                        <div class="info-label">السكن</div>
+                        <div class="info-value" id="address">...</div>
+                    </div>
+                </div>
+                <div class="info-item3">
+                    <div>
+                        <div class="info-label">اسم المستخدم</div>
+                        <div class="info-value2" id="username">...</div>
+                    </div>
+                </div>
+                <div class="info-item3">
+                    <div>
+                        <div class="info-label">كلمة المرور</div>
+                        <div class="info-value2" id="password">••••••••</div>
+                    </div>
+                </div>
+                <div class="info-item3">
+                    <div>
+                        <div class="info-label">تاريخ الانضمام</div>
+                        <div class="info-value2" id="joinedAt">...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== قسم معلومات التواصل ========== -->
+            <div class="contact-section-title" id="contactInfoHeader">
+                <h2><i class="fas fa-address-book"></i> معلومات التواصل</h2>
+                <button class="edit-btn2" id="contactInfoEditBtn"><i class="fas fa-edit"></i> تعديل</button>
+            </div>
+            
+            <div class="contact-grid" id="contactInfoGrid">
+                <div class="contact-item3">
+                    <div>
+                        <div class="contact-label">رقم الهاتف</div>
+                        <div class="contact-value2" id="phone">...</div>
+                    </div>
+                    <button class="contact-btn" id="callBtn"><i class="fas fa-phone-alt"></i></button>
+                </div>
+                <div class="contact-item3">
+                    <div>
+                        <div class="contact-label">البريد الإلكتروني</div>
+                        <div class="contact-value2" id="email">...</div>
+                    </div>
+                    <button class="contact-btn" id="emailBtn"><i class="fas fa-envelope"></i></button>
+                </div>
+                <div class="contact-item3">
+                    <div>
+                        <div class="contact-label">رقم الواتساب</div>
+                        <div class="contact-value2" id="whatsapp">...</div>
+                    </div>
+                    <button class="contact-btn" id="whatsappBtn"><i class="fa-brands fa-whatsapp b-icon"></i></button>
+                </div>
+                <div class="contact-item3">
+                    <div>
+                        <div class="contact-label">ملاحظات</div>
+                        <div class="contact-value" id="notes">...</div>
+                    </div>
+                    <button class="contact-btn" id="notesBtn"><i class="fas fa-sticky-note"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== نافذة إدارة النقاط ========== -->
+        <div id="pointsModal" class="single-user-modal" aria-hidden="true">
+            <div class="single-user-modal-content">
+                <div class="single-user-modal-header">
+                    <h3 class="single-user-modal-title"><i class="fas fa-star"></i> إدارة النقاط</h3>
+                    <button class="single-user-close-btn" id="pointsCloseBtn">&times;</button>
+                </div>
+                
+                <div class="single-user-form-group">
+                    <label>النقاط الحالية: <span id="currentPointsDisplay">0</span></label>
+                </div>
+                
+                <div class="single-user-form-group">
+                    <label for="pointsAction">اختر الإجراء</label>
+                    <select id="pointsAction" class="single-user-form-control">
+                        <option value="">اختر الإجراء</option>
+                        <option value="deduct">خصم نقاط</option>
+                        <option value="reset">تصفير جميع النقاط</option>
+                    </select>
+                </div>
+                
+                <div class="single-user-form-group" id="deductAmountGroup" style="display: none;">
+                    <label for="deductAmount">عدد النقاط المراد خصمها</label>
+                    <input type="number" id="deductAmount" class="single-user-form-control" min="1" placeholder="أدخل عدد النقاط">
+                </div>
+                
+                <div class="single-user-modal-footer">
+                    <button class="btn btn-danger" id="cancelPointsBtn">إلغاء</button>
+                    <button class="btn btn-primary" id="confirmPointsBtn">تنفيذ</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== نافذة إرسال المهمة ========== -->
+        <div id="taskModal" class="single-user-modal" aria-hidden="true">
+            <div class="single-user-modal-content">
+                <div class="single-user-modal-header">
+                    <h3 class="single-user-modal-title"><i class="fas fa-tasks"></i> إرسال مهمة جديدة</h3>
+                    <button class="single-user-close-btn" id="taskCloseBtn">&times;</button>
+                </div>
+                
+                <div class="single-user-form-group">
+                    <label for="taskTitle">عنوان المهمة</label>
+                    <input type="text" id="taskTitle" class="single-user-form-control" placeholder="أدخل عنوان المهمة">
+                </div>
+                
+                <div class="single-user-form-group">
+                    <label for="taskDeadline">موعد التسليم</label>
+                    <input type="text" id="taskDeadline" class="single-user-form-control" placeholder="حدد موعد انجاز المهمة (اختياري)">
+                </div>
+                
+                <div class="single-user-form-group">
+                    <label for="taskDescription">وصف المهمة</label>
+                    <textarea id="taskDescription" class="single-user-form-control" placeholder="أدخل وصف المهمة أو الرسالة"></textarea>
+                </div>
+                
+                <div class="single-user-modal-footer">
+                    <button class="btn btn-danger" id="cancelTaskBtn">إلغاء</button>
+                    <button class="btn btn-primary" id="confirmSendTaskBtn">إرسال</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== زر العودة ========== -->
+        <div class="back3-section">
+            <a href="admin.html" class="back3-btn">
+                <i class="fa fa-angle-double-right"></i> العودة الى صفحة الادارة
+            </a>
+        </div>
+    </main>
+
+    <!-- ========== تذييل الصفحة ========== -->
+    <footer>
+        <div class="copyright-content">
+            <div class="designer-info">
+                <span class="designer-text">مصمم الموقع / صدام أحمد</span>
+            </div>
+            
+            <div class="icon-group4">
+                <a href="https://www.facebook.com/s777967272" class="icon-btn4 icon-facebook" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://wa.me/967777967272" class="icon-btn4 icon-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="tel:+967777967272" class="icon-btn4 icon-phone">
+                    <i class="fa fa-phone"></i>
+                </a>
+                <a href="https://tecnotasxcatalog.netlify.app/" class="icon-btn4 icon-website" target="_blank">
+                    <i class="fas fa-globe"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== أزرار الدردشة والذكاء الاصطناعي ========== -->
+    <div class="chat-buttons-container">
+        <button class="ai-toggle-btn" id="aiToggle">
+            <span>اسأل الذكاء الصناعي</span>
+            <i class="fas fa-robot"></i>
+        </button>
+        
+        <button class="chat-toggle-btn" id="chatToggle">
+            <span>دردشة الفريق</span>
+            <i class="fas fa-comments"></i>
+            <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
+        </button>
+    </div>
+    
+    <!-- ========== نافذة الدردشة ========== -->
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header" id="chatHeader">
+            <div class="chat-title">
+                <span>دردشة ارشيف الثقة</span>
+                <span class="online-indicator"></span>
+            </div>
+            
+            <div class="chat-controls">
+                <button class="mute-btn" id="muteBtn" title="تكتيم/إلغاء تكتيم الإشعارات">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+                <button id="minimizeBtn"><i class="fas fa-minus"></i></button>
+                <button><i class="fa-solid fa-window-restore"></i></button>
+                <button id="closeBtn"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        
+        <div class="chat-area" id="chatArea">
+            <!-- الرسائل ستضاف هنا via JavaScript -->
+            <div class="typing-indicator" id="typingIndicator">
+                <span></span>
+                <div class="typing-dots">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chat-input-area">
+            <input type="text" class="chat-input" id="chatInput" placeholder="اكتب رسالتك هنا...">
+            <button class="send-btn" id="sendBtn"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+        </div>
+    </div>
+
+    <!-- ========== نافذة الذكاء الاصطناعي ========== -->
+    <div class="ai-window" id="aiWindow">
+        <div class="ai-header" id="aiHeader">
+            <div class="ai-title">
+                <span>Trust.Ai</span>
+                <span class="online-indicator"></span>
+            </div>
+
+            <div class="ai-controls">
+                <button class="mute-btn" id="aiMuteBtn" title="تكتيم/إلغاء تكتيم الإشعارات">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+                <button id="aiMinimizeBtn"><i class="fas fa-minus"></i></button>
+                <button><i class="fa-solid fa-window-restore"></i></button>
+                <button id="aiCloseBtn"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        
+        <div class="ai-area" id="aiArea">
+            <!-- رسائل الذكاء الاصطناعي ستضاف هنا -->
+            <div class="ai-message message-incoming">
+                <div class="ai-avatar">G</div>
+                <div class="message-content">
+                    <div class="message-sender">Trust.Ai</div>
+                    <div class="message-text">يا حيا بالحبيب .. تفضل ، ما بنفسك تسأل ، و كيف اقدر اساعدك 😁</div>
+                    <div class="message-time">10:30 صباحاً</div>
+                </div>
+            </div>
+            
+            <div class="ai-typing-indicator" id="aiTypingIndicator">
+                <span>Trust.Ai يكتب</span>
+                <div class="typing-dots">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ai-input-area">
+            <input type="text" class="ai-input" id="aiInput" placeholder="اسأل الذكاء الاصطناعي...">
+            <button class="ai-send-btn" id="aiSendBtn"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+        </div>
+    </div>
+
+    <!-- ========== إشعار الرسالة ========== -->
+    <div class="message-notification" id="messageNotification">
+        <div class="notification-avatar" id="notificationAvatar">ف</div>
+        <div class="notification-content">
+            <span class="notification-sender" id="notificationSender">فاطمة</span>
+            <span id="notificationText">أرسلت رسالة جديدة</span>
+        </div>
+    </div>
+
+    <!-- ========== عنصر الصوت ========== -->
+    <div class="audio-container">
+        <audio id="notificationSound" preload="auto">
+            <source src="files/notification.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <!-- ========== الأكواد البرمجية ========== -->
+    <!-- Include Supabase and services -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+    <script src="js/auth-service.js"></script>
+    <script src="js/chat-service.js"></script>
+    
+    <!--  Javascript -->
+	 <script src="js/nav.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/single-user-logic.js"></script>
+</body>
+</html>

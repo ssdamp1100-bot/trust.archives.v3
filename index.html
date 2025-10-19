@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>المنتجات - للعملاء</title>
+
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&family=Noto+Naskh+Arabic:wght@400..700&family=Noto+Sans+Arabic:wght@100..900&family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400..700&display=swap" rel="stylesheet">
+
+  <!-- Icon Font Stylesheet -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- css Stylesheet (same used by products-board) -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/products-board.css">
+
+  <style>
+    /* Public header minimal layout */
+    .public-header {
+      position: fixed;
+      top: 0; right: 0; left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      background: var(--container-bg-color);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 1000;
+    }
+	
+	.big-logo {
+    width: 300px;
+    height: auto;
+}	
+	
+    .public-brand {
+      display: flex; align-items: center; gap: 10px;
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .public-login-btn {
+      border: 1px solid var(--border-color);
+      background: none;
+      color: var(--text-color);
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-family: "Noto Naskh Arabic", serif;
+      font-size: 15px;
+    }
+    .public-login-btn:hover { background: var(--button-color); color: var(--light-color); }
+    .page-wrap { padding-top: 100px; }
+    .public-logo {
+      width: 36px; height: 36px; border-radius: 8px; object-fit: cover;
+      background: var(--button-color);
+    }
+    .hero {
+      margin-top: 10px;
+      margin-bottom: 1px;
+      background: var(--container-bg-color);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+    }
+    .hero-title { color: var(--primary-color); font-size: 28px; margin-bottom: 10px; }
+    .hero-text { color: var(--text2-color); font-size: 18px; line-height: 1.7; max-width: 800px; margin: 0 auto; }
+	
+	@media (max-width: 768px) {
+   
+   
+	.big-logo {
+        width: 250px;
+        height: auto;
+    }
+}
+	@media (max-width: 480px) {
+    .big-logo {
+        width: 210px;
+    }
+	.hero-title { color: var(--primary-color); font-size: 24px; margin-bottom: 10px; }
+    .hero-text { color: var(--text2-color); font-size: 15px; line-height: 1.7; max-width: 800px; margin: 0 auto; }
+ }
+  </style>
+</head>
+<body class="theme1">
+  <script>
+    (function(){
+      try{ var savedTheme = localStorage.getItem('selectedTheme'); if(savedTheme){ document.body.className = savedTheme; } }catch(e){}
+    })();
+  </script>
+
+  <!-- Header (isolated, only Login) -->
+  <header class="public-header">
+    <a class="public-brand" href="#" aria-label="أرشيف الثقة التجارية">
+      <img class="public-logo" src="img/tg.png" alt="شعار أرشيف الثقة التجارية" onerror="this.style.display='none'">
+      <div class="logo-text">أرشيف الثقة التجارية</div>
+    </a>
+    <a class="public-login-btn" href="login.html"><i class="fa-solid fa-right-to-bracket" style="margin-left:6px;"></i>تسجيل الدخول</a>
+  </header>
+
+  <!-- زر تغيير الثيم -->
+  <button class="change-theme" id="theme-toggle"><i class="fa-solid fa-palette"></i></button>
+
+  <div class="page-wrap">
+    <div class="container">
+      <section class="hero" aria-label="ترحيب">
+	  <img src="img/tg-logo.png" class="big-logo" alt="شعار">
+        <h1 class="hero-title">  مرحبا بك في متجر أرشيف الثقة</h1>
+        <p class="hero-text">
+          اكتشف أحدث المنتجات الموثوقة بأسعار منافسة، واطلبها بسهولة عبر الواتساب.
+          تصفح، شاهد التفاصيل، واختر الأنسب لك — خدمتنا ورضاك أولويتنا.
+        </p>
+      </section>
+    </div>
+    <!-- Products Section (reusing products-board styles) -->
+    <section id="products-board" class="section">
+      <div class="container">
+        <!-- Simple search/sort for customers -->
+        <div class="filters-container">
+          <div class="filters-grid">
+            <div class="filter-group"><input class="sreach" type="text" id="searchInput" placeholder="&#128269;   ابحث عن منتج"></div>
+            <div class="filter-group">
+              <select id="sortFilter">
+                <option value="date">الأحدث أولاً</option>
+                <option value="price-high">السعر: عالي إلى منخفض</option>
+                <option value="price-low">السعر: منخفض إلى عالي</option>
+              </select>
+            </div>
+            <div class="filter-group"><button class="clear-filters-btn" id="clearBtn">مسح</button></div>
+          </div>
+        </div>
+
+        <div class="view-mode-container">
+          <label for="viewMode"><i class="fa-solid fa-bars"></i> اسلوب العرض</label>
+          <select id="viewMode">
+            <option value="compact-grid" selected>شبكة</option>
+            <option value="grid">اكثر اتساعاً</option>
+            <option value="list">قائمة</option>
+          </select>
+        </div>
+
+        <div class="products-grid compact-grid" id="productsGrid"></div>
+      </div>
+    </section>
+
+    <!-- No Results Message -->
+    <div id="noResults" class="no-results hidden">
+      <div class="no-results-icon">🔍</div>
+      <h3 class="no-results-title">لا توجد منتجات</h3>
+      <p class="no-results-text">لم يتم العثور على منتجات تطابق معايير البحث الحالية</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="copyright-content">
+        <div class="designer-info"><span class="designer-text">مصمم الموقع / صدام أحمد</span></div>
+        <div class="icon-group4">
+          <a href="https://www.facebook.com/s777967272" class="icon-btn4 icon-facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://wa.me/967777967272" class="icon-btn4 icon-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          <a href="tel:+967777967272" class="icon-btn4 icon-phone"><i class="fa fa-phone"></i></a>
+          <a href="https://tecnotasxcatalog.netlify.app/" class="icon-btn4 icon-website" target="_blank"><i class="fas fa-globe"></i></a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Minimal public filtering/sorting and rendering using productsService
+    let allProducts = [];
+    let filtered = [];
+
+    function applyFilters() {
+      const searchTerm = (document.getElementById('searchInput').value || '').toLowerCase();
+      const sort = document.getElementById('sortFilter').value;
+
+      filtered = allProducts.filter(p => {
+        const inName = (p.name || '').toLowerCase().includes(searchTerm);
+        const inDesc = (p.description || '').toLowerCase().includes(searchTerm);
+        return !searchTerm || inName || inDesc;
+      });
+
+      if (sort === 'price-high') filtered.sort((a,b) => (b.selling_price||0) - (a.selling_price||0));
+      else if (sort === 'price-low') filtered.sort((a,b) => (a.selling_price||0) - (b.selling_price||0));
+      else filtered.sort((a,b) => new Date(b.created_at) - new Date(a.created_at));
+
+      renderProducts(filtered);
+    }
+
+    function waOrderMessage(product) {
+      const name = product.name || '';
+      const price = product.selling_price != null ? `السعر: ${product.selling_price} USD` : '';
+      const url = `${window.location.origin}/product.html?id=${product.id}`;
+      return `السلام عليكم، أود طلب هذا المنتج:\n${name}\n${price}\n${url}`;
+    }
+
+    function createCard(product){
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.setAttribute('data-id', product.id);
+
+      const primaryImage = (product.product_images?.find(img => img.is_primary)?.image_url)
+        || (product.product_images?.[0]?.image_url)
+        || 'https://via.placeholder.com/400x200/1a1a2e/ffffff?text=صورة+المنتج';
+
+      const detailsUrl = `product.html?id=${product.id}`;
+      const waText = encodeURIComponent(waOrderMessage(product));
+      const waUrl = `https://wa.me/?text=${waText}`;
+
+      card.innerHTML = `
+        <div class="product-image-container">
+          <div class="product-meta-overlay">
+            <span class="product-category"><i class="fa-solid fa-layer-group"></i> ${product.categories?.name || 'غير محدد'}</span>
+            <span class="product-supplier">${product.product_suppliers?.[0]?.supplier_name || 'غير محدد'}</span>
+            <span class="product-serial">SN: ${product.code || ''}</span>
+          </div>
+          <div class="product-image">
+            <img src="${primaryImage}" alt="${product.name || ''}" onerror="this.src='https://via.placeholder.com/400x200/1a1a2e/ffffff?text=صورة+المنتج'">
+          </div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">${product.name || ''}<span><i class="fa fa-address-book-o" aria-hidden="true"></i> ${product.users?.username || 'غير محدد'}</span></h3>
+          <div class="product-meta-overlay2">
+            <span class="product-category2">${product.categories?.name || 'غير محدد'}</span>
+            <span class="product-supplier2">${product.product_suppliers?.[0]?.supplier_name || 'غير محدد'}</span>
+            <span class="product-serial2">SN: ${product.code || ''}</span>
+            <span class="product-price2">$${product.selling_price ?? 0}</span>
+          </div>
+          <p class="product-description">${product.description || 'لا يوجد وصف'}</p>
+          <div class="product-prices">
+            <div class="price-item">
+              <span class="price-label"></span>
+              <span class="price-amount">$${product.selling_price || 0}</span>
+			  <span class="price-currency">افضل سعر</span>
+            </div>
+          </div>
+          <div class="product-actions">
+            <a href="${detailsUrl}" class="product-button"><i class="fa-solid fa-info"></i> تفاصيل المنتج</a>
+            <a href="${waUrl}" target="_blank" class="product-button"><i class="fab fa-whatsapp"></i> اطلب المنتج واتس اب</a>
+          </div>
+        </div>`;
+
+      return card;
+    }
+
+    function renderProducts(list){
+      const grid = document.getElementById('productsGrid');
+      grid.innerHTML = '';
+      list.forEach(p => grid.appendChild(createCard(p)));
+      const noResults = document.getElementById('noResults');
+      if (!list || list.length === 0) noResults.classList.remove('hidden');
+      else noResults.classList.add('hidden');
+    }
+
+    function changeViewMode(mode){
+      const grid = document.getElementById('productsGrid');
+      grid.classList.remove('grid','list','compact-grid');
+      grid.classList.add(mode);
+    }
+
+    document.addEventListener('DOMContentLoaded', async function(){
+      // UI hooks
+      document.getElementById('viewMode').addEventListener('change', e => changeViewMode(e.target.value));
+      document.getElementById('searchInput').addEventListener('input', applyFilters);
+      document.getElementById('sortFilter').addEventListener('change', applyFilters);
+      document.getElementById('clearBtn').addEventListener('click', () => { document.getElementById('searchInput').value=''; document.getElementById('sortFilter').value='date'; applyFilters(); });
+
+      // Load products (public)
+      try {
+        const result = await window.productsService.getProducts();
+        if (result.success && Array.isArray(result.products)) {
+          allProducts = result.products;
+        } else {
+          allProducts = [];
+        }
+      } catch(e) { allProducts = []; }
+
+      // No mock fallback: keep empty if DB returns nothing
+
+      applyFilters();
+    });
+  </script>
+
+  <!-- Supabase and services -->
+  <script>window.PB_DISABLE_EXTERNAL_RENDER = true;</script>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/products-service.js"></script>
+
+  <!-- Theme -->
+  <script src="js/theme.js"></script>
+</body>
+</html>
