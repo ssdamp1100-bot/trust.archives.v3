@@ -1,0 +1,610 @@
+@charset "utf-8";
+/* CSS Document - TrustGroupArchives */
+
+
+/* أنماط قسم إضافة المورد */
+.add-supplier-section {
+    padding: 20px;
+    direction: rtl;
+    font-family: "Noto Naskh Arabic", serif;
+    background-color: var(--background-color);
+    min-height: 100vh;
+	color:var(--text2-color);
+}
+
+.add-supplier-container {
+    margin: 0 auto;
+	padding-top: 120px;
+}
+
+.add-supplier-card {
+    background-color: var(--container-bg-color) ;
+    padding: 30px;
+    border-radius: 15px;
+    border: none;
+}
+.add-supplier-card i{
+    padding-left: 4px;   
+}
+.add-supplier-title {
+    text-align: center;
+    margin-bottom: 45px;
+    font-size: 28px;
+    background: var(--title-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
+	font-family: "Noto Naskh Arabic", serif;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color) ;
+}
+
+.add-supplier-form {
+    direction: rtl;
+}
+
+.add-supplier-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.add-supplier-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+	width: 100%;
+	margin-bottom: 30px;
+}
+
+.add-supplier-group label {
+    color: var(--primary-color);
+    margin-bottom: 6px;
+    font-size: 18px;
+    font-weight: 500;
+	 font-family: "Noto Naskh Arabic", serif;
+    margin-right: 8px;
+	margin-bottom: 12px;
+}
+
+.add-supplier-group input,
+.add-supplier-group select,
+.add-supplier-group textarea {
+    padding: 8px 10px;
+    border: 1px solid var(--border-hover-color) ;
+    border-radius: 6px;
+    background-color: var(--container-focus-color);
+    color: var(--text2-color);
+    font-size: 15px;
+    transition: all 0.3s;
+    font-family: "Noto Naskh Arabic", serif;
+}
+
+.add-supplier-group input:focus,
+.add-supplier-group select:focus,
+.add-supplier-group textarea:focus {
+    outline: none;
+    border-color: var(--text2-color);
+}
+
+.add-supplier-group input::placeholder,
+.add-supplier-group textarea::placeholder {
+    color: var(--border-hover-color);
+    font-size: 14px;
+}
+
+.add-supplier-file-container {
+    position: relative;
+}
+
+.add-supplier-file-input {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+.add-supplier-file-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border: 1px dashed var(--border-hover-color) ;
+    border-radius: 8px;
+    background-color: var(--container-focus-color);
+    color: var(--border-hover-color);
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+    min-height: 44px;
+}
+
+.add-supplier-file-label:hover {
+    border-color: var(--text-color);
+    color: var(--text3-color);
+}
+
+.upload-icon {
+    margin-left: 8px;
+}
+
+.add-supplier-contact-section {
+    margin: 25px 0;
+    padding: 20px;
+    border-radius: 8px;
+  
+}
+
+.add-supplier-section-title {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 8px;
+    border-top: 1px dashed var(--border-hover-color) ;
+    border-bottom: 1px dashed var(--border-color) ;
+}
+
+.add-supplier-dynamic-fields {
+    margin-bottom: 15px;
+}
+
+.add-supplier-dynamic-fields label {
+    display: block;
+    color: var(--text-color);
+    margin-bottom: 10px;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.add-supplier-field-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.add-supplier-field-group input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--border-hover-color) ;
+    border-radius: 8px;
+    background-color: var(--container-focus-color);
+    color: var(--text2-color);
+    font-size: 14px;
+}
+
+.add-supplier-add-field-btn {
+    background: none	;
+    color: var(--text2-color);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    font-weight: 500;
+}
+
+.add-supplier-add-field-btn:hover {
+    transform: scale(1.1);
+    background: none;
+}
+
+.add-supplier-checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 8px;
+    border-radius: 6px;   
+}
+
+.add-supplier-checkbox-group label {
+    display: flex;
+    align-items: center;
+    color: var(--text2-color);
+    font-weight: 400;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+.add-supplier-checkbox-group input[type="checkbox"] {
+    margin-left: 5px;
+}
+
+.add-supplier-form-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+.add-supplier-form-actions i{
+    font-size: 12px;
+
+     
+}
+.add-supplier-submit-btn {
+    padding: 12px 25px;
+    background: var(--button-color);
+    color: var(--light-color);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    min-width: 140px;
+    font-weight: 500;
+}
+
+.add-supplier-submit-btn:hover {
+    background:var(--title-color);
+    transform: translateY(-2px);
+}
+
+.add-supplier-cancel-btn {
+    padding: 12px 25px;
+    background:var(--extra6-color) ;
+    color: var(--light-color);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    min-width: 140px;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 500;
+}
+
+.add-supplier-cancel-btn:hover {
+    background: var(--third-color);
+    transform: translateY(-2px);
+}
+.back2-btn {
+    padding: 12px 25px;
+    background:var(--extra2-color) ;
+    color: var(--light-color);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    min-width: 140px;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 500;
+}
+
+.back2-btn:hover {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+}
+/* أنماط جديدة مضافة */
+.file-info {
+    margin-top: 8px;
+    font-size: 14px;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+}
+
+.file-info i {
+    margin-left: 5px;
+}
+
+.other-industry-input {
+    display: none;
+    margin-top: 10px;
+}
+
+.todo-list {   
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.todo-input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.todo-input-group input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--border-hover-color) ;
+    border-radius: 8px;
+    background-color: var(--container-focus-color);
+    color: var(--text2-color);
+    font-size: 14px;
+}
+
+.todo-list-items {
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    border-bottom: 1px solid var(--border-hover-color) ;
+}
+
+.todo-item:last-child {
+    border-bottom: none;
+}
+
+.todo-item span {
+    flex: 1;
+    color: var(--text2-color);
+}
+
+.remove-item-btn {
+    background: none;
+    border: none;
+    color: var(--extra6-color)		;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.checkbox-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 10px;
+}
+
+.checkbox-list label {
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+    font-size: 15px;
+    font-weight: 400;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.checkbox-list input[type="checkbox"] {
+    margin-left: 5px;
+}
+
+.add-supplier-contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+/* وسائط الاستعلام لأحجام الشاشات المختلفة */
+@media screen and (max-width: 990px) {
+    .add-supplier-container {
+        padding-top: 100px;
+        max-width: 99%;
+    }
+    
+    .add-supplier-title {
+        font-size: 22px;
+        margin-bottom: 35px;
+    }
+    
+    .add-supplier-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .add-supplier-contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .add-supplier-checkbox-group {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .checkbox-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .add-supplier-container {
+        padding-top: 80px;
+    }
+    
+    .add-supplier-card {
+        padding: 20px;
+    }
+    
+    .add-supplier-title {
+        font-size: 20px;
+        margin-bottom: 30px;
+        padding-bottom: 10px;
+    }
+    
+    .add-supplier-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .add-supplier-contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .add-supplier-checkbox-group {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+    
+    .checkbox-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+    
+    .add-supplier-group label {
+        font-size: 14px;
+    }
+    
+    .add-supplier-group input,
+    .add-supplier-group select,
+    .add-supplier-group textarea {
+        padding: 8px;
+        font-size: 13px;
+    }
+    
+    .add-supplier-section-title {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    
+    .add-supplier-form-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .add-supplier-submit-btn,
+	.back2-btn,
+    .add-supplier-cancel-btn {
+        width: 100%;
+        min-width: unset;
+        padding: 10px 20px;
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .add-supplier-grid,
+    .add-supplier-contact-grid,
+    .add-supplier-checkbox-group,
+    .checkbox-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .add-supplier-container {
+        padding-top: 80px;
+		 width:99%;
+    }
+    
+    .add-supplier-card {
+        padding: 15px;
+		width:99%;
+    }
+    
+    .add-supplier-title {
+        font-size: 20px;
+        margin-bottom: 30px;
+        padding-bottom: 10px;
+    }
+    
+    .add-supplier-grid {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 10px;
+    }
+    
+    .add-supplier-contact-grid {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 10px;
+    }
+    
+    .add-supplier-checkbox-group {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 8px;
+    }
+    
+    .checkbox-list {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 8px;
+    }
+    
+    .add-supplier-group label {
+        font-size: 14px;
+    }
+    
+    .add-supplier-group input,
+    .add-supplier-group select,
+    .add-supplier-group textarea {
+        padding: 8px;
+        font-size: 13px;
+    }
+    
+    .add-supplier-section-title {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    
+    .add-supplier-form-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .add-supplier-submit-btn,
+	.back2-btn,
+    .add-supplier-cancel-btn {
+        width: 100%;
+        min-width: unset;
+        padding: 10px 20px;
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .add-supplier-section {
+        padding: 10px;
+    }
+    
+    .add-supplier-container {
+        padding-top: 60px;
+    }
+    
+    .add-supplier-card {
+        padding: 12px;
+    }
+    
+    .add-supplier-title {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    
+    .add-supplier-group label {
+        font-size: 13px;
+    }
+    
+    .add-supplier-group input,
+    .add-supplier-group select,
+    .add-supplier-group textarea {
+        padding: 8px;
+        font-size: 13px;
+    }
+    
+    .add-supplier-section-title {
+        font-size: 14px;
+    }
+    
+    .add-supplier-submit-btn,
+    .add-supplier-cancel-btn {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+    
+    .checkbox-list label {
+        font-size: 13px;
+    }
+    
+    .file-info {
+        font-size: 12px;
+    }
+}
