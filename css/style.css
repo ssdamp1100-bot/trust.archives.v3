@@ -1592,3 +1592,25 @@ body {
         font-size: 15px;
     }
 }
+
+/* ===== Logout Button (match login button style) ===== */
+/* Applied to the injected button in nav.js: <button id="logoutBtn" class="menu-item login-btn"> */
+button.menu-item.login-btn#logoutBtn,
+.main-menu button.menu-item.login-btn#logoutBtn {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+    min-width: 120px;
+    font-weight: 500;
+    font-family: "Noto Naskh Arabic", serif;
+    background: var(--button-color);
+    color: var(--light-color);
+}
+
+button.menu-item.login-btn#logoutBtn:hover,
+.main-menu button.menu-item.login-btn#logoutBtn:hover {
+    background: var(--title-color);
+}
