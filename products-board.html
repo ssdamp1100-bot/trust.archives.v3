@@ -323,38 +323,10 @@
             });
         }
 
-        // Enhanced filtering functionality with Supabase + mock fallback
+        // Enhanced filtering functionality with Supabase only (no mock fallback)
         let currentProducts = [];
         let filteredProducts = [];
-        const MOCK_KEY = 'mock_products_v1';
-
-        function seedMockProductsIfNeeded() {
-            if (!localStorage.getItem(MOCK_KEY)) {
-                const mock = [
-                    { id: 'm1', name: 'ساعة ذكية متطورة', description: 'ساعة ذكية بميزات متقدمة...', code: '001', selling_price: 199, created_at: new Date().toISOString(),
-                      categories: { name: 'إلكترونيات' }, product_suppliers: [{ supplier_name: 'شركة التقنية الحديثة' }], users: { username: 'admin' },
-                      product_images: [{ image_url: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400', is_primary: true }] },
-                    { id: 'm2', name: 'هاتف ذكي عالي الجودة', description: 'هاتف ذكي بكاميرا عالية...', code: '002', selling_price: 599, created_at: new Date().toISOString(),
-                      categories: { name: 'إلكترونيات' }, product_suppliers: [{ supplier_name: 'مجموعة الهواتف الذكية' }], users: { username: 'ahmed' },
-                      product_images: [{ image_url: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400', is_primary: true }] },
-                    { id: 'm3', name: 'سماعات لاسلكية', description: 'سماعات بلوتوث عالية الجودة...', code: '003', selling_price: 149, created_at: new Date().toISOString(),
-                      categories: { name: 'إلكترونيات' }, product_suppliers: [{ supplier_name: 'شركة الصوتيات المتقدمة' }], users: { username: 'sadeq' },
-                      product_images: [{ image_url: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400', is_primary: true }] }
-                ];
-                localStorage.setItem(MOCK_KEY, JSON.stringify(mock));
-            }
-        }
-
-        function getMockProducts() {
-            try {
-                const raw = localStorage.getItem(MOCK_KEY);
-                return raw ? JSON.parse(raw) : [];
-            } catch { return []; }
-        }
-
-        function clearMockProducts() {
-            localStorage.removeItem(MOCK_KEY);
-        }
+        
 
         document.addEventListener('DOMContentLoaded', async function() {
             // Check authentication
@@ -363,23 +335,7 @@
                 return;
             }
 
-            // Admin mock controls
-            try {
-                const user = window.authService.getCurrentUser();
-                if (user?.role === 'admin') {
-                    document.getElementById('adminMockControls').style.display = 'grid';
-                    document.getElementById('deleteMockBtn').addEventListener('click', () => {
-                        if (confirm('سيتم حذف جميع المنتجات التجريبية نهائياً. هل أنت متأكد؟')) {
-                            clearMockProducts();
-                            // إذا كان لا توجد منتجات من القاعدة، أعد التحميل لإخفاء التجريبية
-                            if (!currentProducts || currentProducts.length === 0) {
-                                renderProducts([]);
-                                document.getElementById('noResults').classList.remove('hidden');
-                            }
-                        }
-                    });
-                }
-            } catch {}
+            // No mock controls
 
             // Load products from database
             await loadProductsFromDatabase();
@@ -503,14 +459,7 @@
             return card;
         }
 
-        function renderStaticProducts() {
-            // Deprecated: replaced by mock/localStorage approach
-            seedMockProductsIfNeeded();
-            const mock = getMockProducts();
-            currentProducts = mock;
-            filteredProducts = [...currentProducts];
-            renderProducts(currentProducts);
-        }
+        // Removed deprecated static/mock rendering
 
         async function filterProducts() {
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();

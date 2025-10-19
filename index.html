@@ -199,7 +199,7 @@
     function waOrderMessage(product) {
       const name = product.name || '';
       const price = product.selling_price != null ? `السعر: ${product.selling_price} USD` : '';
-      const url = `${window.location.origin}/product.html?id=${product.id}`;
+      const url = `${window.location.origin}/product-guest.html?id=${product.id}`;
       return `السلام عليكم، أود طلب هذا المنتج:\n${name}\n${price}\n${url}`;
     }
 
@@ -212,9 +212,10 @@
         || (product.product_images?.[0]?.image_url)
         || 'https://via.placeholder.com/400x200/1a1a2e/ffffff?text=صورة+المنتج';
 
-      const detailsUrl = `product.html?id=${product.id}`;
+      const detailsUrl = `product-guest.html?id=${product.id}`;
+      const waPhone = '8613020990375'; // target WhatsApp number (no plus sign)
       const waText = encodeURIComponent(waOrderMessage(product));
-      const waUrl = `https://wa.me/?text=${waText}`;
+      const waUrl = `https://wa.me/${waPhone}?text=${waText}`;
 
       card.innerHTML = `
         <div class="product-image-container">
@@ -248,7 +249,15 @@
             <a href="${waUrl}" target="_blank" class="product-button"><i class="fab fa-whatsapp"></i> اطلب المنتج واتس اب</a>
           </div>
         </div>`;
-
+      // Persist selected product for guest page fallback
+      try {
+        const detailsLink = card.querySelector('.product-actions a.product-button[href^="product-guest.html"]');
+        if (detailsLink) {
+          detailsLink.addEventListener('click', () => {
+            try { sessionStorage.setItem('selected_product', JSON.stringify(product)); } catch(e) {}
+          });
+        }
+      } catch(e) {}
       return card;
     }
 

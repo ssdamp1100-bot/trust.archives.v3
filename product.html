@@ -31,7 +31,91 @@
 	<link rel="stylesheet" href="css/product.css">
 	<link rel="stylesheet" href="css/responsive-product.css">
     <style>
-
+        /* Files and Links Styling */
+        .files-container, .links-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .file-item, .link-item {
+            background: var(--container-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .file-item:hover, .link-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-color: var(--main-color);
+        }
+        
+        .file-item .file-icon {
+            font-size: 2.5rem;
+            color: var(--main-color);
+            margin-bottom: 10px;
+        }
+        
+        .file-item .file-name {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-color);
+        }
+        
+        .file-item .file-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background: var(--main-color);
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background 0.3s;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .file-item .file-btn:hover {
+            background: var(--main-hover-color);
+        }
+        
+        .link-item .site-name {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .link-item .product-link2 {
+            color: var(--main-color);
+            text-decoration: none;
+            word-break: break-all;
+            font-size: 14px;
+            display: block;
+        }
+        
+        .link-item .product-link2:hover {
+            text-decoration: underline;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text2-color);
+        }
+        
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            opacity: 0.5;
+        }
     </style>
 </head>
  <body class="theme1">  
@@ -100,8 +184,13 @@
                         </div>
                      
                     
-                    <div class="main-image">
+                    <div class="main-image" style="position: relative;">
                         <img id="mainImage" src="" alt="صورة المنتج" onerror="this.src='https://via.placeholder.com/800x450/1a1a2e/ffffff?text=صورة+المنتج'">
+                        <button id="downloadImageBtn" title="تحميل الصورة" 
+                                style="position:absolute; left:10px; bottom:10px; padding:8px 12px; border:none; border-radius:6px; cursor:pointer; background:var(--extra1-color); color:#fff; display:flex; align-items:center; gap:6px; box-shadow:0 2px 8px rgba(0,0,0,0.25);">
+                            <i class="fas fa-download"></i>
+                            تحميل الصورة
+                        </button>
                     </div>
                     
                     <div class="image-thumbnails">
@@ -205,21 +294,6 @@
                     </div>
                 </div>
                 
-                <!-- Shipping Info -->
-                <div class="shipping-info">
-                    <div class="shipping-item">
-                        <i class="fas fa-shipping-fast"></i>
-                        <span>شحن سريع خلال 2-5 أيام عمل</span>
-                    </div>
-                    <div class="shipping-item">
-                        <i class="fas fa-undo"></i>
-                        <span>إرجاع مجاني خلال 30 يوم</span>
-                    </div>
-                    <div class="shipping-item">
-                        <i class="fas fa-shield-alt"></i>
-                        <span>ضمان لمدة عامين</span>
-                    </div>
-                </div>
                   <!-- Product Actions -->
                 <div class="product-actions">				
                     <button class="product-btn Favorite-btn" id="quoteBtn">
@@ -293,8 +367,8 @@
                 <div class="tabs-header">
                     <div class="tab-btn active" data-tab="description">استخدامات المنتج</div>
                     <div class="tab-btn" data-tab="specifications">المواصفات</div>
-                    <div class="tab-btn" data-tab="links">روابط المنتج</div>
-                    <div class="tab-btn" data-tab="shipping">الشحن والتوصيل</div>
+                    <div class="tab-btn" data-tab="details">تفاصيل شاملة</div>
+                    <div class="tab-btn" data-tab="files">الملفات والروابط</div>
                 </div>
                 
                 <div class="tab-content active" id="description">
@@ -304,83 +378,33 @@
                 
                 <div class="tab-content" id="specifications">
                     <div class="specs-grid" id="specsGrid">
-                        <div class="spec-item">
-                            <div class="spec-name">النوع</div>
-                            <div class="spec-value">ساعة ذكية</div>
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="details">
+                    <h4>التفاصيل الكاملة للمنتج</h4>
+                    <div class="specs-grid" id="detailsGrid">
+                        <!-- Will be populated by JavaScript with: brand, model, weight, dimensions, color, material, warranty, origin_country, keywords, notes -->
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="files">
+                    <div id="productFilesSection">
+                        <h4><i class="fas fa-file-download"></i> ملفات المنتج</h4>
+                        <div id="productFilesContainer" class="files-container">
+                            <!-- Will be populated by JavaScript -->
                         </div>
-                        <div class="spec-item">
-                            <div class="spec-name">الموديل</div>
-                            <div class="spec-value">SW-2024-Pro</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-name">حجم الشاشة</div>
-                            <div class="spec-value">1.5 بوصة</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-name">نوع الشاشة</div>
-                            <div class="spec-value">AMOLED</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-name">مقاومة الماء</div>
-                            <div class="spec-value">5 ATM (50 متر)</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-name">سعة البطارية</div>
-                            <div class="spec-value">300 mAh</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-name">مدة عمل البطارية</div>
-                            <div class="spec-value">7 أيام</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-name">التوافق</div>
-                            <div class="spec-value">iOS 10.0+ / Android 6.0+</div>
+                    </div>
+                    
+                    <div id="productLinksSection" style="margin-top: 30px;">
+                        <h4><i class="fas fa-link"></i> روابط المنتج</h4>
+                        <div id="productLinksContainer" class="links-container">
+                            <!-- Will be populated by JavaScript -->
                         </div>
                     </div>
                 </div>
                 
-              <div class="tab-content" id="links">
-    <div class="product-links-container" id="productLinksContainer">
-        <div class="link-item">
-            <div class="site-name">
-                <i class="fab fa-amazon"></i> Amazon
-            </div>
-            <a href="[Your Amazon Link Here]" target="_blank" class="product-link2">
-                https://www.amazon.com/product-example
-            </a>
-        </div>
-        
-        <div class="link-item">
-            <div class="site-name">
-                <i class="fab fa-ebay"></i> eBay
-            </div>
-            <a href="[Your eBay Link Here]" target="_blank" class="product-link2">
-                https://www.ebay.com/itm/product-example
-            </a>
-        </div>
-
-        <div class="link-item">
-            <div class="site-name">
-                <i class="fas fa-store"></i> المتجر الرسمي
-            </div>
-            <a href="[Your Official Store Link Here]" target="_blank" class="product-link2">
-                https://www.official-store.com/product-page
-            </a>
-        </div>
-    </div>
-</div>
-                
-                <div class="tab-content" id="shipping">
-                    <h4>خيارات الشحن:</h4>
-                    <ul style="padding-right: 20px; margin: 15px 0;">
-                        <li>الشحن السريع: 2-5 أيام عمل - $15</li>
-                        <li>الشحن العادي: 7-14 يوم عمل - $8</li>
-                        <li>الشحن الاقتصادي: 15-30 يوم عمل - مجاني للطلبات فوق $100</li>
-                    </ul>
-                    
-                    <h4>سياسة الإرجاع:</h4>
-                    <p>يمكنك إرجاع المنتج خلال 30 يوم من الاستلام مع الحفاظ على الغلاف الأصلي وملحقاته. سيتم استرداد المبلغ بعد فحص المنتج.</p>
-                </div>
             </div>
         </div>
     </div>
