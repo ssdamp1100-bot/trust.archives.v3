@@ -158,7 +158,7 @@
         <!-- Upper Section: Product Layout -->
         <div class="product-layout">
                 <!-- Right Column: Product Info and Main Image -->
-            <div class="right-column" id="product-details" >
+            <div class="right-column" >
                 <div class="product-gallery">
                     <div class="product-info">
 					    <div class="product-meta">
@@ -193,17 +193,7 @@
                         </button>
                     </div>
                     
-                    <div class="image-thumbnails">
-                        <div class="thumbnail active" data-image="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400">
-                            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=100" alt="Thumbnail 1">
-                        </div>
-                        <div class="thumbnail" data-image="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&crop=entropy&fit=crop">
-                            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=100&crop=entropy&fit=crop" alt="Thumbnail 2">
-                        </div>
-                        <div class="thumbnail" data-image="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400">
-                            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100" alt="Thumbnail 5">
-                        </div>
-                    </div>
+                    <div class="image-thumbnails"></div>
                 </div>
             </div>
        
@@ -365,30 +355,45 @@
         <div class="lower-section">
             <div class="product-tabs">
                 <div class="tabs-header">
-                    <div class="tab-btn active" data-tab="description">استخدامات المنتج</div>
-                    <div class="tab-btn" data-tab="specifications">المواصفات</div>
-                    <div class="tab-btn" data-tab="details">تفاصيل شاملة</div>
-                    <div class="tab-btn" data-tab="files">الملفات والروابط</div>
+                    <div class="tab-btn active" data-tab="general">بيانات عامة</div>
+                    <div class="tab-btn" data-tab="usages">استخدامات المنتج</div>
+                    <div class="tab-btn" data-tab="specs">مواصفات المنتج</div>
+                    <div class="tab-btn" data-tab="proscons">الميزات و السلبيات</div>
+                    <div class="tab-btn" data-tab="files">ملفات و روابط</div>
                 </div>
-                
-                <div class="tab-content active" id="description">
-                    <p id="productLongDescription"></p>
-                    <div id="featuresListContainer"></div>
+
+                <!-- General Info Tab -->
+                <div class="tab-content active" id="general">
+                    <div class="specs-grid" id="generalGrid">
+                        <!-- manufacturing_country/origin_country, model, origin_country, target_audience, warranty -->
+                    </div>
                 </div>
-                
-                <div class="tab-content" id="specifications">
+
+                <!-- Usages Tab -->
+                <div class="tab-content" id="usages">
+                    <ul id="usagesList" style="padding-right: 20px; margin: 10px 0 20px; list-style: disc;"></ul>
+                </div>
+
+                <!-- Specifications Tab -->
+                <div class="tab-content" id="specs">
                     <div class="specs-grid" id="specsGrid">
-                        <!-- Will be populated by JavaScript -->
+                        <!-- dimensions, weight, material, color -->
                     </div>
                 </div>
-                
-                <div class="tab-content" id="details">
-                    <h4>التفاصيل الكاملة للمنتج</h4>
-                    <div class="specs-grid" id="detailsGrid">
-                        <!-- Will be populated by JavaScript with: brand, model, weight, dimensions, color, material, warranty, origin_country, keywords, notes -->
+
+                <!-- Pros and Cons Tab -->
+                <div class="tab-content" id="proscons">
+                    <div>
+                        <h4 style="margin:10px 0;">ميزات المنتج</h4>
+                        <ul id="featuresList" style="padding-right: 20px; margin: 10px 0 20px; list-style: disc;"></ul>
+                    </div>
+                    <div>
+                        <h4 style="margin:10px 0;">سلبيات المنتج</h4>
+                        <ul id="negativesList" style="padding-right: 20px; margin: 10px 0 20px; list-style: disc;"></ul>
                     </div>
                 </div>
-                
+
+                <!-- Files and Links Tab -->
                 <div class="tab-content" id="files">
                     <div id="productFilesSection">
                         <h4><i class="fas fa-file-download"></i> ملفات المنتج</h4>
@@ -404,7 +409,6 @@
                         </div>
                     </div>
                 </div>
-                
             </div>
         </div>
     </div>

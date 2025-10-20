@@ -328,23 +328,34 @@
 	    <script>
     // بيانات أعضاء الفريق من قاعدة البيانات
     let teamMembers = [];
-    const defaultAvatar = 'https://via.placeholder.com/200x200.png?text=TG';
+    const defaultAvatar = 'https://cdn.jsdelivr.net/gh/tabler/tabler-icons/icons/user.svg';
 
     async function loadTeamMembers() {
         try {
             const { data, error } = await supabaseClient
                 .from('users')
-                .select('full_name, username')
+                .select('id, full_name, username, profile_image_url')
                 .order('created_at', { ascending: true })
                 .limit(30);
 
             if (error) throw error;
 
+            // بناء خرائط الأعداد: عدد المنتجات لكل مستخدم، وعدد النقاط من جدول notes
+            const [prodRes, pointsRes] = await Promise.all([
+                supabaseClient.from('products').select('user_id'),
+                supabaseClient.from('notes').select('user_id').eq('category','point')
+            ]);
+            const productsMap = new Map();
+            (prodRes.data||[]).forEach(r=>{ const k=r.user_id; productsMap.set(k, (productsMap.get(k)||0)+1); });
+            const pointsMap = new Map();
+            (pointsRes.data||[]).forEach(r=>{ const k=r.user_id; pointsMap.set(k, (pointsMap.get(k)||0)+1); });
+
             teamMembers = (data || []).map(u => ({
+                id: u.id,
                 name: (u.full_name && u.full_name.trim()) ? u.full_name : (u.username || 'عضو'),
-                image: defaultAvatar,
-                products: 0,
-                points: 0
+                image: u.profile_image_url || defaultAvatar,
+                products: productsMap.get(u.id) || 0,
+                points: pointsMap.get(u.id) || 0
             }));
         } catch (e) {
             console.error('فشل جلب المستخدمين لواجهة السلايدر:', e);
@@ -426,7 +437,7 @@
             
             item.innerHTML = `
                 <div class="cover">
-                    <img src="${member.image}" alt="${member.name}" loading="lazy">
+                    <img src="${member.image}" alt="${member.name}" loading="lazy" onerror="this.onerror=null; this.src='${defaultAvatar}';">
                     <div class="member-info">
                         <div class="member-name">${member.name}</div>
                         <div class="member-stats">

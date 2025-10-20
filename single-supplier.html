@@ -57,9 +57,21 @@
    <div class="supplier-container">
         <div class="supplier-header">
             <img id="supplierLogo" src="img/company-1.jpg" alt="شعار المورد" class="supplier-logo">
-            <div class="supplier-title">
-                <h2 id="supplierName"><i class="fas fa-building"></i> —</h2>
-                <p id="supplierDescription"><i class="fas fa-star"></i> —</p>
+            <div class="single-user-section" id="userHeaderSection">
+                <div class="user-profile-column">
+                    <h2 id="supplierName"><i class="fas fa-building"></i> —</h2>
+                    <p id="supplierDescription"><i class="fas fa-star"></i> —</p>
+                    <div class="supplier-rating" id="supplierRatingUI" style="display:flex;align-items:center;gap:8px;margin-top:8px;">
+                        <div class="stars" id="ratingStars" style="display:flex;gap:4px;cursor:pointer;">
+                            <i data-value="1" class="fa-regular fa-star"></i>
+                            <i data-value="2" class="fa-regular fa-star"></i>
+                            <i data-value="3" class="fa-regular fa-star"></i>
+                            <i data-value="4" class="fa-regular fa-star"></i>
+                            <i data-value="5" class="fa-regular fa-star"></i>
+                        </div>
+                        <span id="ratingValue" style="font-weight:600;">0/5</span>
+                    </div>
+                </div>
             </div>
         </div>
         

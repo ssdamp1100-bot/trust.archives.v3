@@ -121,14 +121,7 @@
      <a class="suppliers-rate-button" href="single-supplier.html">تفاصيل المورد</a>
 </div>-->
 
-<div class="suppliers-rate-item">
-    <img src="img/company-2.jpg" alt="supplier-logo" class="suppliers-rate-logo">
-    <div class="suppliers-rate-info">
-        <p class="suppliers-rate-name">مصانع إسطنبول للمنسوجات</p>           
-    </div>
-     <p class="suppliers-rate-points">88 نقطة</p>
-    <a class="suppliers-rate-button" href="single-supplier.html">تفاصيل المورد</a>
-</div>  
+<!-- سيُملأ هذا القسم ديناميكياً عبر renderTopSuppliers() -->
 </div>
 </div>
          
@@ -492,11 +485,12 @@
             const logoUrl = supplier.logo_url || 'img/company-1.jpg';
             const statusClass = supplier.status === 'active' ? 'supplier-status-enable' : 'supplier-status-disable';
 
+            const rating = (supplier.rating != null && supplier.rating !== '') ? supplier.rating : '';
             card.innerHTML = `
                 <div class="supplier-card-header">
                     <img src="${logoUrl}" alt="supplier-logo" class="supplier-logo">
                     <div class="supplier-details-info">
-                        <h3 class="supplier-name">${supplier.name}</h3>
+                        <h3 class="supplier-name">${supplier.name} ${rating !== '' ? `<span style='font-size:12px;color:var(--warning-color,#f0b90b);margin-inline-start:8px;'><i class='fa-solid fa-star'></i> ${rating}/5</span>` : ''}</h3>
                         <div class="supplier-tags">
                             <span class="tag" id="supplier-country"><i class="fa-solid fa-flag"></i> ${supplier.country || 'غير محدد'}</span>
                             <span class="tag" id="supplier-category"><i class="fa-solid fa-layer-group"></i> ${supplier.industry || 'غير محدد'}</span>
