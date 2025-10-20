@@ -149,7 +149,118 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // === 8. معالج إرسال النموذج ===
+  // === 8. وضع التعديل: قراءة id وتعبئة الحقول ===
+  const qs = new URLSearchParams(window.location.search);
+  const editSupplierId = qs.get('id');
+
+  async function populateSupplierForm(s){
+    try{
+      // أساسية
+      const setVal = (id, v)=>{ const el = document.getElementById(id); if (el) el.value = v ?? '' };
+      setVal('add-supplier-name', s.name);
+      setVal('add-supplier-country', s.country);
+      setVal('add-supplier-description', s.description);
+      setVal('add-supplier-experience', s.experience_years);
+      setVal('add-supplier-website', s.website_url);
+      setVal('add-supplier-address', s.address);
+      setVal('add-supplier-map', s.map_url);
+      setVal('add-supplier-notes', s.notes);
+
+      // الصناعات
+      const industriesStr = typeof s.industry === 'string' ? s.industry : Array.isArray(s.industry)? s.industry.join(', ') : '';
+      // ضع قيم الصناعات إن كانت مربعات اختيار
+      document.querySelectorAll('input[name="industry"]').forEach(cb=>{ cb.checked = false; });
+      industriesStr.split(',').map(x=>x.trim()).filter(Boolean).forEach(val=>{
+        const cb = document.querySelector(`input[name="industry"][value="${CSS.escape(val)}"]`);
+        if (cb) cb.checked = true; else {
+          const other = document.querySelector('#other-industry-input input');
+          const otherChk = document.getElementById('other-industry-checkbox');
+          if (other && otherChk && !other.value){ otherChk.checked = true; other.value = val; other.parentElement.style.display = 'block'; }
+        }
+      });
+
+      // طرق الدفع/الشحن
+      const checkMany = (name, values)=>{
+        const set = new Set((values||[]).map(v=>String(v)));
+        document.querySelectorAll(`input[name="${name}"]`).forEach(cb=>{ cb.checked = set.has(cb.value); });
+      };
+      checkMany('payment', s.payment_methods||[]);
+      checkMany('shipping', s.shipping_methods||[]);
+
+      // الشهادات
+      checkMany('certificates', s.certificates||[]);
+
+      // المنتجات الرئيسية (todo list)
+      const fillTodo = (listId, items)=>{
+        const list = document.getElementById(listId);
+        if (!list) return;
+        list.innerHTML = '';
+        (items||[]).forEach(txt=>{
+          const div = document.createElement('div');
+          div.className = 'todo-item';
+          div.innerHTML = `<span>${txt}</span><button type="button" class="remove-item-btn">×</button>`;
+          div.querySelector('.remove-item-btn').addEventListener('click', ()=>div.remove());
+          list.appendChild(div);
+        });
+      };
+      fillTodo('products-list', s.main_products||[]);
+
+      // طرق تواصل
+      const ci = s.contact_info || {};
+      setVal('add-supplier-whatsapp', ci.whatsapp);
+      setVal('add-supplier-wechat', ci.wechat);
+      setVal('add-supplier-facebook', ci.facebook);
+      setVal('add-supplier-twitter', ci.twitter);
+      setVal('add-supplier-instagram', ci.instagram);
+      fillTodo('contact-methods-list', ci.other_methods||[]);
+
+      // الهواتف
+      const phoneCont = document.getElementById('phoneFields');
+      if (phoneCont){
+        phoneCont.innerHTML = '';
+        (ci.phones||[]).forEach(ph=>{
+          const group = document.createElement('div');
+          group.className = 'add-supplier-field-group';
+          group.innerHTML = `
+            <input type="tel" placeholder="+86 138 0013 8000" class="phone-input" value="${ph}">
+            <button type="button" onclick="removeField(this)" class="add-supplier-add-field-btn" style="background: #e74c3c;">
+              <i class="fas fa-minus"></i>
+            </button>`;
+          phoneCont.appendChild(group);
+        });
+      }
+
+      // الإيميلات
+      const emailCont = document.getElementById('emailFields');
+      if (emailCont){
+        emailCont.innerHTML = '';
+        (ci.emails||[]).forEach(em=>{
+          const group = document.createElement('div');
+          group.className = 'add-supplier-field-group';
+          group.innerHTML = `
+            <input type="email" placeholder="supplier@company.com" class="email-input" value="${em}">
+            <button type="button" onclick="removeField(this)" class="add-supplier-add-field-btn" style="background: #e74c3c;">
+              <i class="fas fa-minus"></i>
+            </button>`;
+          emailCont.appendChild(group);
+        });
+      }
+
+      // زر حفظ
+      if (submitBtn) submitBtn.innerHTML = '<i class="fas fa-save"></i> حفظ التعديلات';
+    }catch(e){ console.warn('populateSupplierForm error:', e); }
+  }
+
+  (async function(){
+    if (editSupplierId){
+      try{
+        const res = await window.suppliersService.getSupplierById(editSupplierId);
+        if (res?.success && res.supplier){ await populateSupplierForm(res.supplier); }
+      }catch(e){ console.warn('load supplier for edit failed', e); }
+    }
+  })();
+
+  // === 9. معالج إرسال النموذج ===
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     
@@ -204,8 +315,16 @@ document.addEventListener('DOMContentLoaded', () => {
         notes: getValTrimmed('add-supplier-notes')
       };
 
-      // === إنشاء المورد ===
-      const result = await window.suppliersService.createSupplier(supplierData);
+      let result;
+      if (editSupplierId){
+        // تحديث مورد
+        const upd = await window.suppliersService.updateSupplier(editSupplierId, supplierData);
+        if (!upd?.success) throw new Error(upd?.error || 'فشل حفظ التعديلات');
+        result = { success: true, supplier: upd.supplier };
+      } else {
+        // إنشاء مورد جديد
+        result = await window.suppliersService.createSupplier(supplierData);
+      }
       
       if (!result?.success) {
         throw new Error(result?.error || 'فشل حفظ المورد');
@@ -217,7 +336,6 @@ document.addEventListener('DOMContentLoaded', () => {
           result.supplier.id,
           logoInput.files[0]
         );
-        
         if (!uploadResult?.success) {
           console.warn('فشل رفع الشعار:', uploadResult?.error);
         }
@@ -227,8 +345,8 @@ document.addEventListener('DOMContentLoaded', () => {
       // مسح البيانات المحفوظة تلقائياً
       if (autoSave) autoSave.clearSavedData();
       
-      alert('✅ تم حفظ بيانات المورد بنجاح!');
-      window.location.href = 'suppliers.html';
+      alert(editSupplierId ? '✅ تم حفظ تعديلات المورد بنجاح!' : '✅ تم حفظ بيانات المورد بنجاح!');
+      window.location.href = 'admin.html';
 
     } catch (error) {
       console.error('Error saving supplier:', error);
@@ -242,7 +360,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // === 9. دوال جمع البيانات المعقدة ===
+  // === 10. دوال جمع البيانات المعقدة ===
   
   function collectIndustries() {
     const industries = [];

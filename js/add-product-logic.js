@@ -88,6 +88,197 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     await loadCategoriesToDatalists();
 
+    // === وضع التعديل: تحميل المنتج إن وُجد id في الرابط ===
+    const qs = new URLSearchParams(window.location.search);
+    const editProductId = qs.get('id');
+    let existingProduct = null;
+
+    async function populateFormFromProduct(p){
+        try{
+            existingProduct = p;
+            // أساسية
+            document.getElementById('productName').value = p.name || '';
+            document.getElementById('productDescription').value = p.description || '';
+            document.getElementById('productBrand').value = p.brand || '';
+            document.getElementById('productModel').value = p.model || '';
+            // الفئات
+            if (p.categories?.name){
+                const parts = String(p.categories.name).split(' - ');
+                categoryInput.value = parts[0] || '';
+                populateSubcategories();
+                subcategoryInput.value = parts.slice(1).join(' - ');
+            }
+            // تفاصيل
+            document.getElementById('productWeight').value = p.weight ?? '';
+            if (p.dimensions){
+                const [L,W,H] = String(p.dimensions).split('x');
+                document.getElementById('productLength').value = L || '';
+                document.getElementById('productWidth').value = W || '';
+                document.getElementById('productHeight').value = H || '';
+            }
+            document.getElementById('productColor').value = p.color || '';
+            document.getElementById('productMaterial').value = p.material || '';
+            document.getElementById('productWarranty').value = p.warranty || '';
+            document.getElementById('productOrigin').value = p.origin_country || '';
+            // قوائم ديناميكية
+            const fillDynamic = (containerId, list)=>{
+                const cont = document.getElementById(containerId);
+                if (!cont) return;
+                (list||[]).forEach(val => {
+                    if (!val) return;
+                    const el = document.createElement('div');
+                    el.className='product-field-group';
+                    el.innerHTML = `<span style="flex:1;">${val}</span><button type="button" class="product-remove-btn" onclick="this.parentElement.remove()"><i class=\"fas fa-trash\"></i></button>`;
+                    cont.insertBefore(el, cont.firstChild);
+                });
+            };
+            const split = (s)=> typeof s==='string'? s.split(/\n|,/).map(x=>x.trim()).filter(Boolean): Array.isArray(s)? s: [];
+            fillDynamic('usagesContainer', split(p.usages));
+            fillDynamic('featuresContainer', split(p.features));
+            fillDynamic('negativePointsContainer', split(p.negative_points));
+            // جمهور مستهدف
+            split(p.target_audience).forEach(v=>{
+                const cb = productForm.querySelector(`input[name="targetAudience"][value="${v}"]`);
+                if (cb) cb.checked = true; else {
+                    const custom = document.getElementById('customTargetAudience');
+                    if (custom && !custom.value) custom.value = v;
+                }
+            });
+            // تسعير
+            document.getElementById('productCost').value = p.cost_price ?? '';
+            document.getElementById('productPrice').value = p.selling_price ?? '';
+            document.getElementById('productDiscount').value = p.discount_percent ?? '';
+            document.getElementById('productTax').value = p.tax_percent ?? '';
+            // روابط
+            const linkEl = document.getElementById('productLink'); if (linkEl) linkEl.value = p.product_link || '';
+            document.getElementById('productVideo').value = p.video_url || '';
+
+            // عرض الصور الحالية (قراءة فقط مع ملاحظة الحذف لاحقاً)
+            const previews = document.getElementById('imagePreviews');
+            if (previews && Array.isArray(p.product_images)){
+                previews.innerHTML = '';
+                p.product_images.forEach((img, idx)=>{
+                    const div = document.createElement('div');
+                    div.className = 'product-image-preview';
+                    div.innerHTML = `
+                        <img src="${img.image_url}" alt="image">
+                        <button type="button" class="product-image-remove" data-existing-image="${encodeURIComponent(img.image_url)}"><i class="fas fa-trash"></i></button>
+                    `;
+                    previews.appendChild(div);
+                });
+                // حذف فوري للصورة من القاعدة عند النقر
+                previews.addEventListener('click', async (ev)=>{
+                    const btn = ev.target.closest('[data-existing-image]');
+                    if (!btn) return;
+                    const url = decodeURIComponent(btn.getAttribute('data-existing-image'));
+                    if (!confirm('حذف هذه الصورة؟')) return;
+                    try{
+                        await supabaseClient.from('product_images').delete().eq('product_id', p.id).eq('image_url', url);
+                        btn.parentElement.remove();
+                    }catch(e){ alert('فشل حذف الصورة'); }
+                });
+            }
+
+            // عرض الملفات الحالية مع زر حذف
+            const extraList = document.getElementById('extraFilesList');
+            if (extraList && Array.isArray(p.product_files)){
+                extraList.innerHTML = '';
+                p.product_files.forEach(f=>{
+                    const li = document.createElement('li');
+                    li.style.marginBottom = '6px';
+                    li.innerHTML = `<i class="fas fa-file" style="margin-left:6px; color: var(--primary-color);"></i>${(f.file_type||'ملف')} - ${f.file_url} <button type="button" class="product-remove-btn" data-existing-file="${encodeURIComponent(f.file_url)}"><i class="fas fa-trash"></i></button>`;
+                    extraList.appendChild(li);
+                });
+                extraList.addEventListener('click', async (ev)=>{
+                    const btn = ev.target.closest('[data-existing-file]');
+                    if (!btn) return;
+                    const url = decodeURIComponent(btn.getAttribute('data-existing-file'));
+                    if (!confirm('حذف هذا الملف؟')) return;
+                    try{
+                        await supabaseClient.from('product_files').delete().eq('product_id', p.id).eq('file_url', url);
+                        btn.parentElement.remove();
+                    }catch(e){ alert('فشل حذف الملف'); }
+                });
+            }
+
+            // زر الحفظ
+            if (saveButton) saveButton.innerHTML = '<i class="fas fa-save"></i> حفظ التعديلات';
+        }catch(e){ console.warn('populateFormFromProduct error:', e); }
+    }
+
+    if (editProductId){
+        try{
+            const res = await window.productsService.getProductById(editProductId);
+            if (res?.success && res.product){ await populateFormFromProduct(res.product); }
+        }catch(e){ console.warn('load product for edit failed', e); }
+    }
+
+    // === تحميل قائمة الموردين للقائمة المنسدلة في النموذج ===
+    async function loadSuppliersOptions() {
+        try {
+            const select = document.getElementById('mainSupplierSelect');
+            if (!select || !window.suppliersService) return;
+            const res = await window.suppliersService.getSuppliers();
+            const list = res?.suppliers || [];
+            window.__suppliersCache = list;
+            // احفظ الخيارين الأول والأخير
+            const customOpt = select.querySelector('option[value="custom"]');
+            const firstOpt = select.querySelector('option[value=""]');
+            // امسح الباقي
+            select.innerHTML = '';
+            if (firstOpt) select.appendChild(firstOpt);
+            // أضف الموردين
+            list.forEach(s => {
+                const opt = document.createElement('option');
+                opt.value = s.id;
+                opt.textContent = s.name + (s.country ? ` - ${s.country}` : '');
+                select.appendChild(opt);
+            });
+            if (customOpt) select.appendChild(customOpt);
+        } catch(e) { console.warn('loadSuppliersOptions error:', e); }
+    }
+
+    // اجعل الدالة متاحة عالمياً لتعبئة أي select جديد يُنشأ ديناميكياً
+    window.populateSupplierSelect = function(selectEl){
+        try {
+            const list = window.__suppliersCache || [];
+            if (!selectEl) return;
+            // احتفظ بأول خيار فارغ إن وجد
+            const firstOpt = selectEl.querySelector('option[value=""]');
+            const customOpt = Array.from(selectEl.options).find(o=>o.value==='custom');
+            selectEl.innerHTML = '';
+            if (firstOpt) selectEl.appendChild(firstOpt);
+            list.forEach(s => {
+                const opt = document.createElement('option');
+                opt.value = s.id;
+                opt.textContent = s.name + (s.country ? ` - ${s.country}` : '');
+                selectEl.appendChild(opt);
+            });
+            if (customOpt) selectEl.appendChild(customOpt);
+        } catch(e) { console.warn('populateSupplierSelect error:', e); }
+    };
+
+    // حمّل الموردين واملأ القائمة الرئيسية
+    await loadSuppliersOptions();
+
+    // لفّ دالة إضافة مورد ديناميكياً لملء القوائم الجديدة أيضاً
+    try {
+        const origAddSupplier = window.addSupplier;
+        if (typeof origAddSupplier === 'function') {
+            window.addSupplier = function() {
+                const beforeCount = (document.getElementById('suppliersContainer')?.children.length) || 0;
+                origAddSupplier();
+                // بعد الإضافة، حاول تعبئة آخر select تم إنشاؤه
+                setTimeout(()=>{
+                    const container = document.getElementById('suppliersContainer');
+                    const selects = container ? container.querySelectorAll('select.product-form-select') : [];
+                    const lastSelect = selects[selects.length-1];
+                    if (lastSelect) window.populateSupplierSelect(lastSelect);
+                }, 0);
+            };
+        }
+    } catch(e) { console.warn('wrap addSupplier error:', e); }
+
     /**
      * Uploads a single file to a specified Supabase storage bucket.
      * @param {File} file - The file to upload.
@@ -132,12 +323,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                 throw new Error('اسم المنتج حقل مطلوب.');
             }
 
-            // 2. Upload all files first
+            // 2. Upload new files first (الملفات الجديدة فقط)
             const tempId = `prod_${Date.now()}`;
             const imageFiles = Array.from(document.getElementById('productImages')?.files || []);
             const extraFiles = Array.from(document.getElementById('productExtraFiles')?.files || []);
             const catalogFile = document.getElementById('productCatalogPdf')?.files?.[0] || null;
-            const supplierPdfFile = document.getElementById('mainSupplierPdf')?.files[0] || null;
 
             const imageUploadPromises = imageFiles.map((file, index) => 
                 uploadFile(file, 'product-images', tempId).then(url => ({ url, is_primary: index === 0 }))
@@ -149,11 +339,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (catalogFile) {
                 catalogUploadPromises.push(
                     uploadFile(catalogFile, 'product-documents', tempId).then(url => ({ url, type: 'catalog_pdf' }))
-                );
-            }
-            if (supplierPdfFile) {
-                extraUploadPromises.push(
-                    uploadFile(supplierPdfFile, 'product-documents', tempId).then(url => ({ url, type: 'supplier_pdf' }))
                 );
             }
 
@@ -185,6 +370,31 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             // 4. Collect all other form data (assign product code here if DB has no default)
 
+            // احصل على كود المنتج التالي تلقائياً بدءاً من 101
+            async function getNextProductCode() {
+                try {
+                    // اجلب آخر 500 كود ورتّب زمنياً
+                    const { data, error } = await supabaseClient
+                        .from('products')
+                        .select('code, created_at')
+                        .order('created_at', { ascending: false })
+                        .limit(500);
+                    if (error) throw error;
+                    let maxNum = 100; // الأساس قبل 101
+                    (data||[]).forEach(r => {
+                        const n = parseInt(String(r.code||'').trim(), 10);
+                        if (!isNaN(n) && n > maxNum) maxNum = n;
+                    });
+                    const next = Math.max(101, maxNum + 1);
+                    return String(next);
+                } catch(e) {
+                    console.warn('getNextProductCode error:', e);
+                    return '101';
+                }
+            }
+
+            const autoCode = editProductId ? (existingProduct?.code || (await getNextProductCode())) : await getNextProductCode();
+
             const productData = {
                 name: productName,
                 description: document.getElementById('productDescription').value?.trim(),
@@ -196,38 +406,82 @@ document.addEventListener('DOMContentLoaded', async () => {
                 origin_country: document.getElementById('productOrigin').value?.trim() || null,
                 cost_price: parseNumber(document.getElementById('productCost').value),
                 selling_price: parseNumber(document.getElementById('productPrice').value),
-                status: getRadioValue('productStatus') || 'active',
+                // حالة المنتج أزيلت من النموذج؛ سنستخدم قيمة افتراضية
+                status: 'available',
                 visibility: getRadioValue('productVisibility') || 'public',
-                features: getDynamicValues('featuresContainer'),
-                keywords: getDynamicValues('keywordsContainer'),
-                notes: document.getElementById('productNotes').value?.trim(),
+                features: getDynamicValues('featuresContainer').join('\n') || null,
                 brand: document.getElementById('productBrand').value?.trim(),
                 model: document.getElementById('productModel').value?.trim(),
-                category_id: categoryId
+                category_id: categoryId,
+                code: autoCode,
+                // إدارة المخزون أزيلت من النموذج
+                discount_percent: parseNumber(document.getElementById('productDiscount')?.value),
+                tax_percent: parseNumber(document.getElementById('productTax')?.value),
+                product_link: document.getElementById('productLink')?.value?.trim() || null,
+                video_url: document.getElementById('productVideo')?.value?.trim() || null,
+                usages: getDynamicValues('usagesContainer').join('\n') || null,
+                target_audience: (() => {
+                    const predefined = getCheckboxValues('input[name="targetAudience"]').filter(Boolean);
+                    const custom = document.getElementById('customTargetAudience')?.value?.trim();
+                    const list = custom ? [...predefined, custom] : predefined;
+                    return list.length ? list.join('\n') : null;
+                })(),
+                negative_points: getDynamicValues('negativePointsContainer').join('\n') || null
             };
 
             // 5. Create product and related records in a single service call
-            const result = await window.productsService.createProductWithDetails({
-                productData,
-                images: uploadedImages,
-                files: uploadedDocs,
-                catalog: uploadedCatalog[0] || null, // Only one catalog per product
-                supplier: {
-                    id: document.getElementById('mainSupplierSelect').value,
-                    customName: document.getElementById('mainSupplierCustom')?.value?.trim(),
-                    link: document.getElementById('mainSupplierLink')?.value?.trim(),
-                    priceUSD: parseNumber(document.getElementById('supplierPriceUSD')?.value),
-                    priceCNY: parseNumber(document.getElementById('supplierPriceCNY')?.value),
-                    priceYER: parseNumber(document.getElementById('supplierPriceYER')?.value),
+            let result;
+            if (editProductId){
+                // تحديث المنتج الرئيسي
+                const upd = await window.productsService.updateProduct(editProductId, productData);
+                if (!upd.success) throw new Error(upd.error||'فشل تحديث المنتج');
+                // إدراج المرفوعات الجديدة (صور/ملفات/كاتلوج)
+                if (uploadedImages.length>0){
+                    const records = uploadedImages.map(img=>({ product_id: editProductId, image_url: img.url, is_primary: img.is_primary }));
+                    const { error } = await supabaseClient.from('product_images').insert(records);
+                    if (error) throw error;
                 }
-            });
+                if (uploadedDocs.length>0){
+                    const records = uploadedDocs.map(f=>({ product_id: editProductId, file_url: f.url, file_type: f.type }));
+                    const { error } = await supabaseClient.from('product_files').insert(records);
+                    if (error) throw error;
+                }
+                if (uploadedCatalog[0]){
+                    const cat = { product_id: editProductId, catalog_url: uploadedCatalog[0].url, catalog_name: (window.productsService.getFileNameFromUrl(uploadedCatalog[0].url) || 'catalog.pdf'), uploaded_by: window.authService?.getCurrentUser()?.id || null };
+                    const { error } = await supabaseClient.from('product_catalogs').insert([cat]);
+                    if (error) throw error;
+                }
+                // المورّد (اختياري): إذا تم اختيار مورد أو اسم مخصص، سنضيف سجلًا جديدًا
+                const supplierIdVal = document.getElementById('mainSupplierSelect')?.value;
+                const supplierCustom = document.getElementById('mainSupplierCustom')?.value?.trim();
+                const priceUSDVal = parseNumber(document.getElementById('supplierPriceUSD')?.value);
+                if (supplierIdVal || supplierCustom || priceUSDVal!=null){
+                    const notes = JSON.stringify({ prices: { USD: priceUSDVal } });
+                    const rec = { product_id: editProductId, supplier_id: (supplierIdVal && supplierIdVal!=='custom')? supplierIdVal : null, supplier_name: (supplierIdVal==='custom')? supplierCustom : null, notes };
+                    const { error } = await supabaseClient.from('product_suppliers').insert([rec]);
+                    if (error) throw error;
+                }
+                result = { success: true, product: { id: editProductId } };
+            } else {
+                result = await window.productsService.createProductWithDetails({
+                    productData,
+                    images: uploadedImages,
+                    files: uploadedDocs,
+                    catalog: uploadedCatalog[0] || null, // Only one catalog per product
+                    supplier: {
+                        id: document.getElementById('mainSupplierSelect').value,
+                        customName: document.getElementById('mainSupplierCustom')?.value?.trim(),
+                        priceUSD: parseNumber(document.getElementById('supplierPriceUSD')?.value),
+                    }
+                });
+            }
 
             if (!result.success) {
                 throw new Error(result.error || 'فشل حفظ المنتج وتفاصيله.');
             }
 
             // 6. Success
-            formMessage.textContent = 'تم حفظ المنتج بنجاح! سيتم نقلك إلى لوحة المنتجات.';
+            formMessage.textContent = editProductId ? 'تم حفظ التعديلات بنجاح! سيتم نقلك إلى لوحة المنتجات.' : 'تم حفظ المنتج بنجاح! سيتم نقلك إلى لوحة المنتجات.';
             formMessage.className = 'form-message success';
             
             // مسح البيانات المحفوظة تلقائياً

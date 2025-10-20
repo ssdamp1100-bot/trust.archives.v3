@@ -60,8 +60,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         populateMeta(product);
         populateImages(product);
         populatePrices(product);
-        populateTabs(product);
-        populateDetailedInfo(product);
+        populateGeneral(product);
+        populateUsages(product);
+        populateSpecs(product);
+        populateProsCons(product);
         populateFilesAndLinks(product);
         setupActionButtons(product);
 
@@ -86,6 +88,16 @@ document.addEventListener('DOMContentLoaded', async () => {
                         const catalogFile = files.find(f => f.file_type === 'catalog_pdf');
                         if (catalogFile?.file_url) {
                             catalogUrl = catalogFile.file_url;
+                        } else {
+                            // Extra fallback: any PDF file
+                            const anyPdf = files.find(f => {
+                                const url = f.file_url || '';
+                                return (f.file_type === 'pdf') || /\.pdf(\?|#|$)/i.test(url);
+                            });
+                            if (anyPdf?.file_url) {
+                                catalogUrl = anyPdf.file_url;
+                                catalogName = 'catalog.pdf';
+                            }
                         }
                     }
                     
@@ -118,6 +130,21 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         } catch(e) { console.warn('catalogBtn wiring error:', e); }
 
+        // Wire Quote PDF button
+        try {
+            const quoteBtn = document.getElementById('quoteBtn');
+            if (quoteBtn) {
+                quoteBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (typeof window.generatePDF === 'function') {
+                        window.generatePDF();
+                    } else {
+                        alert('ميزة إنشاء عرض السعر غير متاحة حالياً');
+                    }
+                });
+            }
+        } catch(e) { console.warn('quoteBtn wiring error:', e); }
+
     } catch (e) {
         console.error('Product page error:', e);
         alert('حدث خطأ غير متوقع.');
@@ -140,7 +167,8 @@ function populateMeta(product) {
     document.querySelector('#productCategory span').textContent = product.categories?.name || 'غير محدد';
     document.querySelector('#productUser span').textContent = product.users?.username || 'غير معروف';
     document.querySelector('#productDate span').textContent = formatDate(product.created_at);
-    document.querySelector('#productCode span').textContent = `رقم المنتج: ${product.code || 'N/A'}`;
+    const displayCode = product.code || (product.id ? String(product.id).slice(-4) : 'N/A');
+    document.querySelector('#productCode span').textContent = `رقم المنتج: ${displayCode}`;
 }
 
 function populateImages(product) {
@@ -194,31 +222,33 @@ function populatePrices(product) {
         suppliersGrid.insertAdjacentHTML('beforeend', costPriceHTML);
     }
 
-    // Supplier Prices
+    // Supplier Prices (USD only, no supplier link)
     if (product.product_suppliers && product.product_suppliers.length > 0) {
         product.product_suppliers.forEach(supplier => {
             let notes = {};
             try { notes = JSON.parse(supplier.notes || '{}'); } catch(e) {}
             const supplierPriceHTML = createPriceContainerHTML(
                 supplier.supplier_name || 'مورد غير مسمى',
-                notes.link ? `<a href="${notes.link}" target="_blank">رابط المورد</a>` : '',
+                '',
                 notes.prices?.USD,
-                notes.prices?.CNY,
-                notes.prices?.YER
+                null,
+                null,
+                false,
+                true // onlyUSD for suppliers
             );
             suppliersGrid.insertAdjacentHTML('beforeend', supplierPriceHTML);
         });
     }
 }
 
-function createPriceContainerHTML(title, subtitle, usd, cny, yer, isCost = false) {
+function createPriceContainerHTML(title, subtitle, usd, cny, yer, isCost = false, onlyUSD = false) {
     return `
         <div class="supplier-container ${isCost ? 'cost-price-container' : ''}">
-            <p class="${isCost ? 'cost-price' : 'selling-price'}">${title} <span>(${subtitle})</span></p>
+            <p class="${isCost ? 'cost-price' : 'selling-price'}">${title} ${subtitle ? `<span>(${subtitle})</span>` : ''}</p>
             <div class="price-grid">
                 ${createPriceItemHTML(usd, 'USD')}
-                ${createPriceItemHTML(cny, 'CNY')}
-                ${createPriceItemHTML(yer, 'YER')}
+                ${onlyUSD ? '' : createPriceItemHTML(cny, 'CNY')}
+                ${onlyUSD ? '' : createPriceItemHTML(yer, 'YER')}
             </div>
         </div>
     `;
@@ -234,102 +264,67 @@ function createPriceItemHTML(amount, currency) {
     `;
 }
 
-function populateTabs(product) {
-    // Description & Features
-    document.getElementById('productLongDescription').innerHTML = product.long_description || product.description || 'لا يوجد وصف تفصيلي.';
-    const featuresContainer = document.getElementById('featuresListContainer');
-    let featuresArr = [];
-    if (Array.isArray(product.features)) {
-        featuresArr = product.features.filter(Boolean);
-    } else if (typeof product.features === 'string' && product.features.trim()) {
-        // Split by new lines or commas
-        featuresArr = product.features
-            .split(/\n|,/)
-            .map(s => s.trim())
-            .filter(Boolean);
+function splitToList(val) {
+    if (Array.isArray(val)) return val.filter(Boolean);
+    if (typeof val === 'string' && val.trim()) {
+        return val.split(/\n|,/).map(s => s.trim()).filter(Boolean);
     }
-    if (featuresArr.length > 0) {
-        featuresContainer.innerHTML = `
-            <h4 class="mt-20">استخدامات المنتج:</h4>
-            <ul style="padding-right: 20px; margin: 15px 0; list-style: disc;">
-                ${featuresArr.map(f => `<li>${f}</li>`).join('')}
-            </ul>
-        `;
-    }
-
-    // Specifications (basic/quick view)
-    const specsGrid = document.getElementById('specsGrid');
-    specsGrid.innerHTML = '';
-    const quickSpecs = [
-        { name: 'الماركة', value: product.brand },
-        { name: 'الموديل', value: product.model },
-        { name: 'الوزن', value: product.weight ? `${product.weight} كجم` : null },
-        { name: 'الأبعاد', value: product.dimensions },
-        { name: 'اللون', value: product.color },
-        { name: 'المادة', value: product.material },
-        { name: 'الضمان', value: product.warranty },
-        { name: 'بلد المنشأ', value: product.origin_country }
-    ];
-    quickSpecs.forEach(spec => {
-        if (spec.value) {
-            specsGrid.innerHTML += `<div class="spec-item"><div class="spec-name">${spec.name}</div><div class="spec-value">${spec.value}</div></div>`;
-        }
-    });
-    if (specsGrid.innerHTML === '') {
-        specsGrid.innerHTML = '<div class="empty-state"><i class="fas fa-info-circle"></i><p>لا توجد مواصفات متاحة</p></div>';
-    }
+    return [];
 }
 
-function populateDetailedInfo(product) {
-    const detailsGrid = document.getElementById('detailsGrid');
-    detailsGrid.innerHTML = '';
-    
-    const details = [
-        { name: 'الماركة', value: product.brand, icon: 'fa-tag' },
-        { name: 'الموديل', value: product.model, icon: 'fa-cube' },
-        { name: 'الوزن', value: product.weight ? `${product.weight} كجم` : null, icon: 'fa-weight' },
-        { name: 'الأبعاد', value: product.dimensions, icon: 'fa-ruler-combined' },
-        { name: 'اللون', value: product.color, icon: 'fa-palette' },
-        { name: 'مادة التصنيع', value: product.material, icon: 'fa-hammer' },
-        { name: 'الضمان', value: product.warranty, icon: 'fa-shield-alt' },
-        { name: 'بلد المنشأ', value: product.origin_country, icon: 'fa-globe' },
-        { name: 'حالة المنتج', value: product.status, icon: 'fa-check-circle' },
-        { name: 'الرؤية', value: product.visibility, icon: 'fa-eye' }
+function populateGeneral(product) {
+    const grid = document.getElementById('generalGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    const audience = splitToList(product.target_audience);
+    const items = [
+        { name: 'بلد التصنيع', value: product.manufacturing_country || product.origin_country },
+        { name: 'الموديل', value: product.model },
+        { name: 'بلد المنشأ', value: product.origin_country },
+        { name: 'الفئات المستهدفة', value: audience.length ? audience.join(', ') : null },
+        { name: 'الضمان', value: product.warranty }
     ];
-    
-    details.forEach(detail => {
-        if (detail.value) {
-            detailsGrid.innerHTML += `
-                <div class="spec-item">
-                    <div class="spec-name"><i class="fas ${detail.icon}"></i> ${detail.name}</div>
-                    <div class="spec-value">${detail.value}</div>
-                </div>
-            `;
-        }
+    items.forEach(it => {
+        if (it.value) grid.innerHTML += `<div class="spec-item"><div class="spec-name">${it.name}</div><div class="spec-value">${it.value}</div></div>`;
     });
-    
-    // Keywords
-    if (product.keywords && product.keywords.length > 0) {
-        detailsGrid.innerHTML += `
-            <div class="spec-item" style="grid-column: 1/-1;">
-                <div class="spec-name"><i class="fas fa-tags"></i> الكلمات المفتاحية</div>
-                <div class="spec-value">${product.keywords.join(', ')}</div>
-            </div>
-        `;
+    if (!grid.innerHTML) grid.innerHTML = '<div class="empty-state"><i class="fas fa-info-circle"></i><p>لا توجد بيانات عامة</p></div>';
+}
+
+function populateUsages(product) {
+    const ul = document.getElementById('usagesList');
+    if (!ul) return;
+    ul.innerHTML = '';
+    const usages = splitToList(product.usages);
+    if (!usages.length) { ul.innerHTML = '<div class="empty-state"><i class="fas fa-info-circle"></i><p>لا توجد استخدامات</p></div>'; return; }
+    ul.innerHTML = usages.map(u => `<li>${u}</li>`).join('');
+}
+
+function populateSpecs(product) {
+    const grid = document.getElementById('specsGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    const items = [
+        { name: 'أبعاد المنتج', value: product.dimensions },
+        { name: 'وزن المنتج', value: product.weight ? `${product.weight} كجم` : null },
+        { name: 'مواد التصنيع', value: product.material },
+        { name: 'ألوان المنتج', value: product.color }
+    ];
+    items.forEach(it => {
+        if (it.value) grid.innerHTML += `<div class="spec-item"><div class="spec-name">${it.name}</div><div class="spec-value">${it.value}</div></div>`;
+    });
+    if (!grid.innerHTML) grid.innerHTML = '<div class="empty-state"><i class="fas fa-info-circle"></i><p>لا توجد مواصفات</p></div>';
+}
+
+function populateProsCons(product) {
+    const featuresUl = document.getElementById('featuresList');
+    const negativesUl = document.getElementById('negativesList');
+    if (featuresUl) {
+        const features = splitToList(product.features);
+        featuresUl.innerHTML = features.length ? features.map(x => `<li>${x}</li>`).join('') : '<div class="empty-state"><i class="fas fa-info-circle"></i><p>لا توجد ميزات</p></div>';
     }
-    
-    // Notes
-    if (product.notes) {
-        detailsGrid.innerHTML += `
-            <div class="spec-item" style="grid-column: 1/-1;">
-                <div class="spec-name"><i class="fas fa-sticky-note"></i> ملاحظات إضافية</div>
-                <div class="spec-value">${product.notes}</div>
-            </div>
-        `;
-    }
-    
-    if (detailsGrid.innerHTML === '') {
-        detailsGrid.innerHTML = '<div class="empty-state"><i class="fas fa-info-circle"></i><p>لا توجد تفاصيل إضافية</p></div>';
+    if (negativesUl) {
+        const negatives = splitToList(product.negative_points);
+        negativesUl.innerHTML = negatives.length ? negatives.map(x => `<li>${x}</li>`).join('') : '<div class="empty-state"><i class="fas fa-info-circle"></i><p>لا توجد سلبيات</p></div>';
     }
 }
 
@@ -379,8 +374,17 @@ function populateFilesAndLinks(product) {
     // Links Section
     const linksContainer = document.getElementById('productLinksContainer');
     linksContainer.innerHTML = '';
-    
-    // Extract links from product_suppliers notes
+
+    // Primary product link and video link (if provided)
+    const mainLinks = [];
+    if (product.product_link) {
+        mainLinks.push({ name: 'رابط المنتج', url: product.product_link });
+    }
+    if (product.video_url) {
+        mainLinks.push({ name: 'رابط فيديو المنتج', url: product.video_url });
+    }
+
+    // Extract links from product_suppliers notes (kept but shown after main links)
     const supplierLinks = [];
     if (product.product_suppliers && product.product_suppliers.length > 0) {
         product.product_suppliers.forEach(supplier => {
@@ -398,11 +402,12 @@ function populateFilesAndLinks(product) {
         });
     }
     
-    if (supplierLinks.length > 0) {
-        supplierLinks.forEach(link => {
+    const combinedLinks = [...mainLinks, ...supplierLinks];
+    if (combinedLinks.length > 0) {
+        combinedLinks.forEach(link => {
             linksContainer.innerHTML += `
                 <div class="link-item">
-                    <div class="site-name"><i class="fas fa-store"></i> ${link.name}</div>
+                    <div class="site-name"><i class="fas fa-link"></i> ${link.name}</div>
                     <a href="${link.url}" target="_blank" class="product-link2">${link.url}</a>
                 </div>
             `;

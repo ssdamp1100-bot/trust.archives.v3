@@ -594,11 +594,18 @@ async function applyProductFilters() {
                 <div class="product-user">${product.users?.username || 'N/A'}</div>
                 <div class="product-actions">
                     <button onclick="viewProduct('${product.id}')" class="admin-btn info btn-xsmall"><i class="fas fa-eye"></i> عرض</button>
+                    <button onclick="goEditProduct('${product.id}')" class="admin-btn warning btn-xsmall"><i class="fas fa-edit"></i> تعديل</button>
                     <button onclick="deleteProduct('${product.id}', '${product.name}')}" class="admin-btn danger btn-xsmall"><i class="fas fa-trash"></i> حذف</button>
                 </div>`;
             list.appendChild(div);
         });
     } catch (e) { console.error('applyProductFilters error:', e); }
+}
+
+// Open add-product in edit mode
+window.goEditProduct = function(productId){
+    if (!productId) return;
+    window.location.href = `add-product.html?id=${productId}`;
 }
 
 // ===== Backups =====
@@ -943,6 +950,9 @@ async function loadSuppliers() {
                         <button onclick="goSupplierDetails('${s.id}')" class="admin-btn info btn-small">
                             <i class="fas fa-info-circle"></i> تفاصيل المورد
                         </button>
+                        <button onclick="goEditSupplier('${s.id}')" class="admin-btn warning btn-small">
+                            <i class="fas fa-edit"></i> تعديل
+                        </button>
                         <button onclick="deleteSupplier('${s.id}', '${(s.name||'').replace(/['"\\]/g, '')}')" class="admin-btn danger btn-small">
                             <i class="fas fa-trash"></i> حذف
                         </button>
@@ -994,6 +1004,9 @@ async function loadProducts() {
                     <div class="product-actions">
                         <button onclick="viewProduct('${product.id}')" class="admin-btn info btn-xsmall">
                             <i class="fas fa-eye"></i> عرض
+                        </button>
+                        <button onclick="goEditProduct('${product.id}')" class="admin-btn warning btn-xsmall">
+                            <i class="fas fa-edit"></i> تعديل
                         </button>
                         <button onclick="deleteProduct('${product.id}', '${product.name}')" class="admin-btn danger btn-xsmall">
                             <i class="fas fa-trash"></i> حذف
@@ -1177,6 +1190,7 @@ if (typeof editProduct !== 'undefined') window.editProduct = editProduct;
 if (typeof deleteProduct !== 'undefined') window.deleteProduct = deleteProduct;
 if (typeof goSupplierDetails !== 'undefined') window.goSupplierDetails = goSupplierDetails;
 if (typeof deleteSupplier !== 'undefined') window.deleteSupplier = deleteSupplier;
+window.goEditSupplier = function(supplierId){ if (!supplierId) return; window.location.href = `add-supplier.html?id=${supplierId}`; }
 if (typeof addCategory !== 'undefined') window.addCategory = addCategory;
 if (typeof createBackup !== 'undefined') window.createBackup = createBackup;
 if (typeof downloadBackup !== 'undefined') window.downloadBackup = downloadBackup;

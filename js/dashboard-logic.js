@@ -93,16 +93,57 @@ document.addEventListener('DOMContentLoaded', async () => {
 // ===== Honor Board =====
 async function loadHonorBoard() {
     try {
-        // Reset to default state (no honored member)
         const honorNameEl = document.getElementById('WeekHonorUdser');
         const honorBody = document.querySelector('.honor-body');
+        const honorPointsEl = document.getElementById('UserPoints');
         if (!honorNameEl || !honorBody) return;
-        honorNameEl.textContent = 'قريباً';
-        const info = honorBody.querySelector('.honor-message');
-        if (info) {
-            info.textContent = 'من سيكون أول عضو سيتم تكريمه  ؟؟ سنرى 😁 سيتم اختيار عضو الأسبوع من قبل الإدارة بحسب النشاط المحقق , ';
+
+        // 1) ابحث عن أحدث تكريم في جدول notes
+        const { data: honorNotes, error } = await supabaseClient
+            .from('notes')
+            .select('id, user_id, created_at')
+            .eq('category', 'honor')
+            .order('created_at', { ascending: false })
+            .limit(1);
+        if (error) throw error;
+
+        if (!honorNotes || honorNotes.length === 0) {
+            // لا يوجد تكريم: أعد الحالة الافتراضية
+            honorNameEl.textContent = 'قريباً';
+            const info = honorBody.querySelector('.honor-message');
+            if (info) info.textContent = 'من سيكون أول عضو سيتم تكريمه  ؟؟ سنرى 😁 سيتم اختيار عضو الأسبوع من قبل الإدارة بحسب النشاط المحقق , ';
+            if (honorPointsEl) honorPointsEl.textContent = '0 نقطة';
+            return;
         }
-        // Intentionally skip reading honor notes to keep default state
+
+        const honoredUserId = honorNotes[0].user_id;
+
+        // 2) جلب بيانات المستخدم المكرّم
+        const { data: user, error: userErr } = await supabaseClient
+            .from('users')
+            .select('id, full_name, username')
+            .eq('id', honoredUserId)
+            .single();
+        if (userErr) throw userErr;
+
+        const displayName = (user.full_name && user.full_name.trim()) ? user.full_name : (user.username || 'عضو');
+        honorNameEl.textContent = displayName;
+
+        // 3) حساب نقاط المستخدم من notes(category='point')
+        let points = 0;
+        try {
+            const { data: pointsRows } = await supabaseClient
+                .from('notes')
+                .select('id')
+                .eq('user_id', honoredUserId)
+                .eq('category', 'point');
+            points = pointsRows ? pointsRows.length : 0;
+        } catch {}
+        if (honorPointsEl) honorPointsEl.textContent = `${points} نقطة`;
+
+        // 4) تحديث الرسالة إن لزم
+        const info = honorBody.querySelector('.honor-message');
+        if (info) info.textContent = 'تم اختيار عضو الأسبوع بناءً على نشاطه الملحوظ. مبارك!';
     } catch (e) {
         console.warn('loadHonorBoard error:', e);
     }

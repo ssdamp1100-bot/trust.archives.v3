@@ -56,8 +56,10 @@
       // Avatar placeholder (if profile_image_url exists use it)
       const avatar = document.getElementById('userAvatar');
       if (avatar) {
-        const img = user.profile_image_url || 'img/user.png';
+        const DEFAULT_AVATAR = 'https://cdn.jsdelivr.net/gh/tabler/tabler-icons/icons/user.svg';
+        const img = user.profile_image_url || DEFAULT_AVATAR;
         avatar.src = img;
+        avatar.onerror = function(){ this.onerror=null; this.src = DEFAULT_AVATAR; };
       }
 
       // Stats - Load points from notes table

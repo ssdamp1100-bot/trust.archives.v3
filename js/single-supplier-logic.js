@@ -75,6 +75,48 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (el.serial) el.serial.textContent = supplier.id ? supplier.id.slice(-4) : '—';
     if (el.rating) el.rating.textContent = supplier.rating != null ? `${supplier.rating} نقطة` : '—';
 
+    // Rating UI (5 stars)
+    try {
+      const starsWrap = document.getElementById('ratingStars');
+      const ratingValueEl = document.getElementById('ratingValue');
+      const currentRating = Math.max(0, Math.min(5, parseInt(supplier.rating || 0, 10)));
+      function paintStars(val){
+        if (!starsWrap) return;
+        starsWrap.querySelectorAll('i').forEach(i => {
+          const v = parseInt(i.getAttribute('data-value'), 10);
+          i.classList.toggle('fa-solid', v <= val);
+          i.classList.toggle('fa-regular', v > val);
+          i.style.color = v <= val ? 'var(--warning-color, #f0b90b)' : 'var(--text3-color, #aaa)';
+        });
+        if (ratingValueEl) ratingValueEl.textContent = `${val}/5`;
+      }
+      paintStars(currentRating);
+
+      if (starsWrap) {
+        starsWrap.querySelectorAll('i').forEach(icon => {
+          icon.addEventListener('mouseenter', () => {
+            const v = parseInt(icon.getAttribute('data-value'), 10);
+            paintStars(v);
+          });
+          icon.addEventListener('mouseleave', () => paintStars(parseInt(supplier.rating || 0, 10)));
+          icon.addEventListener('click', async () => {
+            const v = parseInt(icon.getAttribute('data-value'), 10);
+            try {
+              const res = await window.suppliersService.updateSupplier(supplierId, { rating: v });
+              if (!res.success) throw new Error(res.error||'فشل حفظ التقييم');
+              supplier.rating = v;
+              paintStars(v);
+              if (el.rating) el.rating.textContent = `${v} نقطة`;
+              alert('✅ تم حفظ التقييم');
+            } catch(e) {
+              alert('تعذر حفظ التقييم: ' + e.message);
+              paintStars(parseInt(supplier.rating || 0, 10));
+            }
+          });
+        });
+      }
+    } catch(e) { console.warn('rating UI error:', e); }
+
     // Shipping/payment/certs
     if (el.shipping) el.shipping.textContent = joinList(supplier.shipping_methods);
     if (el.payment) el.payment.textContent = joinList(supplier.payment_methods);

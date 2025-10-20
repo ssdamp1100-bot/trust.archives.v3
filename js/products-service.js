@@ -44,13 +44,12 @@ class ProductsService {
                 .from('products')
                 .select(`
                     *,
-                    categories!products_category_id_fkey(name),
-                    subcategories:categories!products_subcategory_id_fkey(name),
+                    categories(name),
                     product_images(image_url, is_primary),
                     product_files(file_url, file_type),
                     product_catalogs(id, catalog_url, catalog_name, file_size, uploaded_at),
                     product_suppliers(*, suppliers(name, country)),
-                    users!products_user_id_fkey(username, full_name, whatsapp, phone_numbers)
+                    users(username, full_name, whatsapp, phone_numbers)
                 `)
                 .eq('id', productId)
                 .single()
@@ -100,20 +99,25 @@ class ProductsService {
     async updateProduct(productId, updateData) {
         try {
             const userId = window.authService.getCurrentUserId()
+            const currentUser = window.authService.getCurrentUser()
             if (!userId) {
                 return { success: false, error: 'المستخدم غير مسجل الدخول' }
             }
 
-            const { data, error } = await supabaseClient
+            let query = supabaseClient
                 .from('products')
                 .update({
                     ...updateData,
                     updated_at: new Date().toISOString()
                 })
                 .eq('id', productId)
-                .eq('user_id', userId) // Ensure user can only update their own products
                 .select()
                 .single()
+            // Non-admins لا يمكنهم تعديل إلا منتجاتهم
+            if (!currentUser || currentUser.role !== 'admin') {
+                query = query.eq('user_id', userId)
+            }
+            const { data, error } = await query
 
             if (error) {
                 return { success: false, error: error.message }

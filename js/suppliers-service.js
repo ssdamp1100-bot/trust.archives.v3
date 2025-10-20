@@ -313,6 +313,26 @@
         return { success: false, error: error.message, suppliers: [] };
       }
     }
+    ,
+    /**
+     * جلب أفضل الموردين حسب التقييم
+     * @param {number} limit - عدد الموردين
+     * @returns {Promise<{success: boolean, suppliers?: Array, error?: string}>}
+     */
+    async getTopSuppliers(limit = 5) {
+      try {
+        const { data, error } = await supabaseClient
+          .from('suppliers')
+          .select('*')
+          .order('rating', { ascending: false })
+          .limit(limit);
+        if (error) throw error;
+        return { success: true, suppliers: data || [] };
+      } catch (error) {
+        console.error('Error fetching top suppliers:', error);
+        return { success: false, error: error.message, suppliers: [] };
+      }
+    }
   };
 
   // تصدير الخدمة للنطاق العام

@@ -82,12 +82,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     function populateUserInfo() {
         const profileAvatar = document.querySelector('.profile-avatar');
         const profileName = document.querySelector('.profile-user-details h2');
+        const profileOverlayName = document.getElementById('profileOverlayName');
 
         if (profileAvatar) {
-            profileAvatar.src = currentUser.profile_image_url || 'img/sadeq.jpg'; // Fallback image
+            const DEFAULT_AVATAR = 'https://cdn.jsdelivr.net/gh/tabler/tabler-icons/icons/user.svg';
+            const src = currentUser.profile_image_url || DEFAULT_AVATAR;
+            profileAvatar.src = src;
+            profileAvatar.onerror = function(){ this.onerror=null; this.src = DEFAULT_AVATAR; };
         }
         if (profileName) {
             profileName.innerHTML = `<i class="fa-solid fa-user"></i> ${currentUser.full_name || currentUser.username}`;
+        }
+        if (profileOverlayName) {
+            const uname = currentUser.username ? `@${currentUser.username}` : (currentUser.full_name || '');
+            profileOverlayName.textContent = uname;
         }
     }
 
