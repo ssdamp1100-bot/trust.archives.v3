@@ -21,6 +21,34 @@
 .product-container {            
     margin-top: 130px;		
 }
+/* Width guards to keep content within viewport */
+.container,
+.product-container,
+.product-layout,
+.left-column,
+.right-column,
+.lower-section,
+.product-tabs {
+    max-width: 100%;
+}
+
+.product-layout {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Media assets scale within their containers */
+img,
+video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Ensure long tab headers don’t overflow on narrow screens */
+.tabs-header {
+    overflow-x: auto;
+}
        
 /* ========================================
    Product Layout
