@@ -316,7 +316,7 @@ body {
 }
 
 .logo {
-    width: 50px;
+    width: 50x;
     height: 50px;
     background-image: url('../logo.png');
     background-size: cover;
@@ -327,7 +327,7 @@ body {
     justify-content: center;
     color: var(--light-color);
     font-weight: bold;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .logo-text {
@@ -335,7 +335,7 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    font-size: 24px;
+    font-size: 22px;
     font-family: "BalooBhaijaan2", sans-serif;
     font-weight: 900;
 }
@@ -344,8 +344,8 @@ body {
 .main-menu {
     display: flex;
     align-items: center;
-    gap: 30px;
-    margin-right: 110px;
+    gap: 25px;
+    margin-right: 90px;
 }
 
 .menu-item {
@@ -1597,10 +1597,10 @@ body {
 /* Applied to the injected button in nav.js: <button id="logoutBtn" class="menu-item login-btn"> */
 button.menu-item.login-btn#logoutBtn,
 .main-menu button.menu-item.login-btn#logoutBtn {
-    padding: 10px 18px;
+    padding: 8px 18px;
     border: none;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 14px;
     cursor: pointer;
     transition: background 0.3s;
     min-width: 120px;
@@ -1608,6 +1608,9 @@ button.menu-item.login-btn#logoutBtn,
     font-family: "Noto Naskh Arabic", serif;
     background: var(--button-color);
     color: var(--light-color);
+	display:flex;
+	justify-content:center;
+	align-items:center;
 }
 
 button.menu-item.login-btn#logoutBtn:hover,

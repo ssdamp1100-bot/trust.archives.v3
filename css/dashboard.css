@@ -27,7 +27,7 @@
 }
 
 .Welcome-Username {
-    font-size: 34px;
+    font-size: 33px;
     margin-bottom: 5px;
     background: var(--title-color);
     -webkit-background-clip: text;
@@ -39,11 +39,11 @@
 
 .Welcome-Username i {
     padding-left: 5px;
-    font-size: 31px;
+    font-size: 30px;
 }
 
 .dashboard-title {
-    font-size: 24px;
+    font-size: 23px;
     color: var(--text-color);
     text-align: center;
     font-family: "Noto+Naskh+Arabic", sans-serif;
@@ -61,13 +61,13 @@
 }
 
 .dashboard-title i {
-    font-size: 47px;
+    font-size: 46px;
     padding-left: 7px;
     vertical-align: middle;
 }
 
 .dashboard-subtitle {
-    font-size: 20px;
+    font-size: 19px;
     color: var(--text2-color);
     font-family: "Noto Naskh Arabic", serif;
     line-height: 1.6;
@@ -128,7 +128,7 @@
 }
 
 .honor-title {
-    font-size: 26px;
+    font-size: 25px;
     color: var(--primary-color);
     flex: 1;
     text-align: right;
@@ -138,11 +138,11 @@
 
 .honor-title i {
     padding-left: 5px;
-    font-size: 27px;
+    font-size: 26px;
 }
 
 .honor-points {
-    font-size: 16px;
+    font-size: 15px;
     color: var(--text3-color);
     margin-left: 25px;
     font-family: "Noto+Naskh+Arabic", sans-serif;
@@ -179,13 +179,13 @@
 
 .honor-name {
     font-weight: bold;
-    font-size: 18px;
+    font-size: 17px;
     margin-bottom: 3px;
     color: var(--text2-color);
 }
 
 .honor-message {
-    font-size: 15px;
+    font-size: 14px;
     color: var(--text2-color);
 }
 
@@ -223,7 +223,7 @@
 
 .slider-title {
     text-align: center;
-    font-size: 29px;
+    font-size: 28px;
     margin-bottom: 5px;
     background: var(--title-color);
     -webkit-background-clip: text;
@@ -236,7 +236,7 @@
 
 .slider-title i {
     padding-left: 5px;
-    font-size: 34px;
+    font-size: 33px;
 }
 
 .coverflow-wrapper {
@@ -312,7 +312,7 @@
 }
 
 .member-name {
-    font-size: 21px;
+    font-size: 20px;
     font-weight: 900;
     margin-bottom: 8px;
     color: var(--primary-color);
@@ -323,14 +323,14 @@
     display: inline-block;
     margin-left: 7px;
     color: var(--primary-color);
-    font-size: 19px;
+    font-size: 18px;
     vertical-align: baseline;
 }
 
 .member-stats {
     display: flex;
     justify-content: space-around;
-    font-size: 15px;
+    font-size: 14px;
     color: var(--text2-color);
     background: var(--container-focus-color);
     padding: 2px;
@@ -344,7 +344,7 @@
 
 .stat3-value {
     font-weight: bold;
-    font-size: 16px;
+    font-size: 15px;
     color: var(--text3-color);
     font-family: "BalooBhaijaan2", sans-serif;
 }
@@ -451,7 +451,7 @@
 
 .feature-main-title {
     text-align: center;
-    font-size: 29px;
+    font-size: 28px;
     margin-bottom: 35px;
     background: var(--title-color);
     -webkit-background-clip: text;
@@ -464,7 +464,7 @@
 
 .feature-main-title i {
     padding-left: 5px;
-    font-size: 30px;
+    font-size: 29px;
 }
 
 .feature-cards {
@@ -494,13 +494,13 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    font-size: 53px;
+    font-size: 52px;
     opacity: 0.9;
     margin-top: 8px;
 }
 
 .feature-title {
-    font-size: 22px;
+    font-size: 21px;
     color: var(--text-color);
     margin-top: 20px;
 }
@@ -510,7 +510,7 @@
     font-family: "Font Awesome 5 Free";
     font-weight: 700;
     color: var(--text-color);
-    font-size: 20px;
+    font-size: 19px;
     padding-left: 2px;
 }
 
@@ -519,12 +519,12 @@
     font-family: "Font Awesome 5 Free";
     font-weight: 700;
     color: var(--text-color);
-    font-size: 21px;
+    font-size: 20px;
     padding-right: 3px;
 }
 
 .feature-description {
-    font-size: 18px;
+    font-size: 17px;
     color: var(--text2-color);
     margin: 0 auto;
     margin-left: 15px;
@@ -540,7 +540,7 @@
     border-radius: 8px;
 	border:none;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 800;
     margin-left: 5px;
     margin-right: 5px;
@@ -548,7 +548,7 @@
 
 .feature-cta i {
     padding-right: 6px;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .feature-cta:hover {
@@ -562,7 +562,7 @@
 
 .Data-Snapshot-title {
     text-align: center;
-    font-size: 29px;
+    font-size: 28px;
     margin-bottom: 5px;
     background: var(--title-color);
     -webkit-background-clip: text;
@@ -575,7 +575,7 @@
 
 .Data-Snapshot-title i {
     padding-left: 5px;
-    font-size: 30px;
+    font-size: 29px;
 }
 
 .Data-Snapshot-container {
@@ -596,7 +596,7 @@
 }
 
 .Data-Snapshot-number {
-    font-size: 30px;
+    font-size: 29px;
     font-weight: bold;
     color: var(--text3-color);
     font-family: "BalooBhaijaan2", sans-serif;
@@ -604,7 +604,7 @@
 
 .Data-Snapshot-label {
     color: var(--text2-color);
-    font-size: 20px;
+    font-size: 19px;
     font-family: "Noto Naskh Arabic", serif;
     font-weight: 700;
     margin-top: 1px;

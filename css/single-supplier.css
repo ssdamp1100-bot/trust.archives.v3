@@ -41,7 +41,8 @@
             width: 110px;
             height: 110px;
             border-radius: 10px;
-            object-fit: cover;
+            object-fit: contain;
+            background: var(--container-bg-color);
             border: 3px solid var(--primary-color);
         }
         
