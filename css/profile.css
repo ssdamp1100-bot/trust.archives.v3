@@ -1,0 +1,6258 @@
+/* Utilities moved from inline in profile.html */
+.mt8 { margin-top: 8px; }
+.fw600 { font-weight: 600; }
+.text { color: var(--text-color); }
+@charset "utf-8";
+/* CSS Document - Enhanced Profile */
+
+
+/* Profile Container */
+.profile-container {
+    padding-top: 80px;
+    min-height: 100vh;
+	max-width: 1200px;
+    background:var(--container-bg-color);
+	 margin: 0 auto;
+}
+
+/* Profile container Card */
+.profile-container-card {
+    background: var(--container-bg-color);
+    border-radius: 0 0  25px 25px;
+	padding-bottom: 80px;
+    padding: 5px;
+    margin: 20px;
+    border: none;
+}
+
+.profile-info-main {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 70px;
+	 margin-top: 20px;
+}
+
+.profile-stats-grid {
+    display: grid;
+    /* الافتراضي: 4 أعمدة متساوية */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 35px;
+	width: 80%;
+	margin: 0 auto;
+	align-items: center;
+}
+
+.stat-item1 {
+    text-align: center;
+    background:none;
+    padding: 10px;
+    border : 2px dashed var(--border-hover-color);
+	border-radius: 15px;
+}
+
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+	margin-top: 4px;
+}
+
+.edit-avatar-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--button-color);
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    color: var(--light-color);
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.profile-user-details h2 {
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    font-size: 22px;
+	font-weight: 600;
+	font-family: "BalooBhaijaan2", sans-serif;
+}
+
+.profile-user-details i {   
+    padding-left: 3px;
+	 font-size: 17px;
+}
+
+.stat-item {
+    text-align: center;
+    background: var(--container-focus-color);
+    padding: 10px;
+    border-radius: 15px 0 0 15px;
+	height: 100px;
+	border-right : 5px solid var(--border-color);
+}
+
+.stat-value {
+    display: block;
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--text3-color);
+    margin-top: 3px;
+	font-family: "BalooBhaijaan2", sans-serif;
+}
+
+.stat-label {
+    color: var(--text2-color);
+    font-size: 17px;
+	font-family: "BalooBhaijaan2", sans-serif;
+	margin-top: 5px;
+}
+.stat-label i{
+    padding-left: 5px;
+	 font-size: 16px;
+	 vertical-align: middle;
+}
+
+.stat-label1 {
+    color: var(--text2-color);
+    font-size: 17px;
+	font-family: "BalooBhaijaan2", sans-serif;
+	margin-top: 5px;
+}
+.stat-label1 i{
+    padding-left: 5px;
+	 font-size: 16px;
+}
+
+
+
+
+/* Row Navigation */
+.row-nav {
+	width: 75%;
+    background: none;
+    border: none;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.nav-btn {
+    background: var(--container-focus-color);
+    border-top: 2px solid var(--border-hover-color);
+	border-right: 1px solid var(--border-hover-color);
+	border-left: 1px solid var(--border-hover-color);
+	border-bottom: none;
+    color: var(--text2-color);
+    padding: 8px 13px;
+    border-radius: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    min-width: 150px;
+    justify-content: center;
+	margin-bottom: 10px;
+}
+
+.nav-btn:hover {
+    color: var(--secondary-color);
+	border-top: 2px solid var(--secondary-color);
+}
+
+.nav-btn.active {
+    color: var(--primary-color);
+	border-top: 2px solid var(--primary-color);
+}
+
+/* Section Container */
+.section-container {
+    margin: 10px;
+    background: var(--container-bg-color);
+    border: none;
+    border-radius: 12px;
+    padding:10px;
+    min-height: 500px;
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+.section-text {
+    color: var(--text3-color);
+    font-size: 19px;
+	font-weight: 100;
+    margin: 10px;
+    padding: 10px;
+	width: 40%;
+    border-right:none;
+    display: flex;
+	text-align: center;
+	justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+
+
+
+
+
+
+
+
+/* Products Section Styles */
+/* Filters */
+.filters-container {     
+    margin-bottom: 40px;
+}
+
+.filters-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.sreach {
+    min-width: 380px;
+    padding: 10px;
+    background: var(--container-bg-color) ;
+    border: 1px solid var(--border-hover-color) ;
+    border-radius: 8px;
+    color: var(--text2-color);
+    font-size: 16px;
+    font-family: "Noto Naskh Arabic", serif;
+    font-weight: 300;
+
+}
+.sreach:hover {
+    background: var(--container-focus-color);
+}
+.sreach::placeholder {
+    color: var(--placeholder-color);
+    font-size: 16px;
+    padding-right: 30px;
+}
+
+.filter-group select,
+.filter-group input {
+    width: 100%;
+    padding: 6px;
+    background:none;
+    border: 1px solid var(--border-hover-color);
+    border-radius: 8px;
+    color: var(--text2-color);
+    font-size: 16px;
+    font-family: "Noto Naskh Arabic", serif;
+    font-weight: 300;
+}
+
+.filter-group input:focus,
+.filter-group select:focus {
+    border-color: var(--text2-color);    
+    outline: none;
+     color: var(--text2-color);
+      background: var(--container-focus-color);
+}
+
+.filter-group select option {
+    background:var(--container-focus-color);
+    color: var(--text2-color) ;
+}
+
+.clear-filters-btn {
+    width: 100%;
+    background: none;
+    color:var(--text2-color);
+    border: 1px solid var(--border-hover-color) ;
+    padding: 10px  ;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 15px;
+    font-family: "Noto Naskh Arabic", serif;
+    font-weight: 300;
+}
+
+.clear-filters-btn:hover {
+    background: var(--container-focus-color);
+     color: var(--text2-color);
+}
+ 
+.clear-filters-btn:active {
+    background-color: var(--container-focus-color);
+    transform: scale(0.98);
+}
+
+.add-product-btn {
+    background: var(--button-color);
+    color: var(--light-color);
+    border: none;
+    padding: 12px 20px;
+	width: 100%;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+
+.add-product-btn:hover{
+    background: var(--button-hover-color);
+    transform: translateY(-2px);
+}
+
+
+
+
+
+
+/* View Mode Selector */
+.view-mode-container {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.view-mode-container label {
+    color: var(--primary-color);
+    margin-left: 10px;
+    font-family: "Noto+Naskh+Arabic", sans-serif;
+	font-size: 22px;
+	font-weight: 600;
+}
+.view-mode-container i{
+   padding-left: 6px;
+    vertical-align: middle;
+	font-size: 20px;
+}
+.view-mode-container select {
+    padding: 7px 10px;
+    background: var(--container-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-color);
+    font-size: 16px;
+	 font-family: "Noto Naskh Arabic", serif;
+}
+
+/* Products Grid - Default (Grid View) */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 50px;
+}
+
+.product-card {
+    background: var(--container-bg-color);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.product-card:hover {
+    transform: translateY(-2px);
+	 border: 1px solid var(--border-hover-color);
+}
+
+.product-image-container {
+    position: relative;
+}
+
+.product-meta-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to bottom, var(--meta-overlay-color), transparent);
+    padding: 8px 12px;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.product-meta-overlay .product-category {
+    background: var(--extra-color);
+    color: var(--light-color);
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-top: 3px;
+}
+
+.product-meta-overlay .product-supplier {
+    background: var(--light-color);
+    color: var(--extra3-color);
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+    margin-top: 3px;
+}
+
+.product-meta-overlay .product-serial {
+    background: var(--extra2-color);
+    color: var(--light-color);
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-top: 3px;
+    font-family: monospace;
+}
+
+.product-image {
+    width: 100%;
+    height: 170px;
+    overflow: hidden;
+    position: relative;
+    opacity: 0.9;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-info {
+    padding: 15px;
+}
+
+.product-user {
+    font-size: 16px;
+    color:var(--placeholder-color);
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+.product-category {
+    font-size: 14px;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.product-supplier {
+    font-size: 14px;
+    color: var(--light-color);
+    margin-bottom: 10px;
+}
+
+.product-serial {
+    font-size: 12px;
+    color: var(--secondary-color);
+    margin-bottom: 5px;
+    font-family: monospace;   
+}
+.product-price2 {  
+    display: none;	
+	font-family: "BalooBhaijaan2", sans-serif;
+} 
+
+.product-category2 {
+    font-size: 14px;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    font-weight: 500;
+    display: none;  
+}
+
+.product-supplier2 {
+    font-size: 14px;
+    color:var(--light-color);
+    margin-bottom: 10px;
+    display: none; 
+}
+
+.product-serial2 {
+    font-size: 12px;
+    color: var(--secondary-color);
+    margin-bottom: 5px;
+    font-family: monospace;
+    display: none;  
+}
+
+.product-title {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-bottom: 8px;
+	 padding-right: 8px;
+    line-height: 1.3;
+    font-family: "Noto Naskh Arabic", serif;
+	border-right: 3px solid var(--text-color);
+}
+
+.product-title span {
+    font-size: 13px;
+    color: var(--text-color);
+    margin-bottom: 8px;
+    padding-right: 5px;
+	border-right: 2px solid var(--text-color);
+	margin-right:15px;
+	vertical-align: middle;
+}
+
+.product-description {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--text2-color);
+    padding: 5px;
+    margin-bottom: 12px;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-family: "Noto Naskh Arabic", serif;
+}
+
+.product-prices {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    background: var(--container-focus-color);
+    padding: 6px;
+    border-radius: 8px;
+    gap: 5px;
+	font-family: "BalooBhaijaan2", sans-serif;
+}
+
+.price-item {
+    text-align: center;
+    flex: 1;
+}
+
+.price-amount {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text3-color);
+    display: block;
+}
+
+.price-currency {
+    font-size: 12px;
+    color: var(--text2-color);
+}
+
+.product-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.product-button {
+    flex: 1;
+     width:45%;
+    background: var(--button-color);
+    color: var(--light-color);
+    text-align: center;
+    padding: 7px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    font-size: 13px;
+	font-family: "Noto Naskh Arabic", serif;
+	opacity: 0.9;
+}
+.product-button i{
+    padding-left: 8px;
+	vertical-align: middle;
+}
+.product-button:hover {
+    opacity: 1;
+	 color: var(--light-color);
+	 
+}
+
+.product-button.secondary {
+	opacity: 0.9;
+    background:var(--third-color);
+	 color: var(--light-color);
+}
+
+.product-button.secondary:hover {
+    opacity: 1;
+}
+.product-button.thirdlly {
+	opacity: 0.9;
+    background:var(--extra6-color);
+	 color: var(--light-color);
+}
+
+.product-button.thirdlly:hover {
+    opacity: 1;
+}
+.share-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+    justify-content: space-around;
+}
+
+.share-btn {
+    padding: 5px;
+	width: 50%;
+    border-radius: 8px;
+    border: none;
+	 background: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+	flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+	font-weight: 500;
+	 font-family: "Noto Naskh Arabic", serif;
+}
+.share-btn i{
+    padding-left: 10px;
+}
+.share-btn.whatsapp {
+    background: #3b544d;
+    color: var(--light-color);
+}
+
+.share-btn.chat-with {
+    background: none;
+    color: var(--primary-color);
+}
+
+.share-btn.twitter {
+    background: #1da1f2;
+    color: var(--light-color);
+}
+
+.share-btn.copy {
+    background: none;
+    color: var(--primary-color);
+}
+
+.share-btn:hover {
+    color: var(--light-color);
+}
+
+/* Compact Grid View */
+.products-grid.compact-grid {
+    grid-template-columns: repeat(5, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+.products-grid.compact-grid .product-card {
+    border-radius: 12px;
+}
+
+.products-grid.compact-grid .product-image {
+    height: 120px;
+}
+
+.products-grid.compact-grid .product-info {
+    padding: 10px;
+}
+
+.products-grid.compact-grid .product-title {
+    font-size: 18px;
+	 font-weight: 600;
+	padding-right: 0;
+	border-right:none;
+	text-align: center;
+	margin: 10px;
+    -webkit-line-clamp: 1;
+}
+
+.products-grid.compact-grid .product-title span{
+    display: none;
+}
+
+.products-grid.compact-grid .product-description {
+    display: none;
+    -webkit-line-clamp: 1;
+}
+.products-grid.compact-grid .product-category,
+.products-grid.compact-grid .product-supplier{
+    display: block;
+    font-size: 11px;
+    margin-bottom: 2px;
+}
+.products-grid.compact-grid .product-serial {
+    display: none;   
+}
+.products-grid.compact-grid .product-user {
+    display: none;
+}
+.products-grid.compact-grid .product-prices {
+    padding: 5px;
+	margin-top: 20px;
+}
+.products-grid.compact-grid .product-price2 {  
+    display: none;	
+} 
+.products-grid.compact-grid .price-amount {
+    font-size: 12px;
+}
+.products-grid.compact-grid .price-currency {
+    font-size: 9px;
+}
+.products-grid.compact-grid .share-buttons {
+    gap: 5px;
+}
+
+.products-grid.compact-grid .product-actions {
+   display:flex;
+   flex-direction:column;
+   margin:0 auto;
+}
+
+.products-grid.compact-grid .product-button {
+     flex: 1;
+     width:90%;   
+    padding: 7px;
+    font-size: 12px;
+	 margin:0 auto;
+	 font-weight: 500;
+}
+
+.product-button i{
+    padding-left: 8px;
+	vertical-align: middle;
+}
+.products-grid.compact-grid .share-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+}
+
+/* List View */
+.products-grid.list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    max-width: none;
+    margin: 0;
+}
+
+.products-grid.list .product-card {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    min-height: 120px;
+    height: auto;
+}
+
+.products-grid.list .product-image-container {
+    flex: 0 0 70px;
+    margin-left: 15px;
+	margin-top: 40px;
+}
+
+.products-grid.list .product-image {
+    height: 70px;
+    border-radius: 8px;
+}
+
+.products-grid.list .product-meta-overlay {
+    display: none;
+}
+
+.products-grid.list .product-info {
+    flex: 1;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+	margin-top: 40px;
+}
+
+.products-grid.list .product-user {
+    display: none;
+}
+
+.products-grid.list .product-description {     
+    font-size: 14px;
+    -webkit-line-clamp: 2;
+    margin-bottom: 0;
+}
+
+.products-grid.list .product-actions {
+    display: none;
+}
+
+.products-grid.list .share-buttons {
+    display: none;
+}
+
+.products-grid.list .product-prices {
+    display: none;  
+}
+
+.products-grid.list .product-title {
+    font-size: 18px;
+    margin-bottom: 0;
+}
+.product-meta-overlay2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: none;
+    padding: 8px 12px;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+	margin-bottom: 8px  ;
+	
+}
+
+.products-grid.list .product-supplier2{
+   background: none;
+	padding: 2px 6px;
+	border: 1px solid var(--border-color);
+	border-radius: 5px;
+    display: block;
+	vertical-align: middle;
+	font-family: "Noto Naskh Arabic", serif;
+    font-size: 11px;
+    color: var(--extra4-color);
+}
+
+.products-grid.list .product-serial2 {
+	background: none;
+	padding: 2px 6px;
+	border: 1px solid var(--border-color);
+	border-radius: 5px;
+    display: block;
+	vertical-align: middle;
+	font-family: "Noto Naskh Arabic", serif;
+    font-size: 11px;
+    color: var(--extra5-color);
+}
+.products-grid.list .product-price2 {
+   background: none;
+	padding: 2px 6px;
+	border: 1px solid var(--border-color);
+	border-radius: 5px;
+    display: block;
+	vertical-align: middle;
+	font-family: "Noto Naskh Arabic", serif;
+    font-size: 11px;
+    color: var(--extra6-color);
+}
+
+.products-grid.list .product-category2{
+   background: none;
+	padding: 2px 6px;
+	border: 1px solid var(--border-color);
+	border-radius: 5px;
+    display: block;
+	vertical-align: middle;
+	font-family: "Noto Naskh Arabic", serif;
+    font-size: 11px;
+    color: #c1a97f;
+}
+.products-grid.list .product-card:hover {
+    background: var(--container-focus-color);
+    transform: none;
+}
+
+
+
+/* Small List View  */
+.products-grid.small-list {
+    grid-template-columns: repeat(2, 1fr);
+    flex-direction: column; 
+    gap: 20px; 
+    padding: 0;
+    margin: 0;
+}
+ 
+
+.products-grid.small-list .product-card {
+    display: grid;
+    grid-template-columns: 50% 35% 15%; 
+    align-items: center;
+    background: var(--container-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 10px;
+    height: 50px; 
+    cursor: pointer;
+    transition: background 0.3s ease;
+	width: 95%  ; 
+	margin: 0 auto ; 
+}
+
+.products-grid.small-list .product-card:hover {
+    background: var(--container-focus-color);
+}
+
+.products-grid.small-list .product-image-container,
+.products-grid.small-list .product-description,
+.products-grid.small-list .product-actions,
+.products-grid.small-list .share-buttons,
+.products-grid.small-list .product-prices,
+.products-grid.small-list .product-meta-overlay,
+.products-grid.small-list .product-category,
+.products-grid.small-list .product-supplier,
+.products-grid.small-list .product-serial,
+.products-grid.small-list .product-category2,
+.products-grid.small-list .product-serial2,
+.products-grid.small-list .product-user {
+    display: none;
+}
+
+.products-grid.small-list .product-info {
+    display: contents;
+    padding: 0;
+    margin: 0;
+}
+
+.products-grid.small-list .product-title {
+    font-size: 16px;
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    border-right: 3px solid var(--text-color);
+	padding-right: 7px;
+    text-align: right;
+	margin-right: 10px;
+    white-space: nowrap;  
+    grid-column: 1;  
+}
+
+.products-grid.small-list .product-title span {
+    font-size: 13px;
+    color: var(--text-color);
+    margin-bottom: 8px;
+    padding-right: 5px;
+	border-right: 2px solid var(--text-color);
+	margin-right:15px;
+	opacity: 90%;
+	vertical-align: middle;
+	left:10px;
+	position:absolute;
+}
+
+.products-grid.small-list .product-meta-overlay2 {
+    display: flex;
+    justify-content: flex-start;
+    background: none;
+    padding: 0;
+    margin: 0;
+    position: static;
+	gap: 30px; 
+}
+
+.products-grid.small-list .product-supplier2 {
+    display: block;
+    font-size: 14px;
+    color: var(--text2-color);
+    background: none;
+    border: none;
+    padding: 0;
+    text-align: left;
+    grid-column: 2; 
+    white-space: nowrap;
+   
+}
+
+.products-grid.small-list .product-price2 {
+    display: block;
+    font-size: 14px;
+    color: var(--text3-color);
+    background: none;
+    border: none;
+    padding: 0;
+    text-align: left;
+    grid-column: 3; 
+    var(--light-color)-space: nowrap;
+}
+.hidden {
+    display: none;
+}
+/* Profile Modals */
+.profile-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+.profile-modal-content {
+    background: var(--container-bg-color);
+    color: var(--text-color);
+    min-width: min(560px, 92vw);
+    max-width: 92vw;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.profile-modal-content .form-group {
+    margin-bottom: 10px;
+}
+
+.profile-modal-content .admin-modal-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.profile-modal-content .admin-modal-actions button {
+    background: var(--button-color);
+    color: var(--light-color);
+    border: 1px solid var(--border-color);
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.profile-modal-content .admin-modal-actions button:hover {
+    filter: brightness(1.02);
+}
+
+.no-results {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text3-color);
+    background: var(--container-bg-color);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    width: 60%;
+    margin: 0 auto;
+    top: 40%;
+    position: fixed;
+}
+
+.no-results-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.no-results-title {
+    margin-bottom: 10px;
+    color: var(--light-color);
+}
+
+.no-results-text {
+}
+
+
+
+
+
+
+/* suppliers Section  */
+/* Filters */
+.sup-filters-container {     
+    margin-bottom: 40px;
+}
+
+.sup-filters-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.sup-sreach {
+    min-width: 380px;
+    padding: 10px;
+    background: var(--container-bg-color) ;
+    border: 1px solid var(--border-color) ;
+    border-radius: 8px;
+    color: var(--text3-color);
+    font-size: 16px;
+    font-family: "Noto Naskh Arabic", serif;
+    font-weight: 300;
+
+}
+.sup-sreach:hover {
+    background: var(--container-focus-color);
+}
+.sup-sreach::placeholder {
+    color: var(--text-color);
+    font-size: 16px;
+    padding-right: 30px;
+}
+
+.sup-filter-group select,
+.sup-filter-group input {
+    width: 100%;
+    padding: 6px;
+    background:none;
+    border: 1px solid var(--border-color) ;
+    border-radius: 8px;
+    color: var(--text-color);
+    font-size: 16px;
+    font-family: "Noto Naskh Arabic", serif;
+    font-weight: 300;
+}
+
+.sup-filter-group input:focus,
+.sup-filter-group select:focus {
+    border-color: var(--text-color);    
+    outline: none;
+     color: var(--text3-color);
+      background: var(--container-focus-color);
+}
+
+.sup-filter-group select option {
+    background:var(--container-focus-color);
+    color: var(--text2-color) ;
+}
+
+.sup-clear-filters-btn {
+    width: 100%;
+    background: none;
+    color:var(--text2-color);
+    border: 1px solid var(--border-color) ;
+    padding: 10px  ;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 15px;
+    font-family: "Noto Naskh Arabic", serif;
+    font-weight: 300;
+}
+
+.sup-clear-filters-btn:hover {
+    background: var(--container-focus-color);
+     color: var(--text3-color);
+}
+ 
+.clear-filters-btn:active {
+    background-color: var(--container-focus-color);
+    transform: scale(0.98);
+}
+
+
+/* Suppliers Grid and Cards */
+.suppliers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.supplier-card {
+    background:var(--container-bg-color);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid var(--border-color) ;
+    transition: all 0.3s ease;
+    font-family: "Noto Naskh Arabic", serif;
+}
+
+.supplier-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 6px;
+}
+
+.supplier-user {
+    font-size: 14px;
+    color: var(--text2-color) ;
+    margin-bottom: 8px;
+    text-align:left;
+    margin-right:5px;
+}
+
+.supplier-logo {
+    width: 65px; 
+    height: 75px;
+    border-radius: 10%; 
+    object-fit: cover;
+    opacity: 0.93;
+    border: 2px solid var(--primary-color);
+}
+
+.supplier-details-info {
+    flex: 1;
+    margin-right: 5px;
+	 margin-top: 10px;
+}
+
+.supplier-name {
+    color: var(--primary-color);
+    margin-right:  3px;
+    font-size: 18px;
+    border-right: 2px solid var(--primary-color);
+    padding-right:  7px;
+	font-family: "Noto Naskh Arabic", serif;
+	font-weight:  600;
+}
+
+.supplier-tags {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.tag {
+    background:var(--container-focus-color);
+    color: var(--text-color);
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+	font-family: "Noto Naskh Arabic", serif;
+    font-weight: 300;
+}
+.tag i{
+   margin-left: 2px;
+    color: var(--primary-color);
+}
+
+.supplier-status-enable {
+    width: 9px;
+    height: 9px;
+    background: #4ade80;
+    border-radius: 50%;
+    margin-top: 5px;
+}
+
+.supplier-status-disable {
+    width: 9px;
+    height: 9px;
+    background: #ff3737;
+    border-radius: 50%;
+    margin-top: 5px;
+}
+
+.supplier-description {
+    color: var(--text2-color) ;
+    font-size: 16px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    line-height: 1.5;
+	font-weight: 300;
+	height: 50px;
+	font-family: "Noto Naskh Arabic", serif;
+    font-weight: 300;
+}
+
+.supplier-contact-info {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.contact-detail {
+    color:var(--text2-color);
+    font-size: 14px;
+}
+.supplier-button3 {
+     width: 50%;
+    background: var(--extra6-color);
+    color: var(--text2-color) ;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 550;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color) ;
+    cursor: pointer;
+    font-size: 16px;
+	margin-top: 5px;
+}
+.supplier-button { 
+     width: 50%;
+    background: none;
+    color: var(--text2-color) ;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 550;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color) ;
+    cursor: pointer;
+    font-size: 16px;
+	margin-top: 5px;
+}
+.supplier-button3:hover ,
+.supplier-button:hover {
+    background:var(--button-color); 
+	 color: var(--light-color);
+}
+.supplier-button3 i,
+.supplier-button i{
+     margin-left: 8px;
+	  font-size: 14px;
+}
+
+/* إضافة أنماط لأزرار التبديل */
+.view-toggle {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.view-btn {
+    background: none;
+    border: 1px solid var(--border-color) ;
+    color: var(--text2-color) ;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 15px;
+    font-family: "Noto Naskh Arabic", serif;
+    margin: 0 10px;
+}
+
+.view-btn:hover {
+    background: var(--container-focus-color);
+    color: var(--text3-color);
+}
+
+.view-btn.active {
+    background: var(--button-color);
+    color: var(--light-color);
+    border: none;
+}
+
+/* أنماط عرض القائمة */
+.suppliers-grid.list-view {
+	grid-template-columns: repeat(2, 1fr);
+     gap: 25px;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.suppliers-grid.list-view .supplier-card {
+    display: flex;
+    align-items: center;
+    padding: 13px;
+    min-height: auto;
+    width: 100%;  
+    max-width: 550px; 
+    margin: 0 auto; 
+    border-radius: 8px;
+}
+
+.suppliers-grid.list-view .supplier-card-header {
+    flex: 1;
+    justify-content: flex-start;
+    gap: 5px;
+	margin-right: 5px;
+}
+
+.suppliers-grid.list-view .supplier-logo,
+.suppliers-grid.list-view .supplier-status-enable,
+.suppliers-grid.list-view .supplier-status-disable,
+.suppliers-grid.list-view .supplier-description,
+.suppliers-grid.list-view .supplier-button,
+.suppliers-grid.list-view .supplier-button3    {
+    display: none;  
+}
+.supplier-user {
+    font-size: 13px;
+    margin-bottom: 0;
+    text-align:left;
+    margin-right:0;
+}
+.suppliers-grid.list-view .supplier-details-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+	margin-right: 5px;
+}
+
+.suppliers-grid.list-view .supplier-name {
+    font-size: 16px;
+    margin: 0;
+	font-family: "Noto Naskh Arabic", serif;
+}
+
+.suppliers-grid.list-view .supplier-tags {
+    margin: 0;
+    gap: 5px;
+}
+
+.suppliers-grid.list-view .tag {
+    font-size: 13px;
+    padding: 2px 6px;
+	margin-right: 10px;
+}
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+/* Tasks Section Styles */
+.tasks-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.task-widget {
+    background:var(--container-bg-color);
+    border: none;
+    border-radius: 10px;
+    padding: 20px;
+}
+.widget-header {
+    display:flex;
+	flex-direction:row;
+    align-items:center;
+	justify-content:space-between;
+	width:100%;
+	padding-top:15px;
+	border-radius:10px 10px 0 0;
+	border-left:2px dashed var(--border-hover-color);
+	border-right:2px dashed var(--border-hover-color);
+	border-top:2px dashed var(--border-hover-color);
+	border-bottom:none;
+	margin-bottom:20px;
+}
+.widget-title {
+    color: var(--primary-color);
+    font-size: 20px;
+	margin-right:50px;
+    margin-bottom: 15px;     
+    display: flex;
+    align-items: center;
+    gap: 8px;	
+}
+.widget-title i{    
+    font-size: 18px;   
+}
+.admin-tasks-list {
+    max-height: 700px;
+    overflow-y: auto;
+}
+
+.admin-task-item {
+    background: var(--container-bg-color);
+    border: 1px solid var(--border-hover-color);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    display: flex;
+	flex-direction: column;
+	transition: all 0.5s;
+    justify-content: space-between;  
+}
+
+.admin-task-item:hover {
+    border-color: var(--text2-color);
+	 background: var(--container-focus-color);
+}
+
+.task-info   {
+    display:flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: space-between;
+   margin-right: 5px;
+}
+
+.task-name  {
+    color: var(--text-color);
+    font-size: 16px;
+}
+.task-name i{
+    color:var(--placeholder-color);
+    font-size: 14px;
+	padding-left:2px;
+	 vertical-align: middle;
+}
+.task-deadline {
+    color: var(--text2-color);
+    font-size: 13px;
+	font-weight: 600;
+}
+.task-deadline i{
+    color:var(--placeholder-color);
+    font-size: 13px;
+	padding-left:2px;
+	 vertical-align: middle;
+	 
+}
+.task-priority {
+     font-size: 15px;
+     color: var(--text2-color);
+}
+.task-priority i{
+     font-size: 12px;
+     color:var(--placeholder-color);
+	 padding-left: 1px;
+	 vertical-align: middle;
+}
+.task-priority.high {
+    color: var(--extra4-color);
+}
+
+.task-priority.medium {
+    color: var(--extra5-color);
+}
+
+.task-priority.low {
+    color: var(--extra2-color);
+}
+
+.task-actions   {
+    display:flex;
+	gap:20px;
+   flex-direction: row;
+   align-items: center;
+   justify-content: space-around;
+   margin-right: 5px;
+   margin-top: 20px;
+    padding-top: 10px;
+   border-top: 2px dashed var(--border-color);
+}
+
+.actions-task-btn {
+    background:var(--button-color);
+    color: var(--light-color);
+    border: none;
+    padding: 5px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+	font-weight: 500;
+    transition: all 0.3s;
+	opacity: 0.9;
+}
+.actions-task-btn i{
+    font-size: 10px;
+	padding-right:5px;
+	 vertical-align: baseline;
+}
+.actions-task-btn:hover {
+    transform: scale(1.05);
+	opacity:1;
+}
+
+.actions-task-btn.start {
+    background: var(--extra-color); 
+}
+.actions-task-btn.ask {
+    background: var(--extra6-color);
+}
+.actions-task-btn.done {
+    background: var(--extra2-color); 
+}
+
+.todo-input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.todo-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--border-hover-color);
+    border-radius: 6px;
+    background: var(--container-bg-color);
+    color: var(--text-color);
+    font-size: 15px;
+}
+
+.add-todo-btn {
+    background: var(--button-color);
+    color: var(--light-color);
+    border: none;
+    border-radius: 6px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.todo-items {
+    list-style: none;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.todo-item {
+    padding: 10px;
+    border-bottom: 1px solid var(--border-hover-color);   
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+	color: var(--text2-color);
+}
+.todo-item span {
+    font-size: 17px;
+    color: var(--text3-color);
+
+}
+.todo-item span::before {
+   content: " ▪︎ ";  
+font-family: "Font Awesome 5 Free";  
+font-weight: 600;
+color: var(--text2-color);      
+font-size: 17px;
+padding-left: 2px;
+}
+
+.todo-item:hover {
+    background: var(--container-focus-color);
+}
+
+.todo-item.done {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+.todo-checkbox {
+    background: none;
+    border: none;
+    color: var(--extra2-color);
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+	position: absolute;
+	left: 5%;
+}
+.remove-todo-btn {
+    background: none;
+    border: none;
+    color: var(--extra6-color);
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+	position: absolute;
+	left:2%;
+}
+
+
+
+
+
+
+
+
+
+/* Notes and Links Section Styles */
+.notes-links-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.notes-widget {
+    background:var(--container-bg-color);
+    border: none;
+    padding: 20px;
+	height: 100hv;
+}
+.notes-header {
+    display:flex;
+	flex-direction:row;
+    align-items:center;
+	justify-content:space-between;
+	width:100%;
+	padding-top:15px;
+	border-radius:10px 10px 0 0;
+	border-left:2px dashed var(--border-hover-color);
+	border-right:2px dashed var(--border-hover-color);
+	border-top:2px dashed var(--border-hover-color);
+	border-bottom:none;
+	margin-bottom:20px;
+}
+.notes-widget-title {
+    width:65%;
+    color: var(--primary-color);
+    font-size: 20px;
+	margin-right:30px;   
+    display: flex;
+    align-items: center;
+    gap: 8px;	
+}
+.notes-widget-title i{    
+    font-size: 17px;   
+}
+.add-note-btn,
+.add-link-btn {
+	width:35%;
+    background: var(--button-color);
+    color: var(--light-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: all 0.3s;
+    margin-left: 20px;
+	vertical-align: middle;
+	opacity: 0.9;
+}
+.add-note-btn i,
+.add-link-btn i{	
+    padding-right: 5px  ;
+    font-size: 13px;   
+}
+.add-note-btn:hover,
+.add-link-btn:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+}
+
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.note-card {
+    background: var(--container-bg-color);
+    border: 1px solid var(--border-hover-color);
+    border-radius: 8px;
+    padding: 15px;
+    min-height: 125px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.note-card:hover {
+    border-color: var(--text-color);
+    transform: translateY(-2px);
+	 background: var(--container-focus-color);
+}
+
+.note-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 5px;
+}
+
+.note-title {
+    color: var(--text2-color);
+    font-size: 15px;
+    font-weight: 600;
+    flex: 1;
+}
+.note-title::before {
+content: " ▪︎ ";  
+font-family: "Font Awesome 5 Free";  
+font-weight: 900;
+color: var(--text2-color);      
+font-size: 17px;
+vertical-align: baseline;
+}
+
+
+.note-category {
+    font-size: 11px;
+    padding-right: 5px 10px;
+    margin-right: 8px;
+	color: var(--text-color);
+    
+}
+
+.note-category::before {
+content: " \f02e ";  
+font-family: "Font Awesome 5 Free";  
+font-weight: 900;
+color: var(--placeholder-color);      
+font-size: 9px;
+padding-left: 4px;
+vertical-align: baseline;
+}
+.note-category::before.business {
+    background: none;
+	color: var(--extra-color);
+}
+
+.note-category::before.meeting {
+   background: none;
+	color: var(--extra3-color);
+}
+
+.note-category::before.marketing {
+    background: none;
+	color: var(--extra2-color);
+}
+
+.note-category::before.personal {
+    background: none;
+	color: var(--extra5-color);
+}
+
+.note-category::before.ideas {
+    background: none;
+	color: var(--extra-color);
+}
+
+.note-category::before.finance {
+    background: none;
+	color: var(--extra6-color);
+}
+
+.note-content {
+    color: var(--text2-color);
+    font-size: 13px;
+    flex: 1;
+	white-space: nowrap;       
+    overflow: hidden;           
+    text-overflow: ellipsis;
+}
+.note-date {
+    color: var(--placeholder-color);
+    font-size: 10px;
+	text-align: center;
+}
+.note-footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.note-btn {
+    background: none;
+    border: none;
+    color: var(--placeholder-color);
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.3s;
+}
+
+.note-btn i{
+    font-size: 11px;
+    padding-left: 1px;  
+}
+
+.note-btn.read {
+    color: #5d8f8c;
+}
+.note-btn.edit {
+    color: #5d8f8c;
+}
+.note-btn.delete {
+    color: #964a4a;
+	opacity: 0.9;
+}
+.note-btn:hover {
+    color: var(--text-color);
+}
+
+
+
+
+ .links-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 15px;    
+}
+
+.link-item {
+    background: var(--container-focus-color);
+    border-right: 3px solid var(--border-hover-color);
+    border-radius: 10px 0 0 10px;
+    padding: 15px;
+    margin-bottom: 12px;
+    display: flex;
+	flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    transition: all 0.3s;
+}
+
+.link-item:hover {
+    border-color: var(--primary-color);
+}
+
+.link-info {
+    flex: 1;
+}
+
+.link-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.link-title {
+    color: var(--text2-color);
+    font-size: 16px;
+    font-weight: 900;
+    margin: 0;
+}
+.link-title::before {
+content: " • ";  
+font-family: "Font Awesome 5 Free";  
+font-weight: 900;
+color:var(--placeholder-color);      
+font-size: 17px;
+vertical-align: baseline;
+}
+
+.link-url {
+    color: var(--primary-color);
+    font-size: 12px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 6px;
+}
+
+.link-url:hover {
+    text-decoration: underline;
+	color: var(--text-color);
+}
+
+.link-description {
+    color: var(--text2-color);
+    font-size: 14px;
+    line-height: 1.4;
+	margin-bottom: 20px;
+}
+
+.link-actions {
+    display: flex;
+    flex-direction: Row;
+    gap: 5px;
+	border-top: 1px solid var(--border-color);
+}
+
+.copy-link-btn,
+.send-link-btn,
+.delete-link-btn {
+    background: none;
+    border: none;
+    color: var(--text2-color);
+    cursor: pointer;
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 4px;
+    transition: all 0.3s;    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	opacity: 0.9;
+}
+.copy-link-btn i,
+.send-link-btn i,
+.delete-link-btn i {
+    font-size: 10px;
+    padding-left: 5px ;
+   
+}
+.copy-link-btn:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    background: var(--container-focus-color);
+}
+
+.send-link-btn:hover {
+    border-color:#0BD953;
+    color: #0BD953;
+    background: var(--container-focus-color);
+}
+
+.delete-link-btn:hover {
+    border-color: var(--extra4-color);
+    color: var(--extra4-color);
+    background: var(--container-focus-color);
+}
+
+
+
+
+
+
+
+
+
+
+/* Account Info Section Styles */
+.account-form {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.avatar-upload-section {
+    text-align: center;
+    margin: 0 auto;
+    padding: 20px;
+    border: 2px dashed var(--border-color);
+    border-radius: 10px;
+	width: 250px;
+}
+
+.current-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 10%;
+    border: 3px solid var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.upload-avatar-btn {
+    background: var(--button-color);
+    color: var(--light-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: all 0.3s;
+	opacity: 0.9;
+}
+.upload-avatar-btn i{
+    font-size: 13px;
+    padding-left: 7px;
+}
+.upload-avatar-btn:hover {
+    opacity: 1;
+}
+.form-grid {
+    display: grid;
+     grid-template-columns: repeat(3, minmax(200px, 1fr));
+    gap: 25px;
+    margin-bottom: 20px;
+	margin-top: 30px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.section-subtitle {
+    color: var(--primary-color);
+    font-size: 21px;
+    margin:10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--placeholder-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-group label {
+    color: var(--text-color);
+    font-size: 18px;
+    font-weight: 800;
+	margin-right: 25px;
+}
+.form-group label i{
+    padding-left: 3px;
+    font-size: 15px;   
+}
+
+.form-group input {
+    padding: 14px;
+    border: 1px solid var(--border-hover-color);
+    border-radius: 6px;
+    background: var(--container-bg-color);
+    color: var(--border-hover-color);
+    font-size: 16px;
+    transition: all 0.3s;
+	width: 100%;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--text2-color);
+    background: var(--container-focus-color);
+	color: var(--text2-color);
+	 font-size: 16px;
+}
+
+.form-group select,
+.form-group textarea {
+    padding: 12px;
+    border: 1px solid var(--border-hover-color);
+    border-radius: 6px;
+    background: var(--container-bg-color);
+    color: var(--text2-color);
+    font-size: 16px;
+    transition: all 0.3s;
+    font-family: inherit;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.form-group::placeholder {
+    color: var(--border-hover-color)	;
+}
+.form-group label::placeholder {
+    color: var(--border-hover-color)	;
+} 
+.form-group select::placeholder {
+    color: var(--border-hover-color)	;
+} 
+.form-group textarea::placeholder {
+    color: var(--border-hover-color)	;
+} 
+.form-group input::placeholder {
+    color: var(--border-hover-color)	;
+}
+
+
+
+
+.password-section,
+.notification-section {
+    margin-top: 60px;
+    background: var(--container-bg-color);
+    border-radius: 10px;
+    border: none;
+}
+
+.password-input-group {
+    position: relative;
+	
+}
+
+.toggle-password {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--placeholder-color);
+    cursor: pointer;
+    padding: 5px;
+    font-size: 15px;
+}
+
+.toggle-password:hover {
+    color: var(--text3-color);
+}
+
+.password-strength {
+    margin-top: 15px;
+}
+
+.strength-bar {
+    width: 100%;
+    height: 6px;
+    background: var(--border-color);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 8px;
+	opacity: 0.9;
+}
+
+.strength-fill {
+    height: 100%;
+    width: 25%;
+    background: var(--extra4-color);
+    transition: all 0.3s;
+}
+
+.strength-fill.weak {
+    width: 25%;
+    background: var(--extra4-color);
+}
+
+.strength-fill.medium {
+    width: 50%;
+    background: var(--extra5-color);
+}
+
+.strength-fill.strong {
+    width: 75%;
+    background: var(--text3-color);
+}
+
+.strength-fill.very-strong {
+    width: 100%;
+    background: var(--primary-color);
+}
+
+.strength-text {
+    color: var(--text2-color);
+    font-size: 14px;
+}
+
+.notification-options {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.notification-item {
+    padding: 15px;
+    background: var(--container-bg-color);
+    border-radius: none;
+    border-right: 3px solid var(--placeholder-color);
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text3-color);
+    margin-bottom: 5px;
+}
+
+.checkbox-label input[type="checkbox"] {
+    display: none;
+}
+
+.checkmark {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    margin-left: 10px;
+    position: relative;
+    transition: all 0.3s;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--light-color);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.notification-desc {
+    color: var(--text2-color);
+    font-size: 12px;
+    margin: 0;
+    margin-right: 30px;
+}
+
+
+.save-changes-btn {
+    background: var(--primary-color);
+    color: var(--light-color);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 600;
+    transition: all 0.3s;
+    width: 300px;
+    margin-top: 30px;
+	margin-right: 35%;
+}
+
+.save-changes-btn:hover {
+    background: var(--button-hover-color);
+    transform: translateY(-2px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Hidden class */
+.hidden {
+    display: none !important;
+}
+
+/* No results styles */
+.no-results {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-color);
+}
+
+.no-results-icon {
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+.no-results-title {
+    color: var(--text3-color);
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.no-results-text {
+    color: var(--text2-color);
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ============================== */
+/* Screen 1200px */
+/* ============================== */
+
+@media (min-width: 901px) and (max-width: 1200px) {
+
+    /* ============================== */
+    /* 1- profile-container */
+    /* ============================== */
+    
+    .profile-container {
+        padding-top: 70px;
+        max-width: 100%;
+    }
+
+    .profile-container-card {
+        margin: 15px;
+        padding: 4px;
+    }
+
+
+    /* ============================== */
+    /* 2- profile-info-main */
+    /* ============================== */
+    
+    .profile-info-main {
+        gap: 15px;
+        margin-bottom: 60px;
+        margin-top: 15px;
+    }
+
+    .profile-stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        width: 85%;
+    }
+
+    .stat-item {
+        padding: 8px;
+        height: 90px;
+    }
+
+    .stat-value {
+        font-size: 28px;
+    }
+
+    .stat-label,
+    .stat-label1 {
+        font-size: 16px;
+    }
+
+    .profile-avatar {
+        width: 90px;
+        height: 90px;
+    }
+
+    .profile-user-details h2 {
+        font-size: 20px;
+    }
+
+
+    /* ============================== */
+    /* 3- row-nav */
+    /* ============================== */
+    
+    .row-nav {
+        width: 80%;
+    }
+
+    .nav-btn {
+        padding: 7px 11px;
+        font-size: 13px;
+        min-width: 130px;
+    }
+
+
+    /* ============================== */
+    /* 4- Products Section Styles */
+    /* ============================== */
+    
+    .filters-grid {
+        grid-template-columns: repeat(6, 1fr);
+        gap: 12px;
+        margin-bottom: 15px;
+    }
+
+    .sreach {
+        padding: 10px;
+        font-size: 16px;
+        min-width: auto;
+    }
+
+    .sreach::placeholder {
+        font-size: 16px;
+        padding-right: 4px;
+    }
+
+    .filter-group select,
+    .filter-group input {
+        padding: 8px;
+        font-size: 16px;
+    }
+
+    .clear-filters-btn {
+        padding: 8px;
+        font-size: 16px;
+    }
+
+    .view-mode-container {
+        margin-bottom: 35px;
+    }
+
+    .view-mode-container label {
+        margin-left: 12px;
+        font-size: 22px;
+    }
+
+    .view-mode-container i {
+        padding-left: 5px;
+        font-size: 20px;
+    }
+
+    .view-mode-container select {
+        padding: 6px 12px;
+        color: var(--text-color);
+        font-size: 16px;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(3, minmax(250px, 1fr));
+        gap: 35px;
+    }
+
+    .products-grid.compact-grid {
+        grid-template-columns: repeat(4, minmax(190px, 1fr));
+        gap: 25px;
+    }
+
+    .products-grid.list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+        max-width: none;
+        margin: 0;
+    }
+
+    .products-grid.small-list {
+        grid-template-columns: repeat(2, 1fr);
+        flex-direction: column;
+        gap: 18px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .products-grid.small-list .product-title span {
+        display: none;
+    }
+
+    .products-grid.small-list .product-meta-overlay2 {
+        display: flex;
+        justify-content: flex-start;
+        background: none;
+        padding: 0;
+        margin-right: 22px;
+        margin-top: 6px;
+        position: static;
+        gap: 12px;
+    }
+
+    .products-grid.small-list .product-card {
+        height: 50px;
+        padding: 8px;
+        grid-template-columns: 2fr 1fr 1fr;
+    }
+
+    .products-grid.small-list .product-title {
+        font-size: 15px;
+    }
+
+    .products-grid.small-list .product-supplier2,
+    .products-grid.small-list .product-price2 {
+        font-size: 13px;
+    }
+
+
+    /* ============================== */
+    /* 5- suppliers Section */
+    /* ============================== */
+    
+    .sup-filters-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+        margin-bottom: 25px;
+    }
+
+    .sup-sreach {
+        padding: 9px;
+        font-size: 15px;
+        min-width: auto;
+    }
+
+    .sup-sreach::placeholder {
+        font-size: 15px;
+        padding-right: 5px;
+    }
+
+    .sup-filter-group select,
+    .sup-filter-group input {
+        padding: 9px;
+        font-size: 15px;
+    }
+
+    .sup-clear-filters-btn {
+        padding: 9px;
+        font-size: 15px;
+    }
+
+    .view-toggle {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .view-btn {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    .suppliers-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+
+    .supplier-card {
+        padding: 18px;
+        width: auto;
+        margin: 0;
+    }
+
+    .supplier-logo {
+        width: 75px;
+        height: 75px;
+    }
+
+    .supplier-name {
+        font-size: 18px;
+    }
+
+    .supplier-description {
+        font-size: 15px;
+    }
+     .supplier-button3  ,
+    .supplier-button {
+        width: 100%;
+        padding: 8px;
+        font-size: 15px;
+        margin-top: 5px;
+    }
+
+    .suppliers-grid.list-view {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        flex-direction: column;
+    }
+
+    .suppliers-grid.list-view .supplier-card {
+        padding: 4px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .supplier-user {
+        display: none;
+    }
+
+    .suppliers-grid.list-view .supplier-details-info {
+        gap: 5px;
+        margin-right: 0;
+    }
+
+    .suppliers-grid.list-view .supplier-name {
+        font-size: 13px;
+    }
+
+    .suppliers-grid.list-view .supplier-tags {
+        margin: 0;
+        gap: 5px;
+    }
+
+    .suppliers-grid.list-view .tag {
+        font-size: 11px;
+        padding: 2px 6px;
+        margin-right: 3px;
+    }
+
+
+    /* ============================== */
+    /* 6- Tasks Section Styles */
+    /* ============================== */
+    
+    .tasks-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .task-widget {
+        padding: 18px;
+    }
+
+    .widget-title {
+        font-size: 19px;
+        margin-right: 45px;
+    }
+
+    .admin-task-item {
+        padding: 13px;
+        margin-bottom: 13px;
+    }
+
+    .task-name {
+        font-size: 15px;
+    }
+
+    .task-deadline {
+        font-size: 12px;
+    }
+
+    .task-priority {
+        font-size: 14px;
+    }
+
+    .actions-task-btn {
+        padding: 4px 12px;
+        font-size: 11px;
+    }
+
+    .todo-input {
+        padding: 9px;
+        font-size: 14px;
+    }
+
+    .add-todo-btn {
+        width: 38px;
+        height: 38px;
+        font-size: 15px;
+    }
+
+    .todo-item {
+        padding: 9px;
+    }
+
+    .todo-item span {
+        font-size: 16px;
+    }
+
+    .remove-todo-btn {
+        font-size: 15px;
+    }
+
+
+    /* ============================== */
+    /* 7- Notes and Links Section Styles */
+    /* ============================== */
+    
+    .notes-links-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .notes-widget {
+        padding: 18px;
+    }
+
+    .notes-header {
+        padding-top: 13px;
+        margin-bottom: 18px;
+    }
+
+    .notes-widget-title {
+        font-size: 19px;
+        margin-right: 25px;
+    }
+
+    .add-note-btn,
+    .add-link-btn {
+        padding: 9px 18px;
+        font-size: 14px;
+        margin-left: 18px;
+    }
+
+    .notes-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 13px;
+    }
+
+    .note-card {
+        padding: 13px;
+        min-height: 115px;
+    }
+
+    .note-title {
+        font-size: 14px;
+    }
+
+    .note-category {
+        font-size: 10px;
+    }
+
+    .note-content {
+        font-size: 12px;
+    }
+
+    .note-date {
+        font-size: 9px;
+    }
+
+    .note-btn {
+        font-size: 12px;
+    }
+
+    .links-list {
+        grid-template-columns: repeat(2, minmax(180px, 1fr));
+        gap: 18px;
+    }
+
+    .link-item {
+        padding: 13px;
+        margin-bottom: 10px;
+    }
+
+    .link-title {
+        font-size: 15px;
+    }
+
+    .link-url {
+        font-size: 11px;
+    }
+
+    .link-description {
+        font-size: 13px;
+        margin-bottom: 18px;
+    }
+
+    .copy-link-btn,
+    .send-link-btn,
+    .delete-link-btn {
+        font-size: 12px;
+        padding: 5px 12px;
+    }
+
+
+    /* ============================== */
+    /* 8- Account Info Section Styles */
+    /* ============================== */
+    
+    .account-form {
+        max-width: 950px;
+    }
+
+    .avatar-upload-section {
+        padding: 18px;
+        width: 230px;
+    }
+
+    .current-avatar {
+        width: 90px;
+        height: 90px;
+        margin-bottom: 13px;
+    }
+
+    .upload-avatar-btn {
+        padding: 9px 18px;
+        font-size: 14px;
+    }
+
+    .form-grid {
+        grid-template-columns: repeat(3, minmax(180px, 1fr));
+        gap: 22px;
+        margin-top: 28px;
+    }
+
+    .section-subtitle {
+        font-size: 20px;
+        margin: 9px;
+        padding-bottom: 9px;
+    }
+
+    .form-group label {
+        font-size: 17px;
+        margin-right: 22px;
+    }
+
+    .form-group input {
+        padding: 13px;
+        font-size: 15px;
+    }
+
+    .form-group select,
+    .form-group textarea {
+        padding: 11px;
+        font-size: 15px;
+    }
+
+    .form-group textarea {
+        min-height: 75px;
+    }
+
+    .password-section,
+    .notification-section {
+        margin-top: 55px;
+    }
+
+    .toggle-password {
+        font-size: 14px;
+    }
+
+    .password-strength {
+        margin-top: 13px;
+    }
+
+    .strength-bar {
+        height: 5px;
+        margin-bottom: 7px;
+    }
+
+    .strength-text {
+        font-size: 13px;
+    }
+
+    .notification-options {
+        gap: 18px;
+    }
+
+    .notification-item {
+        padding: 13px;
+    }
+
+    .checkbox-label {
+        font-size: 13px;
+    }
+
+    .checkmark {
+        width: 18px;
+        height: 18px;
+        margin-left: 9px;
+    }
+
+    .notification-desc {
+        font-size: 11px;
+        margin-right: 28px;
+    }
+
+    .save-changes-btn {
+        padding: 13px 28px;
+        font-size: 16px;
+        width: 280px;
+        margin-top: 28px;
+        margin-right: 33%;
+    }
+
+
+    /* ============================== */
+    /* 9- Hidden class */
+    /* ============================== */
+    
+    .hidden {
+        display: none !important;
+    }
+
+
+    /* ============================== */
+    /* 10- No results styles */
+    /* ============================== */
+    
+    .no-results {
+        padding: 35px 15px;
+        border-radius: 22px;
+        width: 55%;
+    }
+
+    .no-results-icon {
+        font-size: 30px;
+        margin-bottom: 22px;
+    }
+
+    .no-results-title {
+        margin-bottom: 12px;
+    }
+}
+
+
+/* ============================== */
+/* Screen 990px */
+/* ============================== */
+
+@media (min-width: 769px) and (max-width: 900px) {
+
+    /* ============================== */
+    /* 1- profile-container */
+    /* ============================== */
+    
+    .profile-container {
+        padding-top: 65px;
+        max-width: 100%;
+    }
+
+    .profile-container-card {
+        margin: 12px;
+        padding: 3px;
+    }
+
+
+    /* ============================== */
+    /* 2- profile-info-main */
+    /* ============================== */
+    
+    .profile-info-main {
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 50px;
+        margin-top: 12px;
+    }
+
+    .profile-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+        width: 90%;
+    }
+
+    .stat-item {
+        padding: 7px;
+        height: 85px;
+    }
+
+    .stat-value {
+        font-size: 26px;
+    }
+
+    .stat-label,
+    .stat-label1 {
+        font-size: 15px;
+    }
+
+    .profile-avatar {
+        width: 85px;
+        height: 85px;
+    }
+
+    .profile-user-details h2 {
+        font-size: 19px;
+    }
+
+
+    /* ============================== */
+    /* 3- row-nav */
+    /* ============================== */
+    
+    .row-nav {
+        width: 90%;
+    }
+
+    .nav-btn {
+        padding: 6px 10px;
+        font-size: 12px;
+        min-width: 120px;
+    }
+
+
+    /* ============================== */
+    /* 4- Products Section Styles */
+    /* ============================== */
+    
+    .filters-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-bottom: 15px;
+    }
+
+    .sreach {
+        padding: 10px;
+        font-size: 16px;
+        min-width: auto;
+    }
+
+    .sreach::placeholder {
+        font-size: 16px;
+        padding-right: 4px;
+    }
+
+    .filter-group select,
+    .filter-group input {
+        padding: 8px;
+        font-size: 16px;
+    }
+
+    .clear-filters-btn {
+        padding: 8px;
+        font-size: 16px;
+    }
+
+    .view-mode-container {
+        margin-bottom: 35px;
+    }
+
+    .view-mode-container label {
+        margin-left: 12px;
+        font-size: 22px;
+    }
+
+    .view-mode-container i {
+        padding-left: 5px;
+        font-size: 20px;
+    }
+
+    .view-mode-container select {
+        padding: 6px 12px;
+        color: var(--text-color);
+        font-size: 16px;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(2, minmax(250px, 1fr));
+        gap: 35px;
+    }
+
+    .products-grid.compact-grid {
+        grid-template-columns: repeat(3, minmax(220px, 1fr));
+        gap: 25px;
+    }
+
+    .products-grid.list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+        max-width: none;
+        margin: 0;
+    }
+
+    .products-grid.small-list {
+        grid-template-columns: repeat(2, 1fr);
+        flex-direction: column;
+        gap: 18px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .products-grid.small-list .product-title span {
+        display: none;
+    }
+
+    .products-grid.small-list .product-meta-overlay2 {
+        display: flex;
+        justify-content: flex-start;
+        background: none;
+        padding: 0;
+        margin-right: 22px;
+        margin-top: 6px;
+        position: static;
+        gap: 12px;
+    }
+
+    .products-grid.small-list .product-card {
+        height: 50px;
+        padding: 8px;
+        grid-template-columns: 2fr 1fr 1fr;
+    }
+
+    .products-grid.small-list .product-title {
+        font-size: 15px;
+    }
+
+    .products-grid.small-list .product-supplier2,
+    .products-grid.small-list .product-price2 {
+        font-size: 13px;
+    }
+
+
+    /* ============================== */
+    /* 5- suppliers Section */
+    /* ============================== */
+    
+    .sup-filters-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .sup-sreach {
+        padding: 8px;
+        font-size: 14px;
+        min-width: auto;
+    }
+
+    .sup-sreach::placeholder {
+        font-size: 14px;
+        padding-right: 4px;
+    }
+
+    .sup-filter-group select,
+    .sup-filter-group input {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .sup-clear-filters-btn {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .view-toggle {
+        margin-bottom: 18px;
+        text-align: center;
+    }
+
+    .view-btn {
+        padding: 7px 13px;
+        font-size: 13px;
+    }
+
+    .suppliers-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 22px;
+    }
+
+    .supplier-card {
+        padding: 16px;
+        width: auto;
+        margin: 0;
+    }
+
+    .supplier-logo {
+        width: 70px;
+        height: 70px;
+    }
+
+    .supplier-name {
+        font-size: 17px;
+    }
+
+    .supplier-description {
+        font-size: 14px;
+    }
+     .supplier-button3  ,
+    .supplier-button {
+        width: 100%;
+        padding: 7px;
+        font-size: 14px;
+        margin-top: 4px;
+    }
+
+    .suppliers-grid.list-view {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 9px;
+        flex-direction: column;
+    }
+
+    .suppliers-grid.list-view .supplier-card {
+        padding: 3px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .supplier-user {
+        display: none;
+    }
+
+    .suppliers-grid.list-view .supplier-details-info {
+        gap: 4px;
+        margin-right: 0;
+    }
+
+    .suppliers-grid.list-view .supplier-name {
+        font-size: 12px;
+    }
+
+    .suppliers-grid.list-view .supplier-tags {
+        margin: 0;
+        gap: 4px;
+    }
+
+    .suppliers-grid.list-view .tag {
+        font-size: 10px;
+        padding: 2px 5px;
+        margin-right: 2px;
+    }
+
+
+    /* ============================== */
+    /* 6- Tasks Section Styles */
+    /* ============================== */
+    
+    .tasks-container {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .task-widget {
+        padding: 16px;
+    }
+
+    .widget-title {
+        font-size: 18px;
+        margin-right: 40px;
+    }
+
+    .admin-task-item {
+        padding: 12px;
+        margin-bottom: 12px;
+    }
+
+    .task-name {
+        font-size: 14px;
+    }
+
+    .task-deadline {
+        font-size: 11px;
+    }
+
+    .task-priority {
+        font-size: 13px;
+    }
+
+    .actions-task-btn {
+        padding: 4px 11px;
+        font-size: 10px;
+    }
+
+    .todo-input {
+        padding: 8px;
+        font-size: 13px;
+    }
+
+    .add-todo-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+    }
+
+    .todo-item {
+        padding: 8px;
+    }
+
+    .todo-item span {
+        font-size: 15px;
+    }
+
+    .remove-todo-btn {
+        font-size: 14px;
+    }
+
+
+    /* ============================== */
+    /* 7- Notes and Links Section Styles */
+    /* ============================== */
+    
+    .notes-links-container {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .notes-widget {
+        padding: 16px;
+    }
+
+    .notes-header {
+        padding-top: 12px;
+        margin-bottom: 16px;
+    }
+
+    .notes-widget-title {
+        font-size: 18px;
+        margin-right: 22px;
+    }
+
+    .add-note-btn,
+    .add-link-btn {
+        padding: 8px 16px;
+        font-size: 13px;
+        margin-left: 16px;
+    }
+
+    .notes-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 12px;
+    }
+
+    .note-card {
+        padding: 12px;
+        min-height: 110px;
+    }
+
+    .note-title {
+        font-size: 13px;
+    }
+
+    .note-category {
+        font-size: 9px;
+    }
+
+    .note-content {
+        font-size: 11px;
+    }
+
+    .note-date {
+        font-size: 8px;
+    }
+
+    .note-btn {
+        font-size: 11px;
+    }
+
+    .links-list {
+        grid-template-columns: repeat(2, minmax(160px, 1fr));
+        gap: 16px;
+    }
+
+    .link-item {
+        padding: 12px;
+        margin-bottom: 9px;
+    }
+
+    .link-title {
+        font-size: 14px;
+    }
+
+    .link-url {
+        font-size: 10px;
+    }
+
+    .link-description {
+        font-size: 12px;
+        margin-bottom: 16px;
+    }
+
+    .copy-link-btn,
+    .send-link-btn,
+    .delete-link-btn {
+        font-size: 11px;
+        padding: 4px 11px;
+    }
+
+
+    /* ============================== */
+    /* 8- Account Info Section Styles */
+    /* ============================== */
+    
+    .account-form {
+        max-width: 900px;
+    }
+
+    .avatar-upload-section {
+        padding: 16px;
+        width: 210px;
+    }
+
+    .current-avatar {
+        width: 85px;
+        height: 85px;
+        margin-bottom: 12px;
+    }
+
+    .upload-avatar-btn {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+
+    .form-grid {
+        grid-template-columns: repeat(2, minmax(160px, 1fr));
+        gap: 20px;
+        margin-top: 26px;
+    }
+
+    .section-subtitle {
+        font-size: 19px;
+        margin: 8px;
+        padding-bottom: 8px;
+    }
+
+    .form-group label {
+        font-size: 16px;
+        margin-right: 20px;
+    }
+
+    .form-group input {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .form-group select,
+    .form-group textarea {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .form-group textarea {
+        min-height: 70px;
+    }
+
+    .password-section,
+    .notification-section {
+        margin-top: 50px;
+    }
+
+    .toggle-password {
+        font-size: 13px;
+    }
+
+    .password-strength {
+        margin-top: 12px;
+    }
+
+    .strength-bar {
+        height: 5px;
+        margin-bottom: 6px;
+    }
+
+    .strength-text {
+        font-size: 12px;
+    }
+
+    .notification-options {
+        gap: 16px;
+    }
+
+    .notification-item {
+        padding: 12px;
+    }
+
+    .checkbox-label {
+        font-size: 12px;
+    }
+
+    .checkmark {
+        width: 17px;
+        height: 17px;
+        margin-left: 8px;
+    }
+
+    .notification-desc {
+        font-size: 10px;
+        margin-right: 26px;
+    }
+
+    .save-changes-btn {
+        padding: 12px 26px;
+        font-size: 15px;
+        width: 260px;
+        margin-top: 26px;
+        margin-right: 30%;
+    }
+
+
+    /* ============================== */
+    /* 9- Hidden class */
+    /* ============================== */
+    
+    .hidden {
+        display: none !important;
+    }
+
+
+    /* ============================== */
+    /* 10- No results styles */
+    /* ============================== */
+    
+    .no-results {
+        padding: 35px 15px;
+        border-radius: 22px;
+        width: 55%;
+    }
+
+    .no-results-icon {
+        font-size: 30px;
+        margin-bottom: 22px;
+    }
+
+    .no-results-title {
+        margin-bottom: 12px;
+    }
+}
+
+
+/* ============================== */
+/* Screen 768px */
+/* ============================== */
+
+@media (max-width: 768px) {
+
+    /* ============================== */
+    /* 1- profile-container */
+    /* ============================== */
+    
+    .profile-container {
+        padding-top: 60px;
+        max-width: 100%;
+    }
+
+    .profile-container-card {
+        margin: 10px;
+        padding: 3px;
+    }
+
+
+    /* ============================== */
+    /* 2- profile-info-main */
+    /* ============================== */
+    
+    .profile-info-main {
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 45px;
+        margin-top: 10px;
+    }
+
+    .profile-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        width: 95%;
+    }
+
+    .stat-item {
+        padding: 6px;
+        height: 80px;
+    }
+
+    .stat-value {
+        font-size: 24px;
+    }
+
+    .stat-label,
+    .stat-label1 {
+        font-size: 14px;
+    }
+
+    .profile-avatar {
+        width: 80px;
+        height: 80px;
+    }
+
+    .profile-user-details h2 {
+        font-size: 18px;
+    }
+
+
+    /* ============================== */
+    /* 3- row-nav */
+    /* ============================== */
+    
+    .row-nav {
+        width: 95%;
+    }
+
+    .nav-btn {
+        padding: 6px 9px;
+        font-size: 11px;
+        min-width: 110px;
+    }
+
+
+    /* ============================== */
+    /* 4- Products Section Styles */
+    /* ============================== */
+    
+    .filters-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-bottom: 1px;
+    }
+
+    .sreach {
+        padding: 8px;
+        font-size: 16px;
+        min-width: auto;
+    }
+
+    .sreach::placeholder {
+        font-size: 15px;
+        padding-right: 2px;
+    }
+
+    .filter-group select,
+    .filter-group input {
+        padding: 6px;
+        font-size: 15px;
+    }
+
+    .clear-filters-btn {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .view-mode-container {
+        margin-bottom: 30px;
+    }
+
+    .view-mode-container label {
+        margin-left: 10px;
+        font-size: 21px;
+    }
+
+    .view-mode-container i {
+        padding-left: 4px;
+        font-size: 18px;
+    }
+
+    .view-mode-container select {
+        padding: 5px 10px;
+        color: var(--text-color);
+        font-size: 15px;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(1, minmax(250px, 1fr));
+        gap: 30px;
+    }
+
+    .product-meta-overlay {
+        padding: 10px 14px;
+    }
+
+    .product-meta-overlay .product-category {
+        padding: 3px 8px;
+        border-radius: 6px;
+        font-size: 14px;
+    }
+
+    .product-meta-overlay .product-supplier {
+        padding: 3px 8px;
+        border-radius: 6px;
+        font-size: 14px;
+    }
+
+    .product-meta-overlay .product-serial {
+        padding: 3px 8px;
+        border-radius: 6px;
+        font-size: 14px;
+    }
+
+    .product-image {
+        min-height: 190px;
+    }
+
+    .product-info {
+        padding: 25px;
+    }
+
+    .product-category {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+
+    .product-supplier {
+        margin-bottom: 10px;
+    }
+
+    .product-serial {
+        font-size: 12px;
+        margin-bottom: 5px;
+    }
+
+    .product-price2 {
+        display: none;
+    }
+
+    .product-category2 {
+        font-size: 14px;
+        margin-bottom: 8px;
+        display: none;
+    }
+
+    .product-supplier2 {
+        font-size: 14px;
+        margin-bottom: 10px;
+        display: none;
+    }
+
+    .product-serial2 {
+        font-size: 12px;
+        margin-bottom: 5px;
+        display: none;
+    }
+
+    .product-title {
+        font-size: 24px;
+        margin-bottom: 8px;
+        padding-right: 10px;
+    }
+
+    .product-title span {
+        font-size: 16px;
+        margin-bottom: 8px;
+        padding-right: 5px;
+        margin-right: 25px;
+    }
+
+    .product-description {
+        font-size: 18px;
+        padding: 2px;
+        margin-top: 15px;
+        margin-bottom: 20px;
+        line-height: 1.7;
+    }
+
+    .product-prices {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+        padding: 15px;
+        border-radius: 12px;
+        gap: 5px;
+    }
+
+    .price-amount {
+        font-size: 16px;
+    }
+
+    .price-currency {
+        font-size: 12px;
+    }
+
+    .product-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .product-button {
+        flex: 1;
+        width: 45%;
+        padding: 10px;
+        font-weight: 400;
+        font-size: 15px;
+    }
+
+    .product-button i {
+        padding-left: 10px;
+    }
+
+    .products-grid.compact-grid {
+        grid-template-columns: repeat(2, minmax(180px, 1fr));
+        gap: 20px;
+    }
+
+    .products-grid.compact-grid .product-image {
+        max-height: 100px;
+    }
+
+    .products-grid.compact-grid .product-info {
+        padding: 10px;
+    }
+
+    .products-grid.compact-grid .product-title {
+        font-size: 18px;
+        padding-right: 5px;
+        border-right: 2px solid var(--text-color);
+        margin-top: 15px;
+        text-align: right;
+    }
+
+    .products-grid.compact-grid .product-title span {
+        display: none;
+    }
+
+    .products-grid.compact-grid .product-description {
+        display: none;
+        -webkit-line-clamp: 1;
+    }
+
+    .products-grid.compact-grid .product-category,
+    .products-grid.compact-grid .product-supplier {
+        display: block;
+        font-size: 10px;
+        font-weight: 500;
+        margin-bottom: 2px;
+        font-family: "Noto Naskh Arabic", serif;
+    }
+
+    .products-grid.compact-grid .product-serial {
+        display: none;
+    }
+
+    .products-grid.compact-grid .product-user {
+        display: none;
+    }
+
+    .products-grid.compact-grid .product-prices {
+        padding: 8px;
+        margin-top: 23px;
+    }
+
+    .products-grid.compact-grid .product-price2 {
+        display: none;
+    }
+
+    .products-grid.compact-grid .price-amount {
+        font-size: 14px;
+    }
+
+    .products-grid.compact-grid .price-currency {
+        font-size: 12px;
+    }
+
+    .products-grid.compact-grid .share-buttons {
+        gap: 5px;
+    }
+
+    .products-grid.compact-grid .product-actions {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+    }
+
+    .products-grid.compact-grid .product-button {
+        flex: 1;
+        width: 90%;
+        padding: 8px;
+        font-size: 13px;
+        margin: 0 auto;
+        font-weight: 400;
+    }
+
+    .product-button i {
+        padding-left: 10px;
+        vertical-align: middle;
+        font-size: 15px;
+    }
+
+    .products-grid.list {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 35px;
+        max-width: none;
+        margin: 0;
+    }
+
+    .products-grid.list .product-card {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 10px;
+        border-radius: 12px;
+        cursor: pointer;
+        min-height: 120px;
+        height: auto;
+        font-family: "Noto Naskh Arabic", serif;
+        width: 95%;
+        margin: 0 auto;
+    }
+
+    .products-grid.list .product-image-container {
+        flex: 0 0 70px;
+        margin-left: 15px;
+        margin-top: 45px;
+    }
+
+    .products-grid.list .product-image {
+        height: 95px;
+        min-width: 95px;
+        min-height: 95px;
+        border-radius: 8px;
+    }
+
+    .products-grid.list .product-meta-overlay {
+        display: none;
+    }
+
+    .products-grid.list .product-info {
+        flex: 1;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        margin-top: 40px;
+    }
+
+    .products-grid.list .product-user {
+        display: none;
+    }
+
+    .products-grid.list .product-actions {
+        display: none;
+    }
+
+    .products-grid.list .share-buttons {
+        display: none;
+    }
+
+    .products-grid.list .product-prices {
+        display: none;
+    }
+
+    .products-grid.list .product-title {
+        font-size: 20px;
+        margin-bottom: 0;
+        margin-top: 7px;
+    }
+
+    .products-grid.list .product-title span {
+        font-size: 14px;
+        margin-bottom: 8px;
+        padding-right: 7px;
+        margin-right: 10px;
+    }
+
+    .products-grid.list .product-description {
+        font-size: 16px;
+        -webkit-line-clamp: 2;
+        margin-bottom: 10px;
+    }
+
+    .product-meta-overlay2 {
+        padding: 10px 16px;
+        margin-bottom: 8px;
+    }
+
+    .products-grid.list .product-supplier2 {
+        font-size: 12px;
+        padding: 3px 13px;
+    }
+
+    .products-grid.list .product-serial2 {
+        font-size: 12px;
+        padding: 3px 13px;
+    }
+
+    .products-grid.list .product-price2 {
+        font-size: 12px;
+        padding: 3px 13px;
+    }
+
+    .products-grid.list .product-category2 {
+        font-size: 12px;
+        padding: 3px 13px;
+    }
+
+    .products-grid.list .product-card:hover {
+        background: var(--container-focus-color);
+        transform: none;
+    }
+
+    .products-grid.small-list {
+        grid-template-columns: repeat(1, 1fr);
+        flex-direction: column;
+        gap: 15px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .products-grid.small-list .product-title span {
+        font-size: 12px;
+        padding-right: 5px;
+        margin-right: 0;
+        left: 10px;
+    }
+
+    .products-grid.small-list .product-meta-overlay2 {
+        display: flex;
+        justify-content: flex-start;
+        background: none;
+        padding: 0;
+        margin-right: 20px;
+        margin-top: 5px;
+        position: static;
+        gap: 10px;
+    }
+
+    .products-grid.small-list .product-card {
+        height: 45px;
+        padding: 8px;
+        grid-template-columns: 2fr 1fr 1fr;
+    }
+
+    .products-grid.small-list .product-title {
+        font-size: 14px;
+    }
+
+    .products-grid.small-list .product-supplier2,
+    .products-grid.small-list .product-price2 {
+        font-size: 13px;
+    }
+
+
+    /* ============================== */
+    /* 5- suppliers Section */
+    /* ============================== */
+    
+    .sup-filters-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-bottom: 15px;
+    }
+
+    .sup-sreach {
+        padding: 8px;
+        font-size: 14px;
+        min-width: auto;
+    }
+
+    .sup-sreach::placeholder {
+        font-size: 14px;
+        padding-right: 4px;
+    }
+
+    .sup-filter-group select,
+    .sup-filter-group input {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .sup-clear-filters-btn {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .suppliers-grid {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 25px;
+    }
+
+    .supplier-card {
+        padding: 15px;
+        width: 93%;
+        margin: 0 auto;
+    }
+
+    .supplier-logo {
+        width: 90px;
+        height: 90px;
+    }
+
+    .supplier-name {
+        font-size: 19px;
+    }
+
+    .supplier-description {
+        font-size: 16px;
+        height: 40px;
+    }
+
+    .view-toggle {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .view-btn {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    .suppliers-grid.list-view {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 25px;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .suppliers-grid.list-view .supplier-card {
+        padding: 8px;
+        width: 95%;
+        margin: 0 auto;
+    }
+
+    .supplier-user {
+        display: none;
+    }
+
+    .suppliers-grid.list-view .supplier-details-info {
+        gap: 15px;
+        margin-right: 0;
+    }
+
+    .suppliers-grid.list-view .supplier-name {
+        font-size: 15px;
+    }
+
+    .suppliers-grid.list-view .supplier-tags {
+        margin: 0;
+        gap: 5px;
+    }
+
+    .suppliers-grid.list-view .tag {
+        font-size: 13px;
+        padding: 2px 6px;
+        margin-right: 3px;
+    }
+
+
+    /* ============================== */
+    /* 6- Tasks Section Styles */
+    /* ============================== */
+    
+    .tasks-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .task-widget {
+        padding: 15px;
+    }
+
+    .widget-title {
+        font-size: 17px;
+        margin-right: 35px;
+    }
+
+    .admin-task-item {
+        padding: 11px;
+        margin-bottom: 11px;
+    }
+
+    .task-name {
+        font-size: 13px;
+    }
+
+    .task-deadline {
+        font-size: 10px;
+    }
+
+    .task-priority {
+        font-size: 12px;
+    }
+
+    .actions-task-btn {
+        padding: 3px 10px;
+        font-size: 9px;
+    }
+
+    .todo-input {
+        padding: 7px;
+        font-size: 12px;
+    }
+
+    .add-todo-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 13px;
+    }
+
+    .todo-item {
+        padding: 7px;
+    }
+
+    .todo-item span {
+        font-size: 14px;
+    }
+
+    .remove-todo-btn {
+        font-size: 13px;
+    }
+
+
+    /* ============================== */
+    /* 7- Notes and Links Section Styles */
+    /* ============================== */
+    
+    .notes-links-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .notes-widget {
+        padding: 15px;
+    }
+
+    .notes-header {
+        padding-top: 11px;
+        margin-bottom: 15px;
+    }
+
+    .notes-widget-title {
+        font-size: 17px;
+        margin-right: 20px;
+    }
+
+    .add-note-btn,
+    .add-link-btn {
+        padding: 7px 15px;
+        font-size: 12px;
+        margin-left: 15px;
+    }
+
+    .notes-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 11px;
+    }
+
+    .note-card {
+        padding: 11px;
+        min-height: 105px;
+    }
+
+    .note-title {
+        font-size: 12px;
+    }
+
+    .note-category {
+        font-size: 8px;
+    }
+
+    .note-content {
+        font-size: 10px;
+    }
+
+    .note-date {
+        font-size: 7px;
+    }
+
+    .note-btn {
+        font-size: 10px;
+    }
+
+    .links-list {
+        grid-template-columns: repeat(1, minmax(150px, 1fr));
+        gap: 15px;
+    }
+
+    .link-item {
+        padding: 11px;
+        margin-bottom: 8px;
+    }
+
+    .link-title {
+        font-size: 13px;
+    }
+
+    .link-url {
+        font-size: 9px;
+    }
+
+    .link-description {
+        font-size: 11px;
+        margin-bottom: 15px;
+    }
+
+    .copy-link-btn,
+    .send-link-btn,
+    .delete-link-btn {
+        font-size: 10px;
+        padding: 4px 10px;
+    }
+
+
+    /* ============================== */
+    /* 8- Account Info Section Styles */
+    /* ============================== */
+    
+    .account-form {
+        max-width: 850px;
+    }
+
+    .avatar-upload-section {
+        padding: 15px;
+        width: 200px;
+    }
+
+    .current-avatar {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 11px;
+    }
+
+    .upload-avatar-btn {
+        padding: 7px 15px;
+        font-size: 12px;
+    }
+
+    .form-grid {
+        grid-template-columns: repeat(2, minmax(150px, 1fr));
+        gap: 18px;
+        margin-top: 24px;
+    }
+
+    .section-subtitle {
+        font-size: 18px;
+        margin: 7px;
+        padding-bottom: 7px;
+    }
+
+    .form-group label {
+        font-size: 15px;
+        margin-right: 18px;
+    }
+
+    .form-group input {
+        padding: 11px;
+        font-size: 13px;
+    }
+
+    .form-group select,
+    .form-group textarea {
+        padding: 9px;
+        font-size: 13px;
+    }
+
+    .form-group textarea {
+        min-height: 65px;
+    }
+
+    .password-section,
+    .notification-section {
+        margin-top: 45px;
+    }
+
+    .toggle-password {
+        font-size: 12px;
+    }
+
+    .password-strength {
+        margin-top: 11px;
+    }
+
+    .strength-bar {
+        height: 4px;
+        margin-bottom: 5px;
+    }
+
+    .strength-text {
+        font-size: 11px;
+    }
+
+    .notification-options {
+        gap: 15px;
+    }
+
+    .notification-item {
+        padding: 11px;
+    }
+
+    .checkbox-label {
+        font-size: 11px;
+    }
+
+    .checkmark {
+        width: 16px;
+        height: 16px;
+        margin-left: 7px;
+    }
+
+    .notification-desc {
+        font-size: 9px;
+        margin-right: 24px;
+    }
+
+    .save-changes-btn {
+        padding: 11px 24px;
+        font-size: 14px;
+        width: 240px;
+        margin-top: 24px;
+        margin-right: 28%;
+    }
+
+
+    /* ============================== */
+    /* 9- Hidden class */
+    /* ============================== */
+    
+    .hidden {
+        display: none !important;
+    }
+
+
+    /* ============================== */
+    /* 10- No results styles */
+    /* ============================== */
+    
+    .no-results {
+        padding: 30px 10px;
+        border-radius: 20px;
+        width: 60%;
+    }
+
+    .no-results-icon {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    .no-results-title {
+        margin-bottom: 10px;
+    }
+}
+
+
+/* ============================== */
+/* Screen 480px */
+/* ============================== */
+
+@media (max-width: 480px) {
+
+    /* ============================== */
+    /* 1- profile-container */
+    /* ============================== */
+    
+    .profile-container {
+        padding-top: 65px;
+        width: 100%;
+    }
+
+  
+    .profile-container-card {
+        margin: 0;
+        padding: 0;
+    }
+
+
+    .profile-info-main {
+        margin-bottom: 20px; 
+        margin-top: 10px; 
+    }
+
+
+    .profile-stats-grid {
+        /* جعل الشبكة 3 أعمدة */
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 15px; 
+        width: 92%; 
+    }
+       .profile-avatar {
+    min-width: 100px;
+    min-height: 100px;
+    border-radius: 50%;
+           opacity: 0.9;
+    border: 2px solid var(--primary-color);
+    	margin-top: 4px;
+     }
+
+    .stat-item1 {
+       
+        grid-column: 1 / -1; 
+     
+        border: none;
+        padding: 5px; 
+    }
+
+  
+    .stat-item {
+        height: 90px; 
+       
+        border-radius: 0 0 10px 10px ; 
+       
+        border-top: 3px solid var(--border-color); 
+        border-right:none;
+        padding:  5px; 
+        width:100%;
+    }
+
+     
+
+    .stat-label,
+    .stat-label1 {
+        font-size: 14px;
+    }
+      .stat-label i,
+    .stat-label1 i{
+        font-size: 12px;
+        padding-left: 3px;
+    }
+    .profile-avatar {
+        width: 75px;
+        height: 75px;
+    }
+
+    .profile-user-details h2 {
+        font-size: 15px;
+    }
+
+
+    /* ============================== */
+    /* 3- row-nav */
+    /* ============================== */
+    
+    .row-nav {
+        width: 100%;
+        grid-template-columns: repeat(5, 1fr);
+        margin-top: 70px;
+        
+    }
+
+    .nav-btn {
+        padding-top: 10px ;
+        font-size: 13px;
+        min-width: auto;
+        gap:8px;
+        display: flex;
+        flex-direction: column;
+    }
+      
+ .nav-btn i{
+        
+        font-size: 14px;
+        
+    }
+    
+    .section-container {
+    margin: 0;
+    width:100%;
+    padding:5px;
+    min-height: auto;
+}
+    /* ============================== */
+    /* 4- Products Section Styles */
+    /* ============================== */
+    
+    .filters-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 13px;
+        margin-bottom: 1px;
+        width: 100%;
+    }
+
+    .sreach {
+        padding: 8px;
+        font-size: 14px;
+        min-width: auto;
+    }
+
+    .sreach::placeholder {
+        font-size: 14px;
+        padding-right: 2px;
+    }
+
+    .filter-group select,
+    .filter-group input {
+        padding: 6px;
+        font-size: 14px;
+    }
+
+    .clear-filters-btn {
+        padding: 6px;
+        font-size: 14px;
+    }
+
+    .view-mode-container {
+        margin-bottom: 20px;
+    }
+
+    .view-mode-container label {
+        margin-left: 10px;
+        font-size: 19px;
+    }
+
+    .view-mode-container i {
+        padding-left: 4px;
+        font-size: 17px;
+    }
+
+    .view-mode-container select {
+        padding: 3px 8px;
+        font-size: 14px;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(1, minmax(250px, 1fr));
+        gap: 50px;
+    }
+
+    .product-card {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .product-meta-overlay {
+        padding: 10px 14px;
+    }
+
+    .product-meta-overlay .product-category {
+        padding: 3px 8px;
+        border-radius: 6px;
+        font-size: 13px;
+    }
+
+    .product-meta-overlay .product-supplier {
+        padding: 3px 8px;
+        border-radius: 6px;
+        font-size: 13px;
+    }
+
+    .product-meta-overlay .product-serial {
+        padding: 3px 8px;
+        border-radius: 6px;
+        font-size: 13px;
+    }
+
+    .product-image {
+        min-height: 190px;
+    }
+
+    .product-info {
+        padding: 25px;
+    }
+
+    .product-category {
+        font-size: 13px;
+        margin-bottom: 8px;
+    }
+
+    .product-supplier {
+        margin-bottom: 10px;
+    }
+
+    .product-serial {
+        font-size: 12px;
+        margin-bottom: 5px;
+    }
+
+    .product-price2 {
+        display: none;
+    }
+
+    .product-category2 {
+        display: none;
+    }
+
+    .product-supplier2 {
+        display: none;
+    }
+
+    .product-serial2 {
+        display: none;
+    }
+
+    .product-title {
+        font-size: 20px;
+        margin-bottom: 8px;
+        padding-right: 10px;
+    }
+
+    .product-title span {
+        font-size: 13px;
+        margin-bottom: 8px;
+        padding-right: 5px;
+        margin-right: 40px;
+    }
+
+    .product-description {
+        font-size: 16px;
+        padding: 2px;
+        margin-top: 15px;
+        margin-bottom: 20px;
+        line-height: 1.7;
+    }
+
+    .product-prices {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+        padding: 10px;
+        border-radius: 12px;
+        gap: 5px;
+    }
+
+    .price-amount {
+        font-size: 15px;
+    }
+
+    .price-currency {
+        font-size: 11px;
+    }
+
+    .product-actions {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .product-button {
+        flex: 1;
+        width: 45%;
+        padding: 8px;
+        font-weight: 400;
+        font-size: 13px;
+    }
+
+    .product-button i {
+        padding-left: 10px;
+    }
+
+    .products-grid.compact-grid {
+        grid-template-columns: repeat(2, minmax(170px, 1fr));
+        gap: 15px;
+    }
+
+    .products-grid.compact-grid .product-card {
+        width: 100%;
+        padding-bottom: 10px;
+    }
+
+    .products-grid.compact-grid .product-image {
+        max-height: 80px;
+    }
+
+    .products-grid.compact-grid .product-info {
+        padding: 5px;
+    }
+
+    .products-grid.compact-grid .product-title {
+        font-size: 16px;
+        padding-right: 0;
+        border-right: none;
+        margin-top: 15px;
+        text-align: center;
+    }
+
+    .products-grid.compact-grid .product-title span {
+        display: none;
+    }
+
+    .products-grid.compact-grid .product-description {
+        display: none;
+        -webkit-line-clamp: 1;
+    }
+
+    .products-grid.compact-grid .product-category {
+        display: block;
+        font-size: 10px;
+        font-weight: 500;
+        margin-bottom: 2px;
+        font-family: "Noto Naskh Arabic", serif;
+    }
+
+    .products-grid.compact-grid .product-supplier {
+        display: none;
+        font-size: 10px;
+        font-weight: 500;
+        margin-bottom: 2px;
+        font-family: "Noto Naskh Arabic", serif;
+    }
+
+    .products-grid.compact-grid .product-serial {
+        display: none;
+    }
+
+    .products-grid.compact-grid .product-user {
+        display: none;
+    }
+
+    .products-grid.compact-grid .product-prices {
+        padding: 8px;
+        margin-top: 13px;
+    }
+
+    .products-grid.compact-grid .product-price2 {
+        display: none;
+    }
+
+    .products-grid.compact-grid .price-amount {
+        font-size: 12px;
+    }
+
+    .products-grid.compact-grid .price-currency {
+        font-size: 10px;
+    }
+
+    .products-grid.compact-grid .share-buttons {
+        gap: 5px;
+    }
+
+    .products-grid.compact-grid .product-actions {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+    }
+
+    .products-grid.compact-grid .product-button {
+        flex: 1;
+        width: 90%;
+        padding: 5px;
+        font-size: 12px;
+        margin: 0 auto;
+        font-weight: 400;
+    }
+
+    .product-button i {
+        padding-left: 6px;
+        vertical-align: middle;
+        font-size: 12px;
+    }
+
+    .products-grid.list {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 35px;
+        max-width: none;
+        margin: 0;
+    }
+
+    .products-grid.list .product-card {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 10px;
+        border-radius: 12px;
+        cursor: pointer;
+        min-height: 90px;
+        height: 140px;
+        font-family: "Noto Naskh Arabic", serif;
+        width: 95%;
+        margin: 0 auto;
+    }
+
+    .products-grid.list .product-image-container {
+        flex: 0 0 70px;
+        margin-left: 15px;
+        margin-top: 30px;
+    }
+
+    .products-grid.list .product-image {
+        height: 85px;
+        min-width: 75px;
+        min-height: 85px;
+        border-radius: 8px;
+    }
+
+    .products-grid.list .product-meta-overlay {
+        display: none;
+    }
+
+    .products-grid.list .product-info {
+        flex: 1;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        margin-top: 30px;
+    }
+
+    .products-grid.list .product-user {
+        display: none;
+    }
+
+    .products-grid.list .product-actions {
+        display: none;
+    }
+
+    .products-grid.list .share-buttons {
+        display: none;
+    }
+
+    .products-grid.list .product-prices {
+        display: none;
+    }
+
+    .products-grid.list .product-title {
+        font-size: 18px;
+        margin-bottom: 0;
+        margin-top: 10px;
+        line-height: 0.1;
+        border-right: none;
+        padding-right: none;
+    }
+
+    .products-grid.list .product-title span {
+        display: none;
+    }
+
+    .products-grid.list .product-description {
+        font-size: 14px;
+        -webkit-line-clamp: 2;
+        margin-bottom: 20px;
+        line-height: 1.6;
+    }
+
+    .product-meta-overlay2 {
+        padding: 7px 13px;
+        margin-bottom: 8px;
+    }
+
+    .products-grid.list .product-supplier2 {
+        font-size: 11px;
+        padding: 2px 10px;
+    }
+
+    .products-grid.list .product-serial2 {
+        font-size: 11px;
+        padding: 2px 10px;
+    }
+
+    .products-grid.list .product-price2 {
+        font-size: 11px;
+        padding: 2px 10px;
+    }
+
+    .products-grid.list .product-category2 {
+        font-size: 11px;
+        padding: 2px 10px;
+    }
+
+    .products-grid.list .product-card:hover {
+        background: var(--container-focus-color);
+        transform: none;
+    }
+
+    .products-grid.small-list .product-card {
+        height: 40px;
+        padding: 5px;
+        grid-template-columns: 1.5fr 1fr 1fr;
+    }
+
+    .products-grid.small-list .product-meta-overlay2 {
+        display: flex;
+        justify-content: flex-end;
+        background: none;
+        padding: 0;
+        left: 10px;
+        top: 4px;
+        position: absolute;
+        gap: 15px;
+    }
+
+    .products-grid.small-list .product-title {
+        font-size: 14px;
+    }
+
+    .products-grid.small-list .product-title span {
+        display: none;
+    }
+
+    .products-grid.small-list .product-supplier2,
+    .products-grid.small-list .product-price2 {
+        font-size: 12px;
+    }
+
+
+    /* ============================== */
+    /* 5- suppliers Section */
+    /* ============================== */
+    
+    .sup-filters-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+        margin-bottom: 5px;
+    }
+
+    .sup-sreach {
+        padding: 6px;
+        font-size: 12px;
+        min-width: auto;
+    }
+
+    .sup-sreach::placeholder {
+        font-size: 12px;
+        padding-right: 1px;
+    }
+
+    .sup-filter-group select,
+    .sup-filter-group input {
+        padding: 6px;
+        font-size: 12px;
+    }
+
+    .sup-clear-filters-btn {
+        padding: 6px;
+        font-size: 12px;
+    }
+
+    .view-toggle {
+        margin-bottom: 15px;
+    }
+
+    .view-btn {
+        padding: 5px 12px;
+        font-size: 12px;
+    }
+
+    .suppliers-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .supplier-logo {
+        width: 80px;
+        height: 80px;
+    }
+
+    .supplier-name {
+        font-size: 17px;
+    }
+
+    .tag {
+        font-size: 12px;
+    }
+
+    .supplier-description {
+        font-size: 15px;
+        height: 40px;
+    }
+     .supplier-button3  ,
+    .supplier-button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .suppliers-grid.list-view {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+        flex-direction: column;
+    }
+
+    .suppliers-grid.list-view .supplier-card {
+        padding: 4px;
+        width: 99%;
+        margin: 0 auto;
+    }
+
+    .supplier-user {
+        display: none;
+    }
+
+    .suppliers-grid.list-view .supplier-details-info {
+        gap: 15px;
+        margin-right: 0;
+    }
+
+    .suppliers-grid.list-view .supplier-name {
+        font-size: 13px;
+    }
+
+    .suppliers-grid.list-view .supplier-tags {
+        margin: 0;
+        gap: 3px;
+    }
+
+    .suppliers-grid.list-view .tag {
+        font-size: 11px;
+        padding: 2px 6px;
+        margin-right: 2px;
+    }
+
+
+    /* ============================== */
+    /* 6- Tasks Section Styles */
+    /* ============================== */
+    
+    .tasks-container {
+        grid-template-columns: 1fr;
+        gap: 13px;
+    }
+
+    .task-widget {
+        padding: 13px;
+    }
+
+    .widget-title {
+        font-size: 16px;
+        margin-right: 30px;
+    }
+
+    .admin-task-item {
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .task-name {
+        font-size: 12px;
+    }
+
+    .task-deadline {
+        font-size: 9px;
+    }
+
+    .task-priority {
+        font-size: 11px;
+    }
+
+    .actions-task-btn {
+        padding: 3px 9px;
+        font-size: 8px;
+    }
+
+    .todo-input {
+        padding: 6px;
+        font-size: 11px;
+    }
+
+    .add-todo-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+    }
+
+    .todo-item {
+        padding: 6px;
+    }
+
+    .todo-item span {
+        font-size: 13px;
+    }
+
+    .remove-todo-btn {
+        font-size: 12px;
+    }
+
+
+    /* ============================== */
+    /* 7- Notes and Links Section Styles */
+    /* ============================== */
+    
+    .notes-links-container {
+        grid-template-columns: 1fr;
+        gap: 13px;
+    }
+
+    .notes-widget {
+        padding: 13px;
+    }
+
+    .notes-header {
+        padding-top: 10px;
+        margin-bottom: 13px;
+    }
+
+    .notes-widget-title {
+        font-size: 16px;
+        margin-right: 18px;
+    }
+
+    .add-note-btn,
+    .add-link-btn {
+        padding: 6px 13px;
+        font-size: 11px;
+        margin-left: 13px;
+    }
+
+    .notes-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 10px;
+    }
+
+    .note-card {
+        padding: 10px;
+        min-height: 100px;
+    }
+
+    .note-title {
+        font-size: 11px;
+    }
+
+    .note-category {
+        display: none;
+    }
+
+    .note-content {
+        font-size: 9px;
+    }
+
+    .note-date {
+        font-size: 6px;
+    }
+
+    .note-btn {
+        font-size: 9px;
+    }
+
+    .links-list {
+        grid-template-columns: repeat(2, minmax(140px, 1fr));
+        gap: 13px;
+    }
+
+    .link-item {
+        padding: 10px;
+        margin-bottom: 7px;
+    }
+
+    .link-title {
+        font-size: 12px;
+    }
+
+    .link-url {
+        font-size: 8px;
+    }
+
+    .link-description {
+        font-size: 10px;
+        margin-bottom: 13px;
+    }
+
+    .copy-link-btn,
+    .send-link-btn,
+    .delete-link-btn {
+        font-size: 9px;
+        padding: 3px 9px;
+    }
+
+
+    /* ============================== */
+    /* 8- Account Info Section Styles */
+    /* ============================== */
+    
+    .account-form {
+        max-width: 800px;
+		 width: 90%;
+		 padding-bottom:30px;
+		 border-radius:0 0 25px 25px;
+    }
+
+    .avatar-upload-section {
+        padding: 13px;
+        width: 190px;
+		margin-top:40px;
+		margin-bottom:30px;
+    }
+
+    .current-avatar {
+        width: 75px;
+        height: 75px;
+        margin-bottom: 10px;
+    }
+
+    .upload-avatar-btn {
+        padding: 6px 13px;
+        font-size: 11px;
+    }
+
+    .form-grid {
+        grid-template-columns: repeat(1, minmax(140px, 1fr));
+        gap: 16px;
+        margin-top: 22px;
+    }
+
+    .section-subtitle {
+        font-size: 17px;
+        margin: 6px;
+        padding-bottom: 6px;
+    }
+
+    .form-group label {
+        font-size: 14px;
+        margin-right: 16px;
+    }
+
+    .form-group input {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .form-group select,
+    .form-group textarea {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .form-group textarea {
+        min-height: 60px;
+    }
+
+    .password-section,
+    .notification-section {
+        margin-top: 40px;
+    }
+
+    .toggle-password {
+        font-size: 11px;
+    }
+
+    .password-strength {
+        margin-top: 10px;
+    }
+
+    .strength-bar {
+        height: 4px;
+        margin-bottom: 4px;
+    }
+
+    .strength-text {
+        font-size: 10px;
+    }
+
+    .notification-options {
+        gap: 13px;
+    }
+
+    .notification-item {
+        padding: 10px;
+    }
+
+    .checkbox-label {
+        font-size: 10px;
+    }
+
+    .checkmark {
+        width: 15px;
+        height: 15px;
+        margin-left: 6px;
+    }
+
+    .notification-desc {
+        font-size: 8px;
+        margin-right: 22px;
+    }
+
+    .save-changes-btn {
+        padding: 10px 22px;
+        font-size: 13px;
+        width: 220px;
+        margin-top: 22px;
+        margin-right: 25%;
+    }
+
+
+    /* ============================== */
+    /* 9- Hidden class */
+    /* ============================== */
+    
+    .hidden {
+        display: none !important;
+    }
+
+
+    /* ============================== */
+    /* 10- No results styles */
+    /* ============================== */
+    
+    .no-results {
+        padding: 30px 10px;
+        border-radius: 20px;
+        width: 60%;
+    }
+
+    .no-results-icon {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    .no-results-title {
+        margin-bottom: 10px;
+    }
+}
+
+
+/* ============================== */
+/* Screen 380px */
+/* ============================== */
+
+@media (max-width: 380px) {
+
+    /* ============================== */
+    /* 1- profile-container */
+    /* ============================== */
+    
+    .profile-container {
+        padding-top: 50px;
+        max-width: 100%;
+    }
+
+    .profile-container-card {
+        margin: 6px;
+        padding: 2px;
+    }
+
+
+    /* ============================== */
+    /* 2- profile-info-main */
+    /* ============================== */
+    
+    .profile-info-main {
+        flex-direction: column;
+        gap: 6px;
+        margin-bottom: 35px;
+        margin-top: 6px;
+    }
+
+    .profile-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        width: 100%;
+    }
+
+    .stat-item {
+        padding: 4px;
+        height: 70px;
+    }
+
+    .stat-value {
+        font-size: 20px;
+    }
+
+    .stat-label,
+    .stat-label1 {
+        font-size: 12px;
+    }
+
+    .profile-avatar {
+        width: 70px;
+        height: 70px;
+    }
+
+    .profile-user-details h2 {
+        font-size: 16px;
+    }
+
+
+    /* ============================== */
+    /* 3- row-nav */
+    /* ============================== */
+    
+    .row-nav {
+        width: 100%;
+    }
+
+    .nav-btn {
+        padding: 4px 7px;
+        font-size: 9px;
+        min-width: 90px;
+    }
+
+
+    /* ============================== */
+    /* 4- Products Section Styles */
+    /* ============================== */
+    
+    .filters-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        margin-bottom: 5px;
+    }
+
+    .sreach {
+        padding: 6px;
+        font-size: 13px;
+        min-width: auto;
+    }
+
+    .sreach::placeholder {
+        font-size: 13px;
+        padding-right: 1px;
+    }
+
+    .filter-group select,
+    .filter-group input {
+        padding: 5px;
+        font-size: 13px;
+    }
+
+    .clear-filters-btn {
+        padding: 5px;
+        font-size: 13px;
+    }
+
+    .view-mode-container {
+        margin-bottom: 15px;
+    }
+
+    .view-mode-container label {
+        margin-left: 8px;
+        font-size: 17px;
+    }
+
+    .view-mode-container i {
+        padding-left: 3px;
+        font-size: 15px;
+    }
+
+    .view-mode-container select {
+        padding: 2px 6px;
+        font-size: 13px;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(1, minmax(250px, 1fr));
+        gap: 40px;
+    }
+
+    .product-card {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .product-meta-overlay {
+        padding: 8px 12px;
+    }
+
+    .product-meta-overlay .product-category,
+    .product-meta-overlay .product-supplier,
+    .product-meta-overlay .product-serial {
+        padding: 2px 6px;
+        border-radius: 5px;
+        font-size: 12px;
+    }
+
+    .product-image {
+        min-height: 160px;
+    }
+
+    .product-info {
+        padding: 20px;
+    }
+
+    .product-title {
+        font-size: 18px;
+        margin-bottom: 6px;
+        padding-right: 8px;
+    }
+
+    .product-title span {
+        font-size: 12px;
+        margin-bottom: 6px;
+        padding-right: 4px;
+        margin-right: 35px;
+    }
+
+    .product-description {
+        font-size: 14px;
+        padding: 1px;
+        margin-top: 12px;
+        margin-bottom: 15px;
+        line-height: 1.6;
+    }
+
+    .product-prices {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 12px;
+        padding: 8px;
+        border-radius: 10px;
+        gap: 4px;
+    }
+
+    .price-amount {
+        font-size: 13px;
+    }
+
+    .price-currency {
+        font-size: 10px;
+    }
+
+    .product-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .product-button {
+        flex: 1;
+        width: 45%;
+        padding: 6px;
+        font-weight: 400;
+        font-size: 12px;
+    }
+
+    .product-button i {
+        padding-left: 8px;
+    }
+
+    .products-grid.compact-grid {
+        grid-template-columns: repeat(2, minmax(150px, 1fr));
+        gap: 12px;
+    }
+
+    .products-grid.compact-grid .product-card {
+        width: 100%;
+        padding-bottom: 8px;
+    }
+
+    .products-grid.compact-grid .product-image {
+        max-height: 70px;
+    }
+
+    .products-grid.compact-grid .product-info {
+        padding: 4px;
+    }
+
+    .products-grid.compact-grid .product-title {
+        font-size: 14px;
+        padding-right: 0;
+        border-right: none;
+        margin-top: 12px;
+        text-align: center;
+    }
+
+    .products-grid.compact-grid .product-title span {
+        display: none;
+    }
+
+    .products-grid.compact-grid .product-description {
+        display: none;
+        -webkit-line-clamp: 1;
+    }
+
+    .products-grid.compact-grid .product-category {
+        display: block;
+        font-size: 9px;
+        font-weight: 500;
+        margin-bottom: 1px;
+        font-family: "Noto Naskh Arabic", serif;
+    }
+
+    .products-grid.compact-grid .product-supplier {
+        display: none;
+        font-size: 9px;
+        font-weight: 500;
+        margin-bottom: 1px;
+        font-family: "Noto Naskh Arabic", serif;
+    }
+
+    .products-grid.compact-grid .product-serial {
+        display: none;
+    }
+
+    .products-grid.compact-grid .product-user {
+        display: none;
+    }
+
+    .products-grid.compact-grid .product-prices {
+        padding: 6px;
+        margin-top: 10px;
+    }
+
+    .products-grid.compact-grid .product-price2 {
+        display: none;
+    }
+
+    .products-grid.compact-grid .price-amount {
+        font-size: 11px;
+    }
+
+    .products-grid.compact-grid .price-currency {
+        font-size: 9px;
+    }
+
+    .products-grid.compact-grid .share-buttons {
+        gap: 4px;
+    }
+
+    .products-grid.compact-grid .product-actions {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+    }
+
+    .products-grid.compact-grid .product-button {
+        flex: 1;
+        width: 90%;
+        padding: 4px;
+        font-size: 11px;
+        margin: 0 auto;
+        font-weight: 400;
+    }
+
+    .product-button i {
+        padding-left: 5px;
+        vertical-align: middle;
+        font-size: 11px;
+    }
+
+    .products-grid.list {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 30px;
+        max-width: none;
+        margin: 0;
+    }
+
+    .products-grid.list .product-card {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 8px;
+        border-radius: 10px;
+        cursor: pointer;
+        min-height: 80px;
+        font-family: "Noto Naskh Arabic", serif;
+        width: 95%;
+        margin: 0 auto;
+    }
+
+    .products-grid.list .product-image-container {
+        flex: 0 0 60px;
+        margin-left: 12px;
+        margin-top: 25px;
+    }
+
+    .products-grid.list .product-image {
+        height: 75px;
+        min-width: 65px;
+        min-height: 75px;
+        border-radius: 7px;
+    }
+
+    .products-grid.list .product-meta-overlay {
+        display: none;
+    }
+
+    .products-grid.list .product-info {
+        flex: 1;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        margin-top: 25px;
+    }
+
+    .products-grid.list .product-user {
+        display: none;
+    }
+
+    .products-grid.list .product-actions {
+        display: none;
+    }
+
+    .products-grid.list .share-buttons {
+        display: none;
+    }
+
+    .products-grid.list .product-prices {
+        display: none;
+    }
+
+    .products-grid.list .product-title {
+        font-size: 16px;
+        margin-bottom: 0;
+        margin-top: 8px;
+        line-height: 0.1;
+        border-right: none;
+        padding-right: none;
+    }
+
+    .products-grid.list .product-title span {
+        display: none;
+    }
+
+    .products-grid.list .product-description {
+        font-size: 13px;
+        -webkit-line-clamp: 2;
+        margin-bottom: 15px;
+        line-height: 1.5;
+    }
+
+    .product-meta-overlay2 {
+        padding: 6px 10px;
+        margin-bottom: 6px;
+    }
+
+    .products-grid.list .product-supplier2,
+    .products-grid.list .product-serial2,
+    .products-grid.list .product-price2,
+    .products-grid.list .product-category2 {
+        font-size: 10px;
+        padding: 2px 8px;
+    }
+
+    .products-grid.list .product-card:hover {
+        background: var(--container-focus-color);
+        transform: none;
+    }
+
+    .products-grid.small-list .product-card {
+        height: 35px;
+        padding: 4px;
+        grid-template-columns: 1.5fr 1fr 1fr;
+    }
+
+    .products-grid.small-list .product-title {
+        font-size: 12px;
+    }
+
+    .products-grid.small-list .product-title span {
+        display: none;
+    }
+
+    .products-grid.small-list .product-supplier2,
+    .products-grid.small-list .product-price2 {
+        font-size: 11px;
+    }
+
+
+    /* ============================== */
+    /* 5- suppliers Section */
+    /* ============================== */
+    
+    .sup-filters-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+        margin-bottom: 5px;
+    }
+
+    .sup-sreach {
+        padding: 6px;
+        font-size: 12px;
+        min-width: auto;
+    }
+
+    .sup-sreach::placeholder {
+        font-size: 12px;
+        padding-right: 1px;
+    }
+
+    .sup-filter-group select,
+    .sup-filter-group input {
+        padding: 6px;
+        font-size: 12px;
+    }
+
+    .sup-clear-filters-btn {
+        padding: 6px;
+        font-size: 12px;
+    }
+
+    .view-toggle {
+        margin-bottom: 15px;
+    }
+
+    .view-btn {
+        padding: 5px 12px;
+        font-size: 12px;
+    }
+
+    .suppliers-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .supplier-card {
+        padding: 10px;
+        width: 99%;
+        margin: 0 auto;
+    }
+
+    .supplier-logo {
+        width: 65px;
+        height: 65px;
+    }
+
+    .supplier-name {
+        font-size: 16px;
+    }
+
+    .tag {
+        font-size: 11px;
+    }
+
+    .supplier-description {
+        font-size: 14px;
+        margin-top: 14px;
+        height: 30px;
+    }
+     .supplier-button3  ,
+    .supplier-button {
+        font-size: 15px;
+        padding: 8px;
+    }
+
+    .suppliers-grid.list-view {
+        grid-template-columns: repeat(1, 1fr);
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .suppliers-grid.list-view .supplier-card {
+        padding: 4px;
+        width: 98%;
+        margin: 0 auto;
+    }
+
+    .supplier-user {
+        display: none;
+    }
+
+    .suppliers-grid.list-view .supplier-details-info {
+        gap: 5px;
+        margin-right: 0;
+    }
+
+    .suppliers-grid.list-view .supplier-name {
+        font-size: 12px;
+        padding-right: 3px;
+    }
+
+    .suppliers-grid.list-view .supplier-tags {
+        margin: 0;
+        gap: 5px;
+    }
+
+    .suppliers-grid.list-view .tag {
+        font-size: 10px;
+        padding: 2px 6px;
+        margin-right: 2px;
+    }
+
+
+    /* ============================== */
+    /* 6- Tasks Section Styles */
+    /* ============================== */
+    
+    .tasks-container {
+        grid-template-columns: 1fr;
+        gap: 11px;
+    }
+
+    .task-widget {
+        padding: 11px;
+    }
+
+    .widget-title {
+        font-size: 15px;
+        margin-right: 25px;
+    }
+
+    .admin-task-item {
+        padding: 9px;
+        margin-bottom: 9px;
+    }
+
+    .task-name {
+        font-size: 11px;
+    }
+
+    .task-deadline {
+        font-size: 8px;
+    }
+
+    .task-priority {
+        font-size: 10px;
+    }
+
+    .actions-task-btn {
+        padding: 2px 8px;
+        font-size: 7px;
+    }
+
+    .todo-input {
+        padding: 5px;
+        font-size: 10px;
+    }
+
+    .add-todo-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 11px;
+    }
+
+    .todo-item {
+        padding: 5px;
+    }
+
+    .todo-item span {
+        font-size: 12px;
+    }
+
+    .remove-todo-btn {
+        font-size: 11px;
+    }
+
+
+    /* ============================== */
+    /* 7- Notes and Links Section Styles */
+    /* ============================== */
+    
+    .notes-links-container {
+        grid-template-columns: 1fr;
+        gap: 11px;
+    }
+
+    .notes-widget {
+        padding: 11px;
+    }
+
+    .notes-header {
+        padding-top: 9px;
+        margin-bottom: 11px;
+    }
+
+    .notes-widget-title {
+        font-size: 15px;
+        margin-right: 16px;
+    }
+
+    .add-note-btn,
+    .add-link-btn {
+        padding: 5px 11px;
+        font-size: 10px;
+        margin-left: 11px;
+    }
+
+    .notes-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 9px;
+    }
+
+    .note-card {
+        padding: 9px;
+        min-height: 95px;
+    }
+
+    .note-title {
+        font-size: 10px;
+    }
+
+    .note-category {
+        font-size: 6px;
+    }
+
+    .note-content {
+        font-size: 8px;
+    }
+
+    .note-date {
+        font-size: 5px;
+    }
+
+    .note-btn {
+        font-size: 8px;
+    }
+
+    .links-list {
+        grid-template-columns: repeat(1, minmax(130px, 1fr));
+        gap: 11px;
+    }
+
+    .link-item {
+        padding: 9px;
+        margin-bottom: 6px;
+    }
+
+    .link-title {
+        font-size: 11px;
+    }
+
+    .link-url {
+        font-size: 7px;
+    }
+
+    .link-description {
+        font-size: 9px;
+        margin-bottom: 11px;
+    }
+
+    .copy-link-btn,
+    .send-link-btn,
+    .delete-link-btn {
+        font-size: 8px;
+        padding: 3px 8px;
+    }
+
+
+    /* ============================== */
+    /* 8- Account Info Section Styles */
+    /* ============================== */
+    
+    .account-form {
+        max-width: 750px;
+    }
+
+    .avatar-upload-section {
+        padding: 11px;
+        width: 180px;
+    }
+
+    .current-avatar {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 9px;
+    }
+
+    .upload-avatar-btn {
+        padding: 5px 11px;
+        font-size: 10px;
+    }
+
+    .form-grid {
+        grid-template-columns: repeat(1, minmax(130px, 1fr));
+        gap: 14px;
+        margin-top: 20px;
+    }
+
+    .section-subtitle {
+        font-size: 16px;
+        margin: 5px;
+        padding-bottom: 5px;
+    }
+
+    .form-group label {
+        font-size: 13px;
+        margin-right: 14px;
+    }
+
+    .form-group input {
+        padding: 9px;
+        font-size: 11px;
+    }
+
+    .form-group select,
+    .form-group textarea {
+        padding: 7px;
+        font-size: 11px;
+    }
+
+    .form-group textarea {
+        min-height: 55px;
+    }
+
+    .password-section,
+    .notification-section {
+        margin-top: 35px;
+    }
+
+    .toggle-password {
+        font-size: 10px;
+    }
+
+    .password-strength {
+        margin-top: 9px;
+    }
+
+    .strength-bar {
+        height: 3px;
+        margin-bottom: 3px;
+    }
+
+    .strength-text {
+        font-size: 9px;
+    }
+
+    .notification-options {
+        gap: 11px;
+    }
+
+    .notification-item {
+        padding: 9px;
+    }
+
+    .checkbox-label {
+        font-size: 9px;
+    }
+
+    .checkmark {
+        width: 14px;
+        height: 14px;
+        margin-left: 5px;
+    }
+
+    .notification-desc {
+        font-size: 7px;
+        margin-right: 20px;
+    }
+
+    .save-changes-btn {
+        padding: 9px 20px;
+        font-size: 12px;
+        width: 200px;
+        margin-top: 20px;
+        margin-right: 22%;
+    }
+
+
+    /* ============================== */
+    /* 9- Hidden class */
+    /* ============================== */
+    
+    .hidden {
+        display: none !important;
+    }
+
+
+    /* ============================== */
+    /* 10- No results styles */
+    /* ============================== */
+    
+    .no-results {
+        padding: 25px 8px;
+        border-radius: 18px;
+        width: 70%;
+    }
+
+    .no-results-icon {
+        font-size: 26px;
+        margin-bottom: 18px;
+    }
+
+    .no-results-title {
+        margin-bottom: 8px;
+    }
+}

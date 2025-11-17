@@ -1,0 +1,466 @@
+
+/* ===== Layout Components ===== */
+.section {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 20px;
+}
+/* ===== Add Supplier Section ===== */
+.add-supplier-section {
+    padding: 100px 15px 50px;
+    min-height: 100vh;
+    background: var(--background-color);
+}
+
+.add-supplier-container {
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.add-supplier-card {
+    background: var(--container-bg-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.add-supplier-title {
+    background: var(--title-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.add-supplier-section-title {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.add-supplier-section-title-sub {
+    color: var(--secondary-color);
+    font-size: 1rem;
+    margin: 1.2rem 0 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* ===== Form Styles ===== */
+.add-supplier-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.add-supplier-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+}
+
+.add-supplier-contact-grid {
+    grid-template-columns: 1fr 1fr;
+}
+
+.add-supplier-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.add-supplier-group label {
+    color: var(--text-color);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.add-supplier-group input,
+.add-supplier-group select,
+.add-supplier-group textarea {
+    background: var(--container-focus-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.7rem 0.9rem;
+    color: var(--text2-color);
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    width: 100%;
+    min-height: 40px;
+    margin-bottom:15px;
+}
+
+.add-supplier-group input:focus,
+.add-supplier-group select:focus,
+.add-supplier-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background: var(--container-bg-color);
+}
+
+.add-supplier-group input::placeholder,
+.add-supplier-group textarea::placeholder {
+    color: var(--placeholder-color);
+}
+
+/* ===== File Upload Styles ===== */
+.add-supplier-file-container {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    width: 100%;
+	color: #fff;
+}
+.add-supplier-file-container label {
+    display: block;
+    background: var(--button-color);
+    color: #fff;
+    padding: 0.7rem 0.9rem;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+    font-size: 0.95rem;
+}
+.add-supplier-file-input {
+    position: absolute;
+    left: -9999px;
+	 color: #fff;
+}
+
+
+.add-supplier-file-label:hover {
+    background: var(--button-hover-color, var(--title-color));
+}
+
+.file-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--secondary-color);
+    margin-top: 0.4rem;
+    font-size: 0.85rem;
+}
+
+/* ===== Checkbox and Radio Styles (horizontal chips) ===== */
+.checkbox-list,
+.add-supplier-checkbox-group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.6rem;
+    align-items: flex-start;
+}
+
+.checkbox-list label,
+.add-supplier-checkbox-group label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;   
+    font-size: 0.95rem;
+}
+
+
+
+.checkbox-list input[type="checkbox"],
+.add-supplier-checkbox-group input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+    accent-color: var(--primary-color);
+}
+
+/* ===== Todo List Styles ===== */
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.todo-input-group {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.todo-input-group input {
+    flex: 1;
+}
+
+.add-supplier-add-field-btn {
+    background: var(--button-color);
+    color: var(--light-color);
+    border: none;
+    border-radius: 8px;
+    width: 45px;
+    height:45px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.add-supplier-add-field-btn:hover {
+    background: var(--primary-color);
+    color: var(--light-color);
+}
+
+.todo-list-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+/* ===== Form Actions ===== */
+.add-supplier-form-actions {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.add-supplier-submit-btn {
+    background: var(--button-color);
+    color: var(--light-color);
+    border: none;
+    padding: 0.9rem 1.8rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.add-supplier-submit-btn:hover {
+    background: var(--button-hover-color, var(--title-color));
+    transform: translateY(-2px);
+}
+
+.add-supplier-cancel-btn,
+.back2-btn {
+    background: var(--extra-color, var(--third-color));
+    color: var(--light-color);
+    padding: 0.9rem 1.3rem;
+    border-radius: 8px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.add-supplier-cancel-btn:hover,
+.back2-btn:hover {
+    background: var(--extra3-color, var(--extra6-color));
+    transform: translateY(-2px);
+}
+
+/* ===== Icons ===== */
+.icon-primary {
+    color: var(--primary-color);
+}
+
+.icon-secondary {
+    color: var(--secondary-color);
+}
+
+/* ===== Other Industry Input ===== */
+.other-industry-input {
+    margin-top: 0.4rem;
+}
+
+.other-industry-input input {
+    width: 100%;
+}
+
+
+/* ===== Responsive Design ===== */
+
+/* 992px and below */
+@media (max-width: 992px) {
+    .add-supplier-container {
+        max-width: 99%;
+    }
+    
+    .add-supplier-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .add-supplier-section {
+        padding: 90px 15px 45px;
+    }
+}
+
+/* 768px and below */
+@media (max-width: 768px) {
+    .add-supplier-card {
+        padding: 1.2rem;
+    }
+    
+    .add-supplier-title {
+        font-size: 1.4rem;
+    }
+    
+    .add-supplier-section-title {
+        font-size: 1.1rem;
+    }
+    
+    .add-supplier-group label {
+        font-size: 0.9rem;
+    }
+    
+    .add-supplier-group input,
+    .add-supplier-group select,
+    .add-supplier-group textarea {
+        font-size: 0.9rem;
+        padding: 0.6rem 0.8rem;
+    }
+    
+    .checkbox-list label,
+    .add-supplier-checkbox-group label {
+        font-size: 0.9rem;
+    }
+    
+    .add-supplier-submit-btn,
+    .add-supplier-cancel-btn,
+    .back2-btn {
+        font-size: 0.95rem;
+        padding: 0.8rem 1.5rem;
+    }
+}
+
+/* 480px and below */
+@media (max-width: 480px) {
+    .add-supplier-section {
+        padding: 80px 10px 40px;
+    }
+    
+    .add-supplier-card {
+        padding: 1rem;
+        border-radius: 8px;
+    }
+    
+    .add-supplier-title {
+        font-size: 1.3rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .add-supplier-form-actions {
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+    
+    .add-supplier-submit-btn,
+    .add-supplier-cancel-btn,
+    .back2-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 0.8rem 1rem;
+    }
+    
+    .add-supplier-group {
+        gap: 0.3rem;
+    }
+    
+    .add-supplier-form {
+        gap: 1rem;
+    }
+}
+
+/* 380px and below */
+@media (max-width: 380px) {
+    .add-supplier-section {
+        padding: 70px 8px 30px;
+    }
+    
+    .add-supplier-container {
+        max-width: 100%;
+    }
+    
+    .add-supplier-card {
+        padding: 0.8rem;
+    }
+    
+    .add-supplier-title {
+        font-size: 1.1rem;
+    }
+    
+    .add-supplier-group input,
+    .add-supplier-group select,
+    .add-supplier-group textarea {
+        padding: 0.5rem 0.7rem;
+        font-size: 0.85rem;
+    }
+    
+    .checkbox-list label,
+    .add-supplier-checkbox-group label {
+        font-size: 0.85rem;
+    }
+
+}
+
+/* ===== Utility Classes ===== */
+.text-center {
+    text-align: center;
+}
+
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+
+/* ===== Scrollbar Styling ===== */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--container-bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--border-hover-color);
+}

@@ -1,0 +1,14 @@
+/* Utilities for start-here.html extracted from inline styles */
+.fixed-tl { position: fixed; top: 20px; left: 20px; z-index: 1000; }
+.logo-200 { max-width: 200px; }
+.mb20 { margin-bottom: 20px; }
+.mt40 { margin-top: 40px; }
+.center { text-align: center; }
+.mt30 { margin-top: 30px; }
+.pt20 { padding-top: 20px; }
+.bt1 { border-top: 1px solid var(--border-color); }
+.text { color: var(--text-color); }
+.mt10 { margin-top: 10px; }
+.link-primary { color: var(--primary-color); }
+.mx10 { margin: 0 10px; }
+
