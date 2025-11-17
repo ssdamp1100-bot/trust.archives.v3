@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة قطعة غيار جديدة</title>
+        
+          <!-- Google fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&family=Noto+Naskh+Arabic:wght@400..700&family=Noto+Sans+Arabic:wght@100..900&family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400..700&display=swap" rel="stylesheet">
+    
+        
+        
+         <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
+        <!-- css Stylesheet -->
+   <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/add-product.css">
+
+    <style>
+      
+    </style>
+</head>
+ <body class="theme1">  
+  <!-- زر تغيير الثيم -->
+    <button class="change-theme" id="theme-toggle">
+     <i class="fa-solid fa-palette"></i>
+    </button>
+   
+   
+     <!-- Header -->  
+  <header class="header" id="header">
+    <a href="dashboard.html" class="logo-container">
+        <div class="logo"> </div>
+        <div class="logo-text">أرشيف الثقة التجارية</div>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation menu"><i class="fas fa-align-left"></i></button>
+    <nav class="main-menu">
+        <a href="dashboard.html" class="menu-item "><i class="fas fa-home"></i> الرئيسية</a>
+        <a href="products-board.html" class="menu-item"><i class="fa-solid fa-cart-plus"></i> المنتجات</a>
+        <a href="suppliers.html" class="menu-item "><i class="fas fa-truck"></i> الموردين</a>
+        <a href="profile.html" class="menu-item"><i class="fas fa-user"></i> ملفي الشخصي</a>
+        
+        <div class="dropdown">
+            <a href="#" class="menu-item dropdown-toggle">
+                <i class="fas fa-plus-circle"></i> إضافة <i class="fas fa-caret-down"></i>
+            </a>
+            <div class="dropdown-menu">
+                <a href="add-product.html" class="dropdown-item"><i class="fas fa-plus-circle"></i> إضافة منتج</a>
+                <a href="add-supplier.html" class="dropdown-item"><i class="fas fa-truck-loading "></i> إضافة مورد</a>
+				  <a href="add-customer.html" class="dropdown-item"><i class='fas fa-address-book'></i> اضافة عميل</a>
+				<a href="add-spare-part.html" class="dropdown-item"> <i class="fas fa-cogs"></i>  إضافة قطع غيار</a>
+				<a href="add-operational-accessories.html" class="dropdown-item"> <i class="fas fa-tools"></i>  إضافة مستلزمات التشغيل</a>
+				<a href="offer-price.html" class="dropdown-item"><i class='far fa-credit-card'></i>  انشاء عرض سعر</a>
+            </div>
+        </div>
+        <a href="index.html" class="menu-item logout-btn"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</a>
+    </nav>
+</header>
+
+    <!-- Main Content -->
+    <div class="product-container">
+        <div class="product-card">
+            <div class="product-header">
+                <h1 class="product-title"><i class="fas fa-cogs"></i> إضافة قطعة غيار جديدة</h1>
+            </div>
+            
+            <div class="product-body">
+               <form id="sparePartForm" class="product-form" >
+    
+    <div class="product-section" id="section-1">
+        <h2 class="product-section-title"><i class="fas fa-link"></i> ١. الربط بالمنتج الأساسي (الماكينة)</h2>
+        
+        <div class="product-form-grid">
+            <div class="product-form-group">
+                <label class="product-form-label" for="linkedProduct">
+                    <i class="fas fa-cube"></i> المنتج الأساسي المُرتبط *
+                </label>
+                <select id="linkedProduct" class="product-form-input" required>
+                    <option value="">اختر المنتج الأساسي</option>
+                    <!-- يمكن ملء هذا ديناميكيًا من قاعدة البيانات -->
+                </select>
+            </div>
+            
+            <div class="product-form-group">
+                <label class="product-form-label" for="spareSubCategory">
+                    <i class="fas fa-folder-open"></i> الفئة الفرعية لقطعة الغيار
+                </label>
+                <select id="spareSubCategory" class="product-form-input">
+                    <option value="">اختر الفئة الفرعية</option>
+                    <option value="كهربائية">كهربائية</option>
+                    <option value="ميكانيكية">ميكانيكية</option>
+                    <option value="استهلاكية">استهلاكية</option>
+                    <option value="هيكلية">هيكلية</option>
+                </select>
+            </div>
+            
+            <div class="product-form-group">
+                <label class="product-form-label" for="partLocation">
+                    <i class="fas fa-map-marker-alt"></i> موقع القطعة في المنتج
+                </label>
+                <input type="text" id="partLocation" class="product-form-input" placeholder="مثال: مجموعة الفرامل أو بورد التحكم">
+            </div>
+            
+            <div class="product-form-group">
+                <label class="product-form-label" for="partManualNumber">
+                    <i class="fas fa-book"></i> رقم دليل الأجزاء (Part Manual Number) *
+                </label>
+                <input type="text" id="partManualNumber" class="product-form-input" placeholder="أدخل رقم دليل الأجزاء" required>
+            </div>
+        </div>
+    </div>
+    
+    <div class="product-section" id="section-2">
+        <h2 class="product-section-title"><i class="fas fa-info-circle"></i> ٢. المعلومات الأساسية لقطعة الغيار</h2>
+        
+        <div class="product-form-grid">
+            <div class="product-form-group">
+                <label class="product-form-label" for="partName">
+                    <i class="fas fa-tag"></i> اسم القطعة *
+                </label>
+                <input type="text" id="partName" class="product-form-input" placeholder="أدخل الاسم الفني للقطعة" required>
+            </div>
+            
+            <div class="product-form-group">
+                <label class="product-form-label" for="partNumber">
+                    <i class="fas fa-barcode"></i> رقم القطعة (Part Number/SKU) *
+                </label>
+                <input type="text" id="partNumber" class="product-form-input" placeholder="أدخل رقم القطعة" required>
+            </div>
+            
+            <div class="product-form-group">
+                <label class="product-form-label" for="partBrand">
+                    <i class="fas fa-copyright"></i> العلامة التجارية (الخاصة بالقطعة)
+                </label>
+                <input type="text" id="partBrand" class="product-form-input" placeholder="أدخل العلامة التجارية">
+            </div>
+        </div>
+        
+        <div class="product-form-group full-width">
+            <label class="product-form-label" for="partDescription">
+                <i class="fas fa-align-left"></i> وصف القطعة *
+            </label>
+            <textarea id="partDescription" class="product-form-textarea" rows="4" placeholder="شرح مختصر لوظيفتها" required></textarea>
+        </div>
+    </div>
+    
+    <div class="product-section" id="section-3">
+        <h2 class="product-section-title"><i class="fas fa-cogs"></i> ٣. المواصفات الفنية لقطعة الغيار</h2>
+        
+        <div class="product-form-grid">
+            <div class="product-form-group">
+                <label class="product-form-label" for="partMaterial">
+                    <i class="fas fa-flask"></i> المادة المصنوعة منها
+                </label>
+                <input type="text" id="partMaterial" class="product-form-input" placeholder="مثال: نحاس، ستانلس ستيل">
+            </div>
+            
+            <div class="product-form-group full-width">
+                <label class="product-form-label">
+                    <i class="fas fa-ruler-combined"></i> الأبعاد الهامة
+                </label>
+                <div class="product-form-grid grid-3 gap10">
+                    <input type="text" id="partDimensionsInner" class="product-form-input" placeholder="القطر الداخلي">
+                    <input type="text" id="partDimensionsOuter" class="product-form-input" placeholder="القطر الخارجي">
+                    <input type="text" id="partDimensionsLength" class="product-form-input" placeholder="الطول / السماكة">
+                </div>
+            </div>
+            
+            <div class="product-form-group full-width">
+                <label class="product-form-label" for="electricalSpecs">
+                    <i class="fas fa-bolt"></i> المواصفات الكهربائية (إن وجدت)
+                </label>
+                <input type="text" id="electricalSpecs" class="product-form-input" placeholder="مثال: الجهد V، الأمبير A، القوة W">
+            </div>
+            
+            <div class="product-form-group full-width">
+                <label class="product-form-label">
+                    <i class="fas fa-sync"></i> التوافق مع الموديلات
+                </label>
+                <div class="product-dynamic-container" id="compatibilityContainer">
+                    <div class="product-field-group">
+                        <input type="text" class="product-form-input product-field-input" placeholder="أضف موديل متوافق">
+                        <button type="button" class="product-add-btn" onclick="addDynamicField('compatibilityContainer', 'موديل جديد')">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-form-group">
+                <label class="product-form-label" for="estimatedLifespan">
+                    <i class="fas fa-clock"></i> العمر الافتراضي المُقدّر
+                </label>
+                <input type="text" id="estimatedLifespan" class="product-form-input" placeholder="مثال: عدد ساعات التشغيل أو أشهر">
+            </div>
+        </div>
+    </div>
+    
+    <div class="product-section" id="section-4">
+        <h2 class="product-section-title"><i class="fas fa-money-check-alt"></i> ٤. التسعير والمخزون</h2>
+        
+        <div class="product-form-grid">
+            <div class="product-form-group">
+                <label class="product-form-label" for="partCost">
+                    <i class="fas fa-money-bill"></i> سعر التكلفة (داخلي)
+                </label>
+                <div class="product-price-input">
+                    <span class="product-currency">$</span>
+                    <input type="number" id="partCost" class="product-form-input" placeholder="0.00" step="0.01" min="0">
+                </div>
+            </div>
+            
+            <div class="product-form-group">
+                <label class="product-form-label" for="partPrice">
+                    <i class="fas fa-dollar-sign"></i> سعر البيع المقترح
+                </label>
+                <div class="product-price-input">
+                    <span class="product-currency">$</span>
+                    <input type="number" id="partPrice" class="product-form-input" placeholder="0.00" step="0.01" min="0">
+                </div>
+            </div>
+            
+            <div class="product-form-group">
+                <label class="product-form-label" for="partMOQ">
+                    <i class="fas fa-boxes"></i> الحد الأدنى لكمية الطلب (MOQ)
+                </label>
+                <input type="number" id="partMOQ" class="product-form-input" placeholder="مثال: 100" step="1" min="1">
+            </div>
+
+            <div class="product-form-group">
+                <label class="product-form-label" for="partInventoryQuantity">
+                    <i class="fas fa-warehouse"></i> الكمية في المخزون
+                </label>
+                <input type="number" id="partInventoryQuantity" class="product-form-input" placeholder="مثال: 500" step="1" min="0">
+            </div>
+
+            <div class="product-form-group">
+                <label class="product-form-label" for="partSupplier">
+                    <i class="fas fa-truck"></i> المورد الخاص بالقطعة
+                </label>
+                <select id="partSupplier" class="product-form-input">
+                    <option value="">اختر من الموردين</option>
+                    <!-- يمكن ملء هذا ديناميكيًا -->
+                    <option value="custom">إدخال مخصص</option>
+                </select>
+                <input type="text" id="partSupplierCustom" class="product-form-input hidden mt10" placeholder="أدخل اسم المورد الجديد">
+            </div>
+        </div>
+    </div>
+    
+    <div class="product-section" id="section-5">
+        <h2 class="product-section-title"><i class="fas fa-paperclip"></i> ٥. التوثيق والمرفقات</h2>
+        
+        <div class="product-form-group full-width">
+            <label class="product-form-label" for="partImages">
+                <i class="fas fa-images"></i> صور للقطعة (من عدة زوايا، رفع متعدد)
+            </label>
+            <input type="file" id="partImages" class="product-file-input" multiple accept="image/*">
+            <label for="partImages" class="product-file-label p15">
+                <i class="fas fa-cloud-upload-alt"></i> اضغط لرفع صور القطعة
+            </label>
+        </div>
+        
+        <div class="product-form-group full-width mt20">
+            <label class="product-form-label" for="partDiagram">
+                <i class="fas fa-drafting-compass"></i> مخطط القطعة التفصيلي (Diagram)
+            </label>
+            <input type="file" id="partDiagram" class="product-file-input" accept=".pdf,.jpg,.png">
+            <label for="partDiagram" class="product-file-label">
+                <i class="fas fa-upload"></i> رفع صورة أو PDF للمخطط
+            </label>
+        </div>
+
+        <div class="product-form-group full-width mt20">
+            <label class="product-form-label" for="installationManual">
+                <i class="fas fa-book-open"></i> دليل التركيب أو الاستبدال (اختياري)
+            </label>
+            <input type="file" id="installationManual" class="product-file-input" accept=".pdf,.doc,.docx">
+            <label for="installationManual" class="product-file-label">
+                <i class="fas fa-upload"></i> رفع ملف الدليل
+            </label>
+        </div>
+    </div>
+    
+    <div class="product-form-actions">
+        <button type="submit" class="product-submit-btn" id="save-spare-part-btn">
+            <i class="fas fa-save"></i> حفظ القطعة
+        </button>
+        <button type="reset" class="product-reset-btn">
+            <i class="fas fa-redo"></i> مسح النموذج
+        </button>
+        <a href="dashboard.html" class="product-cancel-btn">
+            <i class="fas fa-times"></i> إلغاء
+        </a>
+        <div id="form-message" class="form-message hidden mt10"></div>
+    </div>
+</form>
+            </div>
+        </div>
+    </div>
+        
+        
+         <!-- Footer -->
+    <footer class="footer">
+               <div class="copyright-content">
+                <div class="designer-info">
+                    <span class="designer-text">مصمم الموقع / صدام أحمد</span>
+                </div>          
+                <div class="icon-group4">
+                    <a href="https://www.facebook.com/s777967272" class="icon-btn4 icon-facebook" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://wa.me/967777967272" class="icon-btn4 icon-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="tel:+967777967272" class="icon-btn4 icon-phone">
+                        <i class="fa fa-phone"></i>
+                    </a>
+                    <a href="https://tecnotasxcatalog.netlify.app/" class="icon-btn4 icon-website" target="_blank">
+                        <i class="fas fa-globe"></i>
+                    </a>
+                </div>
+            </div>
+    </footer>
+
+    <!-- أزرار الدردشة والذكاء الاصطناعي -->
+    <div class="chat-buttons-container">
+        <button class="ai-toggle-btn" id="aiToggle">
+            <span>اسأل الذكاء الصناعي</span>
+            <i class="fas fa-robot"></i>
+        </button>
+        
+        <button class="chat-toggle-btn" id="chatToggle">
+            <span>دردشة الفريق</span>
+            <i class="fas fa-comments"></i>
+            <span class="notification-badge hidden" id="notificationBadge">0</span>
+        </button>
+    </div>
+    
+    <!-- نافذة الدردشة -->
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header" id="chatHeader">
+            <div class="chat-title">
+                <span>دردشة ارشيف الثقة</span>
+                <span class="online-indicator"></span>
+            </div>
+            <div class="chat-controls">
+                <button class="mute-btn" id="muteBtn" title="تكتيم/إلغاء تكتيم الإشعارات">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+                <button id="minimizeBtn"><i class="fas fa-minus"></i></button>
+                <button><i class="fa-solid fa-window-restore"></i></button>
+                <button id="closeBtn"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        
+        <div class="chat-area" id="chatArea">
+            <!-- الرسائل ستضاف هنا via JavaScript -->
+            <div class="typing-indicator" id="typingIndicator">
+                <span></span>
+                <div class="typing-dots">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chat-input-area">
+            <input type="text" class="chat-input" id="chatInput" placeholder="اكتب رسالتك هنا...">
+            <button class="send-btn" id="sendBtn"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+        </div>
+    </div>
+
+    <!-- نافذة الذكاء الاصطناعي -->
+    <div class="ai-window" id="aiWindow">
+        <div class="ai-header" id="aiHeader">
+            <div class="ai-title">
+                <span>Trust.Ai</span>
+                <span class="online-indicator"></span>
+            </div>
+            
+            <div class="ai-controls">
+                <button class="mute-btn" id="aiMuteBtn" title="تكتيم/إلغاء تكتيم الإشعارات">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+                <button id="aiMinimizeBtn"><i class="fas fa-minus"></i></button>
+                <button><i class="fa-solid fa-window-restore"></i></button>
+                <button id="aiCloseBtn"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        
+        <div class="ai-area" id="aiArea">
+            <!-- رسائل الذكاء الاصطناعي ستضاف هنا -->
+            <div class="ai-message message-incoming">
+                <div class="ai-avatar">T</div>
+                <div class="message-content">
+                    <div class="message-sender">Trust.Ai</div>
+                    <div class="message-text">يا حيا بالحبيب .. تفضل ، ما بنفسك تسأل ، و كيف اقدر اساعدك 😁</div>
+                    <div class="message-time">10:30 صباحاً</div>
+                </div>
+            </div>
+            
+            <div class="ai-typing-indicator" id="aiTypingIndicator">
+                <span>Trust.Ai يكتب</span>
+                <div class="typing-dots">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ai-input-area">
+            <input type="text" class="ai-input" id="aiInput" placeholder="اسأل الذكاء الاصطناعي...">
+            <button class="ai-send-btn" id="aiSendBtn"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+        </div>
+    </div>
+
+    <!-- إشعار الرسالة -->
+    <div class="message-notification" id="messageNotification">
+        <div class="notification-avatar" id="notificationAvatar">ف</div>
+        <div class="notification-content">
+            <span class="notification-sender" id="notificationSender">فاطمة</span>
+            <span id="notificationText">أرسلت رسالة جديدة</span>
+        </div>
+    </div>
+
+    <!-- عنصر الصوت -->
+    <div class="audio-container">
+        <audio id="notificationSound" preload="auto">
+            <source src="files/notification.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <!-- Include page scripts -->
+        <!-- Include Supabase and services -->
+    <script src="js/theme-init.js"></script>
+    <script src="js/onclick-handlers.js"></script>
+    <script src="js/add-product-page-init.js"></script> <!-- يمكن تعديل هذا ليتناسب مع قطع الغيار إذا لزم -->
+    <script src="js/form-autosave.js"></script>
+    
+    <!--  Javascript -->
+    <script src="js/nav.js"></script>
+    <script src="js/chat.js"></script>     
+    <script src="js/theme.js"></script>
+</body>
+</html>

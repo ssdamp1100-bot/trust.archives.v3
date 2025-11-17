@@ -5,38 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>الموردين - أرشيف الثقة التجارية</title>
     
-	 <!-- Google fonts -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
+         <!-- Google fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&family=Noto+Naskh+Arabic:wght@400..700&family=Noto+Sans+Arabic:wght@100..900&family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400..700&display=swap" rel="stylesheet">
     
-	
-	
-	 <!-- Icon Font Stylesheet -->
+        
+        
+         <!-- Icon Font Stylesheet -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-	
-	<!-- css Stylesheet -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
+        <!-- css Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/suppliers.css">
+        <link rel="stylesheet" href="css/suppliers.css">
     <style>
         
     </style>
 </head>
  <body class="theme1">  
-  <script>
-    (function(){
-      try{
-        var savedTheme = localStorage.getItem('selectedTheme');
-        if(savedTheme){ document.body.className = savedTheme; }
-      }catch(e){}
-    })();
-  </script>
+  
  <!-- زر تغيير الثيم -->
     <button class="change-theme" id="theme-toggle">
      <i class="fa-solid fa-palette"></i>
@@ -44,19 +37,32 @@
 
 
    <!-- Header -->   
-    <header class="header" id="header">
+  <header class="header" id="header">
     <a href="dashboard.html" class="logo-container">
         <div class="logo"> </div>
         <div class="logo-text">أرشيف الثقة التجارية</div>
     </a>
-    <button class="nav-toggle"><i class="fas fa-align-left"></i></button>
+    <button class="nav-toggle" aria-label="Toggle navigation menu"><i class="fas fa-align-left"></i></button>
     <nav class="main-menu">
-        <a href="dashboard.html" class="menu-item"><i class="fas fa-home"></i> الرئيسية</a>
-		 <a href="products-board.html" class="menu-item"><i class="fa-solid fa-cart-plus"></i> المنتجات</a>
-        <a href="suppliers.html" class="menu-item active"><i class="fas fa-truck"></i> الموردين</a>
+        <a href="dashboard.html" class="menu-item "><i class="fas fa-home"></i> الرئيسية</a>
+        <a href="products-board.html" class="menu-item"><i class="fa-solid fa-cart-plus"></i> المنتجات</a>
+        <a href="suppliers.html" class="menu-item "><i class="fas fa-truck"></i> الموردين</a>
         <a href="profile.html" class="menu-item"><i class="fas fa-user"></i> ملفي الشخصي</a>
-        <a href="add-product.html" class="menu-item "><i class="fas fa-plus-circle"></i> إضافة منتج</a>
-        <a href="add-supplier.html" class="menu-item "><i class="fas fa-truck-loading "></i> اضافة مورد</a>
+        
+        <div class="dropdown">
+            <a href="#" class="menu-item dropdown-toggle">
+                <i class="fas fa-plus-circle"></i> إضافة <i class="fas fa-caret-down"></i>
+            </a>
+            <div class="dropdown-menu">
+                <a href="add-product.html" class="dropdown-item"><i class="fas fa-plus-circle"></i> إضافة منتج</a>
+                <a href="add-supplier.html" class="dropdown-item"><i class="fas fa-truck-loading "></i> إضافة مورد</a>
+				  <a href="add-customer.html" class="dropdown-item"><i class='fas fa-address-book'></i> اضافة عميل</a>
+				<a href="add-spare-part.html" class="dropdown-item"> <i class="fas fa-cogs"></i>  إضافة قطع غيار</a>
+				<a href="add-operational-accessories.html" class="dropdown-item"> <i class="fas fa-tools"></i>  إضافة مستلزمات التشغيل</a>
+				<a href="offer-price.html" class="dropdown-item"><i class='far fa-credit-card'></i>  انشاء عرض سعر</a>
+            </div>
+        </div>
+        <a href="index.html" class="menu-item logout-btn"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</a>
     </nav>
 </header>
 
@@ -76,7 +82,7 @@
                     <div class="suppliers-stat-box">
                     <div class="suppliers-stat-number"><i class="fa-solid fa-user-plus"></i></div>
                         <a href="add-supplier.html" class="suppliers-button">
-                 إضافة مورد جديد ➕</a>					
+                 إضافة مورد جديد ➕</a>                                  
                     </div>
                 </div>
             </div>
@@ -85,13 +91,13 @@
     <h3 class="suppliers-rate-title"><i class="fa-solid fa-star-half-stroke"></i> افضل خمسة موردين <i class="fa-solid fa-star-half-stroke"></i></h3>
 </div>
 
- <!--<div class="suppliers-rate-item">
+  <div class="suppliers-rate-item">
     <img src="img/company-1.jpg" alt="supplier-logo" class="suppliers-rate-logo">
     <div class="suppliers-rate-info">
         <p class="suppliers-rate-name">شركة غوانغجو للإلكترونيات</p>
     </div>
       <p class="suppliers-rate-points">120 نقطة</p>
-     <a class="suppliers-rate-button" href="single-supplier.html">تفاصيل المورد</a>
+     <a class="suppliers-rate-button" href="single-supplier-demo.html">تفاصيل المورد</a>
 </div>
 
 <div class="suppliers-rate-item">
@@ -100,7 +106,7 @@
         <p class="suppliers-rate-name">مصانع إسطنبول للمنسوجات</p>
     </div>
      <p class="suppliers-rate-points">115 نقطة</p>
-    <a class="suppliers-rate-button" href="single-supplier.html">تفاصيل المورد</a>
+    <a class="suppliers-rate-button" href="single-supplier-demo.html">تفاصيل المورد</a>
 </div>
 
 <div class="suppliers-rate-item">
@@ -108,8 +114,8 @@
     <div class="suppliers-rate-info">
         <p class="suppliers-rate-name">شركة دبي للتجارة العامة</p>          
     </div>
-    <p class="suppliers-rate-points">100 نقطة</p>		
-    <a class="suppliers-rate-button" href="single-supplier.html">تفاصيل المورد</a>
+    <p class="suppliers-rate-points">100 نقطة</p>               
+    <a class="suppliers-rate-button" href="single-supplier-demo.html">تفاصيل المورد</a>
 </div>
 
 <div class="suppliers-rate-item">
@@ -118,10 +124,10 @@
         <p class="suppliers-rate-name">شركة غوانغجو للإلكترونيات</p>           
     </div>
      <p class="suppliers-rate-points">95 نقطة</p>
-     <a class="suppliers-rate-button" href="single-supplier.html">تفاصيل المورد</a>
-</div>-->
+     <a class="suppliers-rate-button" href="single-supplier-demo.html">تفاصيل المورد</a>
+</div> 
 
-<!-- سيُملأ هذا القسم ديناميكياً عبر renderTopSuppliers() -->
+ 
 </div>
 </div>
          
@@ -144,9 +150,10 @@
                 <div class="sup-filter-group">
                     <select id="industryFilter" class="sup-filter-select">
                         <option value="">جميع المجالات</option>
-                        <option value="الإلكترونيات">الإلكترونيات</option>
-                        <option value="المنسوجات">المنسوجات</option>
-                        <option value="التجارة العامة">التجارة العامة</option>
+                        <option value="البريكاست">البريكاست</option>
+                        <option value="الماكينات">الماكينات</option>
+                        <option value="خطوط الإنتاج">خطوط الإنتاج</option>
+                        <option value="المعدات الصناعية">المعدات الصناعية</option>
                     </select>
                 </div>
                 <div class="sup-filter-group">
@@ -181,7 +188,7 @@
                     <span class="contact-detail">📞 +86 138 0013 8000</span>
                     <span class="contact-detail">✉️ info@guangzhou-electronics.com</span>
                 </div>-->
-                <button onclick="window.location.href='single-supplier.html'" class="supplier-button">
+                <button onclick="window.location.href='single-supplier-demo.html'" class="supplier-button">
                    <i class="fa fa-address-card-o" aria-hidden="true"></i> معلومات المورد
                 </button>
             </div>
@@ -205,7 +212,7 @@
                     <span class="contact-detail">📞 +90 212 555 0123</span>
                     <span class="contact-detail">✉️ exports@istanbul-textiles.com</span>
                 </div>-->
-                <button onclick="window.location.href='single-supplier.html'" class="supplier-button">
+                <button onclick="window.location.href='single-supplier-demo.html'" class="supplier-button">
                    <i class="fa fa-address-card-o" aria-hidden="true"></i> معلومات المورد
                 </button>
             </div>
@@ -229,7 +236,7 @@
                     <span class="contact-detail">📞 +90 212 555 0123</span>
                     <span class="contact-detail">✉️ exports@istanbul-textiles.com</span>
                 </div>-->
-                <button onclick="window.location.href='single-supplier.html'" class="supplier-button">
+                <button onclick="window.location.href='single-supplier-demo.html'" class="supplier-button">
                    <i class="fa fa-address-card-o" aria-hidden="true"></i> معلومات المورد
                 </button>
             </div>
@@ -239,8 +246,8 @@
 
 
             
-			
-			
+                        
+                        
      <!-- Footer -->
     <footer class="footer">
                <div class="copyright-content">
@@ -263,9 +270,9 @@
                 </div>
             </div>
     </footer>
-	
-	
-	
+        
+        
+        
             <div id="noSuppliers" class="hidden no-suppliers-message">
                 <div class="no-suppliers-icon">🏭</div>
                 <h3 class="no-suppliers-title">لا توجد موردين</h3>
@@ -286,7 +293,7 @@
         <button class="chat-toggle-btn" id="chatToggle">
             <span>دردشة الفريق</span>
             <i class="fas fa-comments"></i>
-            <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
+            <span class="notification-badge hidden" id="notificationBadge">0</span>
         </button>
     </div>
     
@@ -302,7 +309,7 @@
                     <i class="fas fa-volume-up"></i>
                 </button>
                 <button id="minimizeBtn"><i class="fas fa-minus"></i></button>
-				<button><i class="fa-solid fa-window-restore"></i></button>
+                                <button><i class="fa-solid fa-window-restore"></i></button>
                 <button id="closeBtn"><i class="fas fa-times"></i></button>
             </div>
         </div>
@@ -338,7 +345,7 @@
                     <i class="fas fa-volume-up"></i>
                 </button>
                 <button id="aiMinimizeBtn"><i class="fas fa-minus"></i></button>
-				<button><i class="fa-solid fa-window-restore"></i></button>
+                                <button><i class="fa-solid fa-window-restore"></i></button>
                 <button id="aiCloseBtn"><i class="fas fa-times"></i></button>
             </div>
         </div>
@@ -386,238 +393,16 @@
         </audio>
     </div>
 
-	
-    <script>
-        // Enhanced suppliers functionality with Supabase
-        let currentSuppliers = [];
-        let filteredSuppliers = [];
-
-        document.addEventListener('DOMContentLoaded', async function() {
-            // Check authentication
-            if (!window.authService.isLoggedIn()) {
-                window.location.href = 'index.html';
-                return;
-            }
-
-            // Load suppliers from database
-            await loadSuppliersFromDatabase();
-
-            // Populate supplier filters (countries, industries) from DB
-            try {
-                if (window.filtersUtil) {
-                    await populateSupplierFiltersAsync();
-                }
-            } catch(e) { console.warn('populateSupplierFiltersAsync failed:', e); }
-
-            // Setup event listeners
-            const searchInput = document.getElementById('searchInput');
-            const countryFilter = document.getElementById('countryFilter');
-            const industryFilter = document.getElementById('industryFilter');
-
-            [searchInput, countryFilter, industryFilter].forEach(element => {
-                element.addEventListener('input', filterSuppliers);
-                element.addEventListener('change', filterSuppliers);
-            });
-        });
-
-        async function loadSuppliersFromDatabase() {
-            try {
-                const result = await window.suppliersService.getSuppliers();
-                if (result.success) {
-                    currentSuppliers = result.suppliers;
-                    filteredSuppliers = [...currentSuppliers];
-                    renderSuppliers(currentSuppliers);
-                    updateSuppliersCount();
-                    // render top suppliers
-                    await renderTopSuppliers();
-                } else {
-                    console.error('Error loading suppliers:', result.error);
-                    // Fallback to static suppliers
-                    renderStaticSuppliers();
-                }
-            } catch (error) {
-                console.error('Error loading suppliers:', error);
-                // Fallback to static suppliers
-                renderStaticSuppliers();
-            }
-        }
-
-        function renderSuppliers(suppliers) {
-            const suppliersGrid = document.getElementById('suppliersGrid');
-            suppliersGrid.innerHTML = '';
-
-            suppliers.forEach(supplier => {
-                const supplierCard = createSupplierCard(supplier);
-                suppliersGrid.appendChild(supplierCard);
-            });
-        }
-
-        async function renderTopSuppliers() {
-            try {
-                const board = document.querySelector('.suppliers-rate-board');
-                if (!board) return;
-                const { success, suppliers } = await window.suppliersService.getTopSuppliers(5);
-                if (!success || !suppliers) return;
-                const headerHtml = `
-<div class="suppliers-rate-header">
-    <h3 class="suppliers-rate-title"><i class="fa-solid fa-star-half-stroke"></i> افضل خمسة موردين <i class="fa-solid fa-star-half-stroke"></i></h3>
-</div>`;
-                const items = suppliers.map(s => `
-<div class="suppliers-rate-item">
-    <img src="${s.logo_url || 'img/company-2.jpg'}" alt="supplier-logo" class="suppliers-rate-logo">
-    <div class="suppliers-rate-info">
-        <p class="suppliers-rate-name">${s.name}</p>
-    </div>
-    <p class="suppliers-rate-points">${s.rating ? `${s.rating} نقطة` : ''}</p>
-    <a class="suppliers-rate-button" href="single-supplier.html?id=${s.id}">تفاصيل المورد</a>
-</div>`).join('');
-                board.innerHTML = headerHtml + items;
-            } catch (e) { console.warn('renderTopSuppliers failed:', e); }
-        }
-
-        function createSupplierCard(supplier) {
-            const card = document.createElement('div');
-            card.className = 'supplier-card';
-            card.setAttribute('data-supplier-id', supplier.id);
-            card.setAttribute('data-country', supplier.country || '');
-            card.setAttribute('data-industry', supplier.industry || '');
-
-            const logoUrl = supplier.logo_url || 'img/company-1.jpg';
-            const statusClass = supplier.status === 'active' ? 'supplier-status-enable' : 'supplier-status-disable';
-
-            const rating = (supplier.rating != null && supplier.rating !== '') ? supplier.rating : '';
-            card.innerHTML = `
-                <div class="supplier-card-header">
-                    <img src="${logoUrl}" alt="supplier-logo" class="supplier-logo">
-                    <div class="supplier-details-info">
-                        <h3 class="supplier-name">${supplier.name} ${rating !== '' ? `<span style='font-size:12px;color:var(--warning-color,#f0b90b);margin-inline-start:8px;'><i class='fa-solid fa-star'></i> ${rating}/5</span>` : ''}</h3>
-                        <div class="supplier-tags">
-                            <span class="tag" id="supplier-country"><i class="fa-solid fa-flag"></i> ${supplier.country || 'غير محدد'}</span>
-                            <span class="tag" id="supplier-category"><i class="fa-solid fa-layer-group"></i> ${supplier.industry || 'غير محدد'}</span>
-                            <span class="tag" id="supplier-serial-number"><i class="fa-solid fa-bookmark"></i> ${supplier.id.slice(-4)}</span>
-                        </div>
-                    </div>
-                    <div class="${statusClass}"></div>
-                </div>
-                <span class="supplier-user" id="supplier-user"><i class="fa fa-address-book-o" aria-hidden="true"></i> ${supplier.users?.username || 'غير محدد'}</span>
-                <p class="supplier-description">${supplier.description || 'لا يوجد وصف'}</p>
-                <button onclick="window.location.href='single-supplier.html?id=${supplier.id}'" class="supplier-button">
-                   <i class="fa fa-address-card-o" aria-hidden="true"></i> معلومات المورد
-                </button>
-            `;
-
-            return card;
-        }
-
-        function renderStaticSuppliers() {
-            // Fallback to existing static suppliers
-            console.log('Using static suppliers as fallback');
-        }
-
-        function updateSuppliersCount() {
-            const countElement = document.getElementById('suppliersCount');
-            if (countElement) {
-                countElement.textContent = currentSuppliers.length;
-            }
-        }
-
-        function clearSupplierFilters() {
-            document.getElementById('searchInput').value = '';
-            document.getElementById('countryFilter').value = '';
-            document.getElementById('industryFilter').value = '';
-            filterSuppliers();
-        }
-
-        function showSupplierDetails(supplierId) {
-            const allDetails = document.querySelectorAll('.supplier-details');
-            allDetails.forEach(detail => detail.classList.add('hidden'));
-
-            const supplierDetails = document.querySelector(`.supplier-details[data-supplier-id="${supplierId}"]`);
-            if (supplierDetails) {
-                supplierDetails.classList.remove('hidden');
-            }
-
-            document.getElementById('supplierDetailsModal').classList.add('active');
-        }
-
-        function closeSupplierDetailsModal() {
-            document.getElementById('supplierDetailsModal').classList.remove('active');
-        }
-
-        async function filterSuppliers() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const countryFilter = document.getElementById('countryFilter').value;
-            const industryFilter = document.getElementById('industryFilter').value;
-
-            // Filter suppliers based on criteria
-            filteredSuppliers = currentSuppliers.filter(supplier => {
-                const nameLc = (supplier.name || '').toLowerCase();
-                const descLc = (supplier.description || '').toLowerCase();
-                const country = supplier.country || '';
-                const industry = supplier.industry || '';
-
-                const matchesSearch = !searchTerm || nameLc.includes(searchTerm) || descLc.includes(searchTerm);
-                const matchesCountry = !countryFilter || country === countryFilter;
-                // industry can be CSV; check includes case-insensitively
-                const industries = industry.split(',').map(x => x.trim().toLowerCase()).filter(Boolean);
-                const matchesIndustry = !industryFilter || industries.includes(industryFilter.trim().toLowerCase());
-
-                return matchesSearch && matchesCountry && matchesIndustry;
-            });
-
-            // Render filtered suppliers
-            renderSuppliers(filteredSuppliers);
-
-            // Show/hide no results message
-            const noSuppliers = document.getElementById('noSuppliers');
-            if (filteredSuppliers.length === 0) {
-                noSuppliers.classList.remove('hidden');
-            } else {
-                noSuppliers.classList.add('hidden');
-            }
-        }
-
-        // Guard modal listener if element exists
-        (function(){
-            const modal = document.getElementById('supplierDetailsModal');
-            if (modal) {
-                modal.addEventListener('click', function(e) { if (e.target === this) closeSupplierDetailsModal(); });
-            }
-        })();
-
-        // View toggle handlers
-        (function(){
-            const gridBtn = document.getElementById('gridViewBtn');
-            const listBtn = document.getElementById('listViewBtn');
-            const grid = document.getElementById('suppliersGrid');
-            if (gridBtn && listBtn && grid) {
-                gridBtn.addEventListener('click', () => {
-                    grid.classList.remove('list-view');
-                    gridBtn.classList.add('active');
-                    listBtn.classList.remove('active');
-                });
-                listBtn.addEventListener('click', () => {
-                    grid.classList.add('list-view');
-                    listBtn.classList.add('active');
-                    gridBtn.classList.remove('active');
-                });
-            }
-        })();
-    </script>
-	
-	<!-- Include Supabase and services -->
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-    <script src="js/supabase-config.js"></script>
-    <script src="js/auth-service.js"></script>
-    <script src="js/suppliers-service.js"></script>
-    <script src="js/ai-config.js"></script>
-    <script src="js/chat-service.js"></script>
+    <!-- Include Supabase and services -->
+    <script src="js/theme-init.js"></script>
     <script src="js/filters.js"></script>
+    <script src="js/suppliers-page-init.js"></script>
+    <script src="js/onclick-handlers.js"></script>
     
-	 <!--  Javascript -->
-	 <script src="js/nav.js"></script>
-    <script src="js/chat.js"></script>
-	<script src="js/sup-mune.js"></script>
-	<script src="js/theme.js"></script>
+    <!--  Javascript -->
+    <script src="js/nav.js"></script>
+    <script src="js/chat.js"></script>     
+    <script src="js/sup-mune.js"></script>
+        <script src="js/theme.js"></script>
 </body>
 </html>

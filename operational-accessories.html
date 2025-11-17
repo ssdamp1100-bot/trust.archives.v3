@@ -1,11 +1,9 @@
-الان قم بانشاء صفحة هبوط لنموذج (اضافة مستلزمات التشغيل) بحيث يكون لكل الخانات الموجودة في النموذج يكون لها مكاناً للعرض في صفحة الهبوط .. استخدم هذا الكود التالي لاتشاء الصفحة
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تفاصيل المنتج</title>
+    <title>تفاصيل مستلزمات التشغيل</title>
     
          <!-- Google fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,7 +39,7 @@
 
 
    <!-- Header -->   
-  <header class="header" id="header">
+   <header class="header" id="header">
     <a href="dashboard.html" class="logo-container">
         <div class="logo"> </div>
         <div class="logo-text">أرشيف الثقة التجارية</div>
@@ -82,42 +80,38 @@
                 <div class="product-gallery">
                     <div class="product-info">
                                             <div class="product-meta">
-                            <div class="meta-item" id="productCategory">
-                                <i class="fas fa-box"></i>
+                            <div class="meta-item" id="linkedProduct">
+                                <i class="fas fa-link"></i>
                                 <span></span>
                             </div>
-                            <div class="meta-item" id="productUser">
-                                <i class="fas fa-user"></i>
+                            <div class="meta-item" id="accessoryType">
+                                <i class="fas fa-folder-open"></i>
                                 <span></span>
                             </div>
-                            <div class="meta-item" id="productDate">
-                                <i class="fas fa-calendar"></i>
-                                <span></span>
-                            </div>
-                            <div class="meta-item" id="productCode">
+                            <div class="meta-item" id="referenceNumber">
                                 <i class="fas fa-barcode"></i>
                                 <span></span>
                             </div>
-                            <div class="meta-item" id="productSubCategory">
-                                <i class="fas fa-layer-group"></i>
-                                <span></span>
-                            </div>
-                            <div class="meta-item" id="productBrand">
+                            <div class="meta-item" id="accessoryBrand">
                                 <i class="fas fa-copyright"></i>
                                 <span></span>
                             </div>
-                            <div class="meta-item" id="productModel">
-                                <i class="fas fa-cube"></i>
+                            <div class="meta-item" id="accessoryUser">
+                                <i class="fas fa-user"></i>
+                                <span></span>
+                            </div>
+                            <div class="meta-item" id="accessoryDate">
+                                <i class="fas fa-calendar"></i>
                                 <span></span>
                             </div>
                                                 </div>
-                        <h1 class="product-title" id="productTitle"></h1>
-                                                <p class="product-description" id="productDescription"></p>
+                        <h1 class="product-title" id="accessoryName"></h1>
+                                                <p class="product-description" id="functionalPurpose"></p>
                         </div>
                      
                     
                     <div class="main-image rel">
-                        <img id="mainImage" src="" alt="صورة المنتج" onerror="this.src='https://via.placeholder.com/800x450/1a1a2e/ffffff?text=صورة+المنتج'">
+                        <img id="mainImage" src="" alt="صورة المستلزم" onerror="this.src='https://via.placeholder.com/800x450/1a1a2e/ffffff?text=صورة+المستلزم'">
                         <button id="downloadImageBtn" title="تحميل الصورة" 
                                 class="download-image-btn">
                             <i class="fas fa-download"></i>
@@ -147,28 +141,16 @@
                                 <div class="price-amount" id="costPrice"></div>
                                 </div>
                             <div class="price-item">
-                                <div class="pricing-label"><i class="fa-solid fa-tags"></i> سعر البيع</div>
-                                <div class="price-amount" id="sellingPrice"></div>
-                                </div>
-                            <div class="price-item">
-                                <div class="pricing-label"><i class="fa-solid fa-scale-balanced"></i> وحدة التسعير</div>
-                                <div class="price-amount" id="pricingUnit"></div>
+                                <div class="pricing-label"><i class="fa-solid fa-tags"></i> سعر البيع المقترح</div>
+                                <div class="price-amount" id="suggestedSellingPrice"></div>
                                 </div>
                             <div class="price-item">
                                 <div class="pricing-label"><i class="fa-solid fa-boxes-stacked"></i> الحد الأدنى لكمية الطلب (MOQ)</div>
                                 <div class="price-amount" id="moq"></div>
                             </div>
                             <div class="price-item">
-                                <div class="pricing-label"><i class="fa-solid fa-percent"></i> الخصم</div>
-                                <div class="price-amount" id="discount"></div>
-                            </div>
-                            <div class="price-item">
-                                <div class="pricing-label"><i class="fa-solid fa-file-invoice-dollar"></i> الضريبة</div>
-                                <div class="price-amount" id="tax"></div>
-                            </div>
-                            <div class="price-item span-all">
-                                <div class="pricing-label"><i class="fa-solid fa-hand-holding-dollar"></i> شروط الدفع المقترحة</div>
-                                <div class="price-amount" id="paymentTerms"></div>
+                                <div class="pricing-label"><i class="fa-solid fa-warehouse"></i> الكمية في المخزون</div>
+                                <div class="price-amount" id="inventoryQuantity"></div>
                             </div>
                         </div>
                     </div>
@@ -192,36 +174,36 @@
         <div class="lower-section">
             <div class="product-tabs">
                 <div class="tabs-header">
-                    <div class="tab-btn active" data-tab="general">بيانات عامة</div>
-                    <div class="tab-btn" data-tab="usages">استخدامات المنتج</div>
-                    <div class="tab-btn" data-tab="specs">مواصفات المنتج</div>
-                    <div class="tab-btn" data-tab="proscons">الميزات و السلبيات</div>
+                    <div class="tabs-header">
+                    <div class="tab-btn active" data-tab="general">معلومات الربط والتصنيف</div>
+                    <div class="tab-btn" data-tab="specs">المواصفات الفنية والمادية</div>
+                    <div class="tab-btn" data-tab="packaging">التعبئة والشحن</div>
+                    <div class="tab-btn" data-tab="pricing">التسعير والموردين والتوثيق</div>
                     <div class="tab-btn" data-tab="files">ملفات و روابط</div>
-                    <div class="tab-btn" data-tab="suppliers">الموردون</div>
                 </div>
-
+          </div>
                 <!-- General Info Tab -->
                 <div class="tab-content active" id="general">
                     <div class="general-info-grid">
                         <div class="general-info-item">
-                            <div class="label"><i class="fas fa-folder"></i> الفئة الرئيسية</div>
-                            <div class="value" id="genCategory"></div>
+                            <div class="label"><i class="fas fa-link"></i> المنتج الأساسي المُرتبط</div>
+                            <div class="value" id="linkedProductValue"></div>
                         </div>
                         <div class="general-info-item">
-                            <div class="label"><i class="fas fa-layer-group"></i> الفئة الفرعية</div>
-                            <div class="value" id="genSubCategory"></div>
+                            <div class="label"><i class="fas fa-folder-open"></i> التصنيف النوعي للمستلزم</div>
+                            <div class="value" id="accessoryTypeValue"></div>
+                        </div>
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-tag"></i> اسم المستلزم/الخامة الفني</div>
+                            <div class="value" id="accessoryNameValue"></div>
+                        </div>
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-barcode"></i> رقم المرجع (Part Number/SKU)</div>
+                            <div class="value" id="referenceNumberValue"></div>
                         </div>
                         <div class="general-info-item">
                             <div class="label"><i class="fas fa-copyright"></i> العلامة التجارية</div>
-                            <div class="value" id="genBrand"></div>
-                        </div>
-                        <div class="general-info-item">
-                            <div class="label"><i class="fas fa-cube"></i> الموديل</div>
-                            <div class="value" id="genModel"></div>
-                        </div>
-                        <div class="general-info-item">
-                            <div class="label"><i class="fas fa-tags"></i> الكلمات المفتاحية</div>
-                            <div class="value"><ul id="genKeywords" class="disc-list pr18 m0"></ul></div>
+                            <div class="value" id="accessoryBrandValue"></div>
                         </div>
                         <div class="general-info-item">
                             <div class="label"><i class="fas fa-user"></i> المسجل</div>
@@ -231,103 +213,113 @@
                             <div class="label"><i class="fas fa-calendar-alt"></i> تاريخ الإضافة</div>
                             <div class="value" id="genCreatedAt"></div>
                         </div>
-                        <div class="general-info-item">
-                            <div class="label"><i class="fas fa-barcode"></i> الكود</div>
-                            <div class="value" id="genCode"></div>
-                        </div>
                     </div>
-                </div>
-
-                <!-- Usages Tab -->
-                <div class="tab-content" id="usages">
-                    <ul id="usagesList" class="disc-list pr20 my10-20"></ul>
                 </div>
 
                 <!-- Specifications Tab -->
                 <div class="tab-content" id="specs">
                     <div class="specs-grid" id="specsGrid">
-                        <div class="general-info-item">
-                            <div class="label"><i class="fas fa-weight-hanging"></i> الوزن الصافي</div>
-                            <div class="value" id="specWeight"></div>
-                        </div>
-                        <div class="general-info-item">
-                            <div class="label"><i class="fas fa-bolt"></i> متطلبات الطاقة (الجهد)</div>
-                            <div class="value" id="specVoltage"></div>
-                        </div>
-                        <div class="general-info-item">
-                            <div class="label"><i class="fas fa-plug"></i> متطلبات الطاقة (الاستهلاك)</div>
-                            <div class="value" id="specConsumption"></div>
-                        </div>
-                        <div class="general-info-item">
-                            <div class="label"><i class="fas fa-chart-line"></i> السعة / الكفاءة الإنتاجية</div>
-                            <div class="value" id="specCapacity"></div>
-                        </div>
-                        <div class="general-info-item">
-                            <div class="label"><i class="fas fa-flask"></i> المواد الإنشائية الأساسية</div>
-                            <div class="value" id="specMaterials"></div>
-                        </div>
-                        <div class="general-info-item">
-                            <div class="label"><i class="fas fa-globe"></i> بلد المنشأ</div>
-                            <div class="value" id="specOrigin"></div>
-                        </div>
-                        <div class="general-info-item">
-                            <div class="label"><i class="fas fa-certificate"></i> معايير الجودة والاعتماد</div>
-                            <div class="value" id="specQuality"></div>
-                        </div>
-                        <div class="general-info-item">
-                            <div class="label"><i class="fas fa-shield-alt"></i> الضمان والدعم الفني</div>
-                            <div class="value" id="specWarranty"></div>
-                        </div>
-                        <div class="general-info-item">
-                            <div class="label"><i class="fas fa-ruler-combined"></i> الأبعاد الهندسية</div>
-                            <div class="value">
-                                <span id="specLength"></span>
-                                <span class="mx6">×</span>
-                                <span id="specWidth"></span>
-                                <span class="mx6">×</span>
-                                <span id="specHeight"></span>
-                            </div>
-                        </div>
                         <div class="general-info-item span-all">
-                            <div class="label"><i class="fas fa-clipboard-list"></i> المكونات الأساسية</div>
-                            <div class="value"><ul id="basicComponentsList" class="disc-list pr18 m0"></ul></div>
+                            <div class="label"><i class="fas fa-sync"></i> التوافق مع موديلات الماكينات</div>
+                            <div class="value"><ul id="compatibilityList" class="disc-list pr18 m0"></ul></div>
+                        </div>
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-tasks"></i> الغرض الوظيفي</div>
+                            <div class="value" id="functionalPurposeValue"></div>
+                        </div>
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-balance-scale"></i> الوحدة الأساسية للقياس</div>
+                            <div class="value" id="measurementUnit"></div>
+                        </div>
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-percentage"></i> التركيز أو النقاء (%)</div>
+                            <div class="value" id="concentrationPurity"></div>
+                        </div>
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-thermometer-half"></i> درجة الحرارة/اللزوجة</div>
+                            <div class="value" id="temperatureViscosity"></div>
+                        </div>
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-weight"></i> الكثافة</div>
+                            <div class="value" id="density"></div>
+                        </div>
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-ruler-combined"></i> الأبعاد/المقاسات الميكانيكية</div>
+                            <div class="value" id="dimensions"></div>
+                        </div>
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-plug"></i> نوع التوصيل/التركيب</div>
+                            <div class="value" id="connectionType"></div>
+                        </div>
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-flask"></i> المادة الخام للمستلزم</div>
+                            <div class="value" id="rawMaterial"></div>
+                        </div>
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-clock"></i> العمر الافتراضي أو فترة الصلاحية</div>
+                            <div class="value" id="estimatedLifespan"></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Pros and Cons Tab -->
-                <div class="tab-content" id="proscons">
-                    <div>
-                        <h4 class="my10">ميزات المنتج</h4>
-                        <ul id="featuresList" class="disc-list pr20 my10-20"></ul>
+                <!-- Packaging Tab -->
+                <div class="tab-content" id="packaging">
+                    <div class="general-info-grid">
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-box-open"></i> شكل التغليف</div>
+                            <div class="value" id="packagingForm"></div>
+                        </div>
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-weight-hanging"></i> حجم العبوة / الوزن الصافي للوحدة</div>
+                            <div class="value" id="packageSizeWeight"></div>
+                        </div>
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-boxes"></i> الحد الأدنى لكمية الطلب (MOQ)</div>
+                            <div class="value" id="packagingMoq"></div>
+                        </div>
+                        <div class="general-info-item span-all">
+                            <div class="label"><i class="fas fa-warehouse"></i> شروط التخزين المطلوبة</div>
+                            <div class="value" id="storageConditions"></div>
+                        </div>
                     </div>
-                    <div>
-                        <h4 class="my10">سلبيات المنتج</h4>
-                        <ul id="negativesList" class="disc-list pr20 my10-20"></ul>
+                </div>
+
+                <!-- Pricing, Suppliers, Documentation Tab -->
+                <div class="tab-content" id="pricing">
+                    <div class="general-info-grid">
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-money-bill"></i> سعر التكلفة</div>
+                            <div class="value" id="pricingCostPrice"></div>
+                        </div>
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-dollar-sign"></i> سعر البيع المقترح</div>
+                            <div class="value" id="pricingSuggestedSellingPrice"></div>
+                        </div>
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-warehouse"></i> الكمية في المخزون</div>
+                            <div class="value" id="pricingInventoryQuantity"></div>
+                        </div>
+                        <div class="general-info-item span-all">
+                            <div class="label"><i class="fas fa-truck"></i> المورد الخاص بالخامة/المستلزم</div>
+                            <div class="value" id="supplier"></div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Files and Links Tab -->
                 <div class="tab-content" id="files">
                     <div id="productFilesSection">
-                        <h4><i class="fas fa-file-download"></i> ملفات المنتج</h4>
+                        <h4><i class="fas fa-file-download"></i> ملفات المستلزم</h4>
                         <div id="productFilesContainer" class="files-container">
-                            <!-- Will be populated by JavaScript -->
+                            <!-- Will be populated by JavaScript, including MSDS and usage instructions -->
                         </div>
                     </div>
                     
                     <div id="productLinksSection" class="mt30">
-                        <h4><i class="fas fa-link"></i> روابط المنتج</h4>
+                        <h4><i class="fas fa-link"></i> روابط المستلزم</h4>
                         <div id="productLinksContainer" class="links-container">
                             <!-- Will be populated by JavaScript -->
                         </div>
-                    </div>
-                </div>
-
-                <!-- Suppliers Tab -->
-                <div class="tab-content" id="suppliers">
-                    <div class="suppliers-tab-list" id="suppliersTabList">
-                        <!-- سيتم إنشاء بطاقات الموردين هنا (اسم المورد، روابط، أسعار USD/CNY/YER) -->
                     </div>
                 </div>
             </div>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة عميل جديد</title>
+          <!-- Google fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&family=Noto+Naskh+Arabic:wght@400..700&family=Noto+Sans+Arabic:wght@100..900&family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400..700&display=swap" rel="stylesheet">
+         <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/.../boo.../font/bootstrap-icons.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/.../css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/.../6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- css Stylesheet -->
+   <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/add-product.css">
+</head>
+ <body class="theme1">  
+  <!-- زر تغيير الثيم -->
+    <button class="change-theme" id="theme-toggle">
+     <i class="fa-solid fa-palette"></i>
+    </button>
+     <!-- Header -->  
+    <header class="header" id="header">
+    <a href="dashboard.html" class="logo-container">
+        <div class="logo"> </div>
+        <div class="logo-text">أرشيف الثقة التجارية</div>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation menu"><i class="fas fa-align-left"></i></button>
+    <nav class="main-menu">
+        <a href="dashboard.html" class="menu-item "><i class="fas fa-home"></i> الرئيسية</a>
+        <a href="products-board.html" class="menu-item"><i class="fa-solid fa-cart-plus"></i> المنتجات</a>
+        <a href="suppliers.html" class="menu-item "><i class="fas fa-truck"></i> الموردين</a>
+        <a href="profile.html" class="menu-item"><i class="fas fa-user"></i> ملفي الشخصي</a>
+        
+        <div class="dropdown">
+            <a href="#" class="menu-item dropdown-toggle">
+                <i class="fas fa-plus-circle"></i> إضافة <i class="fas fa-caret-down"></i>
+            </a>
+            <div class="dropdown-menu">
+                <a href="add-product.html" class="dropdown-item"><i class="fas fa-plus-circle"></i> إضافة منتج</a>
+                <a href="add-supplier.html" class="dropdown-item"><i class="fas fa-truck-loading "></i> إضافة مورد</a>
+				  <a href="add-customer.html" class="dropdown-item"><i class='fas fa-address-book'></i> اضافة عميل</a>
+				<a href="add-spare-part.html" class="dropdown-item"> <i class="fas fa-cogs"></i>  إضافة قطع غيار</a>
+				<a href="add-operational-accessories.html" class="dropdown-item"> <i class="fas fa-tools"></i>  إضافة مستلزمات التشغيل</a>
+				<a href="offer-price.html" class="dropdown-item"><i class='far fa-credit-card'></i>  انشاء عرض سعر</a>
+            </div>
+        </div>
+        <a href="index.html" class="menu-item logout-btn"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</a>
+    </nav>
+</header>
+    <!-- Main Content -->
+    <div class="product-container">
+        <div class="product-card">
+            <div class="product-header">
+                <h1 class="product-title"><i class="fas fa-user-plus"></i> إضافة عميل جديد</h1>
+            </div>
+            <div class="product-body">
+               <form id="clientForm" class="product-form" >
+    <div class="product-section" id="section-1">
+        <h2 class="product-section-title"><i class="fas fa-building"></i> ١. معلومات الكيان التجاري الأساسية</h2>
+        <div class="product-form-grid">
+            <div class="product-form-group">
+                <label class="product-form-label" for="companyNameAr">
+                    <i class="fas fa-building"></i> الاسم الرسمي للشركة (عربي) *
+                </label>
+                <input type="text" id="companyNameAr" class="product-form-input" placeholder="الاسم بالعربية" required>
+            </div>
+            <div class="product-form-group">
+                <label class="product-form-label" for="companyNameEn">
+                    <i class="fas fa-building"></i> الاسم الرسمي للشركة (إنجليزي)
+                </label>
+                <input type="text" id="companyNameEn" class="product-form-input" placeholder="Company Name in English">
+            </div>
+            <div class="product-form-group">
+                <label class="product-form-label" for="commercialRegister">
+                    <i class="fas fa-file-contract"></i> السجل التجاري / رقم الترخيص *
+                </label>
+                <input type="text" id="commercialRegister" class="product-form-input" placeholder="رقم السجل التجاري" required>
+            </div>
+            <div class="product-form-group">
+                <label class="product-form-label" for="country">
+                    <i class="fas fa-globe"></i> البلد
+                </label>
+                <input type="text" id="country" class="product-form-input" placeholder="البلد">
+            </div>
+            <div class="product-form-group">
+                <label class="product-form-label" for="city">
+                    <i class="fas fa-city"></i> المدينة
+                </label>
+                <input type="text" id="city" class="product-form-input" placeholder="المدينة">
+            </div>
+            <div class="product-form-group full-width">
+                <label class="product-form-label" for="address">
+                    <i class="fas fa-map-marker-alt"></i> العنوان الرسمي
+                </label>
+                <textarea id="address" class="product-form-textarea" rows="2"></textarea>
+            </div>
+            <div class="product-form-group">
+                <label class="product-form-label" for="industrySector">
+                    <i class="fas fa-industry"></i> القطاع الصناعي الأساسي
+                </label>
+                <select id="industrySector" class="product-form-input">
+                    <option value="">اختر القطاع</option>
+                    <option value="مقاولات">مقاولات</option>
+                    <option value="تصنيع مواد بناء">تصنيع مواد بناء</option>
+                    <option value="تطوير عقاري">تطوير عقاري</option>
+                    <option value="ورش ميكانيكية">ورش ميكانيكية</option>
+                    <option value="مصانع">مصانع</option>
+                    <option value="أخرى">أخرى</option>
+                </select>
+            </div>
+            <div class="product-form-group">
+                <label class="product-form-label" for="companySize">
+                    <i class="fas fa-chart-bar"></i> حجم الشركة
+                </label>
+                <select id="companySize" class="product-form-input">
+                    <option value="">اختر الحجم</option>
+                    <option value="ناشئة">ناشئة</option>
+                    <option value="صغيرة">صغيرة</option>
+                    <option value="متوسطة">متوسطة</option>
+                    <option value="كبيرة">كبيرة</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="product-section" id="section-2">
+        <h2 class="product-section-title"><i class="fas fa-users"></i> ٢. جهات الاتصال الرئيسية</h2>
+        <div class="product-form-grid">
+            <div class="product-form-group">
+                <label class="product-form-label" for="mainContactName">
+                    <i class="fas fa-user-tie"></i> اسم جهة الاتصال الرئيسية *
+                </label>
+                <input type="text" id="mainContactName" class="product-form-input" required>
+            </div>
+            <div class="product-form-group">
+                <label class="product-form-label" for="mainContactPosition">
+                    <i class="fas fa-briefcase"></i> الوظيفة/المنصب
+                </label>
+                <input type="text" id="mainContactPosition" class="product-form-input">
+            </div>
+            <div class="product-form-group">
+                <label class="product-form-label" for="mainContactPhone">
+                    <i class="fas fa-phone"></i> رقم الهاتف المباشر
+                </label>
+                <input type="tel" id="mainContactPhone" class="product-form-input">
+            </div>
+            <div class="product-form-group">
+                <label class="product-form-label" for="mainContactEmail">
+                    <i class="fas fa-envelope"></i> البريد الإلكتروني
+                </label>
+                <input type="email" id="mainContactEmail" class="product-form-input">
+            </div>
+            <div class="product-form-group">
+                <label class="product-form-label" for="technicalContactName">
+                    <i class="fas fa-user-cog"></i> اسم جهة الاتصال الفنية
+                </label>
+                <input type="text" id="technicalContactName" class="product-form-input">
+            </div>
+            <div class="product-form-group">
+                <label class="product-form-label" for="technicalContactPhone">
+                    <i class="fas fa-phone"></i> رقم هاتف الجهة الفنية
+                </label>
+                <input type="tel" id="technicalContactPhone" class="product-form-input">
+            </div>
+            <div class="product-form-group">
+                <label class="product-form-label" for="technicalContactEmail">
+                    <i class="fas fa-envelope"></i> بريد الجهة الفنية
+                </label>
+                <input type="email" id="technicalContactEmail" class="product-form-input">
+            </div>
+        </div>
+    </div>
+    <div class="product-section" id="section-3">
+        <h2 class="product-section-title"><i class="fas fa-cogs"></i> ٣. المتطلبات والاهتمامات الفنية</h2>
+        <div class="product-form-group full-width">
+            <label class="product-form-label">
+                <i class="fas fa-list-ul"></i> التخصصات الفنية المطلوبة (اختر متعدد)
+            </label>
+            <select multiple id="technicalInterests" class="product-form-input" size="6">
+                <option value="البريكاست">البريكاست</option>
+                <option value="الماكينات">الماكينات</option>
+                <option value="خطوط الإنتاج">خطوط الإنتاج</option>
+                <option value="المعدات الصناعية">المعدات الصناعية</option>
+                <option value="قطع الغيار">قطع الغيار</option>
+                <option value="مواد التشغيل">مواد التشغيل والكيماويات</option>
+            </select>
+        </div>
+        <div class="product-form-group full-width">
+            <label class="product-form-label" for="previousProjects">
+                <i class="fas fa-project-diagram"></i> أنواع المشاريع المنفذة مسبقاً
+            </label>
+            <textarea id="previousProjects" class="product-form-textarea" rows="3" placeholder="وصف المشاريع"></textarea>
+        </div>
+        <div class="product-form-group full-width">
+            <label class="product-form-label" for="preferredStandards">
+                <i class="fas fa-certificate"></i> المعايير المفضلة للجودة
+            </label>
+            <input type="text" id="preferredStandards" class="product-form-input" placeholder="مثال: CE، ISO 9001، إلخ">
+        </div>
+        <div class="product-form-group full-width">
+            <label class="product-form-label" for="competitors">
+                <i class="fas fa-user-secret"></i> الموردون المنافسون الرئيسيون
+            </label>
+            <textarea id="competitors" class="product-form-textarea" rows="3" placeholder="ملاحظات داخلية"></textarea>
+        </div>
+    </div>
+    <div class="product-section" id="section-4">
+        <h2 class="product-section-title"><i class="fas fa-money-check-alt"></i> ٤. التاريخ المالي والتجاري</h2>
+        <div class="product-form-grid">
+            <div class="product-form-group">
+                <label class="product-form-label" for="clientStatus">
+                    <i class="fas fa-user-tag"></i> تصنيف العميل
+                </label>
+                <select id="clientStatus" class="product-form-input">
+                    <option value="عميل جديد">عميل جديد</option>
+                    <option value="عميل متكرر">عميل متكرر</option>
+                    <option value="عميل محتمل">عميل محتمل</option>
+                </select>
+            </div>
+            <div class="product-form-group">
+                <label class="product-form-label" for="totalDealValue">
+                    <i class="fas fa-dollar-sign"></i> قيمة التعاملات الإجمالية
+                </label>
+                <input type="number" id="totalDealValue" class="product-form-input" placeholder="0.00">
+            </div>
+            <div class="product-form-group full-width">
+                <label class="product-form-label" for="paymentTerms">
+                    <i class="fas fa-handshake"></i> شروط الدفع المعتمدة
+                </label>
+                <input type="text" id="paymentTerms" class="product-form-input" placeholder="مثال: 60% مقدم، صافي 30 يوم">
+            </div>
+            <div class="product-form-group">
+                <label class="product-form-label" for="accountStatus">
+                    <i class="fas fa-user-clock"></i> حالة الحساب الحالية
+                </label>
+                <select id="accountStatus" class="product-form-input">
+                    <option value="نشط">نشط</option>
+                    <option value="متوقف مؤقتاً">متوقف مؤقتاً</option>
+                    <option value="مغلق">مغلق</option>
+                </select>
+            </div>
+            <div class="product-form-group">
+                <label class="product-form-label" for="lastQuotationDate">
+                    <i class="fas fa-calendar-alt"></i> تاريخ آخر عرض سعر
+                </label>
+                <input type="date" id="lastQuotationDate" class="product-form-input">
+            </div>
+            <div class="product-form-group">
+                <label class="product-form-label" for="lastOrderDate">
+                    <i class="fas fa-shopping-cart"></i> تاريخ آخر طلب شراء
+                </label>
+                <input type="date" id="lastOrderDate" class="product-form-input">
+            </div>
+        </div>
+    </div>
+    <div class="product-section" id="section-5">
+        <h2 class="product-section-title"><i class="fas fa-archive"></i> ٥. الأرشفة والمتابعة الداخلية</h2>
+        <div class="product-form-group full-width">
+            <label class="product-form-label" for="clientAttachments">
+                <i class="fas fa-paperclip"></i> ملفات المرفقات (سجل تجاري، اتفاقيات، إلخ)
+            </label>
+            <input type="file" id="clientAttachments" class="product-file-input" multiple>
+            <label for="clientAttachments" class="product-file-label p15">
+                <i class="fas fa-cloud-upload-alt"></i> رفع المرفقات
+            </label>
+        </div>
+        <div class="product-form-group full-width">
+            <label class="product-form-label" for="internalNotes">
+                <i class="fas fa-sticky-note"></i> ملاحظات داخلية حول العميل
+            </label>
+            <textarea id="internalNotes" class="product-form-textarea" rows="5" placeholder="تقييم داخلي، ملاحظات المبيعات..."></textarea>
+        </div>
+        <div class="product-form-group">
+            <label class="product-form-label" for="addedDate">
+                <i class="fas fa-calendar-plus"></i> تاريخ الإضافة للأرشيف
+            </label>
+            <input type="date" id="addedDate" class="product-form-input" value="<?php echo date('Y-m-d'); ?>" readonly>
+        </div>
+        <div class="product-form-group">
+            <label class="product-form-label" for="responsibleEmployee">
+                <i class="fas fa-user-check"></i> اسم الموظف المسؤول (مالك الحساب)
+            </label>
+            <input type="text" id="responsibleEmployee" class="product-form-input" placeholder="اسم الموظف">
+        </div>
+    </div>
+    <div class="product-form-actions">
+        <button type="submit" class="product-submit-btn" id="save-client-btn">
+            <i class="fas fa-save"></i> حفظ بيانات العميل
+        </button>
+        <button type="reset" class="product-reset-btn">
+            <i class="fas fa-redo"></i> مسح النموذج
+        </button>
+        <a href="clients-board.html" class="product-cancel-btn">
+            <i class="fas fa-times"></i> إلغاء
+        </a>
+    </div>
+</form>
+            </div>
+        </div>
+    </div>
+         <!-- Footer -->
+    <footer class="footer">
+               <div class="copyright-content">
+                <div class="designer-info">
+                    <span class="designer-text">مصمم الموقع / صدام أحمد</span>
+                </div>          
+                <div class="icon-group4">
+                    <a href="https://www.facebook.com/s777967272" class="icon-btn4 icon-facebook" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://wa.me/967777967272" class="icon-btn4 icon-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="tel:+967777967272" class="icon-btn4 icon-phone">
+                        <i class="fa fa-phone"></i>
+                    </a>
+                    <a href="https://tecnotasxcatalog.netlify.app/" class="icon-btn4 icon-website" target="_blank">
+                        <i class="fas fa-globe"></i>
+                    </a>
+                </div>
+            </div>
+    </footer>
+    <!-- أزرار الدردشة والذكاء الاصطناعي (كما في السابق) -->
+    <!-- ... نفس الكود السابق للدردشة والـ AI ... -->
+    <!-- Include page scripts -->
+    <script src="js/theme-init.js"></script>
+    <script src="js/onclick-handlers.js"></script>
+    <script src="js/add-client-init.js"></script>
+    <script src="js/form-autosave.js"></script>
+    <!-- Javascript -->
+    <script src="js/nav.js"></script>
+    <script src="js/chat.js"></script>     
+    <script src="js/theme.js"></script>
+</body>
+</html>

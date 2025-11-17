@@ -5,38 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تسجيل الدخول - ارشيف الثقة التجارية</title>
     
-	 <!-- Google fonts -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
+         <!-- Google fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&family=Noto+Naskh+Arabic:wght@400..700&family=Noto+Sans+Arabic:wght@100..900&family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400..700&display=swap" rel="stylesheet">
     
-	
-	
-	 <!-- Icon Font Stylesheet -->
+        
+        
+         <!-- Icon Font Stylesheet -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-	
-	<!-- css Stylesheet -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
+        <!-- css Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/add-new-user.css">
+        <link rel="stylesheet" href="css/add-new-user.css">
     <style>
         
     </style>
 </head>
  <body class="theme1"> 
-  <script>
-    (function(){
-      try{
-        var savedTheme = localStorage.getItem('selectedTheme');
-        if(savedTheme){ document.body.className = savedTheme; }
-      }catch(e){}
-    })();
-  </script>
+  <script src="js/theme-init.js"></script>
  <!-- زر تغيير الثيم -->
     <button class="change-theme" id="theme-toggle">
      <i class="fa-solid fa-palette"></i>
@@ -73,13 +66,13 @@
                     <input type="text" id="registerResidence" required  >
                 </div>
             </div>
-			
+                        
              <div class="modal-form-grid">
                 <div class="modal-form-group">
                     <label for="registerResidence">اسم المستخدم *</label>
                     <input type="text" id="username" placeholder="بالاحرف الانجليزية" required  >
                 </div>
-				 <div class="modal-form-group">
+                                 <div class="modal-form-group">
                     <label for="registerAge">كلمة السر *</label>
                     <input type="text" id="userpassword" required placeholder="كلمة المرور">
                 </div>
@@ -95,8 +88,8 @@
                     </select>
                 </div>
             </div>
-			
-			
+                        
+                        
             <div class="modal-image-group">
                 <label for="registerPhoto">الصورة الشخصية</label>
                 <input type="file" id="registerPhoto" accept="image/*">
@@ -132,7 +125,7 @@
             <div class="modal-form-actions">
                 <button type="submit" class="login-btn">تأكيد العضوية</button>
                 <button type="button" onclick="closeRegisterModal()" class="cancel-btn">إلغاء</button>
-				<button type="button" onclick="window.location.href='admin.html'" class="login-btn">الرجوع الى صقحة الادارة</button>
+                                <button type="button" onclick="window.location.href='admin.html'" class="login-btn">الرجوع الى صقحة الادارة</button>
             </div>
         </form>
     </div>
@@ -142,173 +135,10 @@
           
  
 
-<!-- JavaScript البسيط للـ Modal (يمكن وضعه في <script> tag في نهاية الصفحة) -->
-<script>
-function showRegisterModal() {
-    document.getElementById('registerModal').style.display = 'block';
-}
-
-function closeRegisterModal() {
-    document.getElementById('registerModal').style.display = 'none';
-}
-
-// دالة إضافية لإضافة حقول الهاتف (كما في الكود الأصلي، يمكن تخصيصها)
-function addRegisterPhoneField() {
-    const container = document.getElementById('registerPhoneFields');
-    const newField = document.createElement('div');
-    newField.className = 'field-group';
-    newField.innerHTML = `
-        <input type="tel" placeholder="+966 50 123 4567" class="phone-input" required>
-        <button type="button" onclick="this.parentElement.remove()" class="add-field-btn">-</button>
-    `;
-    container.appendChild(newField);
-}
-</script>
-
     <!-- Include Supabase and services -->
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-    <script src="js/supabase-config.js"></script>
-    <script src="js/auth-service.js"></script>
-    <script>
-      (function(){
-        document.addEventListener('DOMContentLoaded', function(){
-          try{
-            if (!window.authService || !window.authService.isLoggedIn()) {
-              window.location.href = 'index.html';
-              return;
-            }
-            const me = window.authService.getCurrentUser();
-            if (!me || me.role !== 'admin') {
-              alert('ليس لديك صلاحية للوصول إلى هذه الصفحة');
-              window.location.href = 'dashboard.html';
-              return;
-            }
-          }catch(e){ console.warn('admin guard error:', e); }
-        });
-      })();
-    </script>
-    <script src="js/add-user-logic.js"></script>
-    
-    <script>
-
-// Login form handling (static version, unchanged as it's separate from modal)
-document.getElementById('loginForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-    const btnText = document.querySelector('.btn-text');
-    const loading = document.querySelector('.loading');
-    const message = document.getElementById('loginMessage');
-    
-    // Show loading
-    btnText.classList.add('hidden');
-    loading.classList.remove('hidden');
-    message.classList.add('hidden');
-    
-    // Simulate login process
-    setTimeout(() => {
-        if (username.trim() && password.trim()) {
-            // Check demo credentials
-            if ((username === 'admin' && password === 'admin') || 
-                (username === 'سارة_التسويق' && password === 'sara123') ||
-                (username === 'محمد_الإلكترونيات' && password === 'mohamed123')) {
-                
-                // Redirect based on username
-                if (username === 'admin') {
-                    window.location.href = 'admin.html';
-                } else {
-                    window.location.href = 'dashboard.html';
-                }
-            } else {
-                message.textContent = 'اسم المستخدم أو كلمة المرور غير صحيحة. جرب: admin/admin';
-                message.className = 'message error';
-                message.classList.remove('hidden');
-                
-                btnText.classList.remove('hidden');
-                loading.classList.add('hidden');
-            }
-        } else {
-            message.textContent = 'يرجى إدخال اسم المستخدم وكلمة المرور';
-            message.className = 'message error';
-            message.classList.remove('hidden');
-            
-            btnText.classList.remove('hidden');
-            loading.classList.add('hidden');
-        }
-    }, 1000);
-});
-
-// Registration Modal Functions (updated to use display: block/none for compatibility with new CSS)
-function showRegisterModal() {
-    document.getElementById('registerModal').style.display = 'block';
-}
-
-function closeRegisterModal() {
-    const modal = document.getElementById('registerModal');
-    modal.style.display = 'none';
-    document.getElementById('registerForm').reset();
-    // Reset dynamic phone fields
-    const phoneFields = document.getElementById('registerPhoneFields');
-    const extraFields = phoneFields.querySelectorAll('.field-group:not(:first-child)');
-    extraFields.forEach(field => field.remove());
-}
-
-// Updated addRegisterPhoneField to match new HTML/JS structure (uses inline remove for simplicity)
-function addRegisterPhoneField() {
-    const phoneFields = document.getElementById('registerPhoneFields');
-    const newField = document.createElement('div');
-    newField.className = 'field-group';
-    newField.innerHTML = `
-        <input type="tel" placeholder="+966 50 123 4567" class="phone-input" required>
-        <button type="button" onclick="this.parentElement.remove()" class="add-field-btn" style="background: #e53e3e;">-</button>
-    `;
-    phoneFields.appendChild(newField);
-}
-
-// Remove the separate removeField function as it's now inline (simplifies code)
-
-// Form submission is now handled by add-user-logic.js
-
-// Message display function (unchanged)
-function showMessage(message, type = 'success') {
-    const messageEl = document.getElementById('loginMessage') || document.createElement('div');
-    messageEl.textContent = message;
-    messageEl.className = `message ${type}`;
-    messageEl.classList.remove('hidden');
-    
-    // Auto hide after 3 seconds
-    setTimeout(() => {
-        messageEl.classList.add('hidden');
-    }, 3000);
-}
-
-// Close modal on backdrop click (updated to use display: none)
-document.getElementById('registerModal').addEventListener('click', function(e) {
-    if (e.target === this) closeRegisterModal();
-});
-
-// Add styles for quick login buttons (updated to match new theme colors for consistency)
-const style = document.createElement('style');
-style.textContent = `
-    .quick-login-btn {
-        background: rgba(102, 126, 234, 0.2); /* Updated to match new theme */
-        border: 1px solid #667eea;
-        color: #667eea;
-        padding: 8px 12px;
-        border-radius: 6px;
-        cursor: pointer;
-        font-size: 12px;
-        transition: all 0.3s ease;
-        flex: 1;
-    }
-    .quick-login-btn:hover {
-        background: rgba(102, 126, 234, 0.3);
-        color: white;
-    }
-`;
-document.head.appendChild(style);
-    </script>
-	<script src="js/theme.js"></script>
+    <script src="js/theme-init.js"></script>   
+    <script src="js/onclick-handlers.js"></script>
+    <script src="js/add-new-user-functions.js"></script>
+    <script src="js/theme.js"></script>
 </body>
 </html>

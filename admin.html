@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>لوحة الإدارة - أرشيف الثقة التجارية</title>
-	
-	 <!-- ========== قسم خطوط جوجل ========== -->
+        
+         <!-- ========== قسم خطوط جوجل ========== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&family=Noto+Naskh+Arabic:wght@400..700&family=Noto+Sans+Arabic:wght@100..900&family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
@@ -16,48 +16,50 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-	
+        
     <!-- css Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/admin.css">
+        <link rel="stylesheet" href="css/admin.css">
 </head>
 <style>
  
 
 </style>
 <body class="theme1">  
- <script>
-    (function(){
-      try{
-        var savedTheme = localStorage.getItem('selectedTheme');
-        if(savedTheme){ document.body.className = savedTheme; }
-      }catch(e){}
-    })();
-  </script>
     <!-- زر تغيير الثيم -->
     <button class="change-theme" id="theme-toggle">
         <i class="fa-solid fa-palette"></i>
     </button>
     
     <!-- Header -->  
-    <header class="header" id="header">
+<header class="header" id="header">
     <a href="dashboard.html" class="logo-container">
         <div class="logo"> </div>
         <div class="logo-text">أرشيف الثقة التجارية</div>
     </a>
-    <button class="nav-toggle"><i class="fas fa-align-left"></i></button>
+    <button class="nav-toggle" aria-label="Toggle navigation menu"><i class="fas fa-align-left"></i></button>
     <nav class="main-menu">
-        <a href="dashboard.html" class="menu-item"><i class="fas fa-home"></i> الرئيسية</a>
-		 <a href="products-board.html" class="menu-item"><i class="fa-solid fa-cart-plus"></i> المنتجات</a>
+        <a href="dashboard.html" class="menu-item "><i class="fas fa-home"></i> الرئيسية</a>
+        <a href="products-board.html" class="menu-item"><i class="fa-solid fa-cart-plus"></i> المنتجات</a>
         <a href="suppliers.html" class="menu-item "><i class="fas fa-truck"></i> الموردين</a>
         <a href="profile.html" class="menu-item"><i class="fas fa-user"></i> ملفي الشخصي</a>
-        <a href="add-product.html" class="menu-item "><i class="fas fa-plus-circle"></i> إضافة منتج</a>
-        <a href="add-supplier.html" class="menu-item "><i class="fas fa-truck-loading "></i> اضافة مورد</a>
-		<a href="admin.html" class="menu-item active"><i class="fa fa-cog" aria-hidden="true"></i> لوحة الإدارة</a>
+         <a href="admin.html" class="menu-item active"><i class="fa fa-cog" aria-hidden="true"></i> لوحة الإدارة</a>
+        <div class="dropdown">
+            <a href="#" class="menu-item dropdown-toggle">
+                <i class="fas fa-plus-circle"></i> إضافة <i class="fas fa-caret-down"></i>
+            </a>
+            <div class="dropdown-menu">
+                <a href="add-product.html" class="dropdown-item"><i class="fas fa-plus-circle"></i> إضافة منتج</a>
+                <a href="add-supplier.html" class="dropdown-item"><i class="fas fa-truck-loading "></i> إضافة مورد</a>
+				  <a href="add-customer.html" class="dropdown-item"><i class='fas fa-address-book'></i> اضافة عميل</a>
+				<a href="add-spare-part.html" class="dropdown-item"> <i class="fas fa-cogs"></i>  إضافة قطع غيار</a>
+				<a href="add-operational-accessories.html" class="dropdown-item"> <i class="fas fa-tools"></i>  إضافة مستلزمات التشغيل</a>
+				<a href="offer-price.html" class="dropdown-item"><i class='far fa-credit-card'></i>  انشاء عرض سعر</a>
+            </div>
+        </div>
+        <a href="index.html" class="menu-item logout-btn"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</a>
     </nav>
 </header>
-
-
    
 <!-- Admin Section -->
 <section id="Admin" class="section">
@@ -92,23 +94,22 @@
             <div class="Categories-grid">
                 <div class="Categories-section">
                     <h3>📂 إدارة الفئات</h3>
-                    <div class="category-actions" style="justify-content:center; gap:10px; margin-bottom:10px;">
+                    <div class="category-actions jc-center gap10 mb10">
                         <button id="openAddCategoryModal" class="add-category-btn"><i class="fas fa-plus"></i> إضافة فئة</button>
                          
                     </div>
                     <!-- Inline Add Category Form (shown below the button) -->
-                    <div id="addCategoryInline" class="admin-inline-form hidden" style="max-width:520px;margin:0 auto 12px;">
-                        <div class="form-group" style="display:flex;gap:8px;align-items:center;">
-                            <label for="newCategory" style="white-space:nowrap;">اسم الفئة</label>
-                            <input type="text" id="newCategory" class="settings-input" placeholder="مثال: إلكترونيات" style="flex:1;">
+                    <div id="addCategoryInline" class="admin-inline-form hidden w520 mx-auto mb12">
+                        <div class="form-group flex gap8 ai-center">
+                            <label for="newCategory" class="nowrap">اسم الفئة</label>
+                            <input type="text" id="newCategory" class="settings-input flex1" placeholder="مثال: إلكترونيات">
                         </div>
-                        <div style="display:flex;gap:8px;justify-content:center;">
+                        <div class="flex gap8 jc-center">
                             <button id="saveAddCategoryInline" class="admin-btn success"><i class="fas fa-save"></i> حفظ</button>
                             <button id="cancelAddCategoryInline" class="admin-btn danger"><i class="fas fa-times"></i> إلغاء</button>
                         </div>
                     </div>
                     <ul class="Categories-list" id="categoriesList">
-                        <!-- سيتم تعبئتها ديناميكياً من js/admin-logic.js -->
                     </ul>
                      
                     <!-- Modals: Add Category -->
@@ -148,7 +149,7 @@
             <!-- Suppliers Management -->
             <div class="admin-section">
                  <div class="Suppliers-section-header">
-				<h3><i class='fas fa-users'></i>ادارة الموردين</h3>
+                                <h3><i class='fas fa-users'></i>ادارة الموردين</h3>
                     <button onclick="window.location.href='add-supplier.html'" class="add-new-Supplier-btn "><i class="fas fa-user-plus"></i> اضافة مورد جديد</button>
                 </div>
                 <ul class="admin-list" id="suppliersList"><!-- تعبئة ديناميكية --></ul>
@@ -156,7 +157,7 @@
             <!-- Users Management -->
             <div class="admin-section">                
                 <div class="users-section-header">
-				<h3><i class='fas fa-users'></i> إدارة المستخدمين</h3>
+                                <h3><i class='fas fa-users'></i> إدارة المستخدمين</h3>
                     <button onclick="window.location.href='add-new-user.html'" class="add-new-user-btn "><i class="fas fa-user-plus"></i> إضافة مستخدم جديد</button>
                 </div>
                 <ul class="users-list" id="usersList">
@@ -214,29 +215,48 @@
                 </ul>
 
                 <!-- Membership Requests -->
-                <div class="users-section-header" style="margin-top:22px; font-size:16px;">
+                <div class="users-section-header mt22 fs16">
                     <h3><i class="fa-solid fa-user-check"></i> طلبات العضوية</h3>
                 </div>
-                <ul class="users-list" style="color: var(--text3-color);   " id="membershipRequestsList">
+                <ul class="users-list text3" id="membershipRequestsList">
                     <!-- سيتم تعبئة طلبات العضوية ديناميكياً -->
                 </ul>
-                <small id="membershipRequestsNote" style="display:block;   color:var(--placeholder-color); margin-top:6px;  ">
+                <small id="membershipRequestsNote" class="block placeholder mt6">
                     في حال عدم وجود جدول "membership_requests" سيتم عرض الأعضاء ذوي الحالة "pending".
                 </small>
             </div>
-			
-			
+                        
+                        
             <!-- Products Management -->
             <div class="admin-section">
-			 <div class="Products-section-header">
-				<h3>📦 إدارة المنتجات</h3>
+                         <div class="Products-section-header">
+                                <h3>📦 إدارة المنتجات</h3>
                     <button onclick="window.location.href='add-product.html'" class="add-new-Product-btn "><i class="fa-solid fa-cart-plus"></i> اضافة منتج جديد</button>
                 </div>
                 <div class="filter-section">
                     <select class="filter-select" id="categoryFilter">
                         <option value="">جميع الفئات</option>
-                        <option value="electronics">إلكترونيات</option>
-                        <option value="accessories">إكسسوارات</option>
+                        <optgroup label="البريكاست">
+                            <option value="بريكاست إنشائي">بريكاست إنشائي</option>
+                            <option value="بريكاست للبنية التحتية">بريكاست للبنية التحتية</option>
+                            <option value="بريكاست معماري/ديكوري">بريكاست معماري/ديكوري</option>
+                        </optgroup>
+                        <optgroup label="الماكينات">
+                            <option value="ماكينات البناء والإنشاءات">ماكينات البناء والإنشاءات</option>
+                            <option value="ماكينات الورشة">ماكينات الورشة</option>
+                            <option value="ماكينات التشغيل والصيانة">ماكينات التشغيل والصيانة</option>
+                        </optgroup>
+                        <optgroup label="خطوط الإنتاج">
+                            <option value="خطوط إنتاج مواد غذائية">خطوط إنتاج مواد غذائية</option>
+                            <option value="خطوط إنتاج مواد بناء">خطوط إنتاج مواد بناء</option>
+                            <option value="خطوط تجميع وتصنيع بسيطة">خطوط تجميع وتصنيع بسيطة</option>
+                        </optgroup>
+                        <optgroup label="المعدات الصناعية">
+                            <option value="معدات رفع ومناولة">معدات رفع ومناولة</option>
+                            <option value="أدوات كهربائية صناعية">أدوات كهربائية صناعية</option>
+                            <option value="معدات السلامة والأمان">معدات السلامة والأمان</option>
+                            <option value="مولدات الطاقة">مولدات الطاقة</option>
+                        </optgroup>
                     </select>
                     <select class="filter-select" id="supplierFilter">
                         <option value="">جميع الموردين</option>
@@ -293,20 +313,19 @@
             <div class="admin-section">
                 <h3><i class="fa-solid fa-bell"></i> متابعة المهام</h3>
                 <div class="admin-tasks-list" id="taskFollowupsList">
-                    <!-- سيتم تعبئة المتابعات ديناميكياً من js/admin-logic.js -->
                 </div>
             </div>
 
             <!-- Chat Management -->
             <div class="admin-section" id="chatManagementSection">
-                <div class="chat-mgmt-header" style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
-                    <h3 style="margin:0;display:flex;align-items:center;gap:8px;"><i class="fas fa-comments"></i> إدارة الدردشات</h3>
-                    <div class="chat-mgmt-actions" style="display:flex;gap:8px;align-items:center;">
-                        <input type="text" id="chatMgmtSearch" class="settings-input" placeholder="ابحث في المحادثات" style="min-width:220px;">
+                <div class="chat-mgmt-header flex sb ai-center gap10 wrap">
+                    <h3 class="m0 flex ai-center gap8"><i class="fas fa-comments"></i> إدارة الدردشات</h3>
+                    <div class="chat-mgmt-actions flex gap8 ai-center">
+                        <input type="text" id="chatMgmtSearch" class="settings-input minw220" placeholder="ابحث في المحادثات">
                         <button id="newDirectMsgBtn" class="admin-btn info btn-xsmall"><i class="fas fa-paper-plane"></i> رسالة خاصة جديدة</button>
                     </div>
                 </div>
-                <div class="chat-mgmt-tabs" style="display:flex;gap:6px;margin:10px 0;">
+                <div class="chat-mgmt-tabs flex gap6 my10">
                     <button class="admin-btn btn-xsmall" data-tab="group">دردشات الفريق</button>
                     <button class="admin-btn btn-xsmall" data-tab="direct">الرسائل الخاصة</button>
                     <button class="admin-btn btn-xsmall" data-tab="ai">محادثات الذكاء الاصطناعي</button>
@@ -322,7 +341,7 @@
                         <ul id="chatMgmtAiList" class="admin-list"><!-- تعبئة AI --></ul>
                     </div>
                 </div>
-                <small style="color:var(--placeholder-color);display:block;margin-top:6px;">يمكنك النقر على محادثة لفتحها أو أرشفتها لاحقاً.</small>
+                <small class="placeholder block mt6">يمكنك النقر على محادثة لفتحها أو أرشفتها لاحقاً.</small>
             </div>
 
             <!-- Backup Management -->
@@ -343,7 +362,7 @@
                 </div>
                 <div class="backup-info">
                     <p id="lastBackupInfo"><i class="fas fa-info-circle"></i> لا توجد نسخ احتياطية بعد</p>
-                    <div id="backupLog" style="text-align:right; margin-top:8px;"></div>
+                    <div id="backupLog" class="tr mt8"></div>
                 </div>
             </div>
             <!-- Settings -->
@@ -368,8 +387,8 @@
         </div>
     </div>
 </section>
-	
-	 <!-- Footer -->
+        
+         <!-- Footer -->
     <footer class="footer">
                <div class="copyright-content">
                 <div class="designer-info">
@@ -391,8 +410,8 @@
                 </div>
             </div>
     </footer>
-	
-	<!-- أزرار الدردشة والذكاء الاصطناعي -->
+        
+        <!-- أزرار الدردشة والذكاء الاصطناعي -->
     <div class="chat-buttons-container">
         <button class="ai-toggle-btn" id="aiToggle">
             <span>اسأل الذكاء الصناعي</span>
@@ -402,7 +421,7 @@
         <button class="chat-toggle-btn" id="chatToggle">
             <span>دردشة الفريق</span>
             <i class="fas fa-comments"></i>
-            <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
+            <span class="notification-badge hidden" id="notificationBadge">0</span>
         </button>
          
     </div>
@@ -419,7 +438,7 @@
                     <i class="fas fa-volume-up"></i>
                 </button>
                 <button id="minimizeBtn"><i class="fas fa-minus"></i></button>
-				<button><i class="fa-solid fa-window-restore"></i></button>
+                                <button><i class="fa-solid fa-window-restore"></i></button>
                 <button id="closeBtn"><i class="fas fa-times"></i></button>
             </div>
         </div>
@@ -455,7 +474,7 @@
                     <i class="fas fa-volume-up"></i>
                 </button>
                 <button id="aiMinimizeBtn"><i class="fas fa-minus"></i></button>
-				<button><i class="fa-solid fa-window-restore"></i></button>
+                                <button><i class="fa-solid fa-window-restore"></i></button>
                 <button id="aiCloseBtn"><i class="fas fa-times"></i></button>
             </div>
         </div>
@@ -504,66 +523,16 @@
     </div>
 
 
-	
-	<!-- Include Supabase and services -->
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-    <script src="js/supabase-config.js"></script>
-    <script src="js/auth-service.js"></script>
-    <script src="js/chat-service.js"></script>
-    <script src="js/suppliers-service.js"></script>
+        
+        <!-- Include Supabase and services -->
     <script src="js/seed-categories.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
-    <script src="js/admin-logic.js"></script>
-    <script src="js/direct-chat-service.js"></script>
-    <script src="js/direct-chat-ui.js"></script>
-	
-	<!--  Javascript -->
-	<script src="js/nav.js"></script>
-    <script src="js/ai-config.js"></script>
-    <script src="js/chat.js"></script>
+        
+        <!--  Javascript -->
+        <script src="js/nav.js"></script>
+        <script src="js/chat.js"></script>
+        <script src="js/admin-page-init.js"></script>      
     <script src="js/theme.js"></script>
-    <script src="js/direct-chat-service.js"></script>
-    <script src="js/direct-chat-ui.js"></script>
-    <script>
-      // Tabs behavior for Chat Management
-      document.addEventListener('DOMContentLoaded', function(){
-        const tabs = document.querySelectorAll('#chatManagementSection .chat-mgmt-tabs [data-tab]');
-        const panes = {
-          group: document.getElementById('chatMgmtGroup'),
-          direct: document.getElementById('chatMgmtDirect'),
-          ai: document.getElementById('chatMgmtAi')
-        };
-        tabs.forEach(btn=>{
-          btn.addEventListener('click', ()=>{
-            const t = btn.getAttribute('data-tab');
-            Object.keys(panes).forEach(k=> panes[k].classList.toggle('hidden', k!==t));
-          });
-        });
-
-        // Quick new direct message from admin
-        const newBtn = document.getElementById('newDirectMsgBtn');
-        if (newBtn) newBtn.addEventListener('click', async ()=>{
-          try{
-            const uname = prompt('ادخل اسم المستخدم لإرسال رسالة خاصة');
-            if(!uname) return;
-            const { data, error } = await supabaseClient.from('users').select('id, username, full_name, role').ilike('username', uname).limit(1).single();
-            if(error || !data){ alert('لم يتم العثور على المستخدم'); return; }
-            if(window.openDirectChatByUser){ openDirectChatByUser(data.id, data.full_name || data.username, data.role || 'member'); }
-          }catch(e){ alert('تعذر فتح المحادثة'); }
-        });
-
-        // Quick DM small button near team chat
-        const dmQuick = document.getElementById('dmQuickBtn');
-        if (dmQuick) dmQuick.addEventListener('click', async ()=>{
-          try{
-            const uname = prompt('ادخل اسم المستخدم لفتح رسالة خاصة:');
-            if(!uname) return;
-            const { data, error } = await supabaseClient.from('users').select('id, username, full_name, role').ilike('username', uname).limit(1).single();
-            if(error || !data){ alert('لم يتم العثور على المستخدم'); return; }
-            if(window.openDirectChatByUser){ openDirectChatByUser(data.id, data.full_name || data.username, data.role || 'member'); }
-          }catch(e){ alert('تعذر فتح الرسالة الخاصة'); }
-        });
-      });
-    </script>
+    <script src="js/theme-init.js"></script>
 </body>
 </html>

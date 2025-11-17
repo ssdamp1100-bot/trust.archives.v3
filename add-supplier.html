@@ -4,26 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>اضافة مورد جديد</title>
-	
-	 <!-- Google fonts -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
+        
+         <!-- Google fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&family=Noto+Naskh+Arabic:wght@400..700&family=Noto+Sans+Arabic:wght@100..900&family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400..700&display=swap" rel="stylesheet">
     
-	
-	
-	 <!-- Icon Font Stylesheet -->
+        
+        
+         <!-- Icon Font Stylesheet -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-	
-	<!-- css Stylesheet -->
-   <link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/add-supplier.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
+        <!-- css Stylesheet -->
+           <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/add-supplier.css">
 </head>
 <style>
 
@@ -33,257 +33,434 @@
  
 </style>
  <body class="theme1">  
-  <script>
-    (function(){
-      try{
-        var savedTheme = localStorage.getItem('selectedTheme');
-        if(savedTheme){ document.body.className = savedTheme; }
-      }catch(e){}
-    })();
-  </script>
   <!-- زر تغيير الثيم -->
     <button class="change-theme" id="theme-toggle">
      <i class="fa-solid fa-palette"></i>
     </button>
     
-	
-	  <!-- Header -->  
-    <header class="header" id="header">
+        
+          <!-- Header -->  
+   <header class="header" id="header">
     <a href="dashboard.html" class="logo-container">
         <div class="logo"> </div>
         <div class="logo-text">أرشيف الثقة التجارية</div>
     </a>
-    <button class="nav-toggle"><i class="fas fa-align-left"></i></button>
+    <button class="nav-toggle" aria-label="Toggle navigation menu"><i class="fas fa-align-left"></i></button>
     <nav class="main-menu">
-        <a href="dashboard.html" class="menu-item"><i class="fas fa-home"></i> الرئيسية</a>
-		 <a href="products-board.html" class="menu-item"><i class="fa-solid fa-cart-plus"></i> المنتجات</a>
+        <a href="dashboard.html" class="menu-item "><i class="fas fa-home"></i> الرئيسية</a>
+        <a href="products-board.html" class="menu-item"><i class="fa-solid fa-cart-plus"></i> المنتجات</a>
         <a href="suppliers.html" class="menu-item "><i class="fas fa-truck"></i> الموردين</a>
         <a href="profile.html" class="menu-item"><i class="fas fa-user"></i> ملفي الشخصي</a>
-        <a href="add-product.html" class="menu-item "><i class="fas fa-plus-circle"></i> إضافة منتج</a>
-        <a href="add-supplier.html" class="menu-item active"><i class="fas fa-truck-loading "></i> اضافة مورد</a>
+        
+        <div class="dropdown">
+            <a href="#" class="menu-item dropdown-toggle">
+                <i class="fas fa-plus-circle"></i> إضافة <i class="fas fa-caret-down"></i>
+            </a>
+            <div class="dropdown-menu">
+                <a href="add-product.html" class="dropdown-item"><i class="fas fa-plus-circle"></i> إضافة منتج</a>
+                <a href="add-supplier.html" class="dropdown-item"><i class="fas fa-truck-loading "></i> إضافة مورد</a>
+				  <a href="add-customer.html" class="dropdown-item"><i class='fas fa-address-book'></i> اضافة عميل</a>
+				<a href="add-spare-part.html" class="dropdown-item"> <i class="fas fa-cogs"></i>  إضافة قطع غيار</a>
+				<a href="add-operational-accessories.html" class="dropdown-item"> <i class="fas fa-tools"></i>  إضافة مستلزمات التشغيل</a>
+				<a href="offer-price.html" class="dropdown-item"><i class='far fa-credit-card'></i>  انشاء عرض سعر</a>
+            </div>
+        </div>
+        <a href="index.html" class="menu-item logout-btn"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</a>
     </nav>
 </header>
 
-       <section id="add-supplier" class="add-supplier-section">
-        <div class="add-supplier-container" style="max-width: 800px;">
+      <section id="add-supplier" class="add-supplier-section">
+        <div class="add-supplier-container" >
             <div class="add-supplier-card">
                 <h2 class="add-supplier-title">
                     <i class="fas fa-truck-loading icon-primary"></i> إضافة مورد جديد
                 </h2>
                 
-                <form id="supplierForm" class="add-supplier-form">
-                    <div class="add-supplier-grid">
-                        <div class="add-supplier-group">
-                            <label for="add-supplier-name">
-                                <i class="fas fa-signature icon-primary"></i> اسم المورد *
-                            </label>
-                            <input type="text" id="add-supplier-name" placeholder="اسم الشركة أو المورد">
-                        </div>
-                        
-                        <div class="add-supplier-group">
-                            <label for="add-supplier-country">
-                                <i class="fas fa-globe-asia icon-primary"></i> البلد *
-                            </label>
-                            <input type="text" id="add-supplier-country" placeholder="اسم البلد">
-                        </div>
-                    </div>
-                    
-                    <div class="add-supplier-grid">
-                        <div class="add-supplier-group">
-                            <label>
-                                <i class="fas fa-industry icon-primary"></i> المجال *
-                            </label>
-                            <div class="checkbox-list">
-                                <label><input type="checkbox" name="industry" value="electronics"> <i class="fas fa-microchip icon-secondary"></i> الإلكترونيات</label>
-                                <label><input type="checkbox" name="industry" value="textiles"> <i class="fas fa-tshirt icon-secondary"></i> المنسوجات</label>
-                                <label><input type="checkbox" name="industry" value="food"> <i class="fas fa-utensils icon-secondary"></i> الأغذية</label>
-                                <label><input type="checkbox" name="industry" value="construction"> <i class="fas fa-hard-hat icon-secondary"></i> مواد البناء</label>
-                                <label><input type="checkbox" id="other-industry-checkbox" name="industry" value="other"> <i class="fas fa-ellipsis-h icon-secondary"></i> مجال آخر</label>
-                            </div>
-                            <div id="other-industry-input" class="other-industry-input">
-                                <input type="text" placeholder="حدد المجال الآخر">
-                            </div>
-                        </div>
-                        
-                        <div class="add-supplier-group">
-                            <label for="add-supplier-logo">
-                                <i class="fas fa-image icon-primary"></i> شعار المورد
-                            </label>
-                            <div class="add-supplier-file-container">
-                                <input type="file" id="add-supplier-logo" accept="image/*" class="add-supplier-file-input">
-                                <label for="add-supplier-logo" class="add-supplier-file-label">
-                                    <i class="fas fa-upload"></i> رفع صورة الشعار
-                                </label>
-                            </div>
-                            <div id="file-info" class="file-info" style="display: none;">
-                                <i class="fas fa-check-circle"></i>
-                                <span id="file-name"></span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="add-supplier-group">
-                        <label for="add-supplier-description">
-                            <i class="fas fa-file-alt icon-primary"></i> وصف المورد
-                        </label>
-                        <textarea id="add-supplier-description" placeholder="وصف مختصر عن المورد وخدماته" rows="2"></textarea>
-                    </div>
-                    
-                    <!-- الحقول الجديدة المضافة -->
-                    <div class="add-supplier-grid">
-                        <div class="add-supplier-group">
-                            <label for="add-supplier-experience">
-                                <i class="fas fa-calendar-alt icon-primary"></i> سنوات العمل والخبرة
-                            </label>
-                            <input type="text" id="add-supplier-experience" placeholder="مثال: 5-10 سنوات">
-                        </div>
-                        
-                        <div class="add-supplier-group">
-                            <label>
-                                <i class="fas fa-credit-card icon-primary"></i> طرق الدفع المقبولة
-                            </label>
-                            <div class="checkbox-list">
-                                <label><input type="checkbox" name="payment" value="cash"> <i class="fas fa-money-bill-wave icon-secondary"></i> نقداً</label>
-                                <label><input type="checkbox" name="payment" value="transfer"> <i class="fas fa-exchange-alt icon-secondary"></i> حوالة بنكية</label>
-                                <label><input type="checkbox" name="payment" value="lc"> <i class="fas fa-file-invoice-dollar icon-secondary"></i> اعتماد بنكي</label>
-                                <label><input type="checkbox" name="payment" value="paypal"> <i class="fab fa-paypal icon-secondary"></i> PayPal</label>
-                                <label><input type="checkbox" name="payment" value="other"> <i class="fas fa-ellipsis-h icon-secondary"></i> أخرى</label>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="add-supplier-group">
-                        <label>
-                            <i class="fas fa-shipping-fast icon-primary"></i> طرق الشحن المتاحة
-                        </label>
-                        <div class="checkbox-list">
-                            <label><input type="checkbox" name="shipping" value="sea"> <i class="fas fa-ship icon-secondary"></i> شحن بحري</label>
-                            <label><input type="checkbox" name="shipping" value="air"> <i class="fas fa-plane icon-secondary"></i> شحن جوي</label>
-                            <label><input type="checkbox" name="shipping" value="land"> <i class="fas fa-truck icon-secondary"></i> شحن بري</label>
-                            <label><input type="checkbox" name="shipping" value="express"> <i class="fas fa-shipping-fast icon-secondary"></i> بريد سريع</label>
-                        </div>
-                    </div>
-                    
-                    <div class="add-supplier-group">
-                        <label for="add-supplier-products">
-                            <i class="fas fa-boxes icon-primary"></i> المنتجات الرئيسية
-                        </label>
-                        <div class="todo-list">
-                            <div class="todo-input-group">
-                                <input type="text" id="product-input" placeholder="أدخل منتجًا رئيسيًا">
-                                <button type="button" id="add-product-btn" class="add-supplier-add-field-btn">+</button>
-                            </div>
-                            <div id="products-list" class="todo-list-items"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="add-supplier-group">
-                        <label for="add-supplier-certificates">
-                            <i class="fas fa-award icon-primary"></i> الشهادات والجودة
-                        </label>
-                        <div class="add-supplier-checkbox-group">
-                            <label><input type="checkbox" name="certificates" value="iso9001"> <i class="fas fa-certificate icon-secondary"></i> ISO 9001</label>
-                            <label><input type="checkbox" name="certificates" value="iso14001"> <i class="fas fa-certificate icon-secondary"></i> ISO 14001</label>
-                            <label><input type="checkbox" name="certificates" value="ce"> <i class="fas fa-certificate icon-secondary"></i> CE</label>
-                            <label><input type="checkbox" name="certificates" value="rohs"> <i class="fas fa-certificate icon-secondary"></i> RoHS</label>
-                            <label><input type="checkbox" name="certificates" value="other"> <i class="fas fa-ellipsis-h icon-secondary"></i> أخرى</label>
-                        </div>
-                    </div>
-                    
-                    <div class="add-supplier-contact-section">
-                        <h4 class="add-supplier-section-title">
-                            <i class="fas fa-address-card icon-primary"></i> معلومات الاتصال
-                        </h4>
-                        
-                        <div class="add-supplier-dynamic-fields" id="phoneFields">
-                            <label>
-                                <i class="fas fa-phone icon-primary"></i> أرقام الهواتف
-                            </label>
-                            <div class="add-supplier-field-group">
-                                <input type="tel" placeholder="+86 138 0013 8000" class="phone-input">
-                                <button type="button" onclick="addPhoneField()" class="add-supplier-add-field-btn">+</button>
-                            </div>
-                        </div>
-                        
-                        <div class="add-supplier-dynamic-fields" id="emailFields">
-                            <label>
-                                <i class="fas fa-envelope icon-primary"></i> البريد الإلكتروني
-                            </label>
-                            <div class="add-supplier-field-group">
-                                <input type="email" placeholder="supplier@company.com" class="email-input">
-                                <button type="button" onclick="addEmailField()" class="add-supplier-add-field-btn">+</button>
-                            </div>
-                        </div>
-                        
-                        <div class="add-supplier-grid add-supplier-contact-grid">
-                            <div class="add-supplier-group">
-                                <label for="add-supplier-whatsapp">
-                                    <i class="fab fa-whatsapp icon-primary"></i> واتساب
-                                </label>
-                                <input type="tel" id="add-supplier-whatsapp" placeholder="+86 138 0013 8000">
-                            </div>
-                            <div class="add-supplier-group">
-                                <label for="add-supplier-wechat">
-                                    <i class="fab fa-weixin icon-primary"></i> ويتشات
-                                </label>
-                                <input type="text" id="add-supplier-wechat" placeholder="wechat_id">
-                            </div>
- 
-                            
-                        </div>
-                        
-                        <div class="add-supplier-group">
-                            <label for="add-supplier-website">
-                                <i class="fas fa-globe icon-primary"></i> الموقع الإلكتروني
-                            </label>
-                            <input type="url" id="add-supplier-website" placeholder="https://www.supplier.com">
-                        </div>
-                        
-                        <div class="add-supplier-group">
-                            <label for="other-contact-methods">
-                                <i class="fas fa-comments icon-primary"></i> وسائل تواصل أخرى
-                            </label>
-                            <div class="todo-list">
-                                <div class="todo-input-group">
-                                    <input type="text" id="contact-method-input" placeholder="أدخل وسيلة تواصل">
-                                    <button type="button" id="add-contact-method-btn" class="add-supplier-add-field-btn">+</button>
-                                </div>
-                                <div id="contact-methods-list" class="todo-list-items"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="add-supplier-group">
-                            <label for="add-supplier-address">
-                                <i class="fas fa-map-marker-alt icon-primary"></i> العنوان
-                            </label>
-                            <textarea id="add-supplier-address" placeholder="العنوان التفصيلي للمورد" rows="2"></textarea>
-                        </div>
-                        
-                        <div class="add-supplier-group">
-                            <label for="add-supplier-map">
-                                <i class="fas fa-map-marked-alt icon-primary"></i> رابط الخريطة (Google Maps)
-                            </label>
-                            <input type="url" id="add-supplier-map" placeholder="https://goo.gl/maps/...">
-                        </div>
-                    </div>
-                    
-                    <div class="add-supplier-form-actions">
-                        <button type="submit" class="add-supplier-submit-btn">
-                            <i class="fas fa-save"></i> حفظ المورد
-                        </button>
-                        <a href="suppliers.html" class="add-supplier-cancel-btn">
-                            <i class="fas fa-times"></i> إلغاء
-                        </a>
-						 <a href="dashboard.html" class="back2-btn">
-                            <i class='fas fa-angle-double-right'></i> العودة الى الصفحة الرئيسية
-                        </a>
-                    </div>
-                </form>
+              <form id="supplierForm" class="add-supplier-form">
+    <h4 class="add-supplier-section-title"><i class="fas fa-id-card icon-primary"></i> معلومات الاتصال والتعريف الأساسية</h4>
+    <div class="add-supplier-grid">
+        <div class="add-supplier-group">
+            <label for="add-supplier-name-ar">
+                <i class="fas fa-signature icon-primary"></i> اسم الشركة الموردة (عربي) *
+            </label>
+            <input type="text" id="add-supplier-name-ar" name="supplier_name_ar" placeholder="اسم الشركة أو المورد" required>
+        </div>
+
+        <div class="add-supplier-group">
+            <label for="add-supplier-name-en">
+                <i class="fas fa-signature icon-primary"></i> اسم الشركة الموردة (إنجليزي) *
+            </label>
+            <input type="text" id="add-supplier-name-en" name="supplier_name_en" placeholder="Company Name" required>
+        </div>
+    </div>
+
+    <div class="add-supplier-grid">
+        <div class="add-supplier-group">
+            <label for="add-supplier-country">
+                <i class="fas fa-globe-asia icon-primary"></i> بلد المنشأ *
+            </label>
+            <input type="text" id="add-supplier-country" name="supplier_country" placeholder="اسم البلد" required>
+        </div>
+
+        <div class="add-supplier-group">
+            <label for="add-supplier-foundation-year">
+                <i class="fas fa-calendar-alt icon-primary"></i> سنة التأسيس
+            </label>
+            <input type="number" id="add-supplier-foundation-year" name="foundation_year" placeholder="مثال: 2005" min="1900" max="2099">
+        </div>
+    </div>
+    
+    <div class="add-supplier-group">
+        <label for="add-supplier-website">
+            <i class="fas fa-globe icon-primary"></i> الموقع الإلكتروني الرسمي
+        </label>
+        <input type="url" id="add-supplier-website" name="supplier_website" placeholder="https://www.supplier.com">
+    </div>
+    
+    <div class="add-supplier-group">
+        <label for="add-supplier-logo">
+            <i class="fas fa-image icon-primary"></i> شعار الشركة (للملف التعريفي)
+        </label>
+        <div class="add-supplier-file-container">
+            <input type="file" id="add-supplier-logo" name="supplier_logo" accept="image/*" class="add-supplier-file-input">
+            <label for="add-supplier-logo" class="add-supplier-file-label">
+                <i class="fas fa-upload"></i> رفع صورة الشعار
+            </label>
+        </div>
+        <div id="file-info" class="file-info hidden">
+            <i class="fas fa-check-circle"></i>
+            <span id="file-name"></span>
+        </div>
+    </div>
+
+    <div class="add-supplier-contact-section">
+        <h5 class="add-supplier-section-title-sub"><i class="fas fa-user-tie icon-secondary"></i> جهة الاتصال الرئيسية</h5>
+        
+        <div class="add-supplier-grid">
+            <div class="add-supplier-group">
+                <label for="contact-name"><i class="fas fa-user icon-primary"></i> الاسم</label>
+                <input type="text" id="contact-name" name="contact_name" placeholder="اسم جهة الاتصال">
+            </div>
+            <div class="add-supplier-group">
+                <label for="contact-title"><i class="fas fa-briefcase icon-primary"></i> الوظيفة</label>
+                <input type="text" id="contact-title" name="contact_title" placeholder="مثال: مدير المبيعات">
+            </div>
+        </div>
+
+        <div class="add-supplier-grid">
+            <div class="add-supplier-group">
+                <label for="contact-email"><i class="fas fa-envelope icon-primary"></i> البريد الإلكتروني</label>
+                <input type="email" id="contact-email" name="contact_email" placeholder="contact@company.com">
+            </div>
+            <div class="add-supplier-group">
+                <label for="contact-phone"><i class="fas fa-phone icon-primary"></i> رقم الهاتف</label>
+                <input type="tel" id="contact-phone" name="contact_phone" placeholder="+86 138 0000 0000">
+            </div>
+        </div>
+        
+        <div class="add-supplier-grid add-supplier-contact-grid">
+            <div class="add-supplier-group">
+                <label for="add-supplier-whatsapp"><i class="fab fa-whatsapp icon-primary"></i> واتساب</label>
+                <input type="tel" id="add-supplier-whatsapp" name="supplier_whatsapp" placeholder="+86 138 0013 8000">
+            </div>
+            <div class="add-supplier-group">
+                <label for="add-supplier-wechat"><i class="fab fa-weixin icon-primary"></i> ويتشات</label>
+                <input type="text" id="add-supplier-wechat" name="supplier_wechat" placeholder="wechat_id">
+            </div>
+        </div>
+
+        <div class="add-supplier-group">
+            <label for="preferred-language">
+                <i class="fas fa-language icon-primary"></i> لغة التواصل المفضلة
+            </label>
+            <select id="preferred-language" name="preferred_language">
+                <option value="">اختر اللغة</option>
+                <option value="arabic">العربية</option>
+                <option value="english" selected>الإنجليزية</option>
+                <option value="chinese">الصينية (Mandarin)</option>
+                <option value="other">أخرى</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="add-supplier-group">
+        <label for="add-supplier-address">
+            <i class="fas fa-map-marker-alt icon-primary"></i> عنوان المصنع / المكتب الرئيسي
+        </label>
+        <textarea id="add-supplier-address" name="supplier_address" placeholder="العنوان التفصيلي للمورد" rows="2"></textarea>
+    </div>
+    
+    <div class="add-supplier-group">
+        <label for="add-supplier-map">
+            <i class="fas fa-map-marked-alt icon-primary"></i> رابط الخريطة (Google Maps)
+        </label>
+        <input type="url" id="add-supplier-map" name="supplier_map_link" placeholder="https://goo.gl/maps/...">
+    </div>
+
+    <h4 class="add-supplier-section-title"><i class="fas fa-cogs icon-primary"></i> التخصص الفني والقدرات</h4>
+    
+    <div class="add-supplier-group">
+        <label>
+            <i class="fas fa-industry icon-primary"></i> التخصص الرئيسي للمورد (المجال) *
+        </label>
+        <div class="checkbox-list">
+            <label><input type="checkbox" name="industry" value="البريكاست"> <i class="fas fa-building icon-secondary"></i> البريكاست</label>
+            <label><input type="checkbox" name="industry" value="الماكينات"> <i class="fas fa-cogs icon-secondary"></i> ماكينات البناء</label>
+            <label><input type="checkbox" name="industry" value="خطوط الإنتاج"> <i class="fas fa-industry icon-secondary"></i> خطوط الإنتاج</label>
+            <label><input type="checkbox" name="industry" value="المعدات الصناعية"> <i class="fas fa-tools icon-secondary"></i> المعدات الصناعية</label>
+            <label><input type="checkbox" id="other-industry-checkbox" name="industry" value="other"> <i class="fas fa-ellipsis-h icon-secondary"></i> تخصص آخر</label>
+        </div>
+        <div id="other-industry-input" class="other-industry-input">
+            <input type="text" placeholder="حدد التخصص الآخر">
+        </div>
+    </div>
+    
+    <div class="add-supplier-group">
+        <label for="add-supplier-description">
+            <i class="fas fa-file-alt icon-primary"></i> وصف مختصر للقدرات الفنية
+        </label>
+        <textarea id="add-supplier-description" name="supplier_description" placeholder="وصف مختصر عن المورد ومنتجاته الرئيسية" rows="3"></textarea>
+    </div>
+
+    <div class="add-supplier-group">
+        <label for="add-supplier-products">
+            <i class="fas fa-boxes icon-primary"></i> المنتجات الرئيسية
+        </label>
+        <div class="todo-list">
+            <div class="todo-input-group">
+                <input type="text" id="product-input" placeholder="أدخل منتجًا رئيسيًا">
+                <button type="button" id="add-product-btn" class="add-supplier-add-field-btn">+</button>
+            </div>
+            <div id="products-list" class="todo-list-items"></div>
+        </div>
+    </div>
+
+    <div class="add-supplier-grid">
+        <div class="add-supplier-group">
+            <label for="company-size">
+                <i class="fas fa-users icon-primary"></i> حجم الشركة (عدد الموظفين)
+            </label>
+            <input type="number" id="company-size" name="company_size" placeholder="مثال: 50" min="1">
+        </div>
+
+        <div class="add-supplier-group">
+            <label for="production-capacity">
+                <i class="fas fa-tachometer-alt icon-primary"></i> الطاقة الإنتاجية السنوية
+            </label>
+            <input type="text" id="production-capacity" name="production_capacity" placeholder="مثال: 1000 طن/سنة">
+        </div>
+    </div>
+    
+    <div class="add-supplier-grid">
+        <div class="add-supplier-group">
+            <label for="customization-ability">
+                <i class="fas fa-magic icon-primary"></i> القدرة على التخصيص
+            </label>
+            <select id="customization-ability" name="customization_ability">
+                <option value="yes">نعم، متوفرة</option>
+                <option value="no">لا</option>
+            </select>
+        </div>
+        
+        <div class="add-supplier-group">
+            <label for="engineers-count">
+                <i class="fas fa-hard-hat icon-primary"></i> عدد المهندسين والفنيين
+            </label>
+            <input type="number" id="engineers-count" name="engineers_count" placeholder="مثال: 15" min="0">
+        </div>
+    </div>
+
+    <div class="add-supplier-group">
+        <label for="main-markets">
+            <i class="fas fa-chart-area icon-primary"></i> الأسواق الرئيسية الحالية
+        </label>
+        <input type="text" id="main-markets" name="main_markets" placeholder="مثال: السعودية، مصر، ألمانيا">
+    </div>
+
+
+    <h4 class="add-supplier-section-title"><i class="fas fa-award icon-primary"></i> معايير الجودة والتوثيق</h4>
+    
+    <div class="add-supplier-group">
+        <label for="add-supplier-certificates">
+            <i class="fas fa-certificate icon-primary"></i> شهادات الجودة المعتمدة
+        </label>
+        <div class="add-supplier-checkbox-group">
+            <label><input type="checkbox" name="certificates" value="iso9001"> <i class="fas fa-certificate icon-secondary"></i> ISO 9001</label>
+            <label><input type="checkbox" name="certificates" value="iso14001"> <i class="fas fa-certificate icon-secondary"></i> ISO 14001</label>
+            <label><input type="checkbox" name="certificates" value="ce"> <i class="fas fa-certificate icon-secondary"></i> CE</label>
+            <label><input type="checkbox" name="certificates" value="tuv"> <i class="fas fa-certificate icon-secondary"></i> TUV</label>
+            <label><input type="checkbox" name="certificates" value="asme"> <i class="fas fa-certificate icon-secondary"></i> ASME</label>
+            <label><input type="checkbox" name="certificates" value="rohs"> <i class="fas fa-certificate icon-secondary"></i> RoHS</label>
+            <label><input type="checkbox" name="certificates" value="other"> <i class="fas fa-ellipsis-h icon-secondary"></i> أخرى</label>
+        </div>
+    </div>
+
+    <div class="add-supplier-grid">
+        <div class="add-supplier-group">
+            <label for="test-reports-available">
+                <i class="fas fa-clipboard-list icon-primary"></i> تقارير اختبار المنتجات (Test Reports)
+            </label>
+            <select id="test-reports-available" name="test_reports_available">
+                <option value="available">متوفرة</option>
+                <option value="not_available">غير متوفرة</option>
+            </select>
+        </div>
+
+        <div class="add-supplier-group">
+            <label for="audit-possibility">
+                <i class="fas fa-eye icon-primary"></i> إمكانية زيارة/تدقيق المصنع
+            </label>
+            <select id="audit-possibility" name="audit_possibility">
+                <option value="yes">نعم</option>
+                <option value="no">لا</option>
+            </select>
+        </div>
+    </div>
+
+
+    <h4 class="add-supplier-section-title"><i class="fas fa-handshake icon-primary"></i> الشروط التجارية واللوجستية (B2B)</h4>
+    
+    <div class="add-supplier-group">
+        <label>
+            <i class="fas fa-credit-card icon-primary"></i> شروط الدفع المعتمدة
+        </label>
+        <div class="checkbox-list">
+            <label><input type="checkbox" name="payment_terms" value="cash_advanced"> <i class="fas fa-percent icon-secondary"></i> دفع مقدم (نسبة)</label>
+            <label><input type="checkbox" name="payment_terms" value="transfer"> <i class="fas fa-exchange-alt icon-secondary"></i> حوالة بنكية (T/T)</label>
+            <label><input type="checkbox" name="payment_terms" value="lc"> <i class="fas fa-file-invoice-dollar icon-secondary"></i> اعتماد مستندي (L/C)</label>
+            <label><input type="checkbox" name="payment_terms" value="deferred"> <i class="fas fa-clock icon-secondary"></i> دفع مؤجل (After Shipment)</label>
+            <label><input type="checkbox" name="payment_terms" value="other"> <i class="fas fa-ellipsis-h icon-secondary"></i> أخرى</label>
+        </div>
+    </div>
+
+    <div class="add-supplier-grid">
+        <div class="add-supplier-group">
+            <label for="base-currency">
+                <i class="fas fa-dollar-sign icon-primary"></i> العملة الأساسية للتسعير
+            </label>
+            <select id="base-currency" name="base_currency">
+                <option value="usd" selected>USD (دولار أمريكي)</option>
+                <option value="eur">EUR (يورو)</option>
+                <option value="cny">CNY (اليوان الصيني)</option>
+                <option value="other">عملة أخرى</option>
+            </select>
+        </div>
+
+        <div class="add-supplier-group">
+            <label for="incoterms">
+                <i class="fas fa-file-contract icon-primary"></i> شروط التجارة الدولية (Incoterms) المفضلة
+            </label>
+            <select id="incoterms" name="incoterms">
+                <option value="fob" selected>FOB</option>
+                <option value="cif">CIF</option>
+                <option value="exw">EXW</option>
+                <option value="cfr">CFR</option>
+                <option value="other">أخرى</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="add-supplier-grid">
+        <div class="add-supplier-group">
+            <label for="moq">
+                <i class="fas fa-boxes icon-primary"></i> الحد الأدنى لكمية الطلب (MOQ)
+            </label>
+            <input type="text" id="moq" name="moq" placeholder="مثال: 10 وحدات أو 5 أطنان">
+        </div>
+        
+        <div class="add-supplier-group">
+            <label for="warranty-period">
+                <i class="fas fa-shield-alt icon-primary"></i> فترة الضمان القياسية
+            </label>
+            <input type="text" id="warranty-period" name="warranty_period" placeholder="مثال: 12 شهرًا أو سنة">
+        </div>
+    </div>
+
+    <div class="add-supplier-group">
+        <label>
+            <i class="fas fa-shipping-fast icon-primary"></i> طرق الشحن المتاحة
+        </label>
+        <div class="checkbox-list">
+            <label><input type="checkbox" name="shipping" value="sea"> <i class="fas fa-ship icon-secondary"></i> شحن بحري</label>
+            <label><input type="checkbox" name="shipping" value="air"> <i class="fas fa-plane icon-secondary"></i> شحن جوي</label>
+            <label><input type="checkbox" name="shipping" value="land"> <i class="fas fa-truck icon-secondary"></i> شحن بري</label>
+        </div>
+    </div>
+    
+    <div class="add-supplier-group">
+        <label for="average-shipping-time">
+            <i class="fas fa-clock icon-primary"></i> متوسط زمن الشحن (لأقرب ميناء)
+        </label>
+        <input type="text" id="average-shipping-time" name="average_shipping_time" placeholder="مثال: 25-35 يومًا">
+    </div>
+
+    <h4 class="add-supplier-section-title"><i class="fas fa-folder-open icon-primary"></i> المرفقات والتوثيق الداخلي</h4>
+    
+    <div class="add-supplier-grid">
+        <div class="add-supplier-group">
+            <label for="supplier-status">
+                <i class="fas fa-tasks icon-primary"></i> حالة المورد في النظام
+            </label>
+            <select id="supplier-status" name="supplier_status">
+                <option value="new" selected>جديد</option>
+                <option value="under_review">قيد المراجعة</option>
+                <option value="approved">معتمد</option>
+                <option value="suspended">موقوف</option>
+            </select>
+        </div>
+        <div></div>
+    </div>
+    
+    <div class="add-supplier-grid">
+        <div class="add-supplier-group">
+            <label for="company-profile-file"><i class="fas fa-file-pdf icon-primary"></i> ملف تعريفي بالشركة (PDF)</label>
+            <div class="add-supplier-file-container">
+                <input type="file" id="company-profile-file" name="company_profile_file" accept=".pdf" class="add-supplier-file-input">
+                <label for="company-profile-file" class="add-supplier-file-label"><i class="fas fa-upload"></i> رفع الملف التعريفي</label>
+            </div>
+        </div>
+
+        <div class="add-supplier-group">
+            <label for="catalogue-file"><i class="fas fa-book-open icon-primary"></i> كاتلوج المنتجات العام (PDF)</label>
+            <div class="add-supplier-file-container">
+                <input type="file" id="catalogue-file" name="catalogue_file" accept=".pdf" class="add-supplier-file-input">
+                <label for="catalogue-file" class="add-supplier-file-label"><i class="fas fa-upload"></i> رفع الكاتلوج</label>
+            </div>
+        </div>
+    </div>
+    
+    <div class="add-supplier-group">
+        <label for="quality-certificates-file"><i class="fas fa-scroll icon-primary"></i> نسخة من شهادات الجودة المذكورة</label>
+        <div class="add-supplier-file-container">
+            <input type="file" id="quality-certificates-file" name="quality_certificates_file" accept=".pdf,.zip" class="add-supplier-file-input" multiple>
+            <label for="quality-certificates-file" class="add-supplier-file-label"><i class="fas fa-upload"></i> رفع الشهادات (يمكن اختيار أكثر من ملف)</label>
+        </div>
+    </div>
+
+    <div class="add-supplier-group">
+        <label for="internal-notes">
+            <i class="fas fa-comment-dots icon-primary"></i> ملاحظات داخلية حول المورد (للاستخدام الخاص)
+        </label>
+        <textarea id="internal-notes" name="internal_notes" placeholder="ملاحظات وتقييمات داخلية خاصة بفريق العمل" rows="3"></textarea>
+    </div>
+
+    <div class="add-supplier-form-actions">
+        <button type="submit" class="add-supplier-submit-btn">
+            <i class="fas fa-save"></i> حفظ المورد
+        </button>
+        <a href="suppliers.html" class="add-supplier-cancel-btn">
+            <i class="fas fa-times"></i> إلغاء
+        </a>
+        <a href="dashboard.html" class="back2-btn">
+            <i class='fas fa-angle-double-right'></i> العودة الى الصفحة الرئيسية
+        </a>
+    </div>
+</form>
             </div>
         </div>
     </section>
-	
-            <!-- Footer -->
+        
+            <!-- Footer 
     <footer class="footer">
                <div class="copyright-content">
                 <div class="designer-info">
@@ -304,7 +481,7 @@
                     </a>
                 </div>
             </div>
-    </footer>
+    </footer>-->
 
     <!-- أزرار الدردشة والذكاء الاصطناعي -->
     <div class="chat-buttons-container">
@@ -316,7 +493,7 @@
         <button class="chat-toggle-btn" id="chatToggle">
             <span>دردشة الفريق</span>
             <i class="fas fa-comments"></i>
-            <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
+            <span class="notification-badge hidden" id="notificationBadge">0</span>
         </button>
     </div>
     
@@ -416,21 +593,15 @@
         </audio>
     </div>
 
-	
-    <!-- تم نقل جميع المنطق إلى js/add-supplier-logic.js -->
-	<!-- Include Supabase and services -->
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-    <script src="js/supabase-config.js"></script>
-    <script src="js/auth-service.js"></script>
-    <script src="js/suppliers-service.js"></script>
-    <script src="js/chat-service.js"></script>
-    <script src="js/ai-config.js"></script>
-    <script src="js/chat.js"></script>
+        
+        <!-- Include Supabase and services -->
+    <script src="js/theme-init.js"></script>
+    <script src="js/onclick-handlers.js"></script>
     <script src="js/form-autosave.js"></script>
-    <script src="js/add-supplier-logic.js"></script>
     
-	<!--  Javascript -->
-	 <script src="js/nav.js"></script>
-	<script src="js/theme.js"></script>
+    <!--  Javascript -->
+    <script src="js/nav.js"></script>
+    <script src="js/chat.js"></script>     
+    <script src="js/theme.js"></script>
 </body>
 </html>

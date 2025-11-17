@@ -27,33 +27,39 @@
 </head>
 
 <body class="theme1">
- <script>
-    (function(){
-      try{
-        var savedTheme = localStorage.getItem('selectedTheme');
-        if(savedTheme){ document.body.className = savedTheme; }
-      }catch(e){}
-    })();
-  </script>
+    
     <!-- ========== زر تغيير الثيم ========== -->
     <button class="change-theme" id="theme-toggle">
         <i class="fa-solid fa-palette"></i>
     </button>
 
       <!-- Header -->  
-    <header class="header" id="header">
+<header class="header" id="header">
     <a href="dashboard.html" class="logo-container">
         <div class="logo"> </div>
         <div class="logo-text">أرشيف الثقة التجارية</div>
     </a>
-    <button class="nav-toggle"><i class="fas fa-align-left"></i></button>
+    <button class="nav-toggle" aria-label="Toggle navigation menu"><i class="fas fa-align-left"></i></button>
     <nav class="main-menu">
-        <a href="dashboard.html" class="menu-item"><i class="fas fa-home"></i> الرئيسية</a>
-		 <a href="products-board.html" class="menu-item"><i class="fa-solid fa-cart-plus"></i> المنتجات</a>
+        <a href="dashboard.html" class="menu-item "><i class="fas fa-home"></i> الرئيسية</a>
+        <a href="products-board.html" class="menu-item"><i class="fa-solid fa-cart-plus"></i> المنتجات</a>
         <a href="suppliers.html" class="menu-item "><i class="fas fa-truck"></i> الموردين</a>
         <a href="profile.html" class="menu-item"><i class="fas fa-user"></i> ملفي الشخصي</a>
-        <a href="add-product.html" class="menu-item "><i class="fas fa-plus-circle"></i> إضافة منتج</a>
-        <a href="add-supplier.html" class="menu-item "><i class="fas fa-truck-loading "></i> اضافة مورد</a>
+        
+        <div class="dropdown">
+            <a href="#" class="menu-item dropdown-toggle">
+                <i class="fas fa-plus-circle"></i> إضافة <i class="fas fa-caret-down"></i>
+            </a>
+            <div class="dropdown-menu">
+                <a href="add-product.html" class="dropdown-item"><i class="fas fa-plus-circle"></i> إضافة منتج</a>
+                <a href="add-supplier.html" class="dropdown-item"><i class="fas fa-truck-loading "></i> إضافة مورد</a>
+				  <a href="add-customer.html" class="dropdown-item"><i class='fas fa-address-book'></i> اضافة عميل</a>
+				<a href="add-spare-part.html" class="dropdown-item"> <i class="fas fa-cogs"></i>  إضافة قطع غيار</a>
+				<a href="add-operational-accessories.html" class="dropdown-item"> <i class="fas fa-tools"></i>  إضافة مستلزمات التشغيل</a>
+				<a href="offer-price.html" class="dropdown-item"><i class='far fa-credit-card'></i>  انشاء عرض سعر</a>
+            </div>
+        </div>
+        <a href="index.html" class="menu-item logout-btn"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</a>
     </nav>
 </header>
 
@@ -119,6 +125,18 @@
                 </div>
                 <div class="info-item3">
                     <div>
+                        <div class="info-label">الاسم الأول</div>
+                        <div class="info-value" id="firstName">...</div>
+                    </div>
+                </div>
+                <div class="info-item3">
+                    <div>
+                        <div class="info-label">اسم العائلة</div>
+                        <div class="info-value" id="lastName">...</div>
+                    </div>
+                </div>
+                <div class="info-item3">
+                    <div>
                         <div class="info-label">البلد</div>
                         <div class="info-value" id="country">...</div>
                     </div>
@@ -131,6 +149,18 @@
                 </div>
                 <div class="info-item3">
                     <div>
+                        <div class="info-label">تاريخ الميلاد</div>
+                        <div class="info-value" id="birthDate">...</div>
+                    </div>
+                </div>
+                <div class="info-item3">
+                    <div>
+                        <div class="info-label">الجنس</div>
+                        <div class="info-value" id="gender">...</div>
+                    </div>
+                </div>
+                <div class="info-item3">
+                    <div>
                         <div class="info-label">السكن</div>
                         <div class="info-value" id="address">...</div>
                     </div>
@@ -139,6 +169,12 @@
                     <div>
                         <div class="info-label">اسم المستخدم</div>
                         <div class="info-value2" id="username">...</div>
+                    </div>
+                </div>
+                <div class="info-item3">
+                    <div>
+                        <div class="info-label">الدور</div>
+                        <div class="info-value2" id="userRole">...</div>
                     </div>
                 </div>
                 <div class="info-item3">
@@ -171,6 +207,14 @@
                 </div>
                 <div class="contact-item3">
                     <div>
+                        <div class="contact-label">أرقام هواتف إضافية</div>
+                        <ul class="phone-list" id="phonesList">
+                            <!-- <li>+967 7xx xxx xxx</li> -->
+                        </ul>
+                    </div>
+                </div>
+                <div class="contact-item3">
+                    <div>
                         <div class="contact-label">البريد الإلكتروني</div>
                         <div class="contact-value2" id="email">...</div>
                     </div>
@@ -190,6 +234,14 @@
                     </div>
                     <button class="contact-btn" id="notesBtn"><i class="fas fa-sticky-note"></i></button>
                 </div>
+            </div>
+
+            <!-- ========== قسم النبذة الشخصية ========== -->
+            <div class="info-section-title" id="bioSectionHeader">
+                <h2><i class="fas fa-pencil-alt"></i> النبذة الشخصية</h2>
+            </div>
+            <div class="bio-box">
+                <p class="bio-text" id="bio">...</p>
             </div>
         </div>
 
@@ -214,7 +266,7 @@
                     </select>
                 </div>
                 
-                <div class="single-user-form-group" id="deductAmountGroup" style="display: none;">
+                <div class="single-user-form-group hidden" id="deductAmountGroup">
                     <label for="deductAmount">عدد النقاط المراد خصمها</label>
                     <input type="number" id="deductAmount" class="single-user-form-control" min="1" placeholder="أدخل عدد النقاط">
                 </div>
@@ -298,7 +350,7 @@
         <button class="chat-toggle-btn" id="chatToggle">
             <span>دردشة الفريق</span>
             <i class="fas fa-comments"></i>
-            <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
+            <span class="notification-badge hidden" id="notificationBadge">0</span>
         </button>
     </div>
     
@@ -401,15 +453,11 @@
 
     <!-- ========== الأكواد البرمجية ========== -->
     <!-- Include Supabase and services -->
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-    <script src="js/supabase-config.js"></script>
-    <script src="js/auth-service.js"></script>
-    <script src="js/chat-service.js"></script>
     
     <!--  Javascript -->
-	 <script src="js/nav.js"></script>
-    <script src="js/chat.js"></script>
+    <script src="js/theme-init.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/chat.js"></script>     
     <script src="js/theme.js"></script>
-    <script src="js/single-user-logic.js"></script>
 </body>
 </html>

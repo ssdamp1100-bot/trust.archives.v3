@@ -4,40 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>لوحة المنتجات - أرشيف الثقة التجارية</title>
-	
-	  <!-- Google fonts -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
+        
+          <!-- Google fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&family=Noto+Naskh+Arabic:wght@400..700&family=Noto+Sans+Arabic:wght@100..900&family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400..700&display=swap" rel="stylesheet">
     
-	
-	
-	 <!-- Icon Font Stylesheet -->
+        
+        
+         <!-- Icon Font Stylesheet -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-	<!-- css Stylesheet -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- css Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/products-board.css">
+        <link rel="stylesheet" href="css/products-board.css">
 </head>
 
 <body class="theme1">  
-  <script>
-    // Early theme bootstrap to prevent flash
-    (function(){
-      try{
-        var savedTheme = localStorage.getItem('selectedTheme');
-        if(savedTheme){ document.body.className = savedTheme; }
-      }catch(e){}
-    })();
-  </script>
-  <style>
-    
-  </style>
+   <a href="#products-board" class="skip-link">تخطي إلى المحتوى</a>
    <!-- زر تغيير الثيم -->
     <button class="change-theme" id="theme-toggle">
      <i class="fa-solid fa-palette"></i>
@@ -46,19 +35,32 @@
  
                
     <!-- Header -->  
-    <header class="header" id="header">
+ <header class="header" id="header">
     <a href="dashboard.html" class="logo-container">
         <div class="logo"> </div>
         <div class="logo-text">أرشيف الثقة التجارية</div>
     </a>
-    <button class="nav-toggle"><i class="fas fa-align-left"></i></button>
+    <button class="nav-toggle" aria-label="Toggle navigation menu"><i class="fas fa-align-left"></i></button>
     <nav class="main-menu">
-        <a href="dashboard.html" class="menu-item"><i class="fas fa-home"></i> الرئيسية</a>
-		 <a href="products-board.html" class="menu-item active"><i class="fa-solid fa-cart-plus"></i> المنتجات</a>
+        <a href="dashboard.html" class="menu-item "><i class="fas fa-home"></i> الرئيسية</a>
+        <a href="products-board.html" class="menu-item"><i class="fa-solid fa-cart-plus"></i> المنتجات</a>
         <a href="suppliers.html" class="menu-item "><i class="fas fa-truck"></i> الموردين</a>
         <a href="profile.html" class="menu-item"><i class="fas fa-user"></i> ملفي الشخصي</a>
-        <a href="add-product.html" class="menu-item "><i class="fas fa-plus-circle"></i> إضافة منتج</a>
-        <a href="add-supplier.html" class="menu-item "><i class="fas fa-truck-loading "></i> اضافة مورد</a>
+        
+        <div class="dropdown">
+            <a href="#" class="menu-item dropdown-toggle">
+                <i class="fas fa-plus-circle"></i> إضافة <i class="fas fa-caret-down"></i>
+            </a>
+            <div class="dropdown-menu">
+                <a href="add-product.html" class="dropdown-item"><i class="fas fa-plus-circle"></i> إضافة منتج</a>
+                <a href="add-supplier.html" class="dropdown-item"><i class="fas fa-truck-loading "></i> إضافة مورد</a>
+				  <a href="add-customer.html" class="dropdown-item"><i class='fas fa-address-book'></i> اضافة عميل</a>
+				<a href="add-spare-part.html" class="dropdown-item"> <i class="fas fa-cogs"></i>  إضافة قطع غيار</a>
+				<a href="add-operational-accessories.html" class="dropdown-item"> <i class="fas fa-tools"></i>  إضافة مستلزمات التشغيل</a>
+				<a href="offer-price.html" class="dropdown-item"><i class='far fa-credit-card'></i>  انشاء عرض سعر</a>
+            </div>
+        </div>
+        <a href="index.html" class="menu-item logout-btn"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</a>
     </nav>
 </header>
 
@@ -77,7 +79,27 @@
                 <div class="filter-group">
                     <select id="categoryFilter">
                         <option value="">جميع الفئات</option>
-                        
+                        <optgroup label="البريكاست">
+                            <option value="بريكاست إنشائي">بريكاست إنشائي</option>
+                            <option value="بريكاست للبنية التحتية">بريكاست للبنية التحتية</option>
+                            <option value="بريكاست معماري/ديكوري">بريكاست معماري/ديكوري</option>
+                        </optgroup>
+                        <optgroup label="الماكينات">
+                            <option value="ماكينات البناء والإنشاءات">ماكينات البناء والإنشاءات</option>
+                            <option value="ماكينات الورشة">ماكينات الورشة</option>
+                            <option value="ماكينات التشغيل والصيانة">ماكينات التشغيل والصيانة</option>
+                        </optgroup>
+                        <optgroup label="خطوط الإنتاج">
+                            <option value="خطوط إنتاج مواد غذائية">خطوط إنتاج مواد غذائية</option>
+                            <option value="خطوط إنتاج مواد بناء">خطوط إنتاج مواد بناء</option>
+                            <option value="خطوط تجميع وتصنيع بسيطة">خطوط تجميع وتصنيع بسيطة</option>
+                        </optgroup>
+                        <optgroup label="المعدات الصناعية">
+                            <option value="معدات رفع ومناولة">معدات رفع ومناولة</option>
+                            <option value="أدوات كهربائية صناعية">أدوات كهربائية صناعية</option>
+                            <option value="معدات السلامة والأمان">معدات السلامة والأمان</option>
+                            <option value="مولدات الطاقة">مولدات الطاقة</option>
+                        </optgroup>
                     </select>
                 </div>
                 <div class="filter-group">
@@ -104,24 +126,276 @@
                 </div>
             </div>
         </div>
-		
+                
           <!-- View Mode Selector -->
      <div class="view-mode-container">
          <label for="viewMode"><i class="fa-solid fa-bars"></i> اسلوب العرض   </label>
           <select id="viewMode" onchange="changeViewMode(this.value)">
               <option value="compact-grid">شبكة</option>
-			  <option value="grid">اكثر اتساعاً</option>
+                          <option value="grid">اكثر اتساعاً</option>
               <option value="list">قائمة</option>
-              <!-- <option value="small-list">قائمة اصغر</option> -->
+              <option value="small-list">قائمة اصغر</option> 
          </select>
       </div>
-		
+                
         <!-- Products Grid -->
         <div class="products-grid compact-grid" id="productsGrid">
-            
+            <!-- Product 1 -->
+            <div class="product-card" data-id="1">
+                <div class="product-image-container">
+                    <div class="product-meta-overlay">
+                        <span class="product-category"><i class="fa-solid fa-layer-group"></i> إلكترونيات</span>
+                        <span class="product-supplier">شركة التقنية الحديثة</span>
+                        <span class="product-serial">SN: 001</span>
+                    </div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400" alt="ساعة ذكية متطورة" onerror="this.src='https://via.placeholder.com/400x200/1a1a2e/ffffff?text=صورة+المنتج'">
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">ساعة ذكية متطورة<span><i class="fa fa-address-book-o" aria-hidden="true"></i> admin</span></h3>
+                                <div class="product-meta-overlay2">
+                    <span class="product-category2">إلكترونيات</span>
+                    <span class="product-supplier2">شركة التقنية الحديثة</span>
+                    <span class="product-serial2">SN: 001</span>
+                                        <span class="product-price2">$199</span>
+                                        </div>
+                    <p class="product-description">ساعة ذكية بميزات متقدمة لتتبع اللياقة البدنية واتصالات ذكية مع هاتفك الذكي</p>
+                    <div class="product-prices">
+                        <div class="price-item">
+                            <span class="price-amount">$199</span>
+                            <span class="price-currency">USD</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-amount">¥1430</span>
+                            <span class="price-currency">CNY</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-amount">49750</span>
+                            <span class="price-currency">YER</span>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <a href="product-demo.html" id="OpenProductDetails" class="product-button"><i class="fa-solid fa-info"></i> عرض التفاصيل</a>
+                        <a href="product.html" id="ChatWithProductUser" class="product-button"><i class="fab fa-whatsapp"></i>تواصل بالمسجل</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card" data-id="2">
+                <div class="product-image-container">
+                    <div class="product-meta-overlay">
+                        <span class="product-category">إلكترونيات</span>
+                        <span class="product-supplier">مجموعة الهواتف الذكية</span>
+                        <span class="product-serial">SN: 002</span>
+                    </div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400" alt="هاتف ذكي عالي الجودة" onerror="this.src='https://via.placeholder.com/400x200/1a1a2e/ffffff?text=صورة+المنتج'">
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">هاتف ذكي عالي الجودة<span><i class="fa fa-address-book-o" aria-hidden="true"></i> ahmed</span></h3>
+                                <div class="product-meta-overlay2">
+                    <span class="product-category2">إلكترونيات</span>
+                    <span class="product-supplier2">مجموعة الهواتف الذكية</span>
+                    <span class="product-serial2">SN: 002</span>
+                                        <span class="product-price2">$599</span>
+                                </div>
+                    <p class="product-description">هاتف ذكي بكاميرا عالية الدقة وبطارية طويلة المدى مع معالج قوي للألعاب والتطبيقات</p>
+                    <div class="product-prices">
+                        <div class="price-item">
+                            <span class="price-amount">$599</span>
+                            <span class="price-currency">USD</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-amount">¥4300</span>
+                            <span class="price-currency">CNY</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-amount">149750</span>
+                            <span class="price-currency">YER</span>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <a href="product.html" id="OpenProductDetails" class="product-button"><i class="fa-solid fa-info"></i> عرض التفاصيل</a>
+                                                <a href="product.html" id="ChatWithProductUser"class="product-button"><i class="fab fa-whatsapp"></i>تواصل بالمسجل</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card" data-id="3">
+                <div class="product-image-container">
+                    <div class="product-meta-overlay">
+                        <span class="product-category">إلكترونيات</span>
+                        <span class="product-supplier">شركة الصوتيات المتقدمة</span>
+                        <span class="product-serial">SN: 003</span>
+                    </div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400" alt="سماعات لاسلكية" onerror="this.src='https://via.placeholder.com/400x200/1a1a2e/ffffff?text=صورة+المنتج'">
+                    </div>
+                </div>
+                <div class="product-info"> 
+                    <h3 class="product-title">سماعات لاسلكية <span><i class="fa fa-address-book-o" aria-hidden="true"></i> sadeq</span></h3>
+                                <div class="product-meta-overlay2">
+                    <span class="product-category2">إلكترونيات</span>
+                    <span class="product-supplier2">شركة الصوتيات المتقدمة</span>
+                    <span class="product-serial2">SN: 003</span>
+                                        <span class="product-price2">$149</span>
+                                </div>
+                    <p class="product-description">سماعات بلوتوث عالية الجودة مع إلغاء الضوضاء وعمر بطارية يصل إلى 30 ساعة</p>
+                    <div class="product-prices">
+                        <div class="price-item">
+                            <span class="price-amount">$149</span>
+                            <span class="price-currency">USD</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-amount">¥1070</span>
+                            <span class="price-currency">CNY</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-amount">37250</span>
+                            <span class="price-currency">YER</span>
+                        </div>
+                    </div>
+                   <div class="product-actions">
+                        <a href="product.html" id="OpenProductDetails" class="product-button"><i class="fa-solid fa-info"></i> عرض التفاصيل</a>
+                                                <a href="product.html" id="ChatWithProductUser"class="product-button"><i class="fab fa-whatsapp"></i>تواصل بالمسجل</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card" data-id="4">
+                <div class="product-image-container">
+                    <div class="product-meta-overlay">
+                        <span class="product-category">إكسسوارات</span>
+                        <span class="product-supplier">مصنع الحقائب العالمية</span>
+                        <span class="product-serial">SN: 004</span>
+                    </div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400" alt="حقيبة لابتوب أنيقة" onerror="this.src='https://via.placeholder.com/400x200/1a1a2e/ffffff?text=صورة+المنتج'">
+                    </div>
+                </div>
+                <div class="product-info">                     
+                    <h3 class="product-title">حقيبة لابتوب أنيقة <span><i class="fa fa-address-book-o" aria-hidden="true"></i> sadam</span></h3>
+                                <div class="product-meta-overlay2">
+                    <span class="product-category2">إكسسوارات</span>
+                    <span class="product-supplier2">مصنع الحقائب العالمية</span>
+                    <span class="product-serial2">SN: 004</span>
+                                        <span class="product-price2">$45</span>
+                                </div>
+                    <p class="product-description">حقيبة لابتوب مقاومة للماء مع تصميم عصري وجيوب متعددة للإكسسوارات</p>
+                    <div class="product-prices">
+                        <div class="price-item">
+                            <span class="price-amount">$45</span>
+                            <span class="price-currency">USD</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-amount">¥323</span>
+                            <span class="price-currency">CNY</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-amount">11250</span>
+                            <span class="price-currency">YER</span>
+                        </div>
+                    </div>
+                   <div class="product-actions">
+                        <a href="product.html" id="OpenProductDetails" class="product-button"><i class="fa-solid fa-info"></i> عرض التفاصيل</a>
+                                                <a href="product.html" id="ChatWithProductUser"class="product-button"><i class="fab fa-whatsapp"></i>تواصل بالمسجل</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card" data-id="5">
+                <div class="product-image-container">
+                    <div class="product-meta-overlay">
+                        <span class="product-category">إضاءة</span>
+                        <span class="product-supplier">شركة الإضاءة الذكية</span>
+                        <span class="product-serial">SN: 005</span>
+                    </div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400" alt="مصباح LED ذكي" onerror="this.src='https://via.placeholder.com/400x200/1a1a2e/ffffff?text=صورة+المنتج'">
+                    </div>
+                </div>
+                <div class="product-info">                     
+                    <h3 class="product-title">مصباح LED ذكي <span><i class="fa fa-address-book-o" aria-hidden="true"></i> somia</span></h3>
+                                <div class="product-meta-overlay2">
+                    <span class="product-category2">إضاءة</span>
+                    <span class="product-supplier2">شركة الإضاءة الذكية</span>
+                    <span class="product-serial2">SN: 005</span>
+                                        <span class="product-price2">$25</span>
+                                </div>
+                    <p class="product-description">مصباح LED يمكن التحكم به عن بُعد مع تغيير الألوان والسطوع عبر التطبيق</p>
+                    <div class="product-prices">
+                        <div class="price-item">
+                            <span class="price-amount">$25</span>
+                            <span class="price-currency">USD</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-amount">¥179</span>
+                            <span class="price-currency">CNY</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-amount">6250</span>
+                            <span class="price-currency">YER</span>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <a href="product.html" id="OpenProductDetails" class="product-button"><i class="fa-solid fa-info"></i> عرض التفاصيل</a>
+                                                <a href="product.html" id="ChatWithProductUser"class="product-button"><i class="fab fa-whatsapp"></i>تواصل بالمسجل</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card" data-id="6">
+                <div class="product-image-container">
+                    <div class="product-meta-overlay">
+                        <span class="product-category">إلكترونيات</span>
+                        <span class="product-supplier">مجموعة ألعاب الكمبيوتر</span>
+                        <span class="product-serial">SN: 006</span>
+                    </div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400" alt="كيبورد ميكانيكي للألعاب" onerror="this.src='https://via.placeholder.com/400x200/1a1a2e/ffffff?text=صورة+المنتج'">
+                    </div>
+                </div>
+                <div class="product-info">                     
+                    <h3 class="product-title">كيبورد ميكانيكي للألعاب <span><i class="fa fa-address-book-o" aria-hidden="true"></i> ahmed</span></h3>
+                                <div class="product-meta-overlay2">
+                    <span class="product-category2">إلكترونيات</span>
+                    <span class="product-supplier2">مجموعة ألعاب الكمبيوتر</span>
+                    <span class="product-serial2">SN: 006</span>
+                                        <span class="product-price2">$89</span>
+                                </div>  
+                    <p class="product-description">لوحة مفاتيح ميكانيكية مع إضاءة RGB وتصميم مقاوم للماء مخصص للألعاب</p>
+                    <div class="product-prices">
+                        <div class="price-item">
+                            <span class="price-amount">$89</span>
+                            <span class="price-currency">USD</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-amount">¥638</span>
+                            <span class="price-currency">CNY</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-amount">22250</span>
+                            <span class="price-currency">YER</span>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <a href="product.html" id="OpenProductDetails" class="product-button"><i class="fa-solid fa-info"></i> عرض التفاصيل</a>
+                                                <a href="product.html" id="ChatWithProductUser"class="product-button"><i class="fab fa-whatsapp"></i>تواصل بالمسجل</a>
+                    </div>
+                   </div>
+                </div>
+            </div>
+        </div>  
     </div>
 </section>
-		
+                
            <!-- Footer -->
     <footer class="footer">
                <div class="copyright-content">
@@ -144,8 +418,8 @@
                 </div>
             </div>
     </footer>
-	
-	
+        
+        
             <!-- No Results Message -->
             <div id="noResults" class="no-results  hidden">
                   <div class="no-results-icon">🔍</div>
@@ -154,8 +428,8 @@
                      </div>
                    </div>    
             </section>
-	
-	
+        
+        
 <!-- أزرار الدردشة والذكاء الاصطناعي -->
     <div class="chat-buttons-container">
         <button class="ai-toggle-btn" id="aiToggle">
@@ -166,9 +440,9 @@
         <button class="chat-toggle-btn" id="chatToggle">
             <span>دردشة الفريق</span>
             <i class="fas fa-comments"></i>
-            <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
+            <span class="notification-badge hidden" id="notificationBadge">0</span>
         </button>
-        <button class="chat-toggle-btn" id="dmQuickBtn" style="transform:scale(0.9);opacity:0.9; display:none;">
+        <button class="chat-toggle-btn scale09 op09 hidden" id="dmQuickBtn">
             <span>رسالة خاصة</span>
             <i class="fas fa-paper-plane"></i>
         </button>
@@ -186,7 +460,7 @@
                     <i class="fas fa-volume-up"></i>
                 </button>
                 <button id="minimizeBtn"><i class="fas fa-minus"></i></button>
-				<button><i class="fa-solid fa-window-restore"></i></button>
+                                <button><i class="fa-solid fa-window-restore"></i></button>
                 <button id="closeBtn"><i class="fas fa-times"></i></button>
             </div>
         </div>
@@ -222,7 +496,7 @@
                     <i class="fas fa-volume-up"></i>
                 </button>
                 <button id="aiMinimizeBtn"><i class="fas fa-minus"></i></button>
-				<button><i class="fa-solid fa-window-restore"></i></button>
+                                <button><i class="fa-solid fa-window-restore"></i></button>
                 <button id="aiCloseBtn"><i class="fas fa-times"></i></button>
             </div>
         </div>
@@ -269,281 +543,16 @@
             <source src="files/notification.mp3" type="audio/mpeg">
         </audio>
     </div>
-    <script>
-        // Static filtering functionality
-        function clearFilters() {
-            document.getElementById('searchInput').value = '';
-            document.getElementById('categoryFilter').value = '';
-            document.getElementById('supplierFilter').value = '';
-            document.getElementById('userFilter').value = '';
-            document.getElementById('sortFilter').value = 'date';
-            
-            showAllProducts();
-        }
-
-        function showAllProducts() {
-            const products = document.querySelectorAll('.product-card');
-            products.forEach(product => product.style.display = 'block');
-            document.getElementById('filteredCount').textContent = products.length;
-            document.getElementById('noResults').classList.add('hidden');
-        }
-
-        function shareProduct(productId, platform) {
-            const productUrl = `${window.location.origin}/product.html?id=${productId}`;
-            const productCard = document.querySelector(`[data-id="${productId}"]`);
-            const productName = productCard.querySelector('.product-title').textContent;
-            const productDesc = productCard.querySelector('.product-description').textContent;
-            const message = `${productName} - ${productDesc.substring(0, 100)}...`;
-            
-            let shareUrl = '';
-            
-            switch(platform) {
-                case 'whatsapp':
-                    shareUrl = `https://wa.me/?text=${encodeURIComponent(message + '\n' + productUrl)}`;
-                    break;
-                case 'telegram':
-                    shareUrl = `https://t.me/share/url?url=${encodeURIComponent(productUrl)}&text=${encodeURIComponent(message)}`;
-                    break;
-                case 'twitter':
-                    shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}&url=${encodeURIComponent(productUrl)}`;
-                    break;
-            }
-            
-            if (shareUrl) {
-                window.open(shareUrl, '_blank');
-            }
-        }
-
-        function copyProductLink(productId) {
-            const productUrl = `${window.location.origin}/product.html?id=${productId}`;
-            navigator.clipboard.writeText(productUrl).then(() => {
-                alert('تم نسخ رابط المنتج!');
-            }).catch(() => {
-                alert('فشل في نسخ الرابط');
-            });
-        }
-
-        // Enhanced filtering functionality with Supabase only (no mock fallback)
-        let currentProducts = [];
-        let filteredProducts = [];
-        
-
-        document.addEventListener('DOMContentLoaded', async function() {
-            // Check authentication
-            if (!window.authService.isLoggedIn()) {
-                window.location.href = 'index.html';
-                return;
-            }
-
-            // No mock controls
-
-            // Load products from database
-            await loadProductsFromDatabase();
-
-            // Setup event listeners
-            const searchInput = document.getElementById('searchInput');
-            const categoryFilter = document.getElementById('categoryFilter');
-            const supplierFilter = document.getElementById('supplierFilter');
-            const userFilter = document.getElementById('userFilter');
-            const sortFilter = document.getElementById('sortFilter');
-
-            [searchInput, categoryFilter, supplierFilter, userFilter, sortFilter].forEach(element => {
-                element.addEventListener('input', filterProducts);
-                element.addEventListener('change', filterProducts);
-            });
-        });
-
-        async function loadProductsFromDatabase() {
-            try {
-                const result = await window.productsService.getProducts();
-                if (result.success) {
-                    const products = Array.isArray(result.products) ? result.products : [];
-                    if (products.length > 0) {
-                        currentProducts = products;
-                        filteredProducts = [...currentProducts];
-                        renderProducts(currentProducts);
-                    } else {
-                        console.warn('لا توجد منتجات في القاعدة حالياً. سيتم استخدام منتجات المحاكاة.');
-                        seedMockProductsIfNeeded();
-                        const mock = getMockProducts();
-                        currentProducts = mock;
-                        filteredProducts = [...currentProducts];
-                        renderProducts(currentProducts);
-                    }
-                } else {
-                    console.error('Error loading products:', result.error);
-                    // Fallback to mock products
-                    seedMockProductsIfNeeded();
-                    const mock = getMockProducts();
-                    currentProducts = mock;
-                    filteredProducts = [...currentProducts];
-                    renderProducts(currentProducts);
-                }
-            } catch (error) {
-                console.error('Error loading products:', error);
-                // Fallback to mock products
-                seedMockProductsIfNeeded();
-                const mock = getMockProducts();
-                currentProducts = mock;
-                filteredProducts = [...currentProducts];
-                renderProducts(currentProducts);
-            }
-        }
-
-        function renderProducts(products) {
-            const productsGrid = document.getElementById('productsGrid');
-            productsGrid.innerHTML = '';
-
-            products.forEach(product => {
-                const productCard = createProductCard(product);
-                productsGrid.appendChild(productCard);
-            });
-
-            // Toggle no-results
-            const noResults = document.getElementById('noResults');
-            if (!products || products.length === 0) noResults.classList.remove('hidden');
-            else noResults.classList.add('hidden');
-        }
-
-        function createProductCard(product) {
-            const card = document.createElement('div');
-            card.className = 'product-card';
-            card.setAttribute('data-id', product.id);
-            card.setAttribute('data-category', product.categories?.name || '');
-            card.setAttribute('data-supplier', product.product_suppliers?.[0]?.supplier_name || '');
-            card.setAttribute('data-user', product.users?.username || '');
-
-            const primaryImage = product.product_images?.find(img => img.is_primary)?.image_url || 
-                                product.product_images?.[0]?.image_url || 
-                                'https://via.placeholder.com/400x200/1a1a2e/ffffff?text=صورة+المنتج';
-
-            card.innerHTML = `
-                <div class="product-image-container">
-                    <div class="product-meta-overlay">
-                        <span class="product-category"><i class="fa-solid fa-layer-group"></i> ${product.categories?.name || 'غير محدد'}</span>
-                        <span class="product-supplier">${product.product_suppliers?.[0]?.supplier_name || 'غير محدد'}</span>
-                        <span class="product-serial">SN: ${product.code}</span>
-                    </div>
-                    <div class="product-image">
-                        <img src="${primaryImage}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/400x200/1a1a2e/ffffff?text=صورة+المنتج'">
-                    </div>
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">${product.name}<span><i class="fa fa-address-book-o" aria-hidden="true"></i> ${product.users?.username || 'غير محدد'}</span></h3>
-                    <div class="product-meta-overlay2">
-                        <span class="product-category2">${product.categories?.name || 'غير محدد'}</span>
-                        <span class="product-supplier2">${product.product_suppliers?.[0]?.supplier_name || 'غير محدد'}</span>
-                        <span class="product-serial2">SN: ${product.code}</span>
-                        <span class="product-price2">$${product.selling_price}</span>
-                    </div>
-                    <p class="product-description">${product.description || 'لا يوجد وصف'}</p>
-                    <div class="product-prices">
-                        <div class="price-item">
-                            <span class="price-label">البيع:</span>
-                            <span class="price-amount">$${product.selling_price || 0}</span>
-                            <span class="price-currency">USD</span>
-                        </div>
-                        <div class="price-item cost-price">
-                            <span class="price-label">التكلفة:</span>
-                            <span class="price-amount">$${product.cost_price || 0}</span>
-                            <span class="price-currency">USD</span>
-                        </div>
-                    </div>
-                    <div class="product-actions">
-                        <a href="product.html?id=${product.id}" class="product-button"><i class="fa-solid fa-info"></i> عرض التفاصيل</a>
-                        <a href="product.html?id=${product.id}" class="product-button"><i class="fab fa-whatsapp"></i>تواصل بالمسجل</a>
-                    </div>
-                </div>
-            `;
-
-            return card;
-        }
-
-        // Removed deprecated static/mock rendering
-
-        async function filterProducts() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const category = document.getElementById('categoryFilter').value;
-            const supplier = document.getElementById('supplierFilter').value;
-            const user = document.getElementById('userFilter').value;
-            const sort = document.getElementById('sortFilter').value;
-
-            // Filter products based on criteria
-            filteredProducts = currentProducts.filter(product => {
-                const matchesSearch = !searchTerm || 
-                    product.name.toLowerCase().includes(searchTerm) || 
-                    product.description?.toLowerCase().includes(searchTerm);
-                
-                const matchesCategory = !category || product.categories?.name === category;
-                const matchesSupplier = !supplier || product.product_suppliers?.[0]?.supplier_name === supplier;
-                const matchesUser = !user || product.users?.username === user;
-
-                return matchesSearch && matchesCategory && matchesSupplier && matchesUser;
-            });
-
-            // Sorting
-            if (sort === 'price-high') {
-                filteredProducts.sort((a,b) => (b.selling_price||0) - (a.selling_price||0));
-            } else if (sort === 'price-low') {
-                filteredProducts.sort((a,b) => (a.selling_price||0) - (b.selling_price||0));
-            } else {
-                // date: newest first
-                filteredProducts.sort((a,b) => new Date(b.created_at) - new Date(a.created_at));
-            }
-
-            // Render filtered products
-            renderProducts(filteredProducts);
-
-            // Show/hide no results message
-            const noResults = document.getElementById('noResults');
-            if (filteredProducts.length === 0) {
-                noResults.classList.remove('hidden');
-            } else {
-                noResults.classList.add('hidden');
-            }
-        }
-    </script>
-	<!-- Include Supabase and services -->
-    <script>window.PB_DISABLE_EXTERNAL_RENDER = true;</script>
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-    <script src="js/supabase-config.js"></script>
-    <script src="js/auth-service.js"></script>
-    <script src="js/products-service.js"></script>
-    <script src="js/chat-service.js"></script>
+    <!-- Include Supabase and services -->
     
-	<!--  Javascript -->
-	<script src="js/nav.js"></script>
-    <script src="js/ai-config.js"></script>
-    <script src="js/chat.js"></script>
+    <!--  Javascript -->
+    <script src="js/theme-init.js"></script>
+    <script src="js/onclick-handlers.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/chat.js"></script>      
+    <script src="js/products-board-functions.js"></script>
     <script src="js/theme.js"></script>
-	<script src="js/products-board-mune.js"></script>
-    <script src="js/products-board-logic.js"></script>
-    <script>
-      // Quick DM button: prompt for username and open DM (only if FEATURE_DM_ENABLED)
-      document.addEventListener('DOMContentLoaded', function(){
-        const btn = document.getElementById('dmQuickBtn');
-        if (!btn) return;
-        if (window.FEATURE_DM_ENABLED === true) {
-          btn.style.display = '';
-          btn.addEventListener('click', async function(){
-            try{
-              const uname = prompt('ادخل اسم المستخدم لفتح رسالة خاصة:');
-              if(!uname) return;
-              const { data, error } = await supabaseClient
-                .from('users')
-                .select('id, username, full_name, role')
-                .ilike('username', uname)
-                .limit(1)
-                .single();
-              if(error || !data){ alert('لم يتم العثور على المستخدم'); return; }
-              if(window.openDirectChatByUser){ openDirectChatByUser(data.id, data.full_name || data.username, data.role || 'member'); }
-            }catch(e){ alert('تعذر فتح الرسالة الخاصة'); }
-          });
-        } else {
-          btn.style.display = 'none';
-        }
-      });
-    </script>
+    <script src="js/products-board-mune.js"></script>
     <style>
       #dmQuickBtn {
         display: inline-block;
