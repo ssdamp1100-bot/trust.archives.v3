@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل منتج تجريبي</title>
+    
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&family=Noto+Naskh+Arabic:wght@400..700&family=Noto+Sans+Arabic:wght@100..900&family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400..700&display=swap" rel="stylesheet">
+
+    <!-- Icon fonts -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- css Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/product.css">
+    <link rel="stylesheet" href="css/responsive-product.css">
+</head>
+<body class="theme1">
+    <!-- زر تغيير الثيم -->
+    <button class="change-theme" id="theme-toggle">
+        <i class="fa-solid fa-palette"></i>
+    </button>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <a href="dashboard.html" class="logo-container">
+            <div class="logo"></div>
+            <div class="logo-text">أرشيف الثقة التجارية</div>
+        </a>
+        <button class="nav-toggle"><i class="fas fa-align-left"></i></button>
+        <nav class="main-menu">
+            <a href="dashboard.html" class="menu-item"><i class="fas fa-home"></i> الرئيسية</a>
+            <a href="products-board.html" class="menu-item"><i class="fa-solid fa-cart-plus"></i> المنتجات</a>
+            <a href="suppliers.html" class="menu-item"><i class="fas fa-truck"></i> الموردين</a>
+            <a href="profile.html" class="menu-item"><i class="fas fa-user"></i> ملفي الشخصي</a>
+            <a href="add-product.html" class="menu-item"><i class="fas fa-plus-circle"></i> إضافة منتج</a>
+            <a href="add-supplier.html" class="menu-item"><i class="fas fa-truck-loading "></i> اضافة مورد</a>
+            <a href="index.html" class="menu-item logout-btn"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="product-container">
+            <div id="product-details">
+                <!-- Upper Section: Product Layout -->
+                <div class="product-layout">
+                    <!-- Right Column: Product Info and Main Image -->
+                    <div class="right-column">
+                        <div class="product-gallery">
+                            <div class="product-info">
+                                <div class="product-meta">
+                                    <div class="meta-item"><i class="fas fa-box"></i><span>إلكترونيات ذكية</span></div>
+                                    <div class="meta-item"><i class="fas fa-user"></i><span>admin</span></div>
+                                    <div class="meta-item"><i class="fas fa-calendar"></i><span>2025-01-01</span></div>
+                                    <div class="meta-item"><i class="fas fa-barcode"></i><span>DX-1001</span></div>
+                                    <div class="meta-item"><i class="fas fa-layer-group"></i><span>ملحقات</span></div>
+                                    <div class="meta-item"><i class="fas fa-copyright"></i><span>TechBrand</span></div>
+                                    <div class="meta-item"><i class="fas fa-cube"></i><span>Model X</span></div>
+                                </div>
+                                <h1 class="product-title">سماعة رأس لاسلكية احترافية</h1>
+                                <p class="product-description">سماعة رأس لاسلكية بميزة إلغاء الضوضاء، بطارية تدوم حتى 35 ساعة، شحن سريع، ومريحة للاستخدام الطويل مع دعم البلوتوث متعدد النقاط.</p>
+                            </div>
+
+                            <div class="main-image rel">
+                                <img id="mainImage" src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?w=1000" alt="صورة المنتج" onerror="this.src='https://via.placeholder.com/800x450/1a1a2e/ffffff?text=صورة+المنتج'">
+                                <button id="downloadImageBtn" title="تحميل الصورة" class="download-image-btn">
+                                    <i class="fas fa-download"></i>
+                                    تحميل الصورة
+                                </button>
+                            </div>
+
+                            <div class="image-thumbnails">
+                                <div class="thumbnail active"><img src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?w=300" alt="thumb"></div>
+                                <div class="thumbnail"><img src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=300" alt="thumb"></div>
+                                <div class="thumbnail"><img src="https://images.unsplash.com/photo-1518443758237-8fbcd101ebb9?w=300" alt="thumb"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Left Column: Price, Actions -->
+                    <div class="left-column">
+                        <div class="price-container">
+                            <div class="price-title"><i class="fa-solid fa-money-check-dollar"></i> الاسعار</div>
+                            <div class="price-details" id="priceDetails">
+                                <div class="price-grid ">
+                                    <div class="price-item">
+                                        <div class="pricing-label"><i class="fa-solid fa-coins"></i> سعر التكلفة</div>
+                                        <div class="price-amount">$65</div>
+                                    </div>
+                                    <div class="price-item">
+                                        <div class="pricing-label"><i class="fa-solid fa-tags"></i> سعر البيع</div>
+                                        <div class="price-amount">$99</div>
+                                    </div>
+                                    <div class="price-item">
+                                        <div class="pricing-label"><i class="fa-solid fa-scale-balanced"></i> وحدة التسعير</div>
+                                        <div class="price-amount">قطعة</div>
+                                    </div>
+                                    <div class="price-item">
+                                        <div class="pricing-label"><i class="fa-solid fa-boxes-stacked"></i> الحد الأدنى للطلب (MOQ)</div>
+                                        <div class="price-amount">20</div>
+                                    </div>
+                                    <div class="price-item">
+                                        <div class="pricing-label"><i class="fa-solid fa-percent"></i> الخصم</div>
+                                        <div class="price-amount">10%</div>
+                                    </div>
+                                    <div class="price-item">
+                                        <div class="pricing-label"><i class="fa-solid fa-file-invoice-dollar"></i> الضريبة</div>
+                                        <div class="price-amount">5%</div>
+                                    </div>
+                                    <div class="price-item span-all">
+                                        <div class="pricing-label"><i class="fa-solid fa-hand-holding-dollar"></i> شروط الدفع المقترحة</div>
+                                        <div class="price-amount">دفعات 50% مقدماً والباقي عند الشحن</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-actions">
+                            <button class="product-btn Favorite-btn" id="quoteBtn"><i class="fas fa-file-pdf"></i> انشاء عرض سعر</button>
+                            <button class="product-btn share-btn bg-extra2" id="catalogBtn"><i class="fa-solid fa-file-pdf"></i> تحميل الكاتلوج</button>                           
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lower Section: Product Tabs -->
+                <div class="lower-section">
+                    <div class="product-tabs">
+                        <div class="tabs-header">
+                            <div class="tab-btn active" data-tab="general">بيانات عامة</div>
+                            <div class="tab-btn" data-tab="usages">استخدامات المنتج</div>
+                            <div class="tab-btn" data-tab="specs">مواصفات المنتج</div>
+                            <div class="tab-btn" data-tab="proscons">الميزات و السلبيات</div>
+                            <div class="tab-btn" data-tab="files">ملفات و روابط</div>
+                            <div class="tab-btn" data-tab="suppliers">الموردون</div>
+                        </div>
+
+                        <div class="tab-content active" id="general">
+                            <div class="general-info-grid">
+                                <div class="general-info-item">
+                                    <div class="label"><i class="fas fa-folder"></i> الفئة الرئيسية</div>
+                                    <div class="value">إلكترونيات</div>
+                                </div>
+                                <div class="general-info-item">
+                                    <div class="label"><i class="fas fa-layer-group"></i> الفئة الفرعية</div>
+                                    <div class="value">ملحقات صوتية</div>
+                                </div>
+                                <div class="general-info-item">
+                                    <div class="label"><i class="fas fa-copyright"></i> العلامة التجارية</div>
+                                    <div class="value">TechBrand</div>
+                                </div>
+                                <div class="general-info-item">
+                                    <div class="label"><i class="fas fa-cube"></i> الموديل</div>
+                                    <div class="value">Model X</div>
+                                </div>
+                                <div class="general-info-item">
+                                    <div class="label"><i class="fas fa-tags"></i> الكلمات المفتاحية</div>
+                                    <div class="value"><ul class="disc-list pr18 m0"><li>لاسلكي</li><li>إلغاء الضوضاء</li><li>بطارية طويلة</li></ul></div>
+                                </div>
+                                <div class="general-info-item">
+                                    <div class="label"><i class="fas fa-user"></i> المسجل</div>
+                                    <div class="value">admin</div>
+                                </div>
+                                <div class="general-info-item">
+                                    <div class="label"><i class="fas fa-calendar-alt"></i> تاريخ الإضافة</div>
+                                    <div class="value">2025-01-01</div>
+                                </div>
+                                <div class="general-info-item">
+                                    <div class="label"><i class="fas fa-barcode"></i> الكود</div>
+                                    <div class="value">DX-1001</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="usages">
+                            <ul class="disc-list pr20 my10-20">
+                                <li>المكالمات والاجتماعات عبر الإنترنت</li>
+                                <li>الاستماع للموسيقى أثناء العمل</li>
+                                <li>الألعاب والترفيه</li>
+                            </ul>
+                        </div>
+
+                        <div class="tab-content" id="specs">
+                            <div class="specs-grid" id="specsGrid">
+                                <div class="general-info-item">
+                                    <div class="label"><i class="fas fa-weight-hanging"></i> الوزن</div>
+                                    <div class="value">250 جرام</div>
+                                </div>
+                                <div class="general-info-item">
+                                    <div class="label"><i class="fas fa-bolt"></i> مدة البطارية</div>
+                                    <div class="value">35 ساعة</div>
+                                </div>
+                                <div class="general-info-item">
+                                    <div class="label"><i class="fas fa-plug"></i> الشحن</div>
+                                    <div class="value">USB‑C، شحن سريع</div>
+                                </div>
+                                <div class="general-info-item span-all">
+                                    <div class="label"><i class="fas fa-clipboard-list"></i> المكونات الأساسية</div>
+                                    <div class="value"><ul class="disc-list pr18 m0"><li>ميكروفون مزدوج</li><li>وسادات أذن مريحة</li><li>بلوتوث 5.2</li></ul></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="proscons">
+                            <div>
+                                <h4 class="my10">ميزات المنتج</h4>
+                                <ul class="disc-list pr20 my10-20">
+                                    <li>إلغاء ضوضاء فعال</li>
+                                    <li>راحة عالية عند الاستخدام</li>
+                                    <li>اتصال مستقر ومتعدد النقاط</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="my10">سلبيات المنتج</h4>
+                                <ul class="disc-list pr20 my10-20">
+                                    <li>لا يدعم مقاومة الماء بشكل كامل</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="files">
+                            <div id="productFilesSection">
+                                <h4><i class="fas fa-file-download"></i> ملفات المنتج</h4>
+                                <div id="productFilesContainer" class="files-container">
+                                    <div class="file-item">
+                                        <div class="file-icon"><i class="fas fa-file-pdf"></i></div>
+                                        <div class="file-name">كتالوج المنتج</div>
+                                        <button class="file-btn">تحميل</button>
+                                    </div>
+                                    <div class="file-item">
+                                        <div class="file-icon"><i class="fas fa-file-alt"></i></div>
+                                        <div class="file-name">دليل الاستخدام</div>
+                                        <button class="file-btn">تحميل</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="productLinksSection" class="mt30">
+                                <h4><i class="fas fa-link"></i> روابط المنتج</h4>
+                                <div id="productLinksContainer" class="links-container">
+                                    <div class="link-item">
+                                        <div class="site-name"><i class="fas fa-store"></i> موقع الشركة</div>
+                                        <a class="product-link2" href="#" target="_blank">https://example.com/product</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="suppliers">
+                            <div class="suppliers-tab-list" id="suppliersTabList">
+                                <div class="supplier-card-tab">
+                                    <div class="supplier-card-header">شركة الصوتيات المتقدمة</div>
+                                    <div class="supplier-actions">
+                                        <a href="#">عرض المورد</a>
+                                        <button>تواصل</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts: نُبقي الأساسيات فقط لتبديل الثيم والتنقل -->
+    <script src="js/theme-init.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/theme.js"></script>
+	 <script src="js/product-functions.js"></script>
+</body>
+</html>
+

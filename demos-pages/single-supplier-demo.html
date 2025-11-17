@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معلومات المورد (تجريبي)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/single-supplier.css">
+</head>
+<body class="theme1">
+    <button class="change-theme" id="theme-toggle"><i class="fa-solid fa-palette"></i></button>
+    <header class="header" id="header">
+        <a href="dashboard.html" class="logo-container">
+            <div class="logo"></div>
+            <div class="logo-text">أرشيف الثقة التجارية</div>
+        </a>
+        <button class="nav-toggle"><i class="fas fa-align-left"></i></button>
+        <nav class="main-menu">
+            <a href="dashboard.html" class="menu-item"><i class="fas fa-home"></i> الرئيسية</a>
+            <a href="products-board.html" class="menu-item"><i class="fa-solid fa-cart-plus"></i> المنتجات</a>
+            <a href="suppliers.html" class="menu-item active"><i class="fas fa-truck"></i> الموردين</a>
+            <a href="profile.html" class="menu-item"><i class="fas fa-user"></i> ملفي الشخصي</a>
+        </nav>
+    </header>
+
+    <section class="supplier-container">
+        <div class="supplier-header">
+            <img id="supplierLogo" src="img/company-1.jpg" alt="شعار المورد" class="supplier-logo">
+            <div class="single-user-section" id="userHeaderSection">
+                <div class="user-profile-column">
+                    <h2 id="supplierName"><i class="fas fa-building"></i> شركة غوانغجو للإلكترونيات</h2>
+                    <p id="supplierDescription"><i class="fas fa-star"></i> مورد معتمد للأجهزة الذكية وملحقاتها</p>
+                    <div class="supplier-rating" id="supplierRatingUI">
+                        <div class="stars" id="ratingStars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <span id="ratingValue" class="fw600">3.5/5</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="supplier-grid">
+            <div class="info-box">
+                <h3><i class="fas fa-info-circle"></i> معلومات أساسية</h3>
+                <p><strong><i class="fas fa-signature"></i> الاسم (عربي) :</strong> <span>شركة غوانغجو للإلكترونيات</span></p>
+                <p><strong><i class="fas fa-signature"></i> الاسم (إنجليزي) :</strong> <span>Guangzhou Electronics</span></p>
+                <p><strong><i class="fas fa-globe"></i> البلد :</strong> <span>الصين</span></p>
+                <p><strong><i class="fas fa-calendar-alt"></i> سنة التأسيس :</strong> <span>2008</span></p>
+                <p><strong><i class="fas fa-tags"></i> المجالات :</strong> <span>هواتف محمولة، ملحقات إلكترونية</span></p>
+                <p><strong><i class="fas fa-calendar-plus"></i> تاريخ الإضافة :</strong> <span>2025-01-01</span></p>
+                <p><strong><i class="fas fa-user"></i> أضيف بواسطة :</strong> <span>admin</span></p>
+                <p><strong><i class="fas fa-hashtag"></i> الرقم التسلسلي :</strong> <span>#SUP-001</span></p>
+                <p><strong><i class="fas fa-align-left"></i> وصف المورد :</strong> <span>شركة رائدة في تصنيع وتوريد الأجهزة الذكية والاكسسوارات المتعلقة بها.</span></p>
+            </div>
+            <div class="info-box">
+                <h3><i class="fas fa-shipping-fast"></i> الشحن و الدفع</h3>
+                <p><strong><i class="fas fa-shipping-fast"></i> طرق الشحن :</strong> <span>بحري، جوي، بري</span></p>
+                <p><strong><i class="fas fa-credit-card"></i> وسائل الدفع :</strong> <span>TT, L/C</span></p>
+                <p><strong><i class="fas fa-hourglass-half"></i> متوسط زمن الشحن :</strong> <span>25-35 يوم</span></p>
+                <p><strong><i class="fas fa-certificate"></i> الشهادات :</strong> <span>ISO9001, CE</span></p>
+                <p id="supplier-rate"><strong><i class="fas fa-star"></i> تقييم الفريق :</strong> <span>جيد جدًا</span></p>
+            </div>
+            <div class="info-box">
+                <h3><i class="fas fa-briefcase"></i> ممثل التواصل</h3>
+                <p><strong><i class="fas fa-user"></i> الاسم :</strong> <span>لي وي</span></p>
+                <p><strong><i class="fas fa-briefcase"></i> المسمى :</strong> <span>مدير المبيعات</span></p>
+                <p><strong><i class="fas fa-envelope"></i> البريد :</strong> <span>sales@ge.com</span></p>
+                <p><strong><i class="fas fa-phone"></i> الهاتف :</strong> <span>+86 138 0013 8000</span></p>
+                <p><strong><i class="fab fa-whatsapp"></i> واتساب :</strong> <span>+86 138 0013 8000</span></p>
+                <p><strong><i class="fab fa-weixin"></i> ويتشات :</strong> <span>le-sales</span></p>
+                <p><strong><i class="fas fa-language"></i> اللغة :</strong> <span>الإنجليزية، الصينية</span></p>
+            </div>
+            <div class="info-box">
+                <h3><i class="fas fa-industry"></i> معلومات فنية وتشغيلية</h3>
+                <p><strong><i class="fas fa-users"></i> حجم الشركة :</strong> <span>150 موظف</span></p>
+                <p><strong><i class="fas fa-tachometer-alt"></i> الطاقة الإنتاجية :</strong> <span>5000 قطعة/شهر</span></p>
+                <p><strong><i class="fas fa-magic"></i> القدرة على التخصيص :</strong> <span>نعم</span></p>
+                <p><strong><i class="fas fa-hard-hat"></i> عدد المهندسين :</strong> <span>20</span></p>
+                <p><strong><i class="fas fa-chart-area"></i> الأسواق الرئيسية :</strong> <span>السعودية، الإمارات، مصر</span></p>
+            </div>
+        </div>
+
+        <div class="info-box2">
+            <h3><i class="fas fa-address-card"></i> معلومات الاتصال</h3>
+            <p><strong><i class="fas fa-phone"></i> الهاتف :</strong> <span>+86 138 0013 8000</span></p>
+            <p><strong><i class="fas fa-envelope"></i> البريد :</strong> <span>info@ge.com</span></p>
+            <p><strong><i class="fas fa-globe"></i> الموقع :</strong> <a href="#" target="_blank">https://ge.com</a></p>
+            <p><strong><i class="fas fa-map-marker-alt"></i> العنوان :</strong> <span>المنطقة الصناعية، غوانغجو، الصين</span></p>
+            <p><strong><i class="fas fa-map"></i> الخريطة :</strong> <a href="#" target="_blank">Google Maps</a></p>
+        </div>
+
+        <h3 class="title2"><i class="fa fa-link" aria-hidden="true"></i> روابط تواصل سريعة بالمورد</h3>
+        <div class="quick-actions">
+            <a href="tel:+8613800138000" class="action-btn phone"><i class="fas fa-phone"></i> اتصال</a>
+            <a href="https://wa.me/8613800138000" target="_blank" class="action-btn whatsapp"><i class="fab fa-whatsapp"></i> واتساب</a>
+            <a href="mailto:info@ge.com" class="action-btn email"><i class="fas fa-envelope"></i> إيميل</a>
+            <a href="https://ge.com" target="_blank" class="action-btn website"><i class="fas fa-globe"></i> موقع ويب</a>
+            <a href="#" class="action-btn facebook"><i class="fab fa-facebook"></i> فيسبوك</a>
+            <a href="#" target="_blank" class="action-btn location"><i class="fas fa-map"></i> خريطة</a>
+            <a href="#" class="action-btn wechat"><i class="fab fa-weixin"></i> ويشات</a>
+            <a href="#" class="action-btn instagram"><i class="fa-brands fa-instagram"></i> انستجرام</a>
+        </div>
+
+        <div class="products-section">
+            <h3 class="title2"><i class="fas fa-box-open"></i> أهم السلع والمنتجات</h3>
+            <div id="mainProductsList" class="products-grid">
+                <div class="product-card">
+                    <div class="product-info">
+                        <h4>سماعات بلوتوث</h4>
+                        <p>جودة صوت عالية مع إلغاء الضوضاء</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-info">
+                        <h4>باور بنك 20000mAh</h4>
+                        <p>شحن سريع ودعم PD</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="download-section">
+            <a href="suppliers.html" class="download-btn"><i class="fa fa-angle-double-right"></i> العودة الى صفحة الموردين</a>
+        </div>
+    </section>
+
+    <script src="js/theme-init.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/theme.js"></script>
+</body>
+</html>
+
